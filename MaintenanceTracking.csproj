@@ -126,6 +126,7 @@
     <Content Include="MaintenanceTracker\obj\Debug\MaintenanceTracker.csproj.FileListAbsolute.txt" />
     <Content Include="MaintenanceTracker\obj\Debug\MaintenanceTracker.exe" />
     <Content Include="MaintenanceTracker\obj\Debug\MaintenanceTracker.pdb" />
+    <Content Include="MaintenanceTracker\TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MaintenanceTracker\Form1.cs">
