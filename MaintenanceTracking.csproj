@@ -1,0 +1,183 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{4C9107C1-A502-43F3-900B-3964678CB239}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>WindowsApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>MaintenanceTracking</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include=".git\COMMIT_EDITMSG" />
+    <None Include=".git\config" />
+    <None Include=".git\description" />
+    <None Include=".git\FETCH_HEAD" />
+    <None Include=".git\HEAD" />
+    <None Include=".git\hooks\applypatch-msg.sample" />
+    <None Include=".git\hooks\commit-msg.sample" />
+    <None Include=".git\hooks\fsmonitor-watchman.sample" />
+    <None Include=".git\hooks\post-update.sample" />
+    <None Include=".git\hooks\pre-applypatch.sample" />
+    <None Include=".git\hooks\pre-commit.sample" />
+    <None Include=".git\hooks\pre-push.sample" />
+    <None Include=".git\hooks\pre-rebase.sample" />
+    <None Include=".git\hooks\pre-receive.sample" />
+    <None Include=".git\hooks\prepare-commit-msg.sample" />
+    <None Include=".git\hooks\update.sample" />
+    <None Include=".git\index" />
+    <None Include=".git\info\exclude" />
+    <None Include=".git\logs\HEAD" />
+    <None Include=".git\logs\refs\heads\JKett" />
+    <None Include=".git\logs\refs\heads\master" />
+    <None Include=".git\logs\refs\remotes\origin\JKett" />
+    <None Include=".git\logs\refs\remotes\origin\master" />
+    <None Include=".git\objects\1a\f7de150c99c12dd67a509fe57c10d63e4eeb04" />
+    <None Include=".git\objects\1e\cf7dcbc15d2b33c53a0a7d4b5e43477a1165d2" />
+    <None Include=".git\objects\1f\f0c423042b46cb1d617b81efb715defbe8054d" />
+    <None Include=".git\objects\2c\94e019f7e9fbeccb67a28f6debeb617eb79365" />
+    <None Include=".git\objects\35\e32d2950b8fc2a92f62f03ddf3af086e1aa149" />
+    <None Include=".git\objects\39\645652af62950ebf3b28ec3a5400dcec30b1c4" />
+    <None Include=".git\objects\3c\4efe206bd0e7230ad0ae8396a3c883c8207906" />
+    <None Include=".git\objects\42\34a303de2bb64ab3cc08697392ef470502f17f" />
+    <None Include=".git\objects\4b\825dc642cb6eb9a060e54bf8d69288fbee4904" />
+    <None Include=".git\objects\59\e11af5de01f51957a51ee71452fcaf04b50aa7" />
+    <None Include=".git\objects\59\ea538a421b80e769e089892c65969178a98688" />
+    <None Include=".git\objects\5d\6b231ab62f6a1c2640bf553a902088872a5b47" />
+    <None Include=".git\objects\5f\23492659a08f078b3d941b5b3e22df2a262c29" />
+    <None Include=".git\objects\6d\fa4eda8b9dd1b217a12a3124b0a5f07cf279b7" />
+    <None Include=".git\objects\73\1f6de6c291e303814b02808f34140fe560e8e4" />
+    <None Include=".git\objects\74\d233b86e2a77574eaafa6312726300bc009f06" />
+    <None Include=".git\objects\7e\e5338ba1ecd91510335096d118ea3c6828e09c" />
+    <None Include=".git\objects\91\e3470e1645e6e8d0de6fe9f6b242f366e9a393" />
+    <None Include=".git\objects\92\8a19b7752c3476057af6b4e7bf9fd25659a3cc" />
+    <None Include=".git\objects\97\07a1e555c32d08f0b1237cd45f008919968301" />
+    <None Include=".git\objects\a9\696dedee442b17c75fbc8fb8aa399b35b150df" />
+    <None Include=".git\objects\a9\fba191f4e340d223634de53abae89e9b980179" />
+    <None Include=".git\objects\ac\d5a2445eccf89b6778711fc874e3de65006fdd" />
+    <None Include=".git\objects\af\7dbebbacef595e3089c01c05671016c21a8304" />
+    <None Include=".git\objects\cb\c652d5a27216aaf6105e4defe0e3b8101d12eb" />
+    <None Include=".git\objects\e0\ffcbc0b66222a6c65d3809dd97eac0ff30b205" />
+    <None Include=".git\objects\ea\9821c0d0c29965c43b61ab5003d43d30f237e8" />
+    <None Include=".git\objects\eb\ae4c7f06164b103f189d0a4b43d19535ddc806" />
+    <None Include=".git\objects\fb\ef7b463d60017ad72d8c94e27f65788e99ef7c" />
+    <None Include=".git\ORIG_HEAD" />
+    <None Include=".git\refs\heads\JKett" />
+    <None Include=".git\refs\heads\master" />
+    <None Include=".git\refs\remotes\origin\JKett" />
+    <None Include=".git\refs\remotes\origin\master" />
+    <None Include=".vs\MaintenanceTracker\v15\.suo" />
+    <None Include=".vs\MaintenanceTracker\v15\Server\sqlite3\db.lock" />
+    <None Include=".vs\MaintenanceTracker\v15\Server\sqlite3\storage.ide" />
+    <None Include=".vs\ProjectSettings.json" />
+    <None Include=".vs\slnx.sqlite" />
+    <None Include="MaintenanceTracker\App.config" />
+    <None Include="MaintenanceTracker\bin\Debug\MaintenanceTracker.exe.config" />
+    <None Include="MaintenanceTracker\obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="MaintenanceTracker\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="MaintenanceTracker\obj\Debug\MaintenanceTracker.csproj.CoreCompileInputs.cache" />
+    <None Include="MaintenanceTracker\obj\Debug\MaintenanceTracker.csproj.GenerateResource.Cache" />
+    <None Include="MaintenanceTracker\obj\Debug\MaintenanceTracker.csprojResolveAssemblyReference.cache" />
+    <None Include="MaintenanceTracker\obj\Release\MaintenanceTracker.csproj.CoreCompileInputs.cache" />
+    <None Include="MaintenanceTracker\Properties\Settings.settings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".git\ms-persist.xml" />
+    <Content Include="MaintenanceTracker\bin\Debug\MaintenanceTracker.exe" />
+    <Content Include="MaintenanceTracker\bin\Debug\MaintenanceTracker.pdb" />
+    <Content Include="MaintenanceTracker\bin\Debug\tire.jpeg" />
+    <Content Include="MaintenanceTracker\MaintenanceTracker.csproj" />
+    <Content Include="MaintenanceTracker\obj\Debug\MaintenanceTracker.csproj.FileListAbsolute.txt" />
+    <Content Include="MaintenanceTracker\obj\Debug\MaintenanceTracker.exe" />
+    <Content Include="MaintenanceTracker\obj\Debug\MaintenanceTracker.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MaintenanceTracker\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaintenanceTracker\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaintenanceTracker\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="MaintenanceTracker\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="MaintenanceTracker\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="MaintenanceTracker\Program.cs" />
+    <Compile Include="MaintenanceTracker\Properties\AssemblyInfo.cs" />
+    <Compile Include="MaintenanceTracker\Properties\Resources.Designer.cs" />
+    <Compile Include="MaintenanceTracker\Properties\Settings.Designer.cs" />
+    <Compile Include="MaintenanceTracker\TireOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaintenanceTracker\TireOptionsForm.Designer.cs">
+      <DependentUpon>TireOptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaintenanceTracker\WipersOptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaintenanceTracker\WipersOptionForm.Designer.cs">
+      <DependentUpon>WipersOptionForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MaintenanceTracker\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaintenanceTracker\obj\Debug\MaintenanceTracker.Form1.resources" />
+    <EmbeddedResource Include="MaintenanceTracker\obj\Debug\MaintenanceTracker.Properties.Resources.resources" />
+    <EmbeddedResource Include="MaintenanceTracker\obj\Debug\MaintenanceTracker.TireOptionsForm.resources" />
+    <EmbeddedResource Include="MaintenanceTracker\Properties\Resources.resx" />
+    <EmbeddedResource Include="MaintenanceTracker\TireOptionsForm.resx">
+      <DependentUpon>TireOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".git\lfs\objects\logs\" />
+    <Folder Include=".git\lfs\tmp\objects\" />
+    <Folder Include=".git\objects\info\" />
+    <Folder Include=".git\objects\pack\" />
+    <Folder Include=".git\refs\tags\" />
+    <Folder Include=".vs\MaintenanceTracking\v15\" />
+    <Folder Include="MaintenanceTracker\bin\Release\" />
+    <Folder Include="MaintenanceTracker\obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>
