@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaintenanceTracking", "MaintenanceTracking.csproj", "{4C9107C1-A502-43F3-900B-3964678CB239}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C9107C1-A502-43F3-900B-3964678CB239}.Debug|x86.ActiveCfg = Debug|x86
+		{4C9107C1-A502-43F3-900B-3964678CB239}.Debug|x86.Build.0 = Debug|x86
+		{4C9107C1-A502-43F3-900B-3964678CB239}.Release|x86.ActiveCfg = Release|x86
+		{4C9107C1-A502-43F3-900B-3964678CB239}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {10307406-5E23-4467-B51D-25E65A7D4108}
+	EndGlobalSection
+EndGlobal
