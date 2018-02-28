@@ -29,6 +29,7 @@ namespace MaintenanceTracker
         
         private void Form1_Load(object sender, EventArgs e)
         {
+
             //Hide the exit button.
             exitButton.Visible = false;
 
