@@ -32,7 +32,7 @@ namespace MaintenanceTracker
 
             //Hide the exit button.
             exitButton.Visible = false;
-
+            
             //Set color of buttons.
             tiresButton.BackColor = System.Drawing.Color.AliceBlue;
             airFilterButton.BackColor = System.Drawing.Color.AliceBlue;
@@ -41,7 +41,7 @@ namespace MaintenanceTracker
             oilButton.BackColor = System.Drawing.Color.AliceBlue;
             exitButton.BackColor = System.Drawing.Color.AliceBlue;
             settingsButton.BackColor = System.Drawing.Color.AliceBlue;
-
+            
             //Set font of buttons.
             tiresButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
             airFilterButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
