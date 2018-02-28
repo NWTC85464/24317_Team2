@@ -98,15 +98,7 @@ namespace MaintenanceTracker
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
-            /*
-            tiresButton.Visible = true;
-            airFilterButton.Visible = true;
-            oilButton.Visible = true;
-            wipersButton.Visible = true;
-            mpgButton.Visible = true;
-            exitButton.Visible = true;
-            settingsButton.Visible = true;
-            */
+            
         }
 
     }
