@@ -41,7 +41,7 @@ namespace MaintenanceTracker
             oilButton.BackColor = System.Drawing.Color.AliceBlue;
             exitButton.BackColor = System.Drawing.Color.AliceBlue;
             settingsButton.BackColor = System.Drawing.Color.AliceBlue;
-            
+
             //Set font of buttons.
             tiresButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
             airFilterButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
