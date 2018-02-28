@@ -15,19 +15,25 @@ namespace MaintenanceTracker
         public Form1()
         {
             InitializeComponent();
+
+            //Form background color.
             this.BackColor = System.Drawing.Color.Aqua;
-            BackgroundImage = new Bitmap("tire.jpeg");
-            
-           // form.StartPosition = FormStartPosition.CenterScreen; form1.ShowDialog();
 
-            //This is a test comment for JODY!!!!!!!!
+            //Form background image.
+            /////
+            //BackgroundImage = new Bitmap("tire.jpeg");
 
+            //Center form on the screen.
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Building Buttons with color.  This is a test comment for push test.
+
+            //Hide the exit button.
             exitButton.Visible = false;
+
+            //Set color of buttons.
             tiresButton.BackColor = System.Drawing.Color.AliceBlue;
             airFilterButton.BackColor = System.Drawing.Color.AliceBlue;
             wipersButton.BackColor = System.Drawing.Color.AliceBlue;
@@ -36,6 +42,7 @@ namespace MaintenanceTracker
             exitButton.BackColor = System.Drawing.Color.AliceBlue;
             settingsButton.BackColor = System.Drawing.Color.AliceBlue;
 
+            //Set font of buttons.
             tiresButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
             airFilterButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
             wipersButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
@@ -44,35 +51,20 @@ namespace MaintenanceTracker
             exitButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
             settingsButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
 
+            //Set border of buttons.
             tiresButton.FlatStyle = FlatStyle.Flat;
-            tiresButton.FlatAppearance.BorderSize = 2;
-            
+            tiresButton.FlatAppearance.BorderSize = 2;            
         }
 
         private void tiresButton_Click(object sender, EventArgs e)
         {
-            //airFilterButton.Visible = false;
-           // oilButton.Visible = false;
-           // wipersButton.Visible = false;
-           // mpgButton.Visible = false;
-           // exitButton.Visible = true;
-           // settingsButton.Visible = false;
-
             //Call tires option form.
             TireOptionsForm tireOptionsForm = new TireOptionsForm();
             tireOptionsForm.ShowDialog();
-
         }
 
         private void wipersButton_Click(object sender, EventArgs e)
         {
-            tiresButton.Visible = false;
-            airFilterButton.Visible = false;
-            oilButton.Visible = false;
-            mpgButton.Visible = false;
-            exitButton.Visible = true;
-            settingsButton.Visible = false;
-
             //Call wipers options form.
             WipersOptionForm wipersOptionForm = new WipersOptionForm();
             wipersOptionForm.ShowDialog();
@@ -80,53 +72,34 @@ namespace MaintenanceTracker
 
         private void airFilterButton_Click(object sender, EventArgs e)
         {
-            tiresButton.Visible = false;
-            oilButton.Visible = false;
-            wipersButton.Visible = false;
-            mpgButton.Visible = false;
-            exitButton.Visible = true;
-            settingsButton.Visible = false;
+            //Call air filter option form.
+            AirFilterOptionsForm airFilterOptionsForm = new AirFilterOptionsForm();
+            airFilterOptionsForm.ShowDialog();
         }
 
         private void mpgButton_Click(object sender, EventArgs e)
         {
-            tiresButton.Visible = false;
-            airFilterButton.Visible = false;
-            oilButton.Visible = false;
-            wipersButton.Visible = false;
-            exitButton.Visible = true;
-            settingsButton.Visible = false;
+            //Call mpg options form.
+            MPGOptionsForm mPGOptionsForm = new MPGOptionsForm();
+            mPGOptionsForm.ShowDialog();
         }
 
         private void oilButton_Click(object sender, EventArgs e)
         {
-            tiresButton.Visible = false;
-            airFilterButton.Visible = false;
-            wipersButton.Visible = false;
-            mpgButton.Visible = false;
-            exitButton.Visible = true;
-            settingsButton.Visible = false;
+            //Call oil options form.
+            OilOptionsForm oilOptionsForm = new OilOptionsForm();
+            oilOptionsForm.ShowDialog();
         }
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            tiresButton.Visible = false;
-            airFilterButton.Visible = false;
-            wipersButton.Visible = false;
-            mpgButton.Visible = false;
-            oilButton.Visible = false;
-            exitButton.Visible = true;
+            //Call settings option form.
+            SettingsOptionForm settingsOptionForm = new SettingsOptionForm();
+            settingsOptionForm.ShowDialog();
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
-            tiresButton.Visible = true;
-            airFilterButton.Visible = true;
-            oilButton.Visible = true;
-            wipersButton.Visible = true;
-            mpgButton.Visible = true;
-            exitButton.Visible = true;
-            settingsButton.Visible = true;
-
+            
         }
 
     }
