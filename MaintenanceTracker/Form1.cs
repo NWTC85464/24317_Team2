@@ -33,14 +33,14 @@ namespace MaintenanceTracker
             exitButton.Visible = false;
 
             //Set color of buttons.
-            tiresButton.BackColor = System.Drawing.Color.AliceBlue;
+           /* tiresButton.BackColor = System.Drawing.Color.AliceBlue;
             airFilterButton.BackColor = System.Drawing.Color.AliceBlue;
             wipersButton.BackColor = System.Drawing.Color.AliceBlue;
             mpgButton.BackColor = System.Drawing.Color.AliceBlue;
             oilButton.BackColor = System.Drawing.Color.AliceBlue;
             exitButton.BackColor = System.Drawing.Color.AliceBlue;
             settingsButton.BackColor = System.Drawing.Color.AliceBlue;
-
+            */
             //Set font of buttons.
             tiresButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
             airFilterButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
