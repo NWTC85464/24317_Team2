@@ -1,6 +1,6 @@
 ﻿namespace MaintenanceTracker
 {
-    partial class WipersOptionForm
+    partial class MPGOptionsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // WipersOptionForm
+            // MPGOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(407, 667);
-            this.Name = "WipersOptionForm";
-            this.Text = "WipersOptionForm";
+            this.Name = "MPGOptionsForm";
+            this.Text = "MPGOptionsForm";
             this.ResumeLayout(false);
 
         }
