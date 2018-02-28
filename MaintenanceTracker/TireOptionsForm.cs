@@ -15,6 +15,9 @@ namespace MaintenanceTracker
         public TireOptionsForm()
         {
             InitializeComponent();
+          
+            //Center form on the screen.
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void button1_Click(object sender, EventArgs e)
