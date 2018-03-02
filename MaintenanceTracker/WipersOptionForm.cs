@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MaintenanceTracker
 {
-    public partial class WipersOptionForm : Form
+    public partial class WipersOptionForm : System.Windows.Forms.Form
     {
         public WipersOptionForm()
         {

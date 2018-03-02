@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MaintenanceTracker
 {
-    public partial class AirFilterOptionsForm : Form
+    public partial class AirFilterOptionsForm : System.Windows.Forms.Form
     {
         public AirFilterOptionsForm()
         {
