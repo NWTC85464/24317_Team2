@@ -21,15 +21,14 @@ namespace MaintenanceTracker
 
             //Form background image.
             /////
-            //BackgroundImage = new Bitmap("tire.jpeg");
+            BackgroundImage = new Bitmap("tire.jpeg");
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
-        }
+        }    
         
         private void Form1_Load(object sender, EventArgs e)
-        {
-                       
+        {                       
             //Set color of buttons.
             tiresButton.BackColor = System.Drawing.Color.AliceBlue;
             airFilterButton.BackColor = System.Drawing.Color.AliceBlue;
@@ -48,14 +47,17 @@ namespace MaintenanceTracker
 
             //Set border of buttons.
             tiresButton.FlatStyle = FlatStyle.Flat;
-            tiresButton.FlatAppearance.BorderSize = 2;            
+            tiresButton.FlatAppearance.BorderSize = 2;
         }
-
+       
         private void tiresButton_Click(object sender, EventArgs e)
         {
             //Call tires option form.
             TireOptionsForm tireOptionsForm = new TireOptionsForm();
             tireOptionsForm.ShowDialog();
+
+            //Display on main form tire rotation set value.
+            rotateMilagelbl.Text = tireOptionsForm.rotateMilage.ToString();
         }
 
         private void wipersButton_Click(object sender, EventArgs e)
@@ -91,11 +93,6 @@ namespace MaintenanceTracker
             //Call settings option form.
             SettingsOptionForm settingsOptionForm = new SettingsOptionForm();
             settingsOptionForm.ShowDialog();
-        }
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        }          
     }
 }
