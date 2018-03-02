@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MaintenanceTracker
 {
-    public partial class WipersOptionForm : Form
+    public partial class MPGOptionsForm : Form
     {
-        public WipersOptionForm()
+        public MPGOptionsForm()
         {
             InitializeComponent();
 
