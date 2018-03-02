@@ -39,7 +39,7 @@
             // tiresButton
             // 
             this.tiresButton.Location = new System.Drawing.Point(370, 585);
-            this.tiresButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tiresButton.Margin = new System.Windows.Forms.Padding(4);
             this.tiresButton.Name = "tiresButton";
             this.tiresButton.Size = new System.Drawing.Size(160, 160);
             this.tiresButton.TabIndex = 0;
@@ -50,7 +50,7 @@
             // wipersButton
             // 
             this.wipersButton.Location = new System.Drawing.Point(190, 585);
-            this.wipersButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.wipersButton.Margin = new System.Windows.Forms.Padding(4);
             this.wipersButton.Name = "wipersButton";
             this.wipersButton.Size = new System.Drawing.Size(160, 160);
             this.wipersButton.TabIndex = 1;
@@ -61,7 +61,7 @@
             // airFilterButton
             // 
             this.airFilterButton.Location = new System.Drawing.Point(13, 585);
-            this.airFilterButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.airFilterButton.Margin = new System.Windows.Forms.Padding(4);
             this.airFilterButton.Name = "airFilterButton";
             this.airFilterButton.Size = new System.Drawing.Size(160, 160);
             this.airFilterButton.TabIndex = 2;
@@ -72,7 +72,7 @@
             // oilButton
             // 
             this.oilButton.Location = new System.Drawing.Point(13, 417);
-            this.oilButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.oilButton.Margin = new System.Windows.Forms.Padding(4);
             this.oilButton.Name = "oilButton";
             this.oilButton.Size = new System.Drawing.Size(255, 160);
             this.oilButton.TabIndex = 3;
@@ -83,7 +83,7 @@
             // mpgButton
             // 
             this.mpgButton.Location = new System.Drawing.Point(276, 417);
-            this.mpgButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mpgButton.Margin = new System.Windows.Forms.Padding(4);
             this.mpgButton.Name = "mpgButton";
             this.mpgButton.Size = new System.Drawing.Size(255, 160);
             this.mpgButton.TabIndex = 4;
@@ -94,7 +94,7 @@
             // settingsButton
             // 
             this.settingsButton.Location = new System.Drawing.Point(10, 763);
-            this.settingsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(4);
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(517, 58);
             this.settingsButton.TabIndex = 5;
@@ -113,7 +113,7 @@
             this.Controls.Add(this.airFilterButton);
             this.Controls.Add(this.wipersButton);
             this.Controls.Add(this.tiresButton);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainTracker";
             this.Text = "Maintenance Tracker";
             this.Load += new System.EventHandler(this.Form1_Load);
