@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MaintenanceTracker
 {
-    public partial class Form1 : Form
+    public partial class MainTracker : System.Windows.Forms.Form
     {
-        public Form1()
+        public MainTracker()
         {
             InitializeComponent();
 
@@ -26,20 +26,16 @@ namespace MaintenanceTracker
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-
+        
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            //Hide the exit button.
-            exitButton.Visible = false;
-
+                       
             //Set color of buttons.
             tiresButton.BackColor = System.Drawing.Color.AliceBlue;
             airFilterButton.BackColor = System.Drawing.Color.AliceBlue;
             wipersButton.BackColor = System.Drawing.Color.AliceBlue;
             mpgButton.BackColor = System.Drawing.Color.AliceBlue;
             oilButton.BackColor = System.Drawing.Color.AliceBlue;
-            exitButton.BackColor = System.Drawing.Color.AliceBlue;
             settingsButton.BackColor = System.Drawing.Color.AliceBlue;
 
             //Set font of buttons.
@@ -48,12 +44,11 @@ namespace MaintenanceTracker
             wipersButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
             mpgButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
             oilButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
-            exitButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
             settingsButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
 
             //Set border of buttons.
             tiresButton.FlatStyle = FlatStyle.Flat;
-            tiresButton.FlatAppearance.BorderSize = 2;
+            tiresButton.FlatAppearance.BorderSize = 2;            
         }
 
         private void tiresButton_Click(object sender, EventArgs e)
@@ -97,7 +92,10 @@ namespace MaintenanceTracker
             SettingsOptionForm settingsOptionForm = new SettingsOptionForm();
             settingsOptionForm.ShowDialog();
         }
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }
-  
-

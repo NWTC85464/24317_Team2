@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MaintenanceTracker
 {
-    public partial class SettingsOptionForm : Form
+    public partial class SettingsOptionForm : System.Windows.Forms.Form
     {
         public SettingsOptionForm()
         {
