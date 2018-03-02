@@ -32,7 +32,7 @@ namespace MaintenanceTracker
 
             //Hide the exit button.
             exitButton.Visible = false;
-
+            
             //Set color of buttons.
             tiresButton.BackColor = System.Drawing.Color.AliceBlue;
             airFilterButton.BackColor = System.Drawing.Color.AliceBlue;
