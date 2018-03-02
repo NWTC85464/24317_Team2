@@ -21,7 +21,7 @@ namespace MaintenanceTracker
         }
 
         //Variable to store value to lock track bar.
-        public int scrollLock=0;
+        public int scrollLock = 0;
 
         private void TireOptionsForm_Load(object sender, EventArgs e)
         {

@@ -26,13 +26,13 @@ namespace MaintenanceTracker
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-        
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
             //Hide the exit button.
             exitButton.Visible = false;
-            
+
             //Set color of buttons.
             tiresButton.BackColor = System.Drawing.Color.AliceBlue;
             airFilterButton.BackColor = System.Drawing.Color.AliceBlue;
@@ -53,7 +53,7 @@ namespace MaintenanceTracker
 
             //Set border of buttons.
             tiresButton.FlatStyle = FlatStyle.Flat;
-            tiresButton.FlatAppearance.BorderSize = 2;            
+            tiresButton.FlatAppearance.BorderSize = 2;
         }
 
         private void tiresButton_Click(object sender, EventArgs e)
@@ -97,10 +97,7 @@ namespace MaintenanceTracker
             SettingsOptionForm settingsOptionForm = new SettingsOptionForm();
             settingsOptionForm.ShowDialog();
         }
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            
-        }
-
     }
 }
+  
+

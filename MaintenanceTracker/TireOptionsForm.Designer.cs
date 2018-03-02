@@ -167,8 +167,8 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(383, 56);
             this.label7.TabIndex = 8;
-            this.label7.Text = "National Highway and Traffic Safety Commity recommends tire rotations at 3000 mil" +
-    "es.";
+            this.label7.Text = "National Highway and Traffic Safety Commity recommends tire rotations at 6000-800" +
+    "0 miles.";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // sliderLbl

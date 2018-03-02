@@ -39,9 +39,9 @@
             // 
             // tiresButton
             // 
-            this.tiresButton.Location = new System.Drawing.Point(12, 25);
+            this.tiresButton.Location = new System.Drawing.Point(64, 415);
             this.tiresButton.Name = "tiresButton";
-            this.tiresButton.Size = new System.Drawing.Size(383, 80);
+            this.tiresButton.Size = new System.Drawing.Size(80, 80);
             this.tiresButton.TabIndex = 0;
             this.tiresButton.Text = "Tires";
             this.tiresButton.UseVisualStyleBackColor = true;
@@ -49,9 +49,9 @@
             // 
             // wipersButton
             // 
-            this.wipersButton.Location = new System.Drawing.Point(12, 127);
+            this.wipersButton.Location = new System.Drawing.Point(157, 415);
             this.wipersButton.Name = "wipersButton";
-            this.wipersButton.Size = new System.Drawing.Size(383, 80);
+            this.wipersButton.Size = new System.Drawing.Size(80, 80);
             this.wipersButton.TabIndex = 1;
             this.wipersButton.Text = "Wipers";
             this.wipersButton.UseVisualStyleBackColor = true;
@@ -59,9 +59,9 @@
             // 
             // airFilterButton
             // 
-            this.airFilterButton.Location = new System.Drawing.Point(12, 228);
+            this.airFilterButton.Location = new System.Drawing.Point(243, 415);
             this.airFilterButton.Name = "airFilterButton";
-            this.airFilterButton.Size = new System.Drawing.Size(383, 80);
+            this.airFilterButton.Size = new System.Drawing.Size(80, 80);
             this.airFilterButton.TabIndex = 2;
             this.airFilterButton.Text = "Air Filter";
             this.airFilterButton.UseVisualStyleBackColor = true;
@@ -69,9 +69,9 @@
             // 
             // oilButton
             // 
-            this.oilButton.Location = new System.Drawing.Point(12, 425);
+            this.oilButton.Location = new System.Drawing.Point(64, 501);
             this.oilButton.Name = "oilButton";
-            this.oilButton.Size = new System.Drawing.Size(383, 80);
+            this.oilButton.Size = new System.Drawing.Size(80, 80);
             this.oilButton.TabIndex = 3;
             this.oilButton.Text = "Oil";
             this.oilButton.UseVisualStyleBackColor = true;
@@ -79,9 +79,9 @@
             // 
             // mpgButton
             // 
-            this.mpgButton.Location = new System.Drawing.Point(12, 327);
+            this.mpgButton.Location = new System.Drawing.Point(157, 501);
             this.mpgButton.Name = "mpgButton";
-            this.mpgButton.Size = new System.Drawing.Size(383, 80);
+            this.mpgButton.Size = new System.Drawing.Size(80, 80);
             this.mpgButton.TabIndex = 4;
             this.mpgButton.Text = "MPG";
             this.mpgButton.UseVisualStyleBackColor = true;
@@ -89,9 +89,9 @@
             // 
             // settingsButton
             // 
-            this.settingsButton.Location = new System.Drawing.Point(12, 527);
+            this.settingsButton.Location = new System.Drawing.Point(243, 501);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(383, 80);
+            this.settingsButton.Size = new System.Drawing.Size(80, 80);
             this.settingsButton.TabIndex = 5;
             this.settingsButton.Text = "Settings";
             this.settingsButton.UseVisualStyleBackColor = true;
@@ -105,7 +105,6 @@
             this.exitButton.TabIndex = 6;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // Form1
             // 
