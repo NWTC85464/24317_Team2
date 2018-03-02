@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MaintenanceTracker
 {
-    public partial class OilOptionsForm : Form
+    public partial class OilOptionsForm : System.Windows.Forms.Form
     {
         public OilOptionsForm()
         {

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MaintenanceTracker
 {
-    public partial class MPGOptionsForm : Form
+    public partial class MPGOptionsForm : System.Windows.Forms.Form
     {
         public MPGOptionsForm()
         {

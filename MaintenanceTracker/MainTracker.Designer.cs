@@ -1,6 +1,6 @@
 ﻿namespace MaintenanceTracker
 {
-    partial class Form1
+    partial class MainTracker
     {
         /// <summary>
         /// Required designer variable.
@@ -34,14 +34,14 @@
             this.oilButton = new System.Windows.Forms.Button();
             this.mpgButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
-            this.exitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tiresButton
             // 
-            this.tiresButton.Location = new System.Drawing.Point(12, 25);
+            this.tiresButton.Location = new System.Drawing.Point(370, 585);
+            this.tiresButton.Margin = new System.Windows.Forms.Padding(4);
             this.tiresButton.Name = "tiresButton";
-            this.tiresButton.Size = new System.Drawing.Size(383, 80);
+            this.tiresButton.Size = new System.Drawing.Size(160, 160);
             this.tiresButton.TabIndex = 0;
             this.tiresButton.Text = "Tires";
             this.tiresButton.UseVisualStyleBackColor = true;
@@ -49,9 +49,10 @@
             // 
             // wipersButton
             // 
-            this.wipersButton.Location = new System.Drawing.Point(12, 127);
+            this.wipersButton.Location = new System.Drawing.Point(190, 585);
+            this.wipersButton.Margin = new System.Windows.Forms.Padding(4);
             this.wipersButton.Name = "wipersButton";
-            this.wipersButton.Size = new System.Drawing.Size(383, 80);
+            this.wipersButton.Size = new System.Drawing.Size(160, 160);
             this.wipersButton.TabIndex = 1;
             this.wipersButton.Text = "Wipers";
             this.wipersButton.UseVisualStyleBackColor = true;
@@ -59,9 +60,10 @@
             // 
             // airFilterButton
             // 
-            this.airFilterButton.Location = new System.Drawing.Point(12, 228);
+            this.airFilterButton.Location = new System.Drawing.Point(13, 585);
+            this.airFilterButton.Margin = new System.Windows.Forms.Padding(4);
             this.airFilterButton.Name = "airFilterButton";
-            this.airFilterButton.Size = new System.Drawing.Size(383, 80);
+            this.airFilterButton.Size = new System.Drawing.Size(160, 160);
             this.airFilterButton.TabIndex = 2;
             this.airFilterButton.Text = "Air Filter";
             this.airFilterButton.UseVisualStyleBackColor = true;
@@ -69,9 +71,10 @@
             // 
             // oilButton
             // 
-            this.oilButton.Location = new System.Drawing.Point(12, 425);
+            this.oilButton.Location = new System.Drawing.Point(13, 417);
+            this.oilButton.Margin = new System.Windows.Forms.Padding(4);
             this.oilButton.Name = "oilButton";
-            this.oilButton.Size = new System.Drawing.Size(383, 80);
+            this.oilButton.Size = new System.Drawing.Size(255, 160);
             this.oilButton.TabIndex = 3;
             this.oilButton.Text = "Oil";
             this.oilButton.UseVisualStyleBackColor = true;
@@ -79,9 +82,10 @@
             // 
             // mpgButton
             // 
-            this.mpgButton.Location = new System.Drawing.Point(12, 327);
+            this.mpgButton.Location = new System.Drawing.Point(276, 417);
+            this.mpgButton.Margin = new System.Windows.Forms.Padding(4);
             this.mpgButton.Name = "mpgButton";
-            this.mpgButton.Size = new System.Drawing.Size(383, 80);
+            this.mpgButton.Size = new System.Drawing.Size(255, 160);
             this.mpgButton.TabIndex = 4;
             this.mpgButton.Text = "MPG";
             this.mpgButton.UseVisualStyleBackColor = true;
@@ -89,38 +93,29 @@
             // 
             // settingsButton
             // 
-            this.settingsButton.Location = new System.Drawing.Point(12, 527);
+            this.settingsButton.Location = new System.Drawing.Point(10, 763);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(4);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(383, 80);
+            this.settingsButton.Size = new System.Drawing.Size(517, 58);
             this.settingsButton.TabIndex = 5;
             this.settingsButton.Text = "Settings";
             this.settingsButton.UseVisualStyleBackColor = true;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
-            // exitButton
+            // MainTracker
             // 
-            this.exitButton.Location = new System.Drawing.Point(130, 613);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(141, 53);
-            this.exitButton.TabIndex = 6;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(407, 667);
-            this.Controls.Add(this.exitButton);
+            this.ClientSize = new System.Drawing.Size(543, 834);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.mpgButton);
             this.Controls.Add(this.oilButton);
             this.Controls.Add(this.airFilterButton);
             this.Controls.Add(this.wipersButton);
             this.Controls.Add(this.tiresButton);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "MainTracker";
+            this.Text = "Maintenance Tracker";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
@@ -134,7 +129,6 @@
         private System.Windows.Forms.Button oilButton;
         private System.Windows.Forms.Button mpgButton;
         private System.Windows.Forms.Button settingsButton;
-        private System.Windows.Forms.Button exitButton;
     }
 }
 
