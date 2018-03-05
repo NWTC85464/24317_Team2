@@ -21,7 +21,7 @@ namespace MaintenanceTracker
 
             //Form background image.
             /////
-            BackgroundImage = new Bitmap("tire.jpeg");
+            //BackgroundImage = new Bitmap("tire.jpeg");
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -38,12 +38,12 @@ namespace MaintenanceTracker
             settingsButton.BackColor = System.Drawing.Color.AliceBlue;
 
             //Set font of buttons.
-            tiresButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
-            airFilterButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
-            wipersButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
-            mpgButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
-            oilButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
-            settingsButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
+            tiresButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
+            airFilterButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
+            wipersButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
+            mpgButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
+            oilButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
+            settingsButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
 
             //Set border of buttons.
             tiresButton.FlatStyle = FlatStyle.Flat;
