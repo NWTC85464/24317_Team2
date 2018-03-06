@@ -12,6 +12,8 @@ namespace MaintenanceTracker
 {
     public partial class MainTracker : System.Windows.Forms.Form
     {
+       
+
         public MainTracker()
         {
             InitializeComponent();
@@ -48,12 +50,16 @@ namespace MaintenanceTracker
             //Set border of buttons.
             tiresButton.FlatStyle = FlatStyle.Flat;
             tiresButton.FlatAppearance.BorderSize = 2;
+
+            
         }
-       
+
+        public static int VehicalNumber;
+
         private void tiresButton_Click(object sender, EventArgs e)
         {
             //Call tires option form.
-            TireOptionsForm tireOptionsForm = new TireOptionsForm();
+            TireOptionsForm tireOptionsForm = new TireOptionsForm(VehicalNumber);
             tireOptionsForm.ShowDialog();
 
             //Display on main form tire rotation set value.
@@ -93,6 +99,12 @@ namespace MaintenanceTracker
             //Call settings option form.
             SettingsOptionForm settingsOptionForm = new SettingsOptionForm();
             settingsOptionForm.ShowDialog();
-        }          
+        }
+
+        private void vehicalSelectList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Set vehical number from select list.
+            VehicalNumber = vehicalSelectList.SelectedIndex;
+        }
     }
 }

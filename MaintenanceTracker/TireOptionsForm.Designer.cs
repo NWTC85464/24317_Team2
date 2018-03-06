@@ -89,41 +89,42 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(76, 47);
+            this.label2.Location = new System.Drawing.Point(98, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "Enter tire size:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(63, 79);
+            this.label3.Location = new System.Drawing.Point(87, 79);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 20);
+            this.label3.Size = new System.Drawing.Size(139, 20);
             this.label3.TabIndex = 11;
             this.label3.Text = "Enter tire brand:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(44, 143);
+            this.label4.Location = new System.Drawing.Point(68, 143);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(157, 20);
+            this.label4.Size = new System.Drawing.Size(156, 20);
             this.label4.TabIndex = 13;
             this.label4.Text = "Last rotation date:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(76, 111);
+            this.label5.Location = new System.Drawing.Point(100, 111);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(124, 20);
             this.label5.TabIndex = 12;
             this.label5.Text = "Installed date:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // setMilageLbl
             // 
@@ -148,7 +149,7 @@
             // tireSizeTextBox
             // 
             this.tireSizeTextBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.tireSizeTextBox.Location = new System.Drawing.Point(206, 41);
+            this.tireSizeTextBox.Location = new System.Drawing.Point(230, 41);
             this.tireSizeTextBox.Name = "tireSizeTextBox";
             this.tireSizeTextBox.Size = new System.Drawing.Size(135, 26);
             this.tireSizeTextBox.TabIndex = 0;
@@ -158,7 +159,7 @@
             // installDateTextBox
             // 
             this.installDateTextBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.installDateTextBox.Location = new System.Drawing.Point(206, 105);
+            this.installDateTextBox.Location = new System.Drawing.Point(230, 105);
             this.installDateTextBox.Name = "installDateTextBox";
             this.installDateTextBox.Size = new System.Drawing.Size(135, 26);
             this.installDateTextBox.TabIndex = 2;
@@ -168,7 +169,7 @@
             // tireBrandTextBox
             // 
             this.tireBrandTextBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.tireBrandTextBox.Location = new System.Drawing.Point(206, 73);
+            this.tireBrandTextBox.Location = new System.Drawing.Point(230, 73);
             this.tireBrandTextBox.Name = "tireBrandTextBox";
             this.tireBrandTextBox.Size = new System.Drawing.Size(135, 26);
             this.tireBrandTextBox.TabIndex = 1;
@@ -178,7 +179,7 @@
             // prevRotateDateTextBox
             // 
             this.prevRotateDateTextBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.prevRotateDateTextBox.Location = new System.Drawing.Point(206, 137);
+            this.prevRotateDateTextBox.Location = new System.Drawing.Point(230, 137);
             this.prevRotateDateTextBox.Name = "prevRotateDateTextBox";
             this.prevRotateDateTextBox.Size = new System.Drawing.Size(135, 26);
             this.prevRotateDateTextBox.TabIndex = 3;
@@ -228,7 +229,7 @@
             // storeValuesButton
             // 
             this.storeValuesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.storeValuesButton.Location = new System.Drawing.Point(206, 169);
+            this.storeValuesButton.Location = new System.Drawing.Point(230, 169);
             this.storeValuesButton.Name = "storeValuesButton";
             this.storeValuesButton.Size = new System.Drawing.Size(135, 41);
             this.storeValuesButton.TabIndex = 4;
@@ -240,11 +241,13 @@
             // 
             this.storeLbl.BackColor = System.Drawing.Color.White;
             this.storeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.storeLbl.Location = new System.Drawing.Point(18, 181);
+            this.storeLbl.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.storeLbl.Location = new System.Drawing.Point(24, 181);
             this.storeLbl.Name = "storeLbl";
-            this.storeLbl.Size = new System.Drawing.Size(182, 22);
+            this.storeLbl.Size = new System.Drawing.Size(200, 22);
             this.storeLbl.TabIndex = 14;
             this.storeLbl.Text = "Press to store values:";
+            this.storeLbl.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // milesLbl
             // 

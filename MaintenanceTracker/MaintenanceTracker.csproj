@@ -78,6 +78,7 @@
     <Compile Include="SettingsOptionForm.Designer.cs">
       <DependentUpon>SettingsOptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TireOptionsClass.cs" />
     <Compile Include="TireOptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
