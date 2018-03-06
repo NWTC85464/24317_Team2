@@ -12,18 +12,12 @@ namespace MaintenanceTracker
 {
     public partial class MainTracker : System.Windows.Forms.Form
     {
-       
-
         public MainTracker()
         {
             InitializeComponent();
 
             //Form background color.
             this.BackColor = System.Drawing.Color.Aqua;
-
-            //Form background image.
-            /////
-            //BackgroundImage = new Bitmap("tire.jpeg");
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -49,21 +43,21 @@ namespace MaintenanceTracker
 
             //Set border of buttons.
             tiresButton.FlatStyle = FlatStyle.Flat;
-            tiresButton.FlatAppearance.BorderSize = 2;
-
-            
+            tiresButton.FlatAppearance.BorderSize = 2;            
         }
 
-        public static int VehicalNumber;
+        
+        TireOptionsClass tireOptionsClass = new TireOptionsClass();
+        MainFormClass mainFormClass = new MainFormClass();
 
         private void tiresButton_Click(object sender, EventArgs e)
         {
             //Call tires option form.
-            TireOptionsForm tireOptionsForm = new TireOptionsForm(VehicalNumber);
+            TireOptionsForm tireOptionsForm = new TireOptionsForm(mainFormClass.VehicalNumber);
             tireOptionsForm.ShowDialog();
 
             //Display on main form tire rotation set value.
-            rotateMilagelbl.Text = tireOptionsForm.rotateMilage.ToString();
+            rotateMilagelbl.Text = tireOptionsClass.RotateMilage.ToString();
         }
 
         private void wipersButton_Click(object sender, EventArgs e)
@@ -104,7 +98,7 @@ namespace MaintenanceTracker
         private void vehicalSelectList_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Set vehical number from select list.
-            VehicalNumber = vehicalSelectList.SelectedIndex;
+            mainFormClass.VehicalNumber = vehicalSelectList.SelectedIndex;
         }
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="AirFilterOptionsForm.Designer.cs">
       <DependentUpon>AirFilterOptionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainFormClass.cs" />
     <Compile Include="MainTracker.cs">
       <SubType>Form</SubType>
     </Compile>
