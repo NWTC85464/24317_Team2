@@ -17,7 +17,6 @@ namespace MaintenanceTracker
             "vehicle and moved to a different position to ensure that all tires wear evenly and last longer. " +
             "Tires should be rotated every six months or 6,000 to 8,000 miles.";
 
-
         //Array list to hold the tire values. 
         private string[] tireValues = new string[6];
 

@@ -153,7 +153,6 @@
             this.tireSizeTextBox.Name = "tireSizeTextBox";
             this.tireSizeTextBox.Size = new System.Drawing.Size(135, 26);
             this.tireSizeTextBox.TabIndex = 0;
-            this.tireSizeTextBox.Text = "P205/55/R16";
             this.tireSizeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // installDateTextBox
@@ -163,7 +162,6 @@
             this.installDateTextBox.Name = "installDateTextBox";
             this.installDateTextBox.Size = new System.Drawing.Size(135, 26);
             this.installDateTextBox.TabIndex = 2;
-            this.installDateTextBox.Text = "1/11/2000";
             this.installDateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tireBrandTextBox
@@ -173,7 +171,6 @@
             this.tireBrandTextBox.Name = "tireBrandTextBox";
             this.tireBrandTextBox.Size = new System.Drawing.Size(135, 26);
             this.tireBrandTextBox.TabIndex = 1;
-            this.tireBrandTextBox.Text = "Firestone";
             this.tireBrandTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // prevRotateDateTextBox
@@ -183,7 +180,6 @@
             this.prevRotateDateTextBox.Name = "prevRotateDateTextBox";
             this.prevRotateDateTextBox.Size = new System.Drawing.Size(135, 26);
             this.prevRotateDateTextBox.TabIndex = 3;
-            this.prevRotateDateTextBox.Text = "1/11/2000";
             this.prevRotateDateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // infoLbl

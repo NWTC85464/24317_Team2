@@ -17,7 +17,7 @@ namespace MaintenanceTracker
             InitializeComponent();
 
             //Form background color.
-            this.BackColor = System.Drawing.Color.Aqua;
+            //this.BackColor = System.Drawing.Color.Aqua;
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -52,7 +52,7 @@ namespace MaintenanceTracker
 
         private void tiresButton_Click(object sender, EventArgs e)
         {
-            //Call tires option form.
+            //Call tires option form and pass vehicalNumber as argument.
             TireOptionsForm tireOptionsForm = new TireOptionsForm(mainFormClass.VehicalNumber);
             tireOptionsForm.ShowDialog();
 

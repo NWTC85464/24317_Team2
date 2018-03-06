@@ -12,16 +12,17 @@ namespace MaintenanceTracker
 {
     public partial class TireOptionsForm : System.Windows.Forms.Form
     {
-       
-        //public static int vns;      //Hold vehical index value from main form.
         TireOptionsClass tireOptionsClass = new TireOptionsClass();
         MainFormClass mainFormClass = new MainFormClass();
         MainTracker mainTracker = new MainTracker();
-        int vs;
+
+        int vehicalId; //Hold vehical index value from main form.
 
         public TireOptionsForm(int vId)
         {
-            vs = vId;
+            //Store (vehical number) vId in vs.
+            vehicalId = vId;
+
             InitializeComponent();
 
             //Center form on the screen.
@@ -30,38 +31,31 @@ namespace MaintenanceTracker
 
         //Variables
         private int scrollLock = 0;          //Store value to lock track bar. 
-       
-
 
         private void TireOptionsForm_Load(object sender, EventArgs e)
         {
             //Set the slider value label inital to 0.
             sliderValueLbl.Text = "5000";
             infoLbl.Text = tireOptionsClass.RotateMessage;
-            
         }
         
         //Button to store the values enter in the text boxes into a list.
         private void storeValuesButton_Click(object sender, EventArgs e)
         {
-            //Store track bar value in tireOptionsClass variable for label on main form.  
+            //Store values in tireOptionsClass variables.  
             tireOptionsClass.RotateMilage = milageTrackBar.Value;
-
             tireOptionsClass.TireSize = tireSizeTextBox.Text;
             tireOptionsClass.TireBrand = tireBrandTextBox.Text;
             tireOptionsClass.InstallDate = installDateTextBox.Text;
             tireOptionsClass.PrevRotate = prevRotateDateTextBox.Text;
 
-            //Add tire values to array list.
-
-            tireOptionsClass.TireValues[0] = vs.ToString(); //Enter vehical value into array.
+            //Add tire values to array.
+            tireOptionsClass.TireValues[0] = vehicalId.ToString(); //Enter vehical index value into array.
             tireOptionsClass.TireValues[1] = tireOptionsClass.TireSize;
             tireOptionsClass.TireValues[2] = tireOptionsClass.TireBrand;
             tireOptionsClass.TireValues[3] = tireOptionsClass.InstallDate;
             tireOptionsClass.TireValues[4] = tireOptionsClass.PrevRotate;
             tireOptionsClass.TireValues[5] = tireOptionsClass.RotateMilage.ToString();
-
-            
         }
 
         
@@ -69,9 +63,6 @@ namespace MaintenanceTracker
         {
             //Display the sliders current value in label.
             sliderValueLbl.Text = milageTrackBar.Value.ToString();
-
-         
-            
         }
 
         private void lockTrackBarButton_Click_1(object sender, EventArgs e)
@@ -107,7 +98,6 @@ namespace MaintenanceTracker
             DialogResult res = MessageBox.Show("Are you sure you want to Reset Values?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (res == DialogResult.OK)
             {
-                
                 //Reset milage value and unlock track bar.
                 //
                 //Reactivate the track bar slide
