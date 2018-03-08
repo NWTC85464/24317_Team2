@@ -66,9 +66,9 @@
             // exitButton
             // 
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.Location = new System.Drawing.Point(232, 590);
+            this.exitButton.Location = new System.Drawing.Point(232, 578);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(132, 45);
+            this.exitButton.Size = new System.Drawing.Size(132, 57);
             this.exitButton.TabIndex = 7;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
@@ -77,9 +77,9 @@
             // resetButton
             // 
             this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetButton.Location = new System.Drawing.Point(34, 590);
+            this.resetButton.Location = new System.Drawing.Point(34, 578);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(132, 45);
+            this.resetButton.Size = new System.Drawing.Size(132, 57);
             this.resetButton.TabIndex = 6;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@
             // 
             this.setMilageLbl.AutoSize = true;
             this.setMilageLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setMilageLbl.Location = new System.Drawing.Point(86, 239);
+            this.setMilageLbl.Location = new System.Drawing.Point(54, 178);
             this.setMilageLbl.Name = "setMilageLbl";
             this.setMilageLbl.Size = new System.Drawing.Size(233, 29);
             this.setMilageLbl.TabIndex = 16;
@@ -140,7 +140,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(58, 315);
+            this.label8.Location = new System.Drawing.Point(30, 259);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(283, 20);
             this.label8.TabIndex = 19;
@@ -148,7 +148,7 @@
             // 
             // tireSizeTextBox
             // 
-            this.tireSizeTextBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.tireSizeTextBox.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tireSizeTextBox.Location = new System.Drawing.Point(230, 41);
             this.tireSizeTextBox.Name = "tireSizeTextBox";
             this.tireSizeTextBox.Size = new System.Drawing.Size(135, 26);
@@ -157,7 +157,7 @@
             // 
             // installDateTextBox
             // 
-            this.installDateTextBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.installDateTextBox.ForeColor = System.Drawing.SystemColors.InfoText;
             this.installDateTextBox.Location = new System.Drawing.Point(230, 105);
             this.installDateTextBox.Name = "installDateTextBox";
             this.installDateTextBox.Size = new System.Drawing.Size(135, 26);
@@ -166,7 +166,7 @@
             // 
             // tireBrandTextBox
             // 
-            this.tireBrandTextBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.tireBrandTextBox.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tireBrandTextBox.Location = new System.Drawing.Point(230, 73);
             this.tireBrandTextBox.Name = "tireBrandTextBox";
             this.tireBrandTextBox.Size = new System.Drawing.Size(135, 26);
@@ -175,7 +175,7 @@
             // 
             // prevRotateDateTextBox
             // 
-            this.prevRotateDateTextBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.prevRotateDateTextBox.ForeColor = System.Drawing.SystemColors.InfoText;
             this.prevRotateDateTextBox.Location = new System.Drawing.Point(230, 137);
             this.prevRotateDateTextBox.Name = "prevRotateDateTextBox";
             this.prevRotateDateTextBox.Size = new System.Drawing.Size(135, 26);
@@ -187,7 +187,7 @@
             this.infoLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.infoLbl.Cursor = System.Windows.Forms.Cursors.Default;
             this.infoLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infoLbl.Location = new System.Drawing.Point(12, 421);
+            this.infoLbl.Location = new System.Drawing.Point(12, 340);
             this.infoLbl.Name = "infoLbl";
             this.infoLbl.Size = new System.Drawing.Size(383, 126);
             this.infoLbl.TabIndex = 15;
@@ -199,7 +199,7 @@
             this.sliderValueLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.sliderValueLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.sliderValueLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sliderValueLbl.Location = new System.Drawing.Point(103, 273);
+            this.sliderValueLbl.Location = new System.Drawing.Point(71, 212);
             this.sliderValueLbl.Name = "sliderValueLbl";
             this.sliderValueLbl.Size = new System.Drawing.Size(107, 37);
             this.sliderValueLbl.TabIndex = 17;
@@ -212,7 +212,7 @@
             this.milageTrackBar.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.milageTrackBar.Cursor = System.Windows.Forms.Cursors.NoMoveHoriz;
             this.milageTrackBar.LargeChange = 100;
-            this.milageTrackBar.Location = new System.Drawing.Point(62, 338);
+            this.milageTrackBar.Location = new System.Drawing.Point(34, 282);
             this.milageTrackBar.Maximum = 10000;
             this.milageTrackBar.Name = "milageTrackBar";
             this.milageTrackBar.Size = new System.Drawing.Size(279, 40);
@@ -225,9 +225,9 @@
             // storeValuesButton
             // 
             this.storeValuesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.storeValuesButton.Location = new System.Drawing.Point(230, 169);
+            this.storeValuesButton.Location = new System.Drawing.Point(232, 496);
             this.storeValuesButton.Name = "storeValuesButton";
-            this.storeValuesButton.Size = new System.Drawing.Size(135, 41);
+            this.storeValuesButton.Size = new System.Drawing.Size(135, 53);
             this.storeValuesButton.TabIndex = 4;
             this.storeValuesButton.Text = "Enter";
             this.storeValuesButton.UseVisualStyleBackColor = true;
@@ -238,7 +238,7 @@
             this.storeLbl.BackColor = System.Drawing.Color.White;
             this.storeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.storeLbl.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.storeLbl.Location = new System.Drawing.Point(24, 181);
+            this.storeLbl.Location = new System.Drawing.Point(24, 514);
             this.storeLbl.Name = "storeLbl";
             this.storeLbl.Size = new System.Drawing.Size(200, 22);
             this.storeLbl.TabIndex = 14;
@@ -249,7 +249,7 @@
             // 
             this.milesLbl.BackColor = System.Drawing.SystemColors.Control;
             this.milesLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.milesLbl.Location = new System.Drawing.Point(216, 273);
+            this.milesLbl.Location = new System.Drawing.Point(184, 212);
             this.milesLbl.Name = "milesLbl";
             this.milesLbl.Size = new System.Drawing.Size(87, 37);
             this.milesLbl.TabIndex = 18;
@@ -261,9 +261,9 @@
             this.lockTrackBarButton.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lockTrackBarButton.Image = ((System.Drawing.Image)(resources.GetObject("lockTrackBarButton.Image")));
             this.lockTrackBarButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("lockTrackBarButton.InitialImage")));
-            this.lockTrackBarButton.Location = new System.Drawing.Point(347, 338);
+            this.lockTrackBarButton.Location = new System.Drawing.Point(332, 259);
             this.lockTrackBarButton.Name = "lockTrackBarButton";
-            this.lockTrackBarButton.Size = new System.Drawing.Size(33, 40);
+            this.lockTrackBarButton.Size = new System.Drawing.Size(63, 63);
             this.lockTrackBarButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.lockTrackBarButton.TabIndex = 21;
             this.lockTrackBarButton.TabStop = false;

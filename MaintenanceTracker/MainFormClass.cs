@@ -9,12 +9,9 @@ namespace MaintenanceTracker
     class MainFormClass
     {
         //Variable.
-        private int vehicalNumber;
+        private static int vehicalNumber;
 
         //Gets and sets.
         public int VehicalNumber { get => vehicalNumber; set => vehicalNumber = value; }
-
-       
-
     }
 }
