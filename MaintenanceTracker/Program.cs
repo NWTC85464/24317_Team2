@@ -14,7 +14,9 @@ namespace MaintenanceTracker
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
+
+            ////Deactiveded for progressbar.
+            //Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainTracker());
         }
