@@ -86,6 +86,12 @@
     <Compile Include="TireOptionsForm.Designer.cs">
       <DependentUpon>TireOptionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TireValuesInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TireValuesInputForm.Designer.cs">
+      <DependentUpon>TireValuesInputForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WipersOptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TireOptionsForm.resx">
       <DependentUpon>TireOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TireValuesInputForm.resx">
+      <DependentUpon>TireValuesInputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WipersOptionForm.resx">
       <DependentUpon>WipersOptionForm.cs</DependentUpon>

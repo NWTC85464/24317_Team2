@@ -12,29 +12,18 @@ namespace MaintenanceTracker
 {
     public partial class MainTracker : System.Windows.Forms.Form
     {
-        private int mainStored;            //Stored = 1, not stored = 0;
+        private int mainStored; //Stored = 1, not stored = 0;
 
         public MainTracker()
         {
             InitializeComponent();
-
-            //Form background color.
-            //this.BackColor = System.Drawing.Color.Aqua;
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
         }    
         
         private void Form1_Load(object sender, EventArgs e)
-        {                       
-            //Set color of buttons.
-           /* tiresButton.BackColor = System.Drawing.Color.AliceBlue;
-            airFilterButton.BackColor = System.Drawing.Color.AliceBlue;
-            wipersButton.BackColor = System.Drawing.Color.AliceBlue;
-            mpgButton.BackColor = System.Drawing.Color.AliceBlue;
-            oilButton.BackColor = System.Drawing.Color.AliceBlue;
-            settingsButton.BackColor = System.Drawing.Color.AliceBlue;
-            */
+        {  
             //Set font of buttons.
             tiresButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
             airFilterButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
@@ -45,7 +34,7 @@ namespace MaintenanceTracker
 
             //Set border of buttons.
             tiresButton.FlatStyle = FlatStyle.Flat;
-            tiresButton.FlatAppearance.BorderSize = 2;            
+            tiresButton.FlatAppearance.BorderSize = 2;      
         }
         
         TireOptionsClass tireOptionsClass = new TireOptionsClass();
@@ -55,13 +44,17 @@ namespace MaintenanceTracker
 
         private void tiresButton_Click(object sender, EventArgs e)
         {
-            TireOptionsForm tireOptionsForm = new TireOptionsForm();
+            //Variable.
+            int vn; //To hold vehical number.
 
-            //Call tires option form and pass vehicalNumber and tire values.              
-           tireOptionsForm.ShowDialog();
+            //Set vn to vehicalSelectList number and add 1.
+            vn = vehicalSelectList.SelectedIndex + 1;
 
-            //Display on main form tire rotation set value.
-            rotateMilagelbl.Text = tireOptionsClass.RotateMilage.ToString();
+            //Create new instance of tireOptionsForm and pass vn and MPG.
+            TireOptionsForm tireOptionsForm = new TireOptionsForm(vn/*,MPG //From MPG Form*/);
+           
+            //Show the form.              
+            tireOptionsForm.ShowDialog();
         }
 
         private void wipersButton_Click(object sender, EventArgs e)
@@ -98,11 +91,5 @@ namespace MaintenanceTracker
             SettingsOptionForm settingsOptionForm = new SettingsOptionForm();
             settingsOptionForm.ShowDialog();
         }
-
-        private void vehicalSelectList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Set vehical number from select list.
-            mainFormClass.VehicalNumber = vehicalSelectList.SelectedIndex;
-        }        
     }
 }
