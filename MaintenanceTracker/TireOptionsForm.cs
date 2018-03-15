@@ -40,12 +40,13 @@ namespace MaintenanceTracker
         public int vehicalNum;          //Holds vehical number.
         private int scrollLock = 0;     //Store value to lock track bar. 
         public int milage;              //Store MPG mileage from MPG form.
+    
 
-        public TireOptionsForm(int vehicalNum /*,int MPG*/)
+        public TireOptionsForm(int vehicalNum, int MPG)
         {
             //Set vehical number and mpg from passed in value.
             this.vehicalNum = vehicalNum;
-            //this.milage = MPG;
+            this.milage = MPG;
 
             InitializeComponent();
 
@@ -73,7 +74,10 @@ namespace MaintenanceTracker
                     lockTrackBarButton.Image = new Bitmap("lock.png");
 
                     //Set scrollLock value to 1.
-                    scrollLock = 1;                       
+                    scrollLock = 1;
+
+                //Call progressBar method.
+                pBarSet(vehicalNum, milage, tireOptionsClass.Vehical1Values[1]);
             }
             else if (tireOptionsClass.V2Stored == 1 && vehicalNum == 2)
             {
@@ -91,6 +95,9 @@ namespace MaintenanceTracker
 
                 //Set scrollLock value to 1.
                 scrollLock = 1;
+
+                //Call progressBar method.
+                pBarSet(vehicalNum, milage, tireOptionsClass.Vehical2Values[1]);
             }
             else if (tireOptionsClass.V3Stored == 1 && vehicalNum == 3)
             {
@@ -108,6 +115,9 @@ namespace MaintenanceTracker
 
                 //Set scrollLock value to 1.
                 scrollLock = 1;
+
+                //Call progressBar method.
+                pBarSet(vehicalNum, milage, tireOptionsClass.Vehical3Values[1]);
             }
             else if (tireOptionsClass.V4Stored == 1 && vehicalNum == 4)
             {
@@ -125,6 +135,9 @@ namespace MaintenanceTracker
 
                 //Set scrollLock value to 1.
                 scrollLock = 1;
+
+                //Call progressBar method.
+                pBarSet(vehicalNum, milage, tireOptionsClass.Vehical4Values[1]);
             }
             else
             {
@@ -137,7 +150,7 @@ namespace MaintenanceTracker
                 rotateMilagelbl.Text = "0";
             }
         }
-
+        
         //Button to store the values enter in the text boxes into a list.
         private void saveValuesButton_Click(object sender, EventArgs e)
         {           
@@ -171,6 +184,7 @@ namespace MaintenanceTracker
                 //Int to state values added to restore form on return.
                // tireOptionsClass.TStored = 1;
                 tireOptionsClass.V1Stored = 1;
+               
             }
             else if (vehicalNum == 2)
             {               
@@ -205,6 +219,7 @@ namespace MaintenanceTracker
                 //tireOptionsClass.TStored = 1;
                 tireOptionsClass.V4Stored = 1;
             }
+            
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -283,6 +298,7 @@ namespace MaintenanceTracker
                     }
 
                     tireOptionsClass.V1Stored = 0;
+                    progressBar1.Value = 0;
                 } 
                 else if (vNum == 2)
                 {
@@ -292,6 +308,7 @@ namespace MaintenanceTracker
                         tireOptionsClass.Vehical2Values[index] = "";
                     }
                     tireOptionsClass.V2Stored = 0;
+                    progressBar1.Value = 0;
                 }
                 else if (vNum == 3)
                 {
@@ -301,6 +318,7 @@ namespace MaintenanceTracker
                         tireOptionsClass.Vehical3Values[index] = "";
                     }
                     tireOptionsClass.V3Stored = 0;
+                    progressBar1.Value = 0;
                 }
                 else if (vNum == 4)
                 {
@@ -310,6 +328,7 @@ namespace MaintenanceTracker
                         tireOptionsClass.Vehical4Values[index] = "";
                     }
                     tireOptionsClass.V4Stored = 0;
+                    progressBar1.Value = 0;
                 }
 
                 //Display message everything was reset.
@@ -385,28 +404,77 @@ namespace MaintenanceTracker
         ///     
         /// Added variable pvalue and button1_Click for progress bar. Will be removed.
         /// </summary>
-        int pvalue;
-
+        //int pvalue; //will be MPG value.
+        
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //Only set for vehical 1.
-            progressBar1.Maximum = Int32.Parse(tireOptionsClass.Vehical1Values[1]);
-            pvalue += 100;  //value to be from MPG miles
-            progressBar1.Value = pvalue;
-            if (progressBar1.Value < (Int32.Parse(tireOptionsClass.Vehical1Values[1]) / 2))
-            {
-                progressBar1.ForeColor = Color.Green;
-            }
-            if ((progressBar1.Value >= (Int32.Parse(tireOptionsClass.Vehical1Values[1]) / 2)) && progressBar1.Value < Int32.Parse(tireOptionsClass.Vehical1Values[1]) - (Int32.Parse(tireOptionsClass.Vehical1Values[1]) / 4))
-            {
-                progressBar1.ForeColor = Color.Yellow;
-            }
-            if (progressBar1.Value >= Int32.Parse(tireOptionsClass.Vehical1Values[1]) - (Int32.Parse(tireOptionsClass.Vehical1Values[1]) / 4))
-            {
-                progressBar1.ForeColor = Color.Red;
-            }
+            //Only set for vehical 1. Need to set up for 4.
+            //
+            //Set the progress bars max value to the rotate value entered.
+            // progressBar1.Maximum = Int32.Parse(tireOptionsClass.Vehical1Values[1]);
+            //milage += 500;  //to be removed after milage setup.
+            //milage = pvalue;//to be removed after milage setup.
+
+            //Set progress bars value to the max value minus milage to decrease progress bar.
+            //progressBar1.Value = progressBar1.Maximum - milage;
+
+            //if (progressBar1.Value < (Int32.Parse(tireOptionsClass.Vehical1Values[1]) / 2))
+            //{
+              //  progressBar1.ForeColor = Color.Green;
+            //}
+            //if ((progressBar1.Value >= (Int32.Parse(tireOptionsClass.Vehical1Values[1]) / 2)) && progressBar1.Value < Int32.Parse(tireOptionsClass.Vehical1Values[1]) - (Int32.Parse(tireOptionsClass.Vehical1Values[1]) / 4))
+            //{
+              //  progressBar1.ForeColor = Color.Yellow;
+            //}
+            //if (progressBar1.Value >= Int32.Parse(tireOptionsClass.Vehical1Values[1]) - (Int32.Parse(tireOptionsClass.Vehical1Values[1]) / 4))
+            //{
+              //  progressBar1.ForeColor = Color.Red;
+            //}
             //label2.Text = pvalue.ToString();
             
+        }
+        private void pBarSet(int vehicalNum, int milage, string rotateValue)
+        {
+            int vehNum = vehicalNum;
+            int miles = milage;
+            int rotate = Int32.Parse(rotateValue);
+            double mil= System.Convert.ToDouble(milage);
+            double rot= double.Parse(rotateValue);
+
+            //Display the percentage remaining.
+            double percentLeft = 100-(100*(mil / rot));
+            percentLbl.Text = percentLeft.ToString() + "% Remaining!";
+
+            try
+            {
+                progressBar1.Maximum = rotate;
+                progressBar1.Value = progressBar1.Maximum - miles;
+
+                if (progressBar1.Value > (rotate / 2))
+                {
+                    progressBar1.ForeColor = Color.Green;
+                    
+                }
+                else if ((progressBar1.Value <= (rotate / 2)) && progressBar1.Value > rotate / 4)
+                {
+                    progressBar1.ForeColor = Color.Yellow;
+                }
+                else if (progressBar1.Value <= rotate / 4 && progressBar1.Value > 0)
+                {
+                    progressBar1.ForeColor = Color.Red;
+                }
+                else if(progressBar1.Value <= 0)
+                {
+                    MessageBox.Show("Tire need to be rotated");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Tire need to be rotated");
+                //Do nothing.....
+            }
+           
+
         }
     }
 }
