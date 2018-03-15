@@ -44,9 +44,9 @@
             this.lockTrackBarButton = new System.Windows.Forms.PictureBox();
             this.tireInfoButton = new System.Windows.Forms.Button();
             this.otherInfoButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.rotateMilagelbl = new System.Windows.Forms.Label();
+            this.percentLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.milageTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lockTrackBarButton)).BeginInit();
             this.SuspendLayout();
@@ -219,16 +219,6 @@
             this.otherInfoButton.UseVisualStyleBackColor = true;
             this.otherInfoButton.Click += new System.EventHandler(this.otherInfoButton_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(150, 98);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 28);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // progressBar1
             // 
             this.progressBar1.BackColor = System.Drawing.Color.White;
@@ -238,6 +228,7 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar1.Size = new System.Drawing.Size(386, 45);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 24;
             // 
             // rotateMilagelbl
@@ -252,6 +243,15 @@
             this.rotateMilagelbl.Text = "0";
             this.rotateMilagelbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // percentLbl
+            // 
+            this.percentLbl.AutoSize = true;
+            this.percentLbl.Location = new System.Drawing.Point(135, 85);
+            this.percentLbl.Name = "percentLbl";
+            this.percentLbl.Size = new System.Drawing.Size(144, 20);
+            this.percentLbl.TabIndex = 27;
+            this.percentLbl.Text = "Percent Remaining";
+            // 
             // TireOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -260,8 +260,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(410, 667);
+            this.Controls.Add(this.percentLbl);
             this.Controls.Add(this.rotateMilagelbl);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.otherInfoButton);
             this.Controls.Add(this.tireInfoButton);
@@ -306,8 +306,8 @@
         private System.Windows.Forms.PictureBox lockTrackBarButton;
         private System.Windows.Forms.Button tireInfoButton;
         private System.Windows.Forms.Button otherInfoButton;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ProgressBar progressBar1;
         public System.Windows.Forms.Label rotateMilagelbl;
+        private System.Windows.Forms.Label percentLbl;
     }
 }

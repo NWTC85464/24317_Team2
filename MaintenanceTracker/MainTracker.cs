@@ -12,7 +12,10 @@ namespace MaintenanceTracker
 {
     public partial class MainTracker : System.Windows.Forms.Form
     {
-        private int mainStored; //Stored = 1, not stored = 0;
+        TireOptionsClass tireOptionsClass = new TireOptionsClass();
+        MainFormClass mainFormClass = new MainFormClass();
+
+        public int mpg;
 
         public MainTracker()
         {
@@ -23,7 +26,7 @@ namespace MaintenanceTracker
         }    
         
         private void Form1_Load(object sender, EventArgs e)
-        {  
+        {            
             //Set font of buttons.
             tiresButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
             airFilterButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
@@ -31,16 +34,9 @@ namespace MaintenanceTracker
             mpgButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
             oilButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
             settingsButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
-
-            //Set border of buttons.
-            tiresButton.FlatStyle = FlatStyle.Flat;
-            tiresButton.FlatAppearance.BorderSize = 2;      
         }
         
-        TireOptionsClass tireOptionsClass = new TireOptionsClass();
-        MainFormClass mainFormClass = new MainFormClass();
-
-        public int MainStored { get => mainStored; set => mainStored = value; }
+       
 
         private void tiresButton_Click(object sender, EventArgs e)
         {
@@ -51,7 +47,7 @@ namespace MaintenanceTracker
             vn = vehicalSelectList.SelectedIndex + 1;
 
             //Create new instance of tireOptionsForm and pass vn and MPG.
-            TireOptionsForm tireOptionsForm = new TireOptionsForm(vn/*,MPG //From MPG Form*/);
+            TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, mpg);
            
             //Show the form.              
             tireOptionsForm.ShowDialog();
@@ -74,8 +70,9 @@ namespace MaintenanceTracker
         private void mpgButton_Click(object sender, EventArgs e)
         {
             //Call mpg options form.
-            MPGOptionsForm mPGOptionsForm = new MPGOptionsForm();
-            mPGOptionsForm.ShowDialog();
+            //MPGOptionsForm mPGOptionsForm = new MPGOptionsForm();
+            // mPGOptionsForm.ShowDialog();
+            mpg += 500;
         }
 
         private void oilButton_Click(object sender, EventArgs e)
