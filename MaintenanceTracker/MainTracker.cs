@@ -35,8 +35,6 @@ namespace MaintenanceTracker
             oilButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
             settingsButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
         }
-        
-       
 
         private void tiresButton_Click(object sender, EventArgs e)
         {
