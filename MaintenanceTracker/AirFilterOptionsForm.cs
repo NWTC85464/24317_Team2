@@ -1,6 +1,7 @@
 ﻿using MaintenanceTracker.Properties;
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace MaintenanceTracker
@@ -47,6 +48,7 @@ namespace MaintenanceTracker
                 "15,000-30,000 miles, or once a \n" +
                 "year. You are currently at: \n" +
                 "" + string.Format("{0:n0}", mls) + "/" + string.Format("{0:n0}", mx) + " miles.";
+
             cabAirFilterLB.Font = new Font(cabAirFilterLB.Font.FontFamily, 10);
             cabAirFilterLB.Text = "Replace the cabin air filter every \n" +
                 "15,000-25,000 miles, or once a \n" +
@@ -63,8 +65,9 @@ namespace MaintenanceTracker
             cabAirFilterTbLb.Visible = false;
             cabAirFilterTbLb.Text = mx.ToString();
 
+            
         }
-        
+
         //Engine's Filter Condition
         private void EngFilterStatusColor(int M)
         {

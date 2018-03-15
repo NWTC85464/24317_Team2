@@ -39,6 +39,7 @@
             this.exitBTTN = new System.Windows.Forms.Button();
             this.engAirFilterTbLb = new System.Windows.Forms.Label();
             this.cabAirFilterTbLb = new System.Windows.Forms.Label();
+            this.calLB = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.engAirFilterTB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cabAirFilterTB)).BeginInit();
             this.SuspendLayout();
@@ -135,11 +136,20 @@
             this.cabAirFilterTbLb.Size = new System.Drawing.Size(0, 25);
             this.cabAirFilterTbLb.TabIndex = 11;
             // 
+            // calLB
+            // 
+            this.calLB.AutoSize = true;
+            this.calLB.Location = new System.Drawing.Point(45, 326);
+            this.calLB.Name = "calLB";
+            this.calLB.Size = new System.Drawing.Size(0, 25);
+            this.calLB.TabIndex = 12;
+            // 
             // AirFilterOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 835);
+            this.Controls.Add(this.calLB);
             this.Controls.Add(this.cabAirFilterTbLb);
             this.Controls.Add(this.engAirFilterTbLb);
             this.Controls.Add(this.resetBTTN);
@@ -174,5 +184,6 @@
         private System.Windows.Forms.Button exitBTTN;
         private System.Windows.Forms.Label engAirFilterTbLb;
         private System.Windows.Forms.Label cabAirFilterTbLb;
+        private System.Windows.Forms.Label calLB;
     }
 }
