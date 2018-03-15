@@ -10,26 +10,6 @@ using System.Windows.Forms;
 
 namespace MaintenanceTracker
 {
-    /// <summary>
-    /// TODO: 
-    /// 
-    /// Add ability to name vehical and select vehical?
-    /// 
-    /// Create vehical objects that use vehical index value?
-    /// 
-    /// ***Add progress bars (use set "tire rotation value - subtract MPG-miles value" and set 
-    ///     progress bar value. Set max value to tire rotation value and min value to 0.***
-    ///     
-    /// Add a way to create vehical on main form and save to object?
-    /// 
-    /// How do we run in background to maintaine progress?
-    /// 
-    /// Ability to adjust rotate milage after running for awhile?
-    /// </summary>
-
-
-
-
     public partial class TireOptionsForm : System.Windows.Forms.Form
     {
         TireOptionsClass tireOptionsClass = new TireOptionsClass();
@@ -40,7 +20,6 @@ namespace MaintenanceTracker
         public int vehicalNum;          //Holds vehical number.
         private int scrollLock = 0;     //Store value to lock track bar. 
         public int milage;              //Store MPG mileage from MPG form.
-    
 
         public TireOptionsForm(int vehicalNum, int MPG)
         {
@@ -60,7 +39,6 @@ namespace MaintenanceTracker
 
             if (tireOptionsClass.V1Stored == 1 && vehicalNum == 1)
             {
-
                     //Fill form with array values.......
                     sliderValueLbl.Text = tireOptionsClass.Vehical1Values[1];
                     milageTrackBar.Value = Int32.Parse(tireOptionsClass.Vehical1Values[1]); 
@@ -182,7 +160,6 @@ namespace MaintenanceTracker
                 tireOptionsClass.Vehical1Values[2] = iDTB;
 
                 //Int to state values added to restore form on return.
-               // tireOptionsClass.TStored = 1;
                 tireOptionsClass.V1Stored = 1;
                
             }
@@ -194,7 +171,6 @@ namespace MaintenanceTracker
                 tireOptionsClass.Vehical2Values[2] = iDTB;
 
                 //Int to state values added to restore form on return.
-                //tireOptionsClass.TStored = 1;
                 tireOptionsClass.V2Stored = 1;
             }
             else if (vehicalNum == 3)
@@ -205,7 +181,6 @@ namespace MaintenanceTracker
                 tireOptionsClass.Vehical3Values[2] = iDTB;
 
                 //Int to state values added to restore form on return.
-                //tireOptionsClass.TStored = 1;
                 tireOptionsClass.V3Stored = 1;
             }
             else if (vehicalNum == 4)
@@ -216,10 +191,8 @@ namespace MaintenanceTracker
                 tireOptionsClass.Vehical4Values[2] = iDTB;
 
                 //Int to state values added to restore form on return.
-                //tireOptionsClass.TStored = 1;
                 tireOptionsClass.V4Stored = 1;
-            }
-            
+            }            
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -278,9 +251,6 @@ namespace MaintenanceTracker
 
                 //Set the scrollLock value to 0.
                 scrollLock = 0;
-
-                //Set stored to false.
-               // tireOptionsClass.TStored = 0;
 
                 //Set track bar value and lbl to "0".
                 milageTrackBar.Value = 5000;
@@ -397,42 +367,7 @@ namespace MaintenanceTracker
             //Display other info in messege box.
             MessageBox.Show(tireOptionsClass.RotateMessage, "Information");
         }
-
-        /// <summary>
-        /// This button click section is for progress bar which increases with click, to be changed by
-        ///     adding milage as variable and subtracting it from rotate milage to increase progress bar.
-        ///     
-        /// Added variable pvalue and button1_Click for progress bar. Will be removed.
-        /// </summary>
-        //int pvalue; //will be MPG value.
-        
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            //Only set for vehical 1. Need to set up for 4.
-            //
-            //Set the progress bars max value to the rotate value entered.
-            // progressBar1.Maximum = Int32.Parse(tireOptionsClass.Vehical1Values[1]);
-            //milage += 500;  //to be removed after milage setup.
-            //milage = pvalue;//to be removed after milage setup.
-
-            //Set progress bars value to the max value minus milage to decrease progress bar.
-            //progressBar1.Value = progressBar1.Maximum - milage;
-
-            //if (progressBar1.Value < (Int32.Parse(tireOptionsClass.Vehical1Values[1]) / 2))
-            //{
-              //  progressBar1.ForeColor = Color.Green;
-            //}
-            //if ((progressBar1.Value >= (Int32.Parse(tireOptionsClass.Vehical1Values[1]) / 2)) && progressBar1.Value < Int32.Parse(tireOptionsClass.Vehical1Values[1]) - (Int32.Parse(tireOptionsClass.Vehical1Values[1]) / 4))
-            //{
-              //  progressBar1.ForeColor = Color.Yellow;
-            //}
-            //if (progressBar1.Value >= Int32.Parse(tireOptionsClass.Vehical1Values[1]) - (Int32.Parse(tireOptionsClass.Vehical1Values[1]) / 4))
-            //{
-              //  progressBar1.ForeColor = Color.Red;
-            //}
-            //label2.Text = pvalue.ToString();
-            
-        }
+       
         private void pBarSet(int vehicalNum, int milage, string rotateValue)
         {
             int vehNum = vehicalNum;
