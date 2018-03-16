@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,7 +53,10 @@
       <DependentUpon>AirFilterOptionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\colorThemes.cs" />
+//Conflict Began
+    <Compile Include="MainFormClass.cs" />
     <Compile Include="MainTracker.cs">
+//Conflict Ended  
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainTracker.Designer.cs">
@@ -78,11 +82,18 @@
     <Compile Include="SettingsOptionForm.Designer.cs">
       <DependentUpon>SettingsOptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TireOptionsClass.cs" />
     <Compile Include="TireOptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TireOptionsForm.Designer.cs">
       <DependentUpon>TireOptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TireValuesInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TireValuesInputForm.Designer.cs">
+      <DependentUpon>TireValuesInputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WipersOptionForm.cs">
       <SubType>Form</SubType>
@@ -117,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TireOptionsForm.resx">
       <DependentUpon>TireOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TireValuesInputForm.resx">
+      <DependentUpon>TireValuesInputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WipersOptionForm.resx">
       <DependentUpon>WipersOptionForm.cs</DependentUpon>
