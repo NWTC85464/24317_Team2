@@ -52,7 +52,11 @@
     <Compile Include="AirFilterOptionsForm.Designer.cs">
       <DependentUpon>AirFilterOptionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\colorThemes.cs" />
+//Conflict Began
+    <Compile Include="MainFormClass.cs" />
     <Compile Include="MainTracker.cs">
+//Conflict Ended  
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainTracker.Designer.cs">
@@ -78,11 +82,18 @@
     <Compile Include="SettingsOptionForm.Designer.cs">
       <DependentUpon>SettingsOptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TireOptionsClass.cs" />
     <Compile Include="TireOptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TireOptionsForm.Designer.cs">
       <DependentUpon>TireOptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TireValuesInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TireValuesInputForm.Designer.cs">
+      <DependentUpon>TireValuesInputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WipersOptionForm.cs">
       <SubType>Form</SubType>
@@ -110,12 +121,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SettingsOptionForm.resx">
       <DependentUpon>SettingsOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TireOptionsForm.resx">
       <DependentUpon>TireOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TireValuesInputForm.resx">
+      <DependentUpon>TireValuesInputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WipersOptionForm.resx">
       <DependentUpon>WipersOptionForm.cs</DependentUpon>
@@ -132,6 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\X120.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
