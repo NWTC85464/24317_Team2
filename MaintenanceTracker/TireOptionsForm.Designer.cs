@@ -47,6 +47,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.rotateMilagelbl = new System.Windows.Forms.Label();
             this.percentLbl = new System.Windows.Forms.Label();
+            this.commentButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.milageTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lockTrackBarButton)).BeginInit();
             this.SuspendLayout();
@@ -252,6 +253,17 @@
             this.percentLbl.TabIndex = 27;
             this.percentLbl.Text = "Percent Remaining";
             // 
+            // commentButton
+            // 
+            this.commentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.commentButton.Location = new System.Drawing.Point(34, 444);
+            this.commentButton.Name = "commentButton";
+            this.commentButton.Size = new System.Drawing.Size(135, 53);
+            this.commentButton.TabIndex = 28;
+            this.commentButton.Text = "Comments";
+            this.commentButton.UseVisualStyleBackColor = true;
+            this.commentButton.Click += new System.EventHandler(this.commentButton_Click);
+            // 
             // TireOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -260,6 +272,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(410, 667);
+            this.Controls.Add(this.commentButton);
             this.Controls.Add(this.percentLbl);
             this.Controls.Add(this.rotateMilagelbl);
             this.Controls.Add(this.progressBar1);
@@ -309,5 +322,6 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         public System.Windows.Forms.Label rotateMilagelbl;
         private System.Windows.Forms.Label percentLbl;
+        private System.Windows.Forms.Button commentButton;
     }
 }
