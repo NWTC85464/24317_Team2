@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace MaintenanceTracker
 {
+    //TODO:
+    //
+    //Add install date format validation.
+
     public partial class TireOptionsForm : System.Windows.Forms.Form
     {
         TireOptionsClass tireOptionsClass = new TireOptionsClass();
@@ -30,7 +34,11 @@ namespace MaintenanceTracker
             InitializeComponent();
 
             //Center form on the screen.
-            this.StartPosition = FormStartPosition.CenterScreen;     
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            //percentLbl.Parent = progressBar1;
+            //percentLbl.Location = pos;
+            //percentLbl.BackColor = Color.Transparent;
         }
 
         private void TireOptionsForm_Load(object sender, EventArgs e)
@@ -125,7 +133,6 @@ namespace MaintenanceTracker
 
                 ////Added for progressbar.
                 progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-                rotateMilagelbl.Text = "0";
             }
         }
         
@@ -143,6 +150,8 @@ namespace MaintenanceTracker
 
             //Set scrollLock value to 1.
             scrollLock = 1;
+
+            progressBar1.Value = milageTrackBar.Value;
         }
 
         private void storeArrays(int vehicalNum, string installDateTextBox, int milageTrackBar)
@@ -373,9 +382,9 @@ namespace MaintenanceTracker
             double mil= System.Convert.ToDouble(milage);
             double rot= double.Parse(rotateValue);
 
-            //Display the percentage remaining.
-            double percentLeft = 100-(100*(mil / rot));
-            percentLbl.Text = percentLeft.ToString() + "% Remaining!";
+            //Display the percentage remaining and round.            
+            double percentLeft = Math.Round((100 - (100 * (mil / rot))), 2);
+            percentLbl.Text = percentLeft.ToString() + "%";
 
             try
             {
@@ -384,8 +393,7 @@ namespace MaintenanceTracker
 
                 if (progressBar1.Value > (rotate / 2))
                 {
-                    progressBar1.ForeColor = Color.Green;
-                    
+                    progressBar1.ForeColor = Color.Green;                    
                 }
                 else if ((progressBar1.Value <= (rotate / 2)) && progressBar1.Value > rotate / 4)
                 {
@@ -417,6 +425,6 @@ namespace MaintenanceTracker
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
+        }        
     }
 }
