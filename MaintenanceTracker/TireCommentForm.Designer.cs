@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.commentFormClearButton = new System.Windows.Forms.Button();
-            this.commentFormReturnButton = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.commentsLbl = new System.Windows.Forms.Label();
             this.saveCommentButton = new System.Windows.Forms.Button();
@@ -44,16 +43,6 @@
             this.commentFormClearButton.Text = "Clear";
             this.commentFormClearButton.UseVisualStyleBackColor = true;
             this.commentFormClearButton.Click += new System.EventHandler(this.commentFormClearButton_Click);
-            // 
-            // commentFormReturnButton
-            // 
-            this.commentFormReturnButton.Location = new System.Drawing.Point(204, 602);
-            this.commentFormReturnButton.Name = "commentFormReturnButton";
-            this.commentFormReturnButton.Size = new System.Drawing.Size(135, 53);
-            this.commentFormReturnButton.TabIndex = 1;
-            this.commentFormReturnButton.Text = "Return";
-            this.commentFormReturnButton.UseVisualStyleBackColor = true;
-            this.commentFormReturnButton.Click += new System.EventHandler(this.commentFormReturnButton_Click);
             // 
             // richTextBox1
             // 
@@ -74,7 +63,7 @@
             // 
             // saveCommentButton
             // 
-            this.saveCommentButton.Location = new System.Drawing.Point(130, 528);
+            this.saveCommentButton.Location = new System.Drawing.Point(217, 602);
             this.saveCommentButton.Name = "saveCommentButton";
             this.saveCommentButton.Size = new System.Drawing.Size(135, 53);
             this.saveCommentButton.TabIndex = 4;
@@ -90,7 +79,6 @@
             this.Controls.Add(this.saveCommentButton);
             this.Controls.Add(this.commentsLbl);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.commentFormReturnButton);
             this.Controls.Add(this.commentFormClearButton);
             this.Name = "TireCommentForm";
             this.Text = "Comments";
@@ -102,7 +90,6 @@
         #endregion
 
         private System.Windows.Forms.Button commentFormClearButton;
-        private System.Windows.Forms.Button commentFormReturnButton;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label commentsLbl;
         private System.Windows.Forms.Button saveCommentButton;

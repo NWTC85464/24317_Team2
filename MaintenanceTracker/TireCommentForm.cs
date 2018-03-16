@@ -16,6 +16,9 @@ namespace MaintenanceTracker
         public int vehNum;
         public TireCommentForm(int vehicalNumber)
         {
+            //Center form on the screen.
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             this.vehNum = vehicalNumber;
             InitializeComponent();
             //Read vehicals text file
@@ -37,22 +40,35 @@ namespace MaintenanceTracker
                 }
                 else if(vehNum == 2)
                 {
-
+                    //Create streamWriter and write text to a file for each vehical.
+                    StreamWriter outputFile;
+                    outputFile = File.CreateText("Vehical 2 Comments.txt");
+                    outputFile.WriteLine(richTextBox1.Text);
+                    outputFile.Close();
                 }
                 else if (vehNum == 3)
                 {
-
+                    //Create streamWriter and write text to a file for each vehical.
+                    StreamWriter outputFile;
+                    outputFile = File.CreateText("Vehical 3 Comments.txt");
+                    outputFile.WriteLine(richTextBox1.Text);
+                    outputFile.Close();
                 }
                 else if (vehNum == 4)
                 {
-
+                    //Create streamWriter and write text to a file for each vehical.
+                    StreamWriter outputFile;
+                    outputFile = File.CreateText("Vehical 4 Comments.txt");
+                    outputFile.WriteLine(richTextBox1.Text);
+                    outputFile.Close();
                 }
                 
             }
             catch
             {
-                //Do nothing......
+                //Do nothing......//
             }
+            this.Close();
         }
 
         private void commentFormClearButton_Click(object sender, EventArgs e)
@@ -69,7 +85,7 @@ namespace MaintenanceTracker
         {
             try
             {
-                string textIn;
+                string textIn = "";
                 //Create a stream reader and read a text file for each vehical.
                 if (vehNum == 1)
                 {
@@ -77,27 +93,45 @@ namespace MaintenanceTracker
                     inputFile = File.OpenText("Vehical 1 Comments.txt");
                     while (!inputFile.EndOfStream)
                     {
-                        textIn = inputFile.ReadLine();
+                        textIn = inputFile.ReadToEnd();
                         richTextBox1.Text = textIn;
                     }
                     inputFile.Close();
                 }
                 else if (vehNum == 2)
                 {
-
+                    StreamReader inputFile;
+                    inputFile = File.OpenText("Vehical 2 Comments.txt");
+                    while (!inputFile.EndOfStream)
+                    {
+                        textIn = inputFile.ReadToEnd();
+                        richTextBox1.Text = textIn;
+                    }
+                    inputFile.Close();
                 }
                 else if (vehNum == 3)
                 {
-
+                    StreamReader inputFile;
+                    inputFile = File.OpenText("Vehical 3 Comments.txt");
+                    while (!inputFile.EndOfStream)
+                    {
+                        textIn = inputFile.ReadToEnd();
+                        richTextBox1.Text = textIn;
+                    }
+                    inputFile.Close();
                 }
                 else if (vehNum == 4)
                 {
-
+                    StreamReader inputFile;
+                    inputFile = File.OpenText("Vehical 4 Comments.txt");
+                    while (!inputFile.EndOfStream)
+                    {
+                        textIn = inputFile.ReadToEnd();
+                        richTextBox1.Text = textIn;
+                    }
+                    inputFile.Close();
                 }
-                else
-                {
-                    richTextBox1.Text = "Sorry no comments Loaded";
-                }
+                
             }
             catch
             {
@@ -107,7 +141,7 @@ namespace MaintenanceTracker
 
         private void commentFormReturnButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
 
       
