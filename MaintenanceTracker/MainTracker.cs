@@ -10,6 +10,12 @@ using System.Windows.Forms;
 
 namespace MaintenanceTracker
 {
+    //TODO......
+    //Add a text area to write additions about tires.
+    //
+    //Format installed date text box so entered correctly.
+    //
+    //
     public partial class MainTracker : System.Windows.Forms.Form
     {
         TireOptionsClass tireOptionsClass = new TireOptionsClass();
