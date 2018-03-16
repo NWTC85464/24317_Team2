@@ -179,6 +179,7 @@ namespace MaintenanceTracker
                         if (!string.IsNullOrEmpty(textIn))
                         {
                             //Display text in text area on form.
+                            //
                             richTextBox1.Text = textIn;
                         }
                     }
