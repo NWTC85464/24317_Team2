@@ -311,10 +311,7 @@ namespace MaintenanceTracker
             }
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+       
       
         //Button click will print array index values to dialogbox.
         private void tireInfoButton_Click(object sender, EventArgs e)
@@ -410,6 +407,16 @@ namespace MaintenanceTracker
             }
            
 
+        }
+
+        private void commentButton_Click(object sender, EventArgs e)
+        {
+            TireCommentForm tireCommentForm = new TireCommentForm(vehicalNum);
+            tireCommentForm.Show();
+        }
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
