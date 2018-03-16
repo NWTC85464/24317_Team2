@@ -53,10 +53,10 @@
       <DependentUpon>AirFilterOptionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\colorThemes.cs" />
-//Conflict Began
+
     <Compile Include="MainFormClass.cs" />
     <Compile Include="MainTracker.cs">
-//Conflict Ended  
+
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainTracker.Designer.cs">
