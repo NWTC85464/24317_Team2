@@ -65,47 +65,6 @@ namespace MaintenanceTracker
             cabAirFilterTbLb.Visible = false;
             cabAirFilterTbLb.Text = mx.ToString();
 
-            //Calendar
-            // Sets a DateTime to April 3, 2002 of the Gregorian calendar.
-            DateTime myDT = new DateTime(2002, 4, 3, new GregorianCalendar());
-
-            // Uses the default calendar of the InvariantCulture.
-            Calendar myCal = CultureInfo.InvariantCulture.Calendar;
-
-            // Displays the values of the DateTime.
-            Console.WriteLine("April 3, 2002 of the Gregorian calendar:");
-            DisplayValues(myCal, myDT);
-
-            // Adds 5 to every component of the DateTime.
-            myDT = myCal.AddYears(myDT, 5);
-            myDT = myCal.AddMonths(myDT, 5);
-            myDT = myCal.AddWeeks(myDT, 5);
-            myDT = myCal.AddDays(myDT, 5);
-            myDT = myCal.AddHours(myDT, 5);
-            myDT = myCal.AddMinutes(myDT, 5);
-            myDT = myCal.AddSeconds(myDT, 5);
-            myDT = myCal.AddMilliseconds(myDT, 5);
-
-            // Displays the values of the DateTime.
-            Console.WriteLine("After adding 5 to each component of the DateTime:");
-            DisplayValues(myCal, myDT);
-
-        }
-
-        public static void DisplayValues(Calendar myCal, DateTime myDT)
-        {
-            Console.WriteLine("   Era:          {0}", myCal.GetEra(myDT));
-            Console.WriteLine("   Year:         {0}", myCal.GetYear(myDT));
-            Console.WriteLine("   Month:        {0}", myCal.GetMonth(myDT));
-            Console.WriteLine("   DayOfYear:    {0}", myCal.GetDayOfYear(myDT));
-            Console.WriteLine("   DayOfMonth:   {0}", myCal.GetDayOfMonth(myDT));
-            Console.WriteLine("   DayOfWeek:    {0}", myCal.GetDayOfWeek(myDT));
-            Console.WriteLine("   Hour:         {0}", myCal.GetHour(myDT));
-            Console.WriteLine("   Minute:       {0}", myCal.GetMinute(myDT));
-            Console.WriteLine("   Second:       {0}", myCal.GetSecond(myDT));
-            Console.WriteLine("   Milliseconds: {0}", myCal.GetMilliseconds(myDT));
-            Console.WriteLine();
-            
         }
 
         //Engine's Filter Condition
