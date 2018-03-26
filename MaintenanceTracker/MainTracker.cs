@@ -68,9 +68,9 @@ namespace MaintenanceTracker
         private void mpgButton_Click(object sender, EventArgs e)
         {
             //Call mpg options form.
-            //MPGOptionsForm mPGOptionsForm = new MPGOptionsForm();
-            // mPGOptionsForm.ShowDialog();
-            mpg += 500;
+            MPGOptionsForm mPGOptionsForm = new MPGOptionsForm();
+             mPGOptionsForm.ShowDialog();
+            //mpg += 500;
         }
 
         private void oilButton_Click(object sender, EventArgs e)
