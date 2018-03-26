@@ -13,15 +13,20 @@ namespace MaintenanceTracker
 {
     public partial class TireCommentForm : Form
     {
-        public int vehNum;
+        //Variable.
+        public int vehNum;  //Holds vehical number passed in.
+
         public TireCommentForm(int vehicalNumber)
         {
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
 
+            //Set vehicalNumber to vehNum.
             this.vehNum = vehicalNumber;
+
             InitializeComponent();
-            //Read vehicals text file
+
+            //Read vehicals text file and load into text area.
             commentsLoaded(vehNum);
         }
 
@@ -29,109 +34,175 @@ namespace MaintenanceTracker
         {
             try
             {
-                //Write comments to vehicals text file
+                //Create streamWriter variable and write text to a file for each vehical.  
+                StreamWriter outputFile;
+                
                 if (vehNum == 1)
                 {
-                    //Create streamWriter and write text to a file for each vehical.
-                    StreamWriter outputFile;
+                    //Read comments text area and write to text file then close outputFile.            
                     outputFile = File.CreateText("Vehical 1 Comments.txt");
                     outputFile.WriteLine(richTextBox1.Text);
                     outputFile.Close();
                 }
                 else if(vehNum == 2)
                 {
-                    //Create streamWriter and write text to a file for each vehical.
-                    StreamWriter outputFile;
+                    //Read comments text area and write to text file then close outputFile.     
                     outputFile = File.CreateText("Vehical 2 Comments.txt");
                     outputFile.WriteLine(richTextBox1.Text);
                     outputFile.Close();
                 }
                 else if (vehNum == 3)
                 {
-                    //Create streamWriter and write text to a file for each vehical.
-                    StreamWriter outputFile;
+                    //Read comments text area and write to text file then close outputFile.     
                     outputFile = File.CreateText("Vehical 3 Comments.txt");
                     outputFile.WriteLine(richTextBox1.Text);
                     outputFile.Close();
                 }
                 else if (vehNum == 4)
                 {
-                    //Create streamWriter and write text to a file for each vehical.
-                    StreamWriter outputFile;
+                    //Read comments text area and write to text file then close outputFile.     
                     outputFile = File.CreateText("Vehical 4 Comments.txt");
                     outputFile.WriteLine(richTextBox1.Text);
                     outputFile.Close();
                 }
-                
             }
             catch
             {
-                //Do nothing......//
+                //Do nothing......
             }
-            this.Close();
+
+            //Display a message saying the file saved.
+            MessageBox.Show("Saved to file");
+
+            //Close the form.
+            //this.Close();
         }
 
         private void commentFormClearButton_Click(object sender, EventArgs e)
         {
-            clearComments(vehNum);
+            //Call method to clear text area and vehicalNumber text file.
+            clearComments(vehNum);            
         }
 
         private void clearComments(int vehNum)
         {
             richTextBox1.Text = "";
-            //Add clear vehicals text file also.
+
+            //Create a streamWriter outputFile.
+            StreamWriter outputFile;
+
+            if (vehNum == 1)
+            {
+                //Clear vehicalNumber's text file and close the file.
+                outputFile = File.CreateText("Vehical 1 Comments.txt");
+                outputFile.WriteLine("");
+                outputFile.Close();
+            }
+            else if (vehNum == 2)
+            {
+                //Clear vehicalNumber's text file and close the file.
+                outputFile = File.CreateText("Vehical 2 Comments.txt");
+                outputFile.WriteLine("");
+                outputFile.Close();
+            }
+            else if (vehNum == 3)
+            {
+                //Clear vehicalNumber's text file and close the file.
+                outputFile = File.CreateText("Vehical 3 Comments.txt");
+                outputFile.WriteLine("");
+                outputFile.Close();
+            }
+            else if (vehNum == 4)
+            {
+                //Clear vehicalNumber's text file and close the file.
+                outputFile = File.CreateText("Vehical 4 Comments.txt");
+                outputFile.WriteLine("");
+                outputFile.Close();
+            }
         }
         private void commentsLoaded(int vehNum)
         {
             try
             {
                 string textIn = "";
-                //Create a stream reader and read a text file for each vehical.
+                //Create a stream reader input file.
+                StreamReader inputFile;
+
                 if (vehNum == 1)
-                {
-                    StreamReader inputFile;
+                {                    
+                    //Open vehical's text file.
                     inputFile = File.OpenText("Vehical 1 Comments.txt");
+                   
                     while (!inputFile.EndOfStream)
                     {
-                        textIn = inputFile.ReadToEnd();
-                        richTextBox1.Text = textIn;
+                        //Read vehical's text file into inputFile.
+                        textIn = inputFile.ReadLine();
+
+                        //Check for empty lines.
+                        if (!string.IsNullOrEmpty(textIn))
+                        {
+                            //Display text in text area on form.
+                            richTextBox1.Text = textIn;
+                        }
+                        
                     }
                     inputFile.Close();
                 }
                 else if (vehNum == 2)
                 {
-                    StreamReader inputFile;
+                    //Open vehical's text file.
                     inputFile = File.OpenText("Vehical 2 Comments.txt");
                     while (!inputFile.EndOfStream)
                     {
-                        textIn = inputFile.ReadToEnd();
-                        richTextBox1.Text = textIn;
+                        //Read vehical's text file into inputFile.
+                        textIn = inputFile.ReadLine();
+
+                        //Check for empty lines.
+                        if (!string.IsNullOrEmpty(textIn))
+                        {
+                            //Display text in text area on form.
+                            richTextBox1.Text = textIn;
+                        }
                     }
                     inputFile.Close();
                 }
                 else if (vehNum == 3)
                 {
-                    StreamReader inputFile;
+                    //Open vehical's text file.
                     inputFile = File.OpenText("Vehical 3 Comments.txt");
                     while (!inputFile.EndOfStream)
                     {
-                        textIn = inputFile.ReadToEnd();
-                        richTextBox1.Text = textIn;
+                        //Read vehical's text file into inputFile.
+                        textIn = inputFile.ReadLine();
+
+                        //Check for empty lines.
+                        if (!string.IsNullOrEmpty(textIn))
+                        {
+                            //Display text in text area on form.
+                            //
+                            richTextBox1.Text = textIn;
+                        }
                     }
                     inputFile.Close();
                 }
                 else if (vehNum == 4)
                 {
-                    StreamReader inputFile;
+                    //Open vehical's text file.
                     inputFile = File.OpenText("Vehical 4 Comments.txt");
                     while (!inputFile.EndOfStream)
                     {
-                        textIn = inputFile.ReadToEnd();
-                        richTextBox1.Text = textIn;
+                        //Read vehical's text file into inputFile.
+                        textIn = inputFile.ReadLine();
+
+                        //Check for empty lines.
+                        if (!string.IsNullOrEmpty(textIn))
+                        {
+                            //Display text in text area on form.
+                            richTextBox1.Text = textIn;
+                        }
                     }
                     inputFile.Close();
-                }
-                
+                }                
             }
             catch
             {
@@ -139,11 +210,9 @@ namespace MaintenanceTracker
             }
         }
 
-        private void commentFormReturnButton_Click(object sender, EventArgs e)
+        private void returnButton_Click(object sender, EventArgs e)
         {
-            //this.Close();
+            this.Close();
         }
-
-      
     }
 }

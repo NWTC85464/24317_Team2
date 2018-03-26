@@ -32,11 +32,12 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.commentsLbl = new System.Windows.Forms.Label();
             this.saveCommentButton = new System.Windows.Forms.Button();
+            this.returnButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // commentFormClearButton
             // 
-            this.commentFormClearButton.Location = new System.Drawing.Point(50, 602);
+            this.commentFormClearButton.Location = new System.Drawing.Point(31, 353);
             this.commentFormClearButton.Name = "commentFormClearButton";
             this.commentFormClearButton.Size = new System.Drawing.Size(135, 53);
             this.commentFormClearButton.TabIndex = 0;
@@ -46,9 +47,10 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBox1.Location = new System.Drawing.Point(31, 32);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(346, 475);
+            this.richTextBox1.Size = new System.Drawing.Size(346, 298);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
@@ -63,7 +65,7 @@
             // 
             // saveCommentButton
             // 
-            this.saveCommentButton.Location = new System.Drawing.Point(217, 602);
+            this.saveCommentButton.Location = new System.Drawing.Point(242, 353);
             this.saveCommentButton.Name = "saveCommentButton";
             this.saveCommentButton.Size = new System.Drawing.Size(135, 53);
             this.saveCommentButton.TabIndex = 4;
@@ -71,11 +73,22 @@
             this.saveCommentButton.UseVisualStyleBackColor = true;
             this.saveCommentButton.Click += new System.EventHandler(this.saveCommentButton_Click);
             // 
+            // returnButton
+            // 
+            this.returnButton.Location = new System.Drawing.Point(139, 602);
+            this.returnButton.Name = "returnButton";
+            this.returnButton.Size = new System.Drawing.Size(135, 53);
+            this.returnButton.TabIndex = 5;
+            this.returnButton.Text = "Return";
+            this.returnButton.UseVisualStyleBackColor = true;
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            // 
             // TireCommentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(410, 667);
+            this.Controls.Add(this.returnButton);
             this.Controls.Add(this.saveCommentButton);
             this.Controls.Add(this.commentsLbl);
             this.Controls.Add(this.richTextBox1);
@@ -93,5 +106,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label commentsLbl;
         private System.Windows.Forms.Button saveCommentButton;
+        private System.Windows.Forms.Button returnButton;
     }
 }
