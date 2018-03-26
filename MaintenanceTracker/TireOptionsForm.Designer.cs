@@ -151,7 +151,6 @@
             // milageTrackBar
             // 
             this.milageTrackBar.AutoSize = false;
-            this.milageTrackBar.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.milageTrackBar.Cursor = System.Windows.Forms.Cursors.NoMoveHoriz;
             this.milageTrackBar.LargeChange = 100;
             this.milageTrackBar.Location = new System.Drawing.Point(58, 211);
@@ -179,7 +178,6 @@
             // 
             // milesLbl
             // 
-            this.milesLbl.BackColor = System.Drawing.SystemColors.Control;
             this.milesLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.milesLbl.Location = new System.Drawing.Point(208, 141);
             this.milesLbl.Name = "milesLbl";

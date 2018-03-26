@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaintenanceTracker.Properties;
 
 namespace MaintenanceTracker
 {
@@ -43,6 +44,10 @@ namespace MaintenanceTracker
 
         private void TireOptionsForm_Load(object sender, EventArgs e)
         {
+            /////////-----------------------------///////////////////////////////
+            milageTrackBar.TickStyle = TickStyle.BottomRight;
+            milageTrackBar.TickFrequency = 1000;
+            /////////----------------------------///////////////////////////
             infoLbl.Text = "Vehical" + tireOptionsClass.Vehical1Values[0];
 
             if (tireOptionsClass.V1Stored == 1 && vehicalNum == 1)
@@ -56,8 +61,8 @@ namespace MaintenanceTracker
                     //Deactivate the track bar slide
                     milageTrackBar.Enabled = false;
 
-                    //Set the lock button back color.                
-                    lockTrackBarButton.Image = new Bitmap("lock.png");
+                //Set the lock button back color.                
+                lockTrackBarButton.Image = Resources._lock;
 
                     //Set scrollLock value to 1.
                     scrollLock = 1;
@@ -77,7 +82,7 @@ namespace MaintenanceTracker
                 milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
-                lockTrackBarButton.Image = new Bitmap("lock.png");
+                lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
                 scrollLock = 1;
@@ -97,7 +102,7 @@ namespace MaintenanceTracker
                 milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
-                lockTrackBarButton.Image = new Bitmap("lock.png");
+                lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
                 scrollLock = 1;
@@ -117,7 +122,7 @@ namespace MaintenanceTracker
                 milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
-                lockTrackBarButton.Image = new Bitmap("lock.png");
+                lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
                 scrollLock = 1;
@@ -146,12 +151,13 @@ namespace MaintenanceTracker
             milageTrackBar.Enabled = false;
 
             //Set the lock button back color.                
-            lockTrackBarButton.Image = new Bitmap("lock.png");
+            lockTrackBarButton.Image = Resources._lock;
 
             //Set scrollLock value to 1.
             scrollLock = 1;
 
-            progressBar1.Value = milageTrackBar.Value;
+            //Doesnt work now, Need to figure this out......................
+            //progressBar1.Value = milageTrackBar.Value;
         }
 
         private void storeArrays(int vehicalNum, string installDateTextBox, int milageTrackBar)
@@ -219,7 +225,7 @@ namespace MaintenanceTracker
                 milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
-                lockTrackBarButton.Image = new Bitmap("lock.png");
+                lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
                 scrollLock = 1;
@@ -230,7 +236,7 @@ namespace MaintenanceTracker
                 milageTrackBar.Enabled = true;
 
                 //Set the lock button back color.
-                lockTrackBarButton.Image = new Bitmap("unlock.png");
+                lockTrackBarButton.Image = Resources.unlock;
 
                 //Set the scrollLock value to 0.
                 scrollLock = 0;
@@ -256,7 +262,7 @@ namespace MaintenanceTracker
                 milageTrackBar.Enabled = true;
 
                 //Set the lock button back to unlock.
-                lockTrackBarButton.Image = new Bitmap("unlock.png");
+                lockTrackBarButton.Image = Resources.unlock;
 
                 //Set the scrollLock value to 0.
                 scrollLock = 0;
