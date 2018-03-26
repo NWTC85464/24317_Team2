@@ -10,6 +10,12 @@ using System.Windows.Forms;
 
 namespace MaintenanceTracker
 {
+    //TODO......
+    //Add a text area to write additions about tires.
+    //
+    //Format installed date text box so entered correctly.
+    //
+    //
     public partial class MainTracker : System.Windows.Forms.Form
     {
         TireOptionsClass tireOptionsClass = new TireOptionsClass();
@@ -47,8 +53,17 @@ namespace MaintenanceTracker
             //Create new instance of tireOptionsForm and pass vn and MPG.
             TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, mpg);
            
-            //Show the form.              
-            tireOptionsForm.ShowDialog();
+            if (vehicalSelectList.SelectedItem == null)
+            {
+                //Display message saying select vehical.              
+                MessageBox.Show("Please Select a vehical first!");
+            }
+            else
+            {
+                //Show the form.              
+                tireOptionsForm.ShowDialog();
+            }
+           
         }
 
         private void wipersButton_Click(object sender, EventArgs e)
