@@ -28,208 +28,275 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TireOptionsForm));
+            this.tireOptionsFormLBL = new System.Windows.Forms.Label();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.setMilageLbl = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.sliderLbl = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.installDateTextBox = new System.Windows.Forms.TextBox();
+            this.infoLbl = new System.Windows.Forms.Label();
+            this.sliderValueLbl = new System.Windows.Forms.Label();
+            this.milageTrackBar = new System.Windows.Forms.TrackBar();
+            this.saveValuesButton = new System.Windows.Forms.Button();
+            this.milesLbl = new System.Windows.Forms.Label();
+            this.lockTrackBarButton = new System.Windows.Forms.PictureBox();
+            this.tireInfoButton = new System.Windows.Forms.Button();
+            this.otherInfoButton = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.rotateMilagelbl = new System.Windows.Forms.Label();
+            this.percentLbl = new System.Windows.Forms.Label();
+            this.commentButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.milageTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lockTrackBarButton)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // tireOptionsFormLBL
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(118, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tire Options Form";
+            this.tireOptionsFormLBL.AutoSize = true;
+            this.tireOptionsFormLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tireOptionsFormLBL.Location = new System.Drawing.Point(122, 9);
+            this.tireOptionsFormLBL.Name = "tireOptionsFormLBL";
+            this.tireOptionsFormLBL.Size = new System.Drawing.Size(186, 25);
+            this.tireOptionsFormLBL.TabIndex = 9;
+            this.tireOptionsFormLBL.Text = "Tire Options Form";
             // 
-            // button1
+            // exitButton
             // 
-            this.button1.Location = new System.Drawing.Point(232, 590);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 45);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.Location = new System.Drawing.Point(232, 578);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(132, 57);
+            this.exitButton.TabIndex = 8;
+            this.exitButton.Text = "Back";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // button2
+            // resetButton
             // 
-            this.button2.Location = new System.Drawing.Point(34, 590);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 45);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Reset";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(76, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Enter tire size:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 79);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Enter tire brand:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 143);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 20);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Last rotation date:";
+            this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetButton.Location = new System.Drawing.Point(34, 578);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(132, 57);
+            this.resetButton.TabIndex = 7;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(76, 111);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(34, 150);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 20);
-            this.label5.TabIndex = 6;
+            this.label5.Size = new System.Drawing.Size(159, 26);
+            this.label5.TabIndex = 12;
             this.label5.Text = "Installed date:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label6
+            // setMilageLbl
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(97, 284);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(214, 29);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Set rotation milage";
+            this.setMilageLbl.AutoSize = true;
+            this.setMilageLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setMilageLbl.Location = new System.Drawing.Point(75, 179);
+            this.setMilageLbl.Name = "setMilageLbl";
+            this.setMilageLbl.Size = new System.Drawing.Size(233, 29);
+            this.setMilageLbl.TabIndex = 16;
+            this.setMilageLbl.Text = "Set rotation milage";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(76, 325);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(51, 260);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(247, 20);
-            this.label8.TabIndex = 9;
+            this.label8.Size = new System.Drawing.Size(283, 20);
+            this.label8.TabIndex = 19;
             this.label8.Text = "Adjust slider to set rotation milage";
             // 
-            // textBox1
+            // installDateTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(188, 44);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(135, 26);
-            this.textBox1.TabIndex = 10;
+            this.installDateTextBox.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.installDateTextBox.Location = new System.Drawing.Point(199, 150);
+            this.installDateTextBox.Name = "installDateTextBox";
+            this.installDateTextBox.Size = new System.Drawing.Size(135, 26);
+            this.installDateTextBox.TabIndex = 2;
+            this.installDateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // infoLbl
             // 
-            this.textBox2.Location = new System.Drawing.Point(188, 108);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(135, 26);
-            this.textBox2.TabIndex = 11;
+            this.infoLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.infoLbl.Cursor = System.Windows.Forms.Cursors.Default;
+            this.infoLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoLbl.Location = new System.Drawing.Point(-2, 0);
+            this.infoLbl.Name = "infoLbl";
+            this.infoLbl.Size = new System.Drawing.Size(94, 47);
+            this.infoLbl.TabIndex = 15;
+            this.infoLbl.Text = "Info";
+            this.infoLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox3
+            // sliderValueLbl
             // 
-            this.textBox3.Location = new System.Drawing.Point(188, 76);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(135, 26);
-            this.textBox3.TabIndex = 12;
+            this.sliderValueLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.sliderValueLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.sliderValueLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sliderValueLbl.Location = new System.Drawing.Point(95, 213);
+            this.sliderValueLbl.Name = "sliderValueLbl";
+            this.sliderValueLbl.Size = new System.Drawing.Size(107, 37);
+            this.sliderValueLbl.TabIndex = 17;
+            this.sliderValueLbl.Text = "0";
+            this.sliderValueLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox4
+            // milageTrackBar
             // 
-            this.textBox4.Location = new System.Drawing.Point(188, 140);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(135, 26);
-            this.textBox4.TabIndex = 13;
+            this.milageTrackBar.AutoSize = false;
+            this.milageTrackBar.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.milageTrackBar.Cursor = System.Windows.Forms.Cursors.NoMoveHoriz;
+            this.milageTrackBar.LargeChange = 100;
+            this.milageTrackBar.Location = new System.Drawing.Point(55, 283);
+            this.milageTrackBar.Maximum = 10000;
+            this.milageTrackBar.Name = "milageTrackBar";
+            this.milageTrackBar.Size = new System.Drawing.Size(279, 40);
+            this.milageTrackBar.SmallChange = 100;
+            this.milageTrackBar.TabIndex = 4;
+            this.milageTrackBar.TickFrequency = 100;
+            this.milageTrackBar.Value = 5000;
+            this.milageTrackBar.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
-            // label7
+            // saveValuesButton
             // 
-            this.label7.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label7.Location = new System.Drawing.Point(12, 183);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(383, 56);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "National Highway and Traffic Safety Commity recommends tire rotations at 3000 mil" +
-    "es.";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.saveValuesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveValuesButton.Location = new System.Drawing.Point(210, 329);
+            this.saveValuesButton.Name = "saveValuesButton";
+            this.saveValuesButton.Size = new System.Drawing.Size(135, 53);
+            this.saveValuesButton.TabIndex = 6;
+            this.saveValuesButton.Text = "Save";
+            this.saveValuesButton.UseVisualStyleBackColor = true;
+            this.saveValuesButton.Click += new System.EventHandler(this.saveValuesButton_Click);
             // 
-            // sliderLbl
+            // milesLbl
             // 
-            this.sliderLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sliderLbl.Location = new System.Drawing.Point(124, 391);
-            this.sliderLbl.Name = "sliderLbl";
-            this.sliderLbl.Size = new System.Drawing.Size(146, 47);
-            this.sliderLbl.TabIndex = 14;
-            this.sliderLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.milesLbl.BackColor = System.Drawing.SystemColors.Control;
+            this.milesLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.milesLbl.Location = new System.Drawing.Point(205, 213);
+            this.milesLbl.Name = "milesLbl";
+            this.milesLbl.Size = new System.Drawing.Size(87, 37);
+            this.milesLbl.TabIndex = 18;
+            this.milesLbl.Text = "Miles";
+            this.milesLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // trackBar1
+            // lockTrackBarButton
             // 
-            this.trackBar1.AutoSize = false;
-            this.trackBar1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.trackBar1.Cursor = System.Windows.Forms.Cursors.NoMoveHoriz;
-            this.trackBar1.Location = new System.Drawing.Point(67, 348);
-            this.trackBar1.Maximum = 10000;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(272, 40);
-            this.trackBar1.TabIndex = 15;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.lockTrackBarButton.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lockTrackBarButton.Image = ((System.Drawing.Image)(resources.GetObject("lockTrackBarButton.Image")));
+            this.lockTrackBarButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("lockTrackBarButton.InitialImage")));
+            this.lockTrackBarButton.Location = new System.Drawing.Point(340, 296);
+            this.lockTrackBarButton.Name = "lockTrackBarButton";
+            this.lockTrackBarButton.Size = new System.Drawing.Size(28, 27);
+            this.lockTrackBarButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.lockTrackBarButton.TabIndex = 21;
+            this.lockTrackBarButton.TabStop = false;
+            this.lockTrackBarButton.Click += new System.EventHandler(this.lockTrackBarButton_Click_1);
             // 
-            // button3
+            // tireInfoButton
             // 
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button3.Location = new System.Drawing.Point(345, 348);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(50, 40);
-            this.button3.TabIndex = 16;
-            this.button3.Text = "Lock";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.tireInfoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tireInfoButton.Location = new System.Drawing.Point(229, 510);
+            this.tireInfoButton.Name = "tireInfoButton";
+            this.tireInfoButton.Size = new System.Drawing.Size(135, 53);
+            this.tireInfoButton.TabIndex = 5;
+            this.tireInfoButton.Text = "Tire Info";
+            this.tireInfoButton.UseVisualStyleBackColor = true;
+            this.tireInfoButton.Click += new System.EventHandler(this.tireInfoButton_Click);
+            // 
+            // otherInfoButton
+            // 
+            this.otherInfoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otherInfoButton.Location = new System.Drawing.Point(34, 510);
+            this.otherInfoButton.Name = "otherInfoButton";
+            this.otherInfoButton.Size = new System.Drawing.Size(135, 53);
+            this.otherInfoButton.TabIndex = 22;
+            this.otherInfoButton.Text = "Tips";
+            this.otherInfoButton.UseVisualStyleBackColor = true;
+            this.otherInfoButton.Click += new System.EventHandler(this.otherInfoButton_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.BackColor = System.Drawing.Color.White;
+            this.progressBar1.ForeColor = System.Drawing.Color.White;
+            this.progressBar1.Location = new System.Drawing.Point(12, 37);
+            this.progressBar1.Maximum = 500;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.progressBar1.Size = new System.Drawing.Size(386, 45);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 24;
+            // 
+            // rotateMilagelbl
+            // 
+            this.rotateMilagelbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.rotateMilagelbl.BackColor = System.Drawing.Color.Transparent;
+            this.rotateMilagelbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rotateMilagelbl.Location = new System.Drawing.Point(336, 88);
+            this.rotateMilagelbl.Name = "rotateMilagelbl";
+            this.rotateMilagelbl.Size = new System.Drawing.Size(68, 20);
+            this.rotateMilagelbl.TabIndex = 26;
+            this.rotateMilagelbl.Text = "0";
+            this.rotateMilagelbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // percentLbl
+            // 
+            this.percentLbl.AutoSize = true;
+            this.percentLbl.Location = new System.Drawing.Point(135, 85);
+            this.percentLbl.Name = "percentLbl";
+            this.percentLbl.Size = new System.Drawing.Size(144, 20);
+            this.percentLbl.TabIndex = 27;
+            this.percentLbl.Text = "Percent Remaining";
+            // 
+            // commentButton
+            // 
+            this.commentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.commentButton.Location = new System.Drawing.Point(34, 444);
+            this.commentButton.Name = "commentButton";
+            this.commentButton.Size = new System.Drawing.Size(135, 53);
+            this.commentButton.TabIndex = 28;
+            this.commentButton.Text = "Comments";
+            this.commentButton.UseVisualStyleBackColor = true;
+            this.commentButton.Click += new System.EventHandler(this.commentButton_Click);
             // 
             // TireOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(407, 667);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.sliderLbl);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(410, 667);
+            this.Controls.Add(this.commentButton);
+            this.Controls.Add(this.percentLbl);
+            this.Controls.Add(this.rotateMilagelbl);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.otherInfoButton);
+            this.Controls.Add(this.tireInfoButton);
+            this.Controls.Add(this.lockTrackBarButton);
+            this.Controls.Add(this.milesLbl);
+            this.Controls.Add(this.saveValuesButton);
+            this.Controls.Add(this.milageTrackBar);
+            this.Controls.Add(this.sliderValueLbl);
+            this.Controls.Add(this.infoLbl);
+            this.Controls.Add(this.installDateTextBox);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.setMilageLbl);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.resetButton);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.tireOptionsFormLBL);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "TireOptionsForm";
             this.Text = "TireOptionsForm";
             this.Load += new System.EventHandler(this.TireOptionsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.milageTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lockTrackBarButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,22 +304,24 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label tireOptionsFormLBL;
+        private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label setMilageLbl;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label sliderLbl;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox installDateTextBox;
+        private System.Windows.Forms.Label infoLbl;
+        private System.Windows.Forms.Label sliderValueLbl;
+        private System.Windows.Forms.TrackBar milageTrackBar;
+        public System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button saveValuesButton;
+        private System.Windows.Forms.Label milesLbl;
+        private System.Windows.Forms.PictureBox lockTrackBarButton;
+        private System.Windows.Forms.Button tireInfoButton;
+        private System.Windows.Forms.Button otherInfoButton;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        public System.Windows.Forms.Label rotateMilagelbl;
+        private System.Windows.Forms.Label percentLbl;
+        private System.Windows.Forms.Button commentButton;
     }
 }
