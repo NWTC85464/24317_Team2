@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainTracker));
             this.tiresButton = new System.Windows.Forms.Button();
             this.wipersButton = new System.Windows.Forms.Button();
             this.airFilterButton = new System.Windows.Forms.Button();
             this.oilButton = new System.Windows.Forms.Button();
             this.mpgButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label2 = new System.Windows.Forms.Label();
             this.vehicalSelectList = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
@@ -123,7 +121,7 @@
             // 
             // vehicalSelectList
             // 
-            this.vehicalSelectList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vehicalSelectList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vehicalSelectList.FormattingEnabled = true;
             this.vehicalSelectList.Items.AddRange(new object[] {
             "Vehical #1",
@@ -134,13 +132,12 @@
             this.vehicalSelectList.Name = "vehicalSelectList";
             this.vehicalSelectList.Size = new System.Drawing.Size(191, 33);
             this.vehicalSelectList.TabIndex = 24;
-            this.vehicalSelectList.Text = "Select Vehical";
+            this.vehicalSelectList.Text = "Select A Vehical";
             // 
             // MainTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(408, 667);
             this.Controls.Add(this.vehicalSelectList);
             this.Controls.Add(this.label2);
@@ -166,7 +163,6 @@
         private System.Windows.Forms.Button oilButton;
         private System.Windows.Forms.Button mpgButton;
         private System.Windows.Forms.Button settingsButton;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox vehicalSelectList;
     }
