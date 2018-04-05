@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MaintenanceTracker
 {
@@ -43,16 +44,10 @@ namespace MaintenanceTracker
                 {
                     curMpg = odoCur / galCur;
 
-                    lblAlert.Text = "Current MPG is: " + curMpg;
+                    //lblAlert.Text = "Current MPG is: " + curMpg;
 
                     //Enter math code here!
-                    lstbxMpgHistory.Items.Add("Todays date: " + today1.ToString("d"));
-                    lstbxMpgHistory.Items.Add( "current MPG: " + Math.Round(curMpg, 2));
-                    lstbxMpgHistory.Items.Add("Odometer: " + Math.Round(odoCur, 2));
-                    lstbxMpgHistory.Items.Add("Gallons used: " + Math.Round(galCur, 2));
                     dgTrack.Rows.Add(today1.ToString("d"), Math.Round(curMpg, 2), Math.Round(odoCur, 2), Math.Round(galCur, 2));
-                    //dgTrack.Rows.Insert(0, new double[] { today1.ToString("d"), Math.Round(curMpg, 2), Math.Round(odoCur, 2), Math.Round(galCur, 2) });
-
                 }
                 else
                 {
@@ -71,6 +66,19 @@ namespace MaintenanceTracker
 
             
 
+        }
+
+        private void btnExitMpg_Click(object sender, EventArgs e)
+        {
+            System.IO.StreamWriter objWrt;
+            objWrt = new System.IO.StreamWriter(@".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\odo.txt", true);
+            string createText = odoCur + "\n";
+            objWrt.WriteLine(createText);
+            objWrt.Close();
+            //File.WriteAllText(@"C:\Users\Andrew\Source\Repos\24317_Team2\MaintenanceTracker\Resources\odo.txt", createText);
+
+            // Open the file to read from.
+            //string readText = File.ReadAllText(@"C:\Users\Andrew\Source\Repos\24317_Team2\MaintenanceTracker\Resources\odo.txt");
         }
     }
 }
