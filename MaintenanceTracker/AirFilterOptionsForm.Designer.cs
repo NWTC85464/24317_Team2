@@ -40,16 +40,17 @@
             this.engAirFilterTbLb = new System.Windows.Forms.Label();
             this.cabAirFilterTbLb = new System.Windows.Forms.Label();
             this.calLB = new System.Windows.Forms.Label();
+            this.generalMessageLB = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.engAirFilterTB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cabAirFilterTB)).BeginInit();
             this.SuspendLayout();
             // 
             // engAirFilter
             // 
-            this.engAirFilter.Location = new System.Drawing.Point(45, 543);
-            this.engAirFilter.Margin = new System.Windows.Forms.Padding(4);
+            this.engAirFilter.Location = new System.Drawing.Point(44, 542);
+            this.engAirFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.engAirFilter.Name = "engAirFilter";
-            this.engAirFilter.Size = new System.Drawing.Size(176, 176);
+            this.engAirFilter.Size = new System.Drawing.Size(176, 177);
             this.engAirFilter.TabIndex = 0;
             this.engAirFilter.Text = "Engine Air Filter";
             this.engAirFilter.UseVisualStyleBackColor = true;
@@ -57,10 +58,10 @@
             // 
             // cabAirFilter
             // 
-            this.cabAirFilter.Location = new System.Drawing.Point(309, 543);
-            this.cabAirFilter.Margin = new System.Windows.Forms.Padding(4);
+            this.cabAirFilter.Location = new System.Drawing.Point(308, 542);
+            this.cabAirFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cabAirFilter.Name = "cabAirFilter";
-            this.cabAirFilter.Size = new System.Drawing.Size(176, 176);
+            this.cabAirFilter.Size = new System.Drawing.Size(176, 177);
             this.cabAirFilter.TabIndex = 1;
             this.cabAirFilter.Text = "Cabin Air Filter";
             this.cabAirFilter.UseVisualStyleBackColor = true;
@@ -69,39 +70,43 @@
             // engAirFilterLB
             // 
             this.engAirFilterLB.AutoSize = true;
-            this.engAirFilterLB.Location = new System.Drawing.Point(24, 17);
+            this.engAirFilterLB.Location = new System.Drawing.Point(12, 121);
             this.engAirFilterLB.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.engAirFilterLB.Name = "engAirFilterLB";
-            this.engAirFilterLB.Size = new System.Drawing.Size(0, 25);
+            this.engAirFilterLB.Size = new System.Drawing.Size(165, 25);
             this.engAirFilterLB.TabIndex = 4;
+            this.engAirFilterLB.Text = "Engine Air Filter";
             // 
             // cabAirFilterLB
             // 
             this.cabAirFilterLB.AutoSize = true;
-            this.cabAirFilterLB.Location = new System.Drawing.Point(24, 175);
+            this.cabAirFilterLB.Location = new System.Drawing.Point(12, 190);
             this.cabAirFilterLB.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.cabAirFilterLB.Name = "cabAirFilterLB";
-            this.cabAirFilterLB.Size = new System.Drawing.Size(0, 25);
+            this.cabAirFilterLB.Size = new System.Drawing.Size(154, 25);
             this.cabAirFilterLB.TabIndex = 5;
+            this.cabAirFilterLB.Text = "Cabin Air Filter";
             // 
             // engAirFilterTB
             // 
-            this.engAirFilterTB.Location = new System.Drawing.Point(45, 430);
+            this.engAirFilterTB.Location = new System.Drawing.Point(44, 431);
+            this.engAirFilterTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.engAirFilterTB.Name = "engAirFilterTB";
             this.engAirFilterTB.Size = new System.Drawing.Size(176, 90);
             this.engAirFilterTB.TabIndex = 6;
             // 
             // cabAirFilterTB
             // 
-            this.cabAirFilterTB.Location = new System.Drawing.Point(309, 430);
+            this.cabAirFilterTB.Location = new System.Drawing.Point(308, 431);
+            this.cabAirFilterTB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cabAirFilterTB.Name = "cabAirFilterTB";
             this.cabAirFilterTB.Size = new System.Drawing.Size(176, 90);
             this.cabAirFilterTB.TabIndex = 7;
             // 
             // resetBTTN
             // 
-            this.resetBTTN.Location = new System.Drawing.Point(45, 738);
-            this.resetBTTN.Margin = new System.Windows.Forms.Padding(4);
+            this.resetBTTN.Location = new System.Drawing.Point(44, 738);
+            this.resetBTTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.resetBTTN.Name = "resetBTTN";
             this.resetBTTN.Size = new System.Drawing.Size(176, 56);
             this.resetBTTN.TabIndex = 9;
@@ -111,8 +116,8 @@
             // 
             // exitBTTN
             // 
-            this.exitBTTN.Location = new System.Drawing.Point(309, 738);
-            this.exitBTTN.Margin = new System.Windows.Forms.Padding(4);
+            this.exitBTTN.Location = new System.Drawing.Point(308, 738);
+            this.exitBTTN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.exitBTTN.Name = "exitBTTN";
             this.exitBTTN.Size = new System.Drawing.Size(176, 56);
             this.exitBTTN.TabIndex = 8;
@@ -123,7 +128,8 @@
             // engAirFilterTbLb
             // 
             this.engAirFilterTbLb.AutoSize = true;
-            this.engAirFilterTbLb.Location = new System.Drawing.Point(40, 495);
+            this.engAirFilterTbLb.Location = new System.Drawing.Point(40, 494);
+            this.engAirFilterTbLb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.engAirFilterTbLb.Name = "engAirFilterTbLb";
             this.engAirFilterTbLb.Size = new System.Drawing.Size(0, 25);
             this.engAirFilterTbLb.TabIndex = 10;
@@ -131,7 +137,8 @@
             // cabAirFilterTbLb
             // 
             this.cabAirFilterTbLb.AutoSize = true;
-            this.cabAirFilterTbLb.Location = new System.Drawing.Point(304, 495);
+            this.cabAirFilterTbLb.Location = new System.Drawing.Point(304, 494);
+            this.cabAirFilterTbLb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.cabAirFilterTbLb.Name = "cabAirFilterTbLb";
             this.cabAirFilterTbLb.Size = new System.Drawing.Size(0, 25);
             this.cabAirFilterTbLb.TabIndex = 11;
@@ -139,16 +146,27 @@
             // calLB
             // 
             this.calLB.AutoSize = true;
-            this.calLB.Location = new System.Drawing.Point(45, 326);
+            this.calLB.Location = new System.Drawing.Point(40, 373);
+            this.calLB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.calLB.Name = "calLB";
             this.calLB.Size = new System.Drawing.Size(0, 25);
             this.calLB.TabIndex = 12;
+            // 
+            // generalMessageLB
+            // 
+            this.generalMessageLB.AutoSize = true;
+            this.generalMessageLB.Location = new System.Drawing.Point(12, 17);
+            this.generalMessageLB.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.generalMessageLB.Name = "generalMessageLB";
+            this.generalMessageLB.Size = new System.Drawing.Size(0, 25);
+            this.generalMessageLB.TabIndex = 13;
             // 
             // AirFilterOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 835);
+            this.Controls.Add(this.generalMessageLB);
             this.Controls.Add(this.calLB);
             this.Controls.Add(this.cabAirFilterTbLb);
             this.Controls.Add(this.engAirFilterTbLb);
@@ -162,7 +180,7 @@
             this.Controls.Add(this.engAirFilter);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AirFilterOptionsForm";
             this.Text = "Air Filter";
             ((System.ComponentModel.ISupportInitialize)(this.engAirFilterTB)).EndInit();
@@ -185,5 +203,6 @@
         private System.Windows.Forms.Label engAirFilterTbLb;
         private System.Windows.Forms.Label cabAirFilterTbLb;
         private System.Windows.Forms.Label calLB;
+        private System.Windows.Forms.Label generalMessageLB;
     }
 }
