@@ -127,15 +127,14 @@ namespace MaintenanceTracker
                 milageTrackBar.Value = Int32.Parse(tireOptionsClass.Vehical1Values[1]); 
                 installDateTextBox.Text = tireOptionsClass.Vehical1Values[2];
                
-
                 //Deactivate the track bar slide
                 milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
                 lockTrackBarButton.Image = Resources._lock;
 
-                    //Set scrollLock value to 1.
-                    scrollLock = 1;
+                //Set scrollLock value to 1.
+                scrollLock = 1;
 
                 //Call progressBar method.
                 pBarSet(vehicalNum, milage, tireOptionsClass.Vehical1Values[1]);
@@ -237,64 +236,6 @@ namespace MaintenanceTracker
             installDateTextBox.Visible = false;
             saveValuesButton.Visible = false;
             setBtn1.Visible = true;
-
-            //Doesnt work now, Need to figure this out......................
-            //progressBar1.Value = milageTrackBar.Value;
-        }
-
-        private void storeArrays(int vehicalNum, string installDateTextBox, int milageTrackBar)
-        {
-            //Local variables.
-            int vn = vehicalNum;
-            int mtB = milageTrackBar;
-            string iDTB = installDateTextBox;
-
-            switch (vehicalNum)
-            {
-                case 1:
-                    //Add tire values to array.
-                    tireOptionsClass.Vehical1Values[0] = vn.ToString();
-                    tireOptionsClass.Vehical1Values[1] = mtB.ToString();
-                    tireOptionsClass.Vehical1Values[2] = iDTB;
-                    pBarSet(vehicalNum, milage, tireOptionsClass.Vehical1Values[1]);
-
-                    //Int to state values added to restore form on return.
-                    tireOptionsClass.V1Stored = 1;
-                    break;
-                case 2:
-                    //Add tire values to array.
-                    tireOptionsClass.Vehical2Values[0] = vn.ToString();
-                    tireOptionsClass.Vehical2Values[1] = mtB.ToString();
-                    tireOptionsClass.Vehical2Values[2] = iDTB;
-                    pBarSet(vehicalNum, milage, tireOptionsClass.Vehical2Values[1]);
-
-                    //Int to state values added to restore form on return.
-                    tireOptionsClass.V2Stored = 1;
-                    break;
-                case 3:
-                    //Add tire values to array.
-                    tireOptionsClass.Vehical3Values[0] = vn.ToString();
-                    tireOptionsClass.Vehical3Values[1] = mtB.ToString();
-                    tireOptionsClass.Vehical3Values[2] = iDTB;
-                    pBarSet(vehicalNum, milage, tireOptionsClass.Vehical3Values[1]);
-
-                    //Int to state values added to restore form on return.
-                    tireOptionsClass.V3Stored = 1;
-                    break;
-                case 4:
-                    //Add tire values to array.
-                    tireOptionsClass.Vehical4Values[0] = vn.ToString();
-                    tireOptionsClass.Vehical4Values[1] = mtB.ToString();
-                    tireOptionsClass.Vehical4Values[2] = iDTB;
-                    pBarSet(vehicalNum, milage, tireOptionsClass.Vehical4Values[1]);
-
-                    //Int to state values added to restore form on return.
-                    tireOptionsClass.V4Stored = 1;
-                    break;
-                default:
-                    //
-                    break;
-            }           
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -361,51 +302,52 @@ namespace MaintenanceTracker
                 //Clear text boxes.
                 installDateTextBox.Text = "";
 
-                if (vNum == 1)
+                switch (vNum)
                 {
-                    //Reset tire values array.          
-                    for (int index = 0; index < tireOptionsClass.Vehical1Values.Length; index++)
-                    {
-                        tireOptionsClass.Vehical1Values[index] = "";
-                    }
+                    case 1:
+                        //Reset tire values array.          
+                        for (int index = 0; index < tireOptionsClass.Vehical1Values.Length; index++)
+                        {
+                            tireOptionsClass.Vehical1Values[index] = "";
+                        }
 
-                    tireOptionsClass.V1Stored = 0;
-                    progressBar1.Value = 0;
-                } 
-                else if (vNum == 2)
-                {
-                    //Reset tire values array.          
-                    for (int index = 0; index < tireOptionsClass.Vehical2Values.Length; index++)
-                    {
-                        tireOptionsClass.Vehical2Values[index] = "";
-                    }
-                    tireOptionsClass.V2Stored = 0;
-                    progressBar1.Value = 0;
+                        tireOptionsClass.V1Stored = 0;
+                        progressBar1.Value = 0;
+                        break;
+                    case 2:
+                        //Reset tire values array.          
+                        for (int index = 0; index < tireOptionsClass.Vehical2Values.Length; index++)
+                        {
+                            tireOptionsClass.Vehical2Values[index] = "";
+                        }
+                        tireOptionsClass.V2Stored = 0;
+                        progressBar1.Value = 0;
+                        break;
+                    case 3:
+                        //Reset tire values array.          
+                        for (int index = 0; index < tireOptionsClass.Vehical3Values.Length; index++)
+                        {
+                            tireOptionsClass.Vehical3Values[index] = "";
+                        }
+                        tireOptionsClass.V3Stored = 0;
+                        progressBar1.Value = 0;
+                        break;
+                    case 4:
+                        //Reset tire values array.          
+                        for (int index = 0; index < tireOptionsClass.Vehical4Values.Length; index++)
+                        {
+                            tireOptionsClass.Vehical4Values[index] = "";
+                        }
+                        tireOptionsClass.V4Stored = 0;
+                        progressBar1.Value = 0;
+                        break;
+                    default:
+                        //
+                        break;
                 }
-                else if (vNum == 3)
-                {
-                    //Reset tire values array.          
-                    for (int index = 0; index < tireOptionsClass.Vehical3Values.Length; index++)
-                    {
-                        tireOptionsClass.Vehical3Values[index] = "";
-                    }
-                    tireOptionsClass.V3Stored = 0;
-                    progressBar1.Value = 0;
-                }
-                else if (vNum == 4)
-                {
-                    //Reset tire values array.          
-                    for (int index = 0; index < tireOptionsClass.Vehical4Values.Length; index++)
-                    {
-                        tireOptionsClass.Vehical4Values[index] = "";
-                    }
-                    tireOptionsClass.V4Stored = 0;
-                    progressBar1.Value = 0;
-                }
-
-                //Display message everything was reset.
-                MessageBox.Show("All values have been Reset!", "Success");
                 
+                //Display message everything was reset.
+                MessageBox.Show("All values have been Reset!", "Success");                
             }
             if (res == DialogResult.Cancel)
             {
@@ -515,67 +457,69 @@ namespace MaintenanceTracker
         private void exitButton_Click(object sender, EventArgs e)
         {
             //Save values to textfiles.
-            if (vehicalNum == 1)
+            switch (vehicalNum)
             {
-                if ((!File.Exists("v1Info.txt"))) //Checking if v1Info.txt exists or not
-                {
-                    FileStream fs = File.Create("v1Info.txt"); //Creates v1Info.txt
-                    fs.Close(); //Closes file stream
-                }
-                //Write each line of tireOptionsClass.Vehical1Values array to text file.               
-                foreach (string line in tireOptionsClass.Vehical1Values)
-                {
-                    //Write tireOptionsClass.Vehical1Values array values to file upon form exit.
-                    File.WriteAllLines(path1, tireOptionsClass.Vehical1Values);                    
-                   // MessageBox.Show(line);
-                }
+                case 1:
+                    if ((!File.Exists("v1Info.txt"))) //Checking if v1Info.txt exists or not
+                    {
+                        FileStream fs = File.Create("v1Info.txt"); //Creates v1Info.txt
+                        fs.Close(); //Closes file stream
+                    }
+                    //Write each line of tireOptionsClass.Vehical1Values array to text file.               
+                    foreach (string line in tireOptionsClass.Vehical1Values)
+                    {
+                        //Write tireOptionsClass.Vehical1Values array values to file upon form exit.
+                        File.WriteAllLines(path1, tireOptionsClass.Vehical1Values);
+                        // MessageBox.Show(line);
+                    }
+                    break;
+                case 2:
+                    if ((!File.Exists("v2Info.txt"))) //Checking if v2Info.txt exists or not
+                    {
+                        FileStream fs = File.Create("v2Info.txt"); //Creates v2Info.txt
+                        fs.Close(); //Closes file stream
+                    }
+                    //Write each line of tireOptionsClass.Vehical2Values array to text file.               
+                    foreach (string line in tireOptionsClass.Vehical2Values)
+                    {
+                        //Write tireOptionsClass.Vehical2Values array values to file upon form exit.
+                        File.WriteAllLines(path2, tireOptionsClass.Vehical2Values);
+                        // MessageBox.Show(line);
+                    }
+                    break;
+                case 3:
+                    if ((!File.Exists("v3Info.txt"))) //Checking if v3Info.txt exists or not
+                    {
+                        FileStream fs = File.Create("v3Info.txt"); //Creates v3Info.txt
+                        fs.Close(); //Closes file stream
+                    }
+                    //Write each line of tireOptionsClass.Vehical3Values array to text file.               
+                    foreach (string line in tireOptionsClass.Vehical3Values)
+                    {
+                        //Write tireOptionsClass.Vehical2Values array values to file upon form exit.
+                        File.WriteAllLines(path3, tireOptionsClass.Vehical3Values);
+                        // MessageBox.Show(line);
+                    }
+                    break;
+                case 4:
+                    if ((!File.Exists("v4Info.txt"))) //Checking if v4Info.txt exists or not
+                    {
+                        FileStream fs = File.Create("v4Info.txt"); //Creates v4Info.txt
+                        fs.Close(); //Closes file stream
+                    }
+                    //Write each line of tireOptionsClass.Vehical4Values array to text file.               
+                    foreach (string line in tireOptionsClass.Vehical4Values)
+                    {
+                        //Write tireOptionsClass.Vehical4Values array values to file upon form exit.
+                        File.WriteAllLines(path4, tireOptionsClass.Vehical4Values);
+                        // MessageBox.Show(line);
+                    }
+                    break;
+                default:
+                    //
+                    break;
             }
-            else if (vehicalNum == 2)
-            {
-                if ((!File.Exists("v2Info.txt"))) //Checking if v2Info.txt exists or not
-                {
-                    FileStream fs = File.Create("v2Info.txt"); //Creates v2Info.txt
-                    fs.Close(); //Closes file stream
-                }
-                //Write each line of tireOptionsClass.Vehical2Values array to text file.               
-                foreach (string line in tireOptionsClass.Vehical2Values)
-                {
-                    //Write tireOptionsClass.Vehical2Values array values to file upon form exit.
-                    File.WriteAllLines(path2, tireOptionsClass.Vehical2Values);
-                    // MessageBox.Show(line);
-                }
-            }
-            else if (vehicalNum == 3)
-            {
-                if ((!File.Exists("v3Info.txt"))) //Checking if v3Info.txt exists or not
-                {
-                    FileStream fs = File.Create("v3Info.txt"); //Creates v3Info.txt
-                    fs.Close(); //Closes file stream
-                }
-                //Write each line of tireOptionsClass.Vehical3Values array to text file.               
-                foreach (string line in tireOptionsClass.Vehical3Values)
-                {
-                    //Write tireOptionsClass.Vehical2Values array values to file upon form exit.
-                    File.WriteAllLines(path3, tireOptionsClass.Vehical3Values);
-                    // MessageBox.Show(line);
-                }
-            }
-            else if (vehicalNum == 4)
-            {
-                if ((!File.Exists("v4Info.txt"))) //Checking if v4Info.txt exists or not
-                {
-                    FileStream fs = File.Create("v4Info.txt"); //Creates v4Info.txt
-                    fs.Close(); //Closes file stream
-                }
-                //Write each line of tireOptionsClass.Vehical4Values array to text file.               
-                foreach (string line in tireOptionsClass.Vehical4Values)
-                {
-                    //Write tireOptionsClass.Vehical4Values array values to file upon form exit.
-                    File.WriteAllLines(path4, tireOptionsClass.Vehical4Values);
-                    // MessageBox.Show(line);
-                }
-            }
-            this.Close();
+           this.Close();
         }
 
         //Methods....
@@ -689,6 +633,61 @@ namespace MaintenanceTracker
                     break;
                 default:
                     //Nothing to load.
+                    break;
+            }
+        }
+
+        private void storeArrays(int vehicalNum, string installDateTextBox, int milageTrackBar)
+        {
+            //Local variables.
+            int vn = vehicalNum;
+            int mtB = milageTrackBar;
+            string iDTB = installDateTextBox;
+
+            switch (vehicalNum)
+            {
+                case 1:
+                    //Add tire values to array.
+                    tireOptionsClass.Vehical1Values[0] = vn.ToString();
+                    tireOptionsClass.Vehical1Values[1] = mtB.ToString();
+                    tireOptionsClass.Vehical1Values[2] = iDTB;
+                    pBarSet(vehicalNum, milage, tireOptionsClass.Vehical1Values[1]);
+
+                    //Int to state values added to restore form on return.
+                    tireOptionsClass.V1Stored = 1;
+                    break;
+                case 2:
+                    //Add tire values to array.
+                    tireOptionsClass.Vehical2Values[0] = vn.ToString();
+                    tireOptionsClass.Vehical2Values[1] = mtB.ToString();
+                    tireOptionsClass.Vehical2Values[2] = iDTB;
+                    pBarSet(vehicalNum, milage, tireOptionsClass.Vehical2Values[1]);
+
+                    //Int to state values added to restore form on return.
+                    tireOptionsClass.V2Stored = 1;
+                    break;
+                case 3:
+                    //Add tire values to array.
+                    tireOptionsClass.Vehical3Values[0] = vn.ToString();
+                    tireOptionsClass.Vehical3Values[1] = mtB.ToString();
+                    tireOptionsClass.Vehical3Values[2] = iDTB;
+                    pBarSet(vehicalNum, milage, tireOptionsClass.Vehical3Values[1]);
+
+                    //Int to state values added to restore form on return.
+                    tireOptionsClass.V3Stored = 1;
+                    break;
+                case 4:
+                    //Add tire values to array.
+                    tireOptionsClass.Vehical4Values[0] = vn.ToString();
+                    tireOptionsClass.Vehical4Values[1] = mtB.ToString();
+                    tireOptionsClass.Vehical4Values[2] = iDTB;
+                    pBarSet(vehicalNum, milage, tireOptionsClass.Vehical4Values[1]);
+
+                    //Int to state values added to restore form on return.
+                    tireOptionsClass.V4Stored = 1;
+                    break;
+                default:
+                    //
                     break;
             }
         }
