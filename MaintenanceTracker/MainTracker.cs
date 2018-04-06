@@ -29,8 +29,8 @@ namespace MaintenanceTracker
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
-        }    
-        
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {            
             //Set font of buttons.
@@ -94,9 +94,9 @@ namespace MaintenanceTracker
         private void mpgButton_Click(object sender, EventArgs e)
         {
             //Call mpg options form.
-            //MPGOptionsForm mPGOptionsForm = new MPGOptionsForm();
-            // mPGOptionsForm.ShowDialog();
-            mpg += 500;
+            MPGOptionsForm mPGOptionsForm = new MPGOptionsForm();
+             mPGOptionsForm.ShowDialog();
+            //mpg += 500;
         }
 
         private void oilButton_Click(object sender, EventArgs e)
