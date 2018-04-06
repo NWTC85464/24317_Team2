@@ -29,8 +29,8 @@ namespace MaintenanceTracker
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
-        }    
-        
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {            
             //Set font of buttons.
