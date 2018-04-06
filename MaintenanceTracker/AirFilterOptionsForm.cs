@@ -1,7 +1,8 @@
-﻿using MaintenanceTracker.Properties;
+﻿using MaintenanceTracker.Classes;
+using MaintenanceTracker.Properties;
 using System;
 using System.Drawing;
-using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 
 namespace MaintenanceTracker
@@ -9,20 +10,28 @@ namespace MaintenanceTracker
 
     public partial class AirFilterOptionsForm : System.Windows.Forms.Form
     {
+        MainFormClass mFormClass = new MainFormClass();
+        colorThemes cThemes = new colorThemes();
+                
+        //Read Text
+        private string path = Path.Combine(Directory.GetCurrentDirectory(), "AirFilterData.txt");
 
         //Variables
         private int mls = 15000;
         private int mx = 30000;
-        private int eMX = 30000;
+        private int eMX = 25000;
         private int cMX = 30000;
         private int eCount = 0;
         private int cCount = 0;
         private int oneFourth = 0;
         private int oneHalf = 0;
         private int threeFourth = 0;
-        private Color primaryColor = Color.FromArgb(0, 188, 212);
-        private Color secondaryColor = Color.FromArgb(149, 117, 205);
-        
+        private Color primaryColor = Color.FromArgb(255, 255, 255);
+        private Color secondaryColor = Color.FromArgb(255, 255, 255);
+
+        private string txt, vehicle;
+
+
         public AirFilterOptionsForm()
         {
             InitializeComponent();
@@ -30,11 +39,10 @@ namespace MaintenanceTracker
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            //Calculations
-            oneFourth = mx / 4;
-            oneHalf = mx / 2;
-            threeFourth = oneFourth + oneHalf;
-
+            //Assign the colors
+            primaryColor = cThemes.PrimaryColor;
+            secondaryColor = cThemes.SecondaryColor;
+            
             //OnLoad Display
             this.BackColor = primaryColor;
 
@@ -42,35 +50,38 @@ namespace MaintenanceTracker
             EngFilterStatusColor(mls);
             CabFilterStatusColor(mls);
 
+            //General Message Label
+            generalMessageLB.Font = new Font(generalMessageLB.Font.FontFamily, 9);
+            generalMessageLB.Text = "The engine and cabin air filters in your car are \n" +
+                "recommended to be replaced between 15,000 \n" +
+                "to 30,000 miles or once a year.";
+
             //Engine & Cabin Air Filter Text
-            engAirFilterLB.Font = new Font(engAirFilterLB.Font.FontFamily, 10);
-            engAirFilterLB.Text = "Replace the engine air filter every \n" +
-                "15,000-30,000 miles, or once a \n" +
-                "year. You are currently at: \n" +
-                "" + string.Format("{0:n0}", mls) + "/" + string.Format("{0:n0}", mx) + " miles.";
+            engAirFilterLB.Font = new Font(engAirFilterLB.Font.FontFamily, 9);
+            engAirFilterLB.Text = "Current Engine Air Filter: \n" +
+                "" + string.Format("{0:n0}", mls) + "/" + string.Format("{0:n0}", eMX) + " miles.";
 
-            cabAirFilterLB.Font = new Font(cabAirFilterLB.Font.FontFamily, 10);
-            cabAirFilterLB.Text = "Replace the cabin air filter every \n" +
-                "15,000-25,000 miles, or once a \n" +
-                "year. You are currently at: \n" +
-                "" + string.Format("{0:n0}", mls) + "/" + string.Format("{0:n0}", mx) + " miles.";
+            cabAirFilterLB.Font = new Font(cabAirFilterLB.Font.FontFamily, 9);
+            cabAirFilterLB.Text = "Current Cabin Air Filter: \n" +
+                "" + string.Format("{0:n0}", mls) + "/" + string.Format("{0:n0}", cMX) + " miles.";
 
-            //Track bar
+            //Track bars
             engAirFilterTB.Visible = false;
             cabAirFilterTB.Visible = false;
 
-            //Track barLabel
+            //Track labels
             engAirFilterTbLb.Visible = false;
-            engAirFilterTbLb.Text = mx.ToString();
             cabAirFilterTbLb.Visible = false;
-            cabAirFilterTbLb.Text = mx.ToString();
-
-            
         }
 
         //Engine's Filter Condition
         private void EngFilterStatusColor(int M)
         {
+            //Calculations
+            oneFourth = eMX/ 4;
+            oneHalf = eMX / 2;
+            threeFourth = oneFourth + oneHalf;
+
             //Define the Engine Air Filter Background color
             //depending on the MPG or amount of months it
             //has been used.
@@ -95,13 +106,17 @@ namespace MaintenanceTracker
         //Engine's Filter Condition
         private void CabFilterStatusColor(int M)
         {
+            //Calculations
+            oneFourth = cMX / 4;
+            oneHalf = cMX / 2;
+            threeFourth = oneFourth + oneHalf;
+
             //Define the Cabin Air Filter Background color
             //depending on the MPG or amount of months it
             //has been used.
             if (M <= oneFourth)
             {
                 cabAirFilter.BackColor = Color.Green;
-
             }
             else if (M > oneFourth && M <= oneHalf)
             {
@@ -126,6 +141,14 @@ namespace MaintenanceTracker
                 engAirFilter.Image = Resources.X120;
                 engAirFilterTB.Visible = true;
                 engAirFilterTbLb.Visible = true;
+                engAirFilterTB.Scroll += new System.EventHandler(EngAirFilterSB_Scroll);
+                engAirFilterTB.Minimum = 0;
+                engAirFilterTB.Maximum = mx;
+                engAirFilterTB.TickFrequency = 5000;
+                engAirFilterTB.LargeChange = 10000;
+                engAirFilterTB.SmallChange = 5000;
+                engAirFilterTB.Value = eMX;
+                engAirFilterTbLb.Text = eMX.ToString();
                 eCount++;
             }
             else if (eCount == 1)
@@ -134,14 +157,12 @@ namespace MaintenanceTracker
                 EngFilterStatusColor(mls);
                 engAirFilter.Image = null;
 
-                // Set up the TrackBar.
+                engAirFilterLB.Text = "Current Engine Air Filter: \n" +
+                    "" + string.Format("{0:n0}", mls) + "/" + string.Format("{0:n0}", eMX) + " miles.";
+
+                //Hide the track bar and label
                 engAirFilterTB.Visible = false;
                 engAirFilterTbLb.Visible = false;
-                engAirFilterTB.Scroll += new System.EventHandler(EngAirFilterSB_Scroll);
-                engAirFilterTB.Maximum = mx;
-                engAirFilterTB.TickFrequency = 5000;
-                engAirFilterTB.LargeChange = 10000;
-                engAirFilterTB.SmallChange = 5000;
                 eCount--;
             }
         }
@@ -155,6 +176,14 @@ namespace MaintenanceTracker
                 cabAirFilter.Image = Resources.X120;
                 cabAirFilterTB.Visible = true;
                 cabAirFilterTbLb.Visible = true;
+                cabAirFilterTB.Scroll += new System.EventHandler(CabAirFilterSB_Scroll);
+                cabAirFilterTB.Minimum = 0;
+                cabAirFilterTB.Maximum = mx;
+                cabAirFilterTB.TickFrequency = 5000;
+                cabAirFilterTB.LargeChange = 10000;
+                cabAirFilterTB.SmallChange = 5000;
+                cabAirFilterTB.Value = cMX;
+                cabAirFilterTbLb.Text = cMX.ToString();
                 cCount++;
             }
             else if (cCount == 1)
@@ -163,30 +192,28 @@ namespace MaintenanceTracker
                 CabFilterStatusColor(mls);
                 cabAirFilter.Image = null;
 
-                // Set up the TrackBar.
+                cabAirFilterLB.Text = "Current Cabin Air Filter: \n" +
+                    "" + string.Format("{0:n0}", mls) + "/" + string.Format("{0:n0}", cMX) + " miles.";
+
+                //Hide the track bar and label
                 cabAirFilterTB.Visible = false;
                 cabAirFilterTbLb.Visible = false;
-                cabAirFilterTB.Scroll += new System.EventHandler(CabAirFilterSB_Scroll);
-                cabAirFilterTB.Maximum = mx;
-                cabAirFilterTB.TickFrequency = 5000;
-                cabAirFilterTB.LargeChange = 10000;
-                cabAirFilterTB.SmallChange = 5000;
                 cCount--;
             }
         }
-
-
 
         private void EngAirFilterSB_Scroll(object sender, System.EventArgs e)
         {
             //Display the trackbar value in the text box.
             engAirFilterTbLb.Text = "" + engAirFilterTB.Value;
+            eMX = engAirFilterTB.Value;
         }
 
         private void CabAirFilterSB_Scroll(object sender, System.EventArgs e)
         {
             //Display the trackbar value in the text box.
             cabAirFilterTbLb.Text = "" + cabAirFilterTB.Value;
+            cMX = cabAirFilterTB.Value;
         }
 
         private void ExitBTTN_Click(object sender, EventArgs e)
@@ -196,7 +223,34 @@ namespace MaintenanceTracker
 
         private void ResetBTTN_Click(object sender, EventArgs e)
         {
-           
+            //Switch between the selected vehicle
+            switch (mFormClass.VehicalNumber)
+            {
+                case 1:
+                    vehicle = "Hennessey Venom F5";
+                    break;
+                case 2:
+                    vehicle = "Koenigsegg Agera RS";
+                    break;
+                case 3:
+                    vehicle = "Hennessey Venom GT ";
+                    break;
+                case 4:
+                    vehicle = "Bugatti Chiron";
+                    break;
+                default:
+                    vehicle = "Da-Pinto";
+                    break;
+            }
+
+            //Write to the file
+            File.WriteAllText(path, vehicle);
+
+            //Read the file
+            txt = File.ReadAllText(path);
+
+            //Display the result
+            generalMessageLB.Text = txt;
         }
     }
 }
