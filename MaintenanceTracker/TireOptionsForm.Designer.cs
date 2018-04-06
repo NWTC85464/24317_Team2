@@ -32,9 +32,8 @@
             this.tireOptionsFormLBL = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.setMilageLbl = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.installLbl = new System.Windows.Forms.Label();
+            this.sldLbl = new System.Windows.Forms.Label();
             this.installDateTextBox = new System.Windows.Forms.TextBox();
             this.infoLbl = new System.Windows.Forms.Label();
             this.sliderValueLbl = new System.Windows.Forms.Label();
@@ -85,45 +84,34 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
-            // label5
+            // installLbl
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(99, 269);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(201, 25);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Enter Installed Date";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.installLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.installLbl.Location = new System.Drawing.Point(64, 251);
+            this.installLbl.Name = "installLbl";
+            this.installLbl.Size = new System.Drawing.Size(171, 27);
+            this.installLbl.TabIndex = 12;
+            this.installLbl.Text = "Tire Install Date:";
+            this.installLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // setMilageLbl
+            // sldLbl
             // 
-            this.setMilageLbl.AutoSize = true;
-            this.setMilageLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setMilageLbl.Location = new System.Drawing.Point(78, 107);
-            this.setMilageLbl.Name = "setMilageLbl";
-            this.setMilageLbl.Size = new System.Drawing.Size(233, 29);
-            this.setMilageLbl.TabIndex = 16;
-            this.setMilageLbl.Text = "Set rotation milage";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(54, 188);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(283, 20);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Adjust slider to set rotation milage";
+            this.sldLbl.AutoSize = true;
+            this.sldLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sldLbl.Location = new System.Drawing.Point(60, 116);
+            this.sldLbl.Name = "sldLbl";
+            this.sldLbl.Size = new System.Drawing.Size(283, 20);
+            this.sldLbl.TabIndex = 19;
+            this.sldLbl.Text = "Adjust slider to set rotation milage";
             // 
             // installDateTextBox
             // 
             this.installDateTextBox.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.installDateTextBox.Location = new System.Drawing.Point(135, 297);
+            this.installDateTextBox.Location = new System.Drawing.Point(241, 252);
             this.installDateTextBox.Name = "installDateTextBox";
-            this.installDateTextBox.Size = new System.Drawing.Size(135, 26);
+            this.installDateTextBox.Size = new System.Drawing.Size(102, 26);
             this.installDateTextBox.TabIndex = 2;
-            this.installDateTextBox.Text = "432, 723";
+            this.installDateTextBox.Text = "10-10-2016";
             this.installDateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // infoLbl
@@ -141,7 +129,7 @@
             // sliderValueLbl
             // 
             this.sliderValueLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sliderValueLbl.Location = new System.Drawing.Point(111, 141);
+            this.sliderValueLbl.Location = new System.Drawing.Point(111, 182);
             this.sliderValueLbl.Name = "sliderValueLbl";
             this.sliderValueLbl.Size = new System.Drawing.Size(107, 37);
             this.sliderValueLbl.TabIndex = 17;
@@ -153,7 +141,7 @@
             this.milageTrackBar.AutoSize = false;
             this.milageTrackBar.Cursor = System.Windows.Forms.Cursors.NoMoveHoriz;
             this.milageTrackBar.LargeChange = 100;
-            this.milageTrackBar.Location = new System.Drawing.Point(58, 211);
+            this.milageTrackBar.Location = new System.Drawing.Point(64, 139);
             this.milageTrackBar.Maximum = 10000;
             this.milageTrackBar.Name = "milageTrackBar";
             this.milageTrackBar.Size = new System.Drawing.Size(279, 40);
@@ -179,7 +167,7 @@
             // milesLbl
             // 
             this.milesLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.milesLbl.Location = new System.Drawing.Point(208, 141);
+            this.milesLbl.Location = new System.Drawing.Point(208, 182);
             this.milesLbl.Name = "milesLbl";
             this.milesLbl.Size = new System.Drawing.Size(87, 37);
             this.milesLbl.TabIndex = 18;
@@ -191,7 +179,7 @@
             this.lockTrackBarButton.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lockTrackBarButton.Image = ((System.Drawing.Image)(resources.GetObject("lockTrackBarButton.Image")));
             this.lockTrackBarButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("lockTrackBarButton.InitialImage")));
-            this.lockTrackBarButton.Location = new System.Drawing.Point(343, 224);
+            this.lockTrackBarButton.Location = new System.Drawing.Point(349, 152);
             this.lockTrackBarButton.Name = "lockTrackBarButton";
             this.lockTrackBarButton.Size = new System.Drawing.Size(28, 27);
             this.lockTrackBarButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -267,10 +255,9 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(410, 667);
             this.Controls.Add(this.milageTrackBar);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.setMilageLbl);
+            this.Controls.Add(this.installLbl);
             this.Controls.Add(this.commentButton);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.sldLbl);
             this.Controls.Add(this.percentLbl);
             this.Controls.Add(this.installDateTextBox);
             this.Controls.Add(this.progressBar1);
@@ -299,9 +286,8 @@
 
         private System.Windows.Forms.Label tireOptionsFormLBL;
         private System.Windows.Forms.Button resetButton;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label setMilageLbl;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label installLbl;
+        private System.Windows.Forms.Label sldLbl;
         private System.Windows.Forms.TextBox installDateTextBox;
         private System.Windows.Forms.Label infoLbl;
         private System.Windows.Forms.Label sliderValueLbl;

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using MaintenanceTracker.Properties;
 
 namespace MaintenanceTracker
 {
@@ -15,6 +16,12 @@ namespace MaintenanceTracker
     {
         //Variable.
         public int vehNum;  //Holds vehical number passed in.
+
+        //Create path to save text files.
+        string path1 = @"C:\Users\jk\source\repos\24317_Team2\MaintenanceTracker\Resources\Vehical1\v1Com.txt";
+        string path2 = @"C:\Users\jk\source\repos\24317_Team2\MaintenanceTracker\Resources\Vehical2\v2Info.txt";
+        string path3 = @"C:\Users\jk\source\repos\24317_Team2\MaintenanceTracker\Resources\Vehical3\v3Info.txt";
+        string path4 = @"C:\Users\jk\source\repos\24317_Team2\MaintenanceTracker\Resources\Vehical4\v4Info.txt";
 
         public TireCommentForm(int vehicalNumber)
         {
@@ -39,6 +46,7 @@ namespace MaintenanceTracker
                 
                 if (vehNum == 1)
                 {
+                   
                     //Read comments text area and write to text file then close outputFile.            
                     outputFile = File.CreateText("Vehical 1 Comments.txt");
                     outputFile.WriteLine(richTextBox1.Text);
@@ -51,6 +59,7 @@ namespace MaintenanceTracker
                     outputFile.WriteLine(richTextBox1.Text);
                     outputFile.Close();
                 }
+
                 else if (vehNum == 3)
                 {
                     //Read comments text area and write to text file then close outputFile.     

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,20 +15,47 @@ namespace MaintenanceTracker
     //TODO:
     //
     //Add install date format validation.
+    //Need to write tire options data to a text file to save when form clases.
+
+    // Read each line of the file into a string array. Each element
+    // of the array is one line of the file.
+    //string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Public\TestFolder\WriteLines2.txt");
+    // // Open the file to read from.
+    //string[] readText = File.ReadAllLines(path, Encoding.UTF8);
+    //    foreach (string s in readText)
+    //    {
+    //       Console.WriteLine(s);
+    //   }
+    //Build set button and make visibilty of rotation ans track back hidden at start.
 
     public partial class TireOptionsForm : System.Windows.Forms.Form
     {
         TireOptionsClass tireOptionsClass = new TireOptionsClass();
         MainFormClass mainFormClass = new MainFormClass();
         MainTracker mainTracker = new MainTracker();
-        
+
+        //Create set button.
+        public Button setBtn1 = new Button();
+
         //Variables.
         public int vehicalNum;          //Holds vehical number.
         private int scrollLock = 0;     //Store value to lock track bar. 
-        public int milage;              //Store MPG mileage from MPG form.
+        public int milage;              //Store MPG mileage from MPG form.       
+
+        //Create path to save text files.
+        string path1 = @"C:\Users\jk\source\repos\24317_Team2\MaintenanceTracker\Resources\v1Info.txt";
+        string path2 = @"C:\Users\jk\source\repos\24317_Team2\MaintenanceTracker\Resources\v2Info.txt";
+        string path3 = @"C:\Users\jk\source\repos\24317_Team2\MaintenanceTracker\Resources\v3Info.txt";
+        string path4 = @"C:\Users\jk\source\repos\24317_Team2\MaintenanceTracker\Resources\v4Info.txt";
+
 
         public TireOptionsForm(int vehicalNum, int MPG)
         {
+          
+            // Create a file to write to.
+            //string createText = "Hello and Welcome" + Environment.NewLine;
+            //File.WriteAllText(path1, createText);
+
             //Set vehical number and mpg from passed in value.
             this.vehicalNum = vehicalNum;
             this.milage = MPG;
@@ -37,29 +65,70 @@ namespace MaintenanceTracker
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
 
+            //Create set button.
+            //var setBtn1 = new Button();
+            setBtn1.Name = "setBtn1";
+            setBtn1.Text = "Set";
+            setBtn1.Font = new Font(setBtn1.Font.FontFamily, 10, FontStyle.Bold);
+            setBtn1.FlatStyle = FlatStyle.Popup;
+            setBtn1.Location = new Point(100, 225);
+            setBtn1.Click += setBtn1_Click;
+            this.Controls.Add(setBtn1);
+
+            //Hide track bar, installDate textbox, and associated labels.
+            //setMilageLbl.Visible = false;
+            sliderValueLbl.Visible = false;
+            milesLbl.Visible = false;
+            sldLbl.Visible = false;
+            milageTrackBar.Visible = false;
+            lockTrackBarButton.Visible = false;
+            installLbl.Visible = false;
+            installDateTextBox.Visible = false;
+            saveValuesButton.Visible = false;
+
             //percentLbl.Parent = progressBar1;
             //percentLbl.Location = pos;
             //percentLbl.BackColor = Color.Transparent;
         }
 
+        private void setBtn1_Click(object sender, EventArgs e)
+        {
+            //Set to visible.
+            //setMilageLbl.Visible = true;
+            sliderValueLbl.Visible = true;
+            milesLbl.Visible = true;
+            sldLbl.Visible = true;
+            milageTrackBar.Visible = true;
+            lockTrackBarButton.Visible = true;
+            installLbl.Visible = true;
+            installDateTextBox.Visible = true;
+            saveValuesButton.Visible = true;
+            //etBtn1.Visible = false;
+        }
+
         private void TireOptionsForm_Load(object sender, EventArgs e)
         {
+            //Load values form saved text file.
+            //loadVehicalSavedValues();
+
             /////////-----------------------------///////////////////////////////
             milageTrackBar.TickStyle = TickStyle.BottomRight;
             milageTrackBar.TickFrequency = 1000;
+            //milageTrackBar.TickStyle.
             /////////----------------------------///////////////////////////
-            infoLbl.Text = "Vehical" + tireOptionsClass.Vehical1Values[0];
+            infoLbl.Text = "Vehical" + vehicalNum;
 
             if (tireOptionsClass.V1Stored == 1 && vehicalNum == 1)
-            {
-                    //Fill form with array values.......
-                    sliderValueLbl.Text = tireOptionsClass.Vehical1Values[1];
-                    milageTrackBar.Value = Int32.Parse(tireOptionsClass.Vehical1Values[1]); 
-                    installDateTextBox.Text = tireOptionsClass.Vehical1Values[2];
-                    infoLbl.Text = "Vehical" + tireOptionsClass.Vehical1Values[0];
+            {               
+                //Fill form with array values.......
+                infoLbl.Text = "Vehical" + tireOptionsClass.Vehical1Values[0];
+                sliderValueLbl.Text = tireOptionsClass.Vehical1Values[1];
+                milageTrackBar.Value = Int32.Parse(tireOptionsClass.Vehical1Values[1]); 
+                installDateTextBox.Text = tireOptionsClass.Vehical1Values[2];
+               
 
-                    //Deactivate the track bar slide
-                    milageTrackBar.Enabled = false;
+                //Deactivate the track bar slide
+                milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
                 lockTrackBarButton.Image = Resources._lock;
@@ -140,7 +209,37 @@ namespace MaintenanceTracker
                 progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             }
         }
-        
+
+        private void loadVehicalSavedValues()
+        {
+            
+
+            
+
+            if (tireOptionsClass.Vehical1Values != null || tireOptionsClass.Vehical1Values.Length != 0)
+            {
+                tireOptionsClass.V1Stored = 0;
+            }
+            else
+            {
+                if (tireOptionsClass.V1Stored == 0)
+                {
+                    //Load vehical text values into arrays.
+                    var v1 = File.ReadAllLines(path1);
+                    //var v2 = File.ReadAllLines(path2);
+                    //var v3 = File.ReadAllLines(path3);
+                    //var v4 = File.ReadAllLines(path4);
+
+
+                    tireOptionsClass.Vehical1Values = File.ReadLines(path1).ToArray();
+                }
+                else
+                {
+                    tireOptionsClass.V1Stored = 1;
+                }        
+            }
+        }
+
         //Button to store the values enter in the text boxes into a list.
         private void saveValuesButton_Click(object sender, EventArgs e)
         {           
@@ -155,6 +254,18 @@ namespace MaintenanceTracker
 
             //Set scrollLock value to 1.
             scrollLock = 1;
+
+            //Set to visible.
+            //setMilageLbl.Visible = false;
+            sliderValueLbl.Visible = false;
+            milesLbl.Visible = false;
+            sldLbl.Visible = false;
+            milageTrackBar.Visible = false;
+            lockTrackBarButton.Visible = false;
+            installLbl.Visible = false;
+            installDateTextBox.Visible = false;
+            saveValuesButton.Visible = false;
+            setBtn1.Visible = true;
 
             //Doesnt work now, Need to figure this out......................
             //progressBar1.Value = milageTrackBar.Value;
@@ -419,8 +530,6 @@ namespace MaintenanceTracker
                 MessageBox.Show("Tire need to be rotated");
                 //Do nothing.....
             }
-           
-
         }
 
         private void commentButton_Click(object sender, EventArgs e)
@@ -430,6 +539,67 @@ namespace MaintenanceTracker
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
+            //Save values to textfiles.
+            if (vehicalNum == 1)
+            {
+                if ((!File.Exists("v1Info.txt"))) //Checking if v1Info.txt exists or not
+                {
+                    FileStream fs = File.Create("v1Info.txt"); //Creates v1Info.txt
+                    fs.Close(); //Closes file stream
+                }
+                //Write each line of tireOptionsClass.Vehical1Values array to text file.               
+                foreach (string line in tireOptionsClass.Vehical1Values)
+                {
+                    //Write tireOptionsClass.Vehical1Values array values to file upon form exit.
+                    File.WriteAllLines(path1, tireOptionsClass.Vehical1Values);                    
+                   // MessageBox.Show(line);
+                }
+            }
+            else if (vehicalNum == 2)
+            {
+                if ((!File.Exists("v2Info.txt"))) //Checking if v2Info.txt exists or not
+                {
+                    FileStream fs = File.Create("v2Info.txt"); //Creates v2Info.txt
+                    fs.Close(); //Closes file stream
+                }
+                //Write each line of tireOptionsClass.Vehical2Values array to text file.               
+                foreach (string line in tireOptionsClass.Vehical2Values)
+                {
+                    //Write tireOptionsClass.Vehical2Values array values to file upon form exit.
+                    File.WriteAllLines(path2, tireOptionsClass.Vehical2Values);
+                    // MessageBox.Show(line);
+                }
+            }
+            else if (vehicalNum == 3)
+            {
+                if ((!File.Exists("v3Info.txt"))) //Checking if v3Info.txt exists or not
+                {
+                    FileStream fs = File.Create("v3Info.txt"); //Creates v3Info.txt
+                    fs.Close(); //Closes file stream
+                }
+                //Write each line of tireOptionsClass.Vehical3Values array to text file.               
+                foreach (string line in tireOptionsClass.Vehical3Values)
+                {
+                    //Write tireOptionsClass.Vehical2Values array values to file upon form exit.
+                    File.WriteAllLines(path3, tireOptionsClass.Vehical3Values);
+                    // MessageBox.Show(line);
+                }
+            }
+            else if (vehicalNum == 4)
+            {
+                if ((!File.Exists("v4Info.txt"))) //Checking if v4Info.txt exists or not
+                {
+                    FileStream fs = File.Create("v4Info.txt"); //Creates v4Info.txt
+                    fs.Close(); //Closes file stream
+                }
+                //Write each line of tireOptionsClass.Vehical4Values array to text file.               
+                foreach (string line in tireOptionsClass.Vehical4Values)
+                {
+                    //Write tireOptionsClass.Vehical4Values array values to file upon form exit.
+                    File.WriteAllLines(path4, tireOptionsClass.Vehical4Values);
+                    // MessageBox.Show(line);
+                }
+            }
             this.Close();
         }        
     }
