@@ -37,13 +37,14 @@
             this.lblShowCurrentMpg = new System.Windows.Forms.Label();
             this.lblLifetimeMpg = new System.Windows.Forms.Label();
             this.lblShowLifeMpg = new System.Windows.Forms.Label();
-            this.lstbxMpgHistory = new System.Windows.Forms.ListBox();
             this.lblAlert = new System.Windows.Forms.Label();
             this.dgTrack = new System.Windows.Forms.DataGridView();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExitMpg = new System.Windows.Forms.Button();
+            this.mpgList = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgTrack)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,15 +126,6 @@
             this.lblShowLifeMpg.TabIndex = 8;
             this.lblShowLifeMpg.Text = "life Here";
             // 
-            // lstbxMpgHistory
-            // 
-            this.lstbxMpgHistory.FormattingEnabled = true;
-            this.lstbxMpgHistory.ItemHeight = 16;
-            this.lstbxMpgHistory.Location = new System.Drawing.Point(32, 261);
-            this.lstbxMpgHistory.Name = "lstbxMpgHistory";
-            this.lstbxMpgHistory.Size = new System.Drawing.Size(184, 52);
-            this.lstbxMpgHistory.TabIndex = 9;
-            // 
             // lblAlert
             // 
             this.lblAlert.AutoSize = true;
@@ -151,11 +143,11 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dgTrack.Location = new System.Drawing.Point(12, 359);
+            this.dgTrack.Location = new System.Drawing.Point(12, 364);
             this.dgTrack.Name = "dgTrack";
             this.dgTrack.ReadOnly = true;
             this.dgTrack.RowTemplate.Height = 24;
-            this.dgTrack.Size = new System.Drawing.Size(338, 150);
+            this.dgTrack.Size = new System.Drawing.Size(338, 114);
             this.dgTrack.TabIndex = 11;
             // 
             // date
@@ -187,14 +179,34 @@
             this.Column4.ReadOnly = true;
             this.Column4.Width = 70;
             // 
+            // btnExitMpg
+            // 
+            this.btnExitMpg.Location = new System.Drawing.Point(140, 484);
+            this.btnExitMpg.Name = "btnExitMpg";
+            this.btnExitMpg.Size = new System.Drawing.Size(76, 38);
+            this.btnExitMpg.TabIndex = 12;
+            this.btnExitMpg.Text = "Exit MPG";
+            this.btnExitMpg.UseVisualStyleBackColor = true;
+            this.btnExitMpg.Click += new System.EventHandler(this.btnExitMpg_Click);
+            // 
+            // mpgList
+            // 
+            this.mpgList.FormattingEnabled = true;
+            this.mpgList.ItemHeight = 16;
+            this.mpgList.Location = new System.Drawing.Point(35, 249);
+            this.mpgList.Name = "mpgList";
+            this.mpgList.Size = new System.Drawing.Size(268, 84);
+            this.mpgList.TabIndex = 13;
+            // 
             // MPGOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(362, 534);
+            this.Controls.Add(this.mpgList);
+            this.Controls.Add(this.btnExitMpg);
             this.Controls.Add(this.dgTrack);
             this.Controls.Add(this.lblAlert);
-            this.Controls.Add(this.lstbxMpgHistory);
             this.Controls.Add(this.lblShowLifeMpg);
             this.Controls.Add(this.lblLifetimeMpg);
             this.Controls.Add(this.lblShowCurrentMpg);
@@ -225,12 +237,13 @@
         private System.Windows.Forms.Label lblShowCurrentMpg;
         private System.Windows.Forms.Label lblLifetimeMpg;
         private System.Windows.Forms.Label lblShowLifeMpg;
-        private System.Windows.Forms.ListBox lstbxMpgHistory;
         private System.Windows.Forms.Label lblAlert;
         private System.Windows.Forms.DataGridView dgTrack;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Button btnExitMpg;
+        private System.Windows.Forms.ListBox mpgList;
     }
 }
