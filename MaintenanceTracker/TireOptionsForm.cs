@@ -57,12 +57,7 @@ namespace MaintenanceTracker
             //Create files if not existing.
             fileExsists = createTextFiles(vehicalNum, path1, path2, path3, path4, fileExsists);
            
-            //If to check if file exsits, if it does call loadVehicalSavedValues method to load values from file.
-            if (fileExsists == true)
-            {
-                //Load values form saved text file.
-                loadVehicalSavedValues(vehicalNum);
-            }
+           
 
             //Set vehical number and mpg from passed in value.
             this.vehicalNum = vehicalNum;
@@ -111,6 +106,13 @@ namespace MaintenanceTracker
 
         private void TireOptionsForm_Load(object sender, EventArgs e)
         {
+            //If to check if file exsits, if it does call loadVehicalSavedValues method to load values from file.
+            if (fileExsists == true)
+            {
+                //Load values form saved text file.
+                loadVehicalSavedValues(vehicalNum);
+            }
+
             //Set trackbar tick marks.
             milageTrackBar.TickStyle = TickStyle.BottomRight;
             milageTrackBar.TickFrequency = 1000;
@@ -347,7 +349,7 @@ namespace MaintenanceTracker
                 }
                 
                 //Display message everything was reset.
-                MessageBox.Show("All values have been Reset!", "Success");                
+                MessageBox.Show("All values have been Reset!", "Success");
             }
             if (res == DialogResult.Cancel)
             {
@@ -460,18 +462,19 @@ namespace MaintenanceTracker
             switch (vehicalNum)
             {
                 case 1:
-                    if ((!File.Exists("v1Info.txt"))) //Checking if v1Info.txt exists or not
-                    {
-                        FileStream fs = File.Create("v1Info.txt"); //Creates v1Info.txt
-                        fs.Close(); //Closes file stream
-                    }
-                    //Write each line of tireOptionsClass.Vehical1Values array to text file.               
-                    foreach (string line in tireOptionsClass.Vehical1Values)
-                    {
-                        //Write tireOptionsClass.Vehical1Values array values to file upon form exit.
-                        File.WriteAllLines(path1, tireOptionsClass.Vehical1Values);
-                        // MessageBox.Show(line);
-                    }
+                        if ((!File.Exists("v1Info.txt"))) //Checking if v1Info.txt exists or not
+                        {
+                            FileStream fs = File.Create("v1Info.txt"); //Creates v1Info.txt
+                            fs.Close(); //Closes file stream
+                        }
+                        //Write each line of tireOptionsClass.Vehical1Values array to text file.               
+                        foreach (string line in tireOptionsClass.Vehical1Values)
+                        {
+                            //Write tireOptionsClass.Vehical1Values array values to file upon form exit.
+                            File.WriteAllLines(path1, tireOptionsClass.Vehical1Values);
+                            // MessageBox.Show(line);
+                        }
+                                        
                     break;
                 case 2:
                     if ((!File.Exists("v2Info.txt"))) //Checking if v2Info.txt exists or not
@@ -541,13 +544,21 @@ namespace MaintenanceTracker
                     }
                     else
                     {
-                        fE = true;
+                        if (new FileInfo(p1).Length == 6)
+                        {
+                            fE = false;
+                        }
+                        else
+                        {
+                            fE = true;
+                        }
+                       
                     }
                     break;
                 case 2:
                     if (!File.Exists(p2))
                     {
-                        // Create a file to write to for vehical 2.
+                        // Create a file to write to for vehcial 1.
                         using (StreamWriter sw = File.CreateText(p2))
                         {
                             sw.WriteLine(" ");
@@ -558,13 +569,21 @@ namespace MaintenanceTracker
                     }
                     else
                     {
-                        fE = true;
+                        if (new FileInfo(p2).Length == 6)
+                        {
+                            fE = false;
+                        }
+                        else
+                        {
+                            fE = true;
+                        }
+
                     }
                     break;
                 case 3:
                     if (!File.Exists(p3))
                     {
-                        // Create a file to write to for vehical 3.
+                        // Create a file to write to for vehcial 1.
                         using (StreamWriter sw = File.CreateText(p3))
                         {
                             sw.WriteLine(" ");
@@ -575,16 +594,24 @@ namespace MaintenanceTracker
                     }
                     else
                     {
-                        fE = true;
+                        if (new FileInfo(p3).Length == 6)
+                        {
+                            fE = false;
+                        }
+                        else
+                        {
+                            fE = true;
+                        }
+
                     }
                     break;
                 case 4:
                     if (!File.Exists(p4))
                     {
-                        // Create a file to write to for vehical 4.
+                        // Create a file to write to for vehcial 1.
                         using (StreamWriter sw = File.CreateText(p4))
                         {
-                            sw.WriteLine("1");
+                            sw.WriteLine(" ");
                             sw.WriteLine(" ");
                             sw.WriteLine(" ");
                             fE = false;
@@ -592,11 +619,19 @@ namespace MaintenanceTracker
                     }
                     else
                     {
-                        fE = true;
+                        if (new FileInfo(p4).Length == 6)
+                        {
+                            fE = false;
+                        }
+                        else
+                        {
+                            fE = true;
+                        }
+
                     }
                     break;
                 default:
-                    Console.WriteLine("Default case");
+                    //
                     break;
             }
             return fE;
