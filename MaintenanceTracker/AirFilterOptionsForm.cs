@@ -3,6 +3,7 @@ using MaintenanceTracker.Properties;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -253,43 +254,66 @@ namespace MaintenanceTracker
                     break;
             }
 
-            ////Write to the file
-            //File.WriteAllText(path, vehicle);
-
-            ////Read the file
-            //txt = File.ReadAllText(path);
-
             //Display the result
             generalMessageLB.Text = this.vehicle + " " + vNumber.ToString();
-            
+
             Vehicle[] vehicle = new Vehicle[4];
-            vehicle[0] = new Vehicle(vNumber, "Ford", "Mustange", mx);
-            vehicle[1] = new Vehicle(2, "Ford", "Fiesta", 30000);
-            vehicle[2] = new Vehicle(3, "Subaru", "Outback", 20000);
-            vehicle[3] = new Vehicle(4, "Dodge", "Challenger", 120000);
+            vehicle[0] = new Vehicle(1, "Ford", "Mustange", 1);
+            vehicle[1] = new Vehicle(2, "Ford", "Fiesta", 2);
+            vehicle[2] = new Vehicle(3, "Subaru", "Outback", 3);
+            vehicle[3] = new Vehicle(4, "Dodge", "Challenger", 4);
 
-            using (XmlWriter writer = XmlWriter.Create("AirFilterData.xml"))
+            string filePath = "AirFilterData";
+            string extensionType = ".XML";
+
+            if (!File.Exists(filePath + extensionType))
             {
-                writer.WriteStartDocument();
-                writer.WriteStartElement("Vehicle");
-
-                foreach (Vehicle v in vehicle)
+                using (XmlTextWriter writer = new XmlTextWriter(filePath + extensionType, Encoding.UTF8))
                 {
                     writer.WriteStartElement("Vehicle");
-
-                    writer.WriteElementString("ID", v.Id.ToString());   // <-- These are new
-                    writer.WriteElementString("Make", v.FirstName);
-                    writer.WriteElementString("Model", v.LastName);
-                    writer.WriteElementString("ODO", v.Salary.ToString());
-                    writer.WriteElementString("Filters", "Filter Type");
-
-
                     writer.WriteEndElement();
+                    writer.Close();
                 }
 
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
+                Console.WriteLine("File didn't exists and was creates successfully");
             }
+
+            // Xml exists now
+            // Adding a child to the xml
+            using (XmlTextReader read = new XmlTextReader(filePath + extensionType))
+            {
+                using (XmlTextWriter write = new XmlTextWriter(filePath + "TEMP.XML", Encoding.UTF8))
+                {
+                    //Start of the Main Fields
+                    write.WriteStartElement("Vehicle");
+                    foreach (Vehicle v in vehicle)
+                    {
+                        //Sub Vehicle Fields
+                        write.WriteStartElement("Vehicle");
+                        write.WriteAttributeString("Number",v.Id.ToString());
+                        write.WriteElementString("Make", v.Make);
+                        write.WriteElementString("Model", v.Model);
+                        write.WriteElementString("ODO", v.ODO.ToString());
+
+                        //Sub Filter Fields
+                        write.WriteStartElement("Filter");
+                        write.WriteElementString("Air_Filter", "AirFilter");
+                        write.WriteElementString("Engine_Filter", "EngineFilter");
+
+                        //End of Sub Filter Fields
+                        write.WriteEndElement();
+
+                        //End of the Vehicle Fields
+                        write.WriteEndElement();
+
+                    }
+                    //End of the Main Fields
+                    write.WriteEndElement();
+                }
+            }
+
+            File.Delete(filePath + extensionType);
+            File.Move(filePath + "TEMP.XML", filePath + extensionType);
         }
     }
 }
