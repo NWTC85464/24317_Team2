@@ -93,6 +93,16 @@ namespace MaintenanceTracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap wiper {
+            get {
+                object obj = ResourceManager.GetObject("wiper", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap worn {
             get {
                 object obj = ResourceManager.GetObject("worn", resourceCulture);
