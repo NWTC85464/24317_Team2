@@ -291,7 +291,7 @@ namespace MaintenanceTracker
 
             try
             {
-                progressBar1.Maximum = rotate;
+                //progressBar1.Maximum = rotate;
                 progressBar1.Value = progressBar1.Maximum - miles;
 
                 if (progressBar1.Value > (rotate / 2))
