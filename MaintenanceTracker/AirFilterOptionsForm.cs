@@ -4,32 +4,38 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace MaintenanceTracker
 {
 
     public partial class AirFilterOptionsForm : System.Windows.Forms.Form
     {
+        //Classes
         MainFormClass mFormClass = new MainFormClass();
         colorThemes cThemes = new colorThemes();
-                
-        //Read Text
-        private string path = Path.Combine(Directory.GetCurrentDirectory(), "AirFilterData.txt");
-
+           
         //Variables
-        private int mls = 15000;
-        private int mx = 30000;
-        private int eMX = 25000;
-        private int cMX = 30000;
-        private int eCount = 0;
-        private int cCount = 0;
-        private int oneFourth = 0;
-        private int oneHalf = 0;
-        private int threeFourth = 0;
-        private Color primaryColor = Color.FromArgb(255, 255, 255);
-        private Color secondaryColor = Color.FromArgb(255, 255, 255);
+        //Int
+        private int mls = 15000,
+            mx = 30000,
+            eMX = 25000,
+            cMX = 30000,
+            eCount = 0,
+            cCount = 0,
+            oneFourth = 0,
+            oneHalf = 0,
+            threeFourth = 0,
+            vNumber = 0;
 
-        private string txt, vehicle;
+        //Colors
+        private Color primaryColor = Color.FromArgb(255, 255, 255),
+            secondaryColor = Color.FromArgb(255, 255, 255);
+
+        //Strings
+        private string txt, 
+            vehicle,
+            path = Path.Combine(Directory.GetCurrentDirectory(), "AirFilterData.txt");
 
 
         public AirFilterOptionsForm()
@@ -227,30 +233,63 @@ namespace MaintenanceTracker
             switch (mFormClass.VehicalNumber)
             {
                 case 1:
-                    vehicle = "Hennessey Venom F5";
+                    this.vehicle = "Hennessey Venom F5";
+                    vNumber = 1;
                     break;
                 case 2:
-                    vehicle = "Koenigsegg Agera RS";
+                    this.vehicle = "Koenigsegg Agera RS";
+                    vNumber = 2;
                     break;
                 case 3:
-                    vehicle = "Hennessey Venom GT ";
+                    this.vehicle = "Hennessey Venom GT ";
+                    vNumber = 3;
                     break;
                 case 4:
-                    vehicle = "Bugatti Chiron";
+                    this.vehicle = "Bugatti Chiron";
+                    vNumber = 4;
                     break;
                 default:
-                    vehicle = "Da-Pinto";
+                    this.vehicle = "Da-Pinto";
                     break;
             }
 
-            //Write to the file
-            File.WriteAllText(path, vehicle);
+            ////Write to the file
+            //File.WriteAllText(path, vehicle);
 
-            //Read the file
-            txt = File.ReadAllText(path);
+            ////Read the file
+            //txt = File.ReadAllText(path);
 
             //Display the result
-            generalMessageLB.Text = txt;
+            generalMessageLB.Text = this.vehicle + " " + vNumber.ToString();
+            
+            Vehicle[] vehicle = new Vehicle[4];
+            vehicle[0] = new Vehicle(vNumber, "Ford", "Mustange", mx);
+            vehicle[1] = new Vehicle(2, "Ford", "Fiesta", 30000);
+            vehicle[2] = new Vehicle(3, "Subaru", "Outback", 20000);
+            vehicle[3] = new Vehicle(4, "Dodge", "Challenger", 120000);
+
+            using (XmlWriter writer = XmlWriter.Create("AirFilterData.xml"))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("Vehicle");
+
+                foreach (Vehicle v in vehicle)
+                {
+                    writer.WriteStartElement("Vehicle");
+
+                    writer.WriteElementString("ID", v.Id.ToString());   // <-- These are new
+                    writer.WriteElementString("Make", v.FirstName);
+                    writer.WriteElementString("Model", v.LastName);
+                    writer.WriteElementString("ODO", v.Salary.ToString());
+                    writer.WriteElementString("Filters", "Filter Type");
+
+
+                    writer.WriteEndElement();
+                }
+
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
+            }
         }
     }
 }

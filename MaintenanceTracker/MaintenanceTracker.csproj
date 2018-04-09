@@ -83,6 +83,7 @@
       <DependentUpon>AirFilterOptionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\colorThemes.cs" />
+    <Compile Include="Classes\Vehicle.cs" />
     <Compile Include="MainFormClass.cs" />
     <Compile Include="MainTracker.cs">
       <SubType>Form</SubType>
