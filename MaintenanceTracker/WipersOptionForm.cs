@@ -168,7 +168,7 @@ namespace MaintenanceTracker
                 }
 
             }
-
+            ///
             //Brand name
             if (string.IsNullOrWhiteSpace(notesTextBox.Text))
             {
