@@ -16,7 +16,13 @@ namespace MaintenanceTracker
     {
          WipersOptionsClass wipersOptionsClass = new WipersOptionsClass();
         //Variables.
-        public int vehicleNum;          //Holds vehical number.
+        public int vehicleNum;          //Holds Vehicle number.
+        string nextInstallDateParse;
+        string installedDateParse;
+        double driver;
+        double passager;
+        double rear;
+        //string notes;
 
         //Create paths to hold each vehicle's info - save text files.
         string path1 = @"C:\Users\x12 t2015\source\repos\24317_Team2g1\MaintenanceTracker\Resources\v1Info.txt";
@@ -29,7 +35,7 @@ namespace MaintenanceTracker
         {
             InitializeComponent();
 
-            //Set vehical number and mpg from passed in value.
+            //Set Vehicle number and mpg from passed in value.
             this.vehicleNum = vehicleNum;
 
             //Form background color.
@@ -58,7 +64,7 @@ namespace MaintenanceTracker
                 //Fill form with array values.......
                 vehicleNumLabel.Text = "Wiper Info for Vehicle #" + wipersOptionsClass.Vehicle1Values[0];
                 //sliderValueLbl.Text = wipersOptionsClass.Vehicle1Values[1];
-                //milageTrackBar.Value = Int32.Parse(wiperOptionClass.Vehical1Values[1]);
+                //milageTrackBar.Value = Int32.Parse(wiperOptionClass.Vehicle1Values[1]);
                 installedDateTimePicker.Text = wipersOptionsClass.Vehicle1Values[2];
 
 
@@ -72,7 +78,7 @@ namespace MaintenanceTracker
                 //scrollLock = 1;
 
                 //Call progressBar method.
-                progressBar(vehicleNum, wipersOptionsClass.Vehicle1Values[0]);
+                //progressBar(vehicleNum, wipersOptionsClass.Vehicle1Values[0]);
             }
             else if (wipersOptionsClass.V2Stored == 1 && vehicleNum == 2)
             {
@@ -92,7 +98,7 @@ namespace MaintenanceTracker
                 //scrollLock = 1;
 
                 //Call ProgressBar method.
-                progressBar(vehicleNum, wipersOptionsClass.Vehicle2Values[0]);
+                //progressBar(vehicleNum, wipersOptionsClass.Vehicle2Values[0]);
             }
             else if (wipersOptionsClass.V3Stored == 1 && vehicleNum == 3)
             {
@@ -112,7 +118,7 @@ namespace MaintenanceTracker
                 //scrollLock = 1;
 
                 //Call progressBar method.
-                progressBar(vehicleNum, wipersOptionsClass.Vehicle3Values[1]);
+                //progressBar(vehicleNum, wipersOptionsClass.Vehicle3Values[1]);
             }
             else if (wipersOptionsClass.V4Stored == 1 && vehicleNum == 4)
             {
@@ -132,7 +138,7 @@ namespace MaintenanceTracker
                 //scrollLock = 1;
 
                 //Call progressBar method.
-                progressBar(vehicleNum, wipersOptionsClass.Vehicle4Values[1]);
+                //progressBar(vehicleNum, wipersOptionsClass.Vehicle4Values[1]);
             }
             else
             {
@@ -202,11 +208,14 @@ namespace MaintenanceTracker
                 // Get the current date.
                 DateTime thisDay = installedDateTimePicker.Value.Date;
 
-                DateTime answer = thisDay.AddDays(180);
+                DateTime nextInstallDate = thisDay.AddDays(180);
 
-                string day = answer.ToString("D");
+                nextInstallDateParse = nextInstallDate.ToString("D");
+
+                installedDateParse = thisDay.ToString("D");   // To be passed to be stored
+
                 // Display the next replacement date.
-                nextReplaceDateDisplayLabel.Text = day.ToString();
+                nextReplaceDateDisplayLabel.Text = nextInstallDateParse.ToString();
             }
             
             // Customer can leave wiper size textboxes blank
@@ -219,7 +228,7 @@ namespace MaintenanceTracker
             }
             else
             {
-                double driver;
+                //double driver;
                     if (!double.TryParse(driverSideTextBox.Text, out driver))
                     {
                         MessageBox.Show("This is a number only field");
@@ -227,7 +236,7 @@ namespace MaintenanceTracker
                         return;
                     }
 
-                }
+           }
 
             //Passage side
             if (String.IsNullOrEmpty(passagerSideTextBox.Text))
@@ -237,7 +246,7 @@ namespace MaintenanceTracker
             }
             else
             {
-                double passager;
+                //double passager;
                 if (!double.TryParse(passagerSideTextBox.Text, out passager))
                 {
                     MessageBox.Show("This is a number only field");
@@ -255,7 +264,7 @@ namespace MaintenanceTracker
             }
             else
             {
-                double rear;
+                //double rear;
                 if (!double.TryParse(rearTextBox.Text, out rear))
                 {
                     MessageBox.Show("This is a number only field");
@@ -269,17 +278,26 @@ namespace MaintenanceTracker
             if (string.IsNullOrWhiteSpace(notesTextBox.Text))
             {
                 MessageBox.Show("Please enter brand name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                notesTextBox.Focus();              
-                
+                notesTextBox.Focus();
+                //notes = notesTextBox.Text;
             }
-            
 
+            // Pass info to be stored
+            //storeWipersInfo(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, notesTextBox.Text);
+
+            // Lock everything
+            installedDateTimePicker.Enabled = false;
+            nextReplaceDateDisplayLabel.Enabled = false;
+            driverSideTextBox.Enabled = false;
+            passagerSideTextBox.Enabled = false;
+            rearTextBox.Enabled = false;
+            notesTextBox.Enabled = false;
         }
-
-        // Progress Bar
-        private void progressBar(int vehicalNum, string rotateValue)
+        /*
+        // Progress Bar     ******************NEED TO WORK ON**************************
+        private void progressBar(int VehicleNum, string rotateValue)
         {
-            int vehNum = vehicalNum;
+            int vehNum = VehicleNum;
             //int miles = milage;
             //int rotate = Int32.Parse(rotateValue);
             //double mil = System.Convert.ToDouble(milage);
@@ -291,7 +309,7 @@ namespace MaintenanceTracker
 
             try
             {
-                //progressBar1.Maximum = rotate;
+                progressBar1.Maximum = rotate;
                 progressBar1.Value = progressBar1.Maximum - miles;
 
                 if (progressBar1.Value > (rotate / 2))
@@ -317,6 +335,165 @@ namespace MaintenanceTracker
                 //Do nothing.....
             }
         }
+
+        // Create files to store info   *************NEED TO WORK ON********************
+        private bool createTextFiles(int vn, string p1, string p2, string p3, string p4, bool fE)
+        {
+            switch (vn)
+            {
+                case 1:
+                    if (!File.Exists(p1))
+                    {
+                        // Create a file to write to for vehcial 1.
+                        using (StreamWriter sw = File.CreateText(p1))
+                        {
+                            sw.WriteLine(" ");
+                            sw.WriteLine(" ");
+                            sw.WriteLine(" ");
+                            fE = false;
+                        }
+                    }
+                    else
+                    {
+                        fE = true;
+                    }
+                    break;
+                case 2:
+                    if (!File.Exists(p2))
+                    {
+                        // Create a file to write to for Vehicle 2.
+                        using (StreamWriter sw = File.CreateText(p2))
+                        {
+                            sw.WriteLine(" ");
+                            sw.WriteLine(" ");
+                            sw.WriteLine(" ");
+                            fE = false;
+                        }
+                    }
+                    else
+                    {
+                        fE = true;
+                    }
+                    break;
+                case 3:
+                    if (!File.Exists(p3))
+                    {
+                        // Create a file to write to for Vehicle 3.
+                        using (StreamWriter sw = File.CreateText(p3))
+                        {
+                            sw.WriteLine(" ");
+                            sw.WriteLine(" ");
+                            sw.WriteLine(" ");
+                            fE = false;
+                        }
+                    }
+                    else
+                    {
+                        fE = true;
+                    }
+                    break;
+                case 4:
+                    if (!File.Exists(p4))
+                    {
+                        // Create a file to write to for Vehicle 4.
+                        using (StreamWriter sw = File.CreateText(p4))
+                        {
+                            sw.WriteLine("1");
+                            sw.WriteLine(" ");
+                            sw.WriteLine(" ");
+                            fE = false;
+                        }
+                    }
+                    else
+                    {
+                        fE = true;
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    break;
+            }
+            return fE;
+        }
+
+        // Store wipers info    **************NEED TO WORK ON MORE********************
+        private void storeWipersInfo(int VehicleNum, string installedDateParse, string nextInstallDateParse, double driver, double passager, double rear, string notesTextBox)
+        {
+            //Local variables.
+            int vn = VehicleNum;
+            string iDate = installedDateParse;
+            string nDate = nextInstallDateParse;
+            double d = driver;
+            double p = passager;
+            double r = rear;
+            string notes = notesTextBox;
+
+            switch (VehicleNum)
+            {
+                case 1:
+                    //Add tire values to array.
+                    wipersOptionsClass.Vehicle1Values[0] = vn.ToString();
+                    wipersOptionsClass.Vehicle1Values[1] = iDate.ToString();
+                    wipersOptionsClass.Vehicle1Values[2] = nDate.ToString();
+                    wipersOptionsClass.Vehicle1Values[3] = d.ToString();
+                    wipersOptionsClass.Vehicle1Values[4] = p.ToString();
+                    wipersOptionsClass.Vehicle1Values[5] = r.ToString();
+                    wipersOptionsClass.Vehicle1Values[6] = notes.ToString();
+                    progressBar(VehicleNum, wipersOptionsClass.Vehicle1Values[1]);
+
+                    //Int to state values added to restore form on return.
+                    wipersOptionsClass.V1Stored = 1;
+                    break;
+                case 2:
+                    //Add tire values to array.
+                    wipersOptionsClass.Vehicle1Values[0] = vn.ToString();
+                    wipersOptionsClass.Vehicle1Values[1] = iDate.ToString();
+                    wipersOptionsClass.Vehicle1Values[2] = nDate.ToString();
+                    wipersOptionsClass.Vehicle1Values[3] = d.ToString();
+                    wipersOptionsClass.Vehicle1Values[4] = p.ToString();
+                    wipersOptionsClass.Vehicle1Values[5] = r.ToString();
+                    wipersOptionsClass.Vehicle1Values[6] = notes.ToString();
+                    progressBar(VehicleNum, wipersOptionsClass.Vehicle2Values[1]);
+
+                    //Int to state values added to restore form on return.
+                    wipersOptionsClass.V2Stored = 1;
+                    break;
+                case 3:
+                    //Add tire values to array.
+                    wipersOptionsClass.Vehicle1Values[0] = vn.ToString();
+                    wipersOptionsClass.Vehicle1Values[1] = iDate.ToString();
+                    wipersOptionsClass.Vehicle1Values[2] = nDate.ToString();
+                    wipersOptionsClass.Vehicle1Values[3] = d.ToString();
+                    wipersOptionsClass.Vehicle1Values[4] = p.ToString();
+                    wipersOptionsClass.Vehicle1Values[5] = r.ToString();
+                    wipersOptionsClass.Vehicle1Values[6] = notes.ToString();
+                    progressBar(VehicleNum, wipersOptionsClass.Vehicle3Values[1]);
+
+                    //Int to state values added to restore form on return.
+                    wipersOptionsClass.V3Stored = 1;
+                    break;
+                case 4:
+                    //Add tire values to array.
+                    wipersOptionsClass.Vehicle1Values[0] = vn.ToString();
+                    wipersOptionsClass.Vehicle1Values[1] = iDate.ToString();
+                    wipersOptionsClass.Vehicle1Values[2] = nDate.ToString();
+                    wipersOptionsClass.Vehicle1Values[3] = d.ToString();
+                    wipersOptionsClass.Vehicle1Values[4] = p.ToString();
+                    wipersOptionsClass.Vehicle1Values[5] = r.ToString();
+                    wipersOptionsClass.Vehicle1Values[6] = notes.ToString();
+                    progressBar(VehicleNum, wipersOptionsClass.Vehicle4Values[1]);
+
+                    //Int to state values added to restore form on return.
+                    wipersOptionsClass.V4Stored = 1;
+                    break;
+                default:
+                    //
+                    break;
+            }
+        }
+        */
     }
+
+
 }
 
