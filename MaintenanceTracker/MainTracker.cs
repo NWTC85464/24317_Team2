@@ -20,7 +20,7 @@ namespace MaintenanceTracker
     {
         TireOptionsClass tireOptionsClass = new TireOptionsClass();
         MainFormClass mainFormClass = new MainFormClass();
-
+   
         public int mpg;
 
         public MainTracker()
@@ -29,8 +29,8 @@ namespace MaintenanceTracker
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
-        }    
-        
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {            
             //Set font of buttons.
@@ -63,7 +63,6 @@ namespace MaintenanceTracker
                 //Show the form.              
                 tireOptionsForm.ShowDialog();
             }
-           
         }
 
         private void wipersButton_Click(object sender, EventArgs e)
@@ -77,7 +76,18 @@ namespace MaintenanceTracker
         {
             //Call air filter option form.
             AirFilterOptionsForm airFilterOptionsForm = new AirFilterOptionsForm();
-            airFilterOptionsForm.ShowDialog();
+
+
+            if (vehicalSelectList.SelectedItem == null)
+            {
+                //Display message saying select vehical.              
+                MessageBox.Show("Please Select a vehical first!");
+            }
+            else
+            {
+                //Show the form.             
+                airFilterOptionsForm.ShowDialog();
+            }
         }
 
         private void mpgButton_Click(object sender, EventArgs e)
@@ -100,6 +110,18 @@ namespace MaintenanceTracker
             //Call settings option form.
             SettingsOptionForm settingsOptionForm = new SettingsOptionForm();
             settingsOptionForm.ShowDialog();
+        }
+
+        private void vehicalSelectList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Variable.
+            int vn; //To hold vehical number.
+
+            //Set vn to vehicalSelectList number and add 1.
+            vn = vehicalSelectList.SelectedIndex + 1;
+
+            //Set the Vehical Number
+            mainFormClass.VehicalNumber = vn;
         }
     }
 }
