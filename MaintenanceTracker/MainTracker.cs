@@ -63,7 +63,6 @@ namespace MaintenanceTracker
                 //Show the form.              
                 tireOptionsForm.ShowDialog();
             }
-           
         }
 
         private void wipersButton_Click(object sender, EventArgs e)
