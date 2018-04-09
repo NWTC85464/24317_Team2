@@ -129,6 +129,7 @@
     <Compile Include="WipersOptionForm.Designer.cs">
       <DependentUpon>WipersOptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WipersOptionsClass.cs" />
     <Compile Include="WipersOptionsTipsAndInfo.cs">
       <SubType>Form</SubType>
     </Compile>
