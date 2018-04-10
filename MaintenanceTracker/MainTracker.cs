@@ -63,14 +63,23 @@ namespace MaintenanceTracker
                 //Show the form.              
                 tireOptionsForm.ShowDialog();
             }
-           
         }
 
         private void wipersButton_Click(object sender, EventArgs e)
         {
             //Call wipers options form.
             WipersOptionForm wipersOptionForm = new WipersOptionForm();
-            wipersOptionForm.ShowDialog();
+
+            if (vehicalSelectList.SelectedItem == null)
+            {
+                //Display message saying select vehical.              
+                MessageBox.Show("Please Select a vehical first!");
+            }
+            else
+            {
+                //Show the form.             
+                wipersOptionForm.ShowDialog();
+            }
         }
 
         private void airFilterButton_Click(object sender, EventArgs e)
