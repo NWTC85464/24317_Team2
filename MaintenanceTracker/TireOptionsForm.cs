@@ -15,18 +15,16 @@ namespace MaintenanceTracker
     //TODO:
     //
     //Add install date format validation.
-    //Need to write tire options data to a text file to save when form clases.
-
-    // Read each line of the file into a string array. Each element
-    // of the array is one line of the file.
-    //string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Public\TestFolder\WriteLines2.txt");
-    // // Open the file to read from.
-    //string[] readText = File.ReadAllLines(path, Encoding.UTF8);
-    //    foreach (string s in readText)
-    //    {
-    //       Console.WriteLine(s);
-    //   }
-    //Build set button and make visibilty of rotation ans track back hidden at start.
+    //
+    //change reset message boxes
+    //
+    //change tip message box
+    //
+    //change tire value message box
+    //
+    //Add tire milage start text?
+    //
+    //Add progress bar 2 for tire change feed back?
 
     public partial class TireOptionsForm : System.Windows.Forms.Form
     {
@@ -35,7 +33,7 @@ namespace MaintenanceTracker
         MainFormClass mainFormClass = new MainFormClass();
         MainTracker mainTracker = new MainTracker();
 
-        //Create new set button.
+        //Create new controls.
         public Button setBtn1 = new Button();
 
         //Variables.
@@ -57,26 +55,26 @@ namespace MaintenanceTracker
             //Create files if not existing.
             fileExsists = createTextFiles(vehicalNum, path1, path2, path3, path4, fileExsists);
            
-           
-
             //Set vehical number and mpg from passed in value.
             this.vehicalNum = vehicalNum;
             this.milage = MPG;
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
+           
+            //Create progress bar2.
 
-            //Create set button.
-            setBtn1.Name = "setBtn1";
-            setBtn1.Text = "Set";
-            setBtn1.Font = new Font(setBtn1.Font.FontFamily, 10, FontStyle.Bold);
-            setBtn1.FlatStyle = FlatStyle.Popup;
-            setBtn1.Location = new Point(100, 225);
-            setBtn1.Click += setBtn1_Click;
-            this.Controls.Add(setBtn1);
+            //Add items to combobox.
+            this.comboBox1.Items.Add("30,000");
+            this.comboBox1.Items.Add("40,000");
+            this.comboBox1.Items.Add("50,000");
+            this.comboBox1.Items.Add("60,000");
+            this.comboBox1.Items.Add("70,000");
+            this.comboBox1.Items.Add("80,000");
+            this.comboBox1.Items.Add("90,000");
+            this.comboBox1.Items.Add("100,000");
 
             //Hide track bar, installDate textbox, and associated labels.
-            //setMilageLbl.Visible = false;
             sliderValueLbl.Visible = false;
             milesLbl.Visible = false;
             sldLbl.Visible = false;
@@ -85,24 +83,14 @@ namespace MaintenanceTracker
             installLbl.Visible = false;
             installDateTextBox.Visible = false;
             saveValuesButton.Visible = false;
+            tireMilLbl.Visible = false;
+            comboBox1.Visible = false;
         }
-        
-        
 
-        private void setBtn1_Click(object sender, EventArgs e)
+        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Set to visible.
-            //setMilageLbl.Visible = true;
-            sliderValueLbl.Visible = true;
-            milesLbl.Visible = true;
-            sldLbl.Visible = true;
-            milageTrackBar.Visible = true;
-            lockTrackBarButton.Visible = true;
-            installLbl.Visible = true;
-            installDateTextBox.Visible = true;
-            saveValuesButton.Visible = true;
-            //etBtn1.Visible = false;
-        }
+            throw new NotImplementedException();
+        }        
 
         private void TireOptionsForm_Load(object sender, EventArgs e)
         {
@@ -237,7 +225,9 @@ namespace MaintenanceTracker
             installLbl.Visible = false;
             installDateTextBox.Visible = false;
             saveValuesButton.Visible = false;
-            setBtn1.Visible = true;
+            comboBox1.Visible = false;
+            tireMilLbl.Visible = false;
+            setBtn.Visible = true;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -273,6 +263,23 @@ namespace MaintenanceTracker
             }
         }
 
+        private void setBtn_Click(object sender, EventArgs e)
+        {
+            //Set to visible.
+            //setMilageLbl.Visible = true;
+            sliderValueLbl.Visible = true;
+            milesLbl.Visible = true;
+            sldLbl.Visible = true;
+            milageTrackBar.Visible = true;
+            lockTrackBarButton.Visible = true;
+            installLbl.Visible = true;
+            installDateTextBox.Visible = true;
+            saveValuesButton.Visible = true;
+            setBtn.Visible = false;
+            comboBox1.Visible = true;
+            tireMilLbl.Visible = true;
+        }
+        
         private void resetButton_Click(object sender, EventArgs e)
         {
             //Pass vehicalNum to method.
@@ -448,6 +455,12 @@ namespace MaintenanceTracker
                 MessageBox.Show("Tire need to be rotated");
                 //Do nothing.....
             }
+        }
+
+        private void installDateTextBox_Click(object sender, EventArgs e)
+        {
+            //Empty text box when clicked.
+            installDateTextBox.Text = string.Empty;
         }
 
         private void commentButton_Click(object sender, EventArgs e)
