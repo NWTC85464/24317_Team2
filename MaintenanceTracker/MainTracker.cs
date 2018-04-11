@@ -37,17 +37,17 @@ namespace MaintenanceTracker
         }
 
         private void tiresButton_Click(object sender, EventArgs e)
-        {
+        {/*
             //Variable.
             int vn; //To hold vehical number.
 
             //Set vn to vehicalSelectList number and add 1.
-            //vn = vehicalSelectList.SelectedIndex + 1;
-            vn = 1;
+            vn = vehicalSelectList.SelectedIndex + 1;
+            
             //Create new instance of tireOptionsForm and pass vn and MPG.
             TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, mpg);
             tireOptionsForm.ShowDialog();
-            /*
+            
              if (vehicalSelectList.SelectedItem == null)
              {
                  //Display message saying select vehical.              
@@ -57,7 +57,15 @@ namespace MaintenanceTracker
              {
                  //Show the form.              
                  tireOptionsForm.ShowDialog();
-             }*/
+             }
+             */
+
+            //Test code only.........
+            int vn;
+            vn = 1;
+            TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, mpg);
+            tireOptionsForm.ShowDialog();
+
         }
 
         private void wipersButton_Click(object sender, EventArgs e)
