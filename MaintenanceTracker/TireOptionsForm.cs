@@ -43,10 +43,10 @@ namespace MaintenanceTracker
         bool fileExsists = false;       //bool state if a file exsits.
 
         //Create path to save text files.
-        string path1 = @".\..\..\..\..\..\..\Source\Repos\24317_Team22\MaintenanceTracker\Resources\TiresInfo\v1Info.txt";
-        string path2 = @".\..\..\..\..\..\..\Source\Repos\24317_Team22\MaintenanceTracker\Resources\TiresInfo\v2Info.txt";
-        string path3 = @".\..\..\..\..\..\..\Source\Repos\24317_Team22\MaintenanceTracker\Resources\TiresInfo\v3Info.txt";
-        string path4 = @".\..\..\..\..\..\..\Source\Repos\24317_Team22\MaintenanceTracker\Resources\TiresInfo\v4Info.txt";
+        string path1 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v1Info.txt";
+        string path2 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v2Info.txt";
+        string path3 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v3Info.txt";
+        string path4 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v4Info.txt";
         
         public TireOptionsForm(int vehicalNum, int MPG)
         {
