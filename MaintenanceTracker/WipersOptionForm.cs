@@ -14,33 +14,33 @@ namespace MaintenanceTracker
 {
     public partial class WipersOptionForm : System.Windows.Forms.Form
     {
-         WipersOptionsClass wipersOptionsClass = new WipersOptionsClass();
+        WipersOptionsClass wipersOptionsClass = new WipersOptionsClass();
         //Variables.
-        public int vehicleNum;          //Holds Vehicle number.
-        string nextInstallDateParse;
-        string installedDateParse;
-        double driver;
-        double passager;
-        double rear;
-        string brand;
+        public int vehicleNum;          // Holds Vehicle number.
+        string nextInstallDateParse;    // Next wiper installation date
+        string installedDateParse;      // Wiper installed date
+        double driver;                  // Wiper size - driver
+        double passager;                // Wiper size - passager
+        double rear;                    // Wiper size - rear
+        string brand;                   // Wiper brand
 
-        
-        public WipersOptionForm()
+
+        public WipersOptionForm(int vNum)
         {
             InitializeComponent();
 
             //Set Vehicle number and mpg from passed in value.
-            //this.vehicleNum = vehicleNum;
+            this.vehicleNum = vNum;
 
             //Form background color.
             this.BackColor = System.Drawing.Color.Aqua;
-                        
+
             //this.BackgroundImage = Properties.Resources.wiper;  
-           
+
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-      
+
         private void WipersOptionForm_Load(object sender, EventArgs e)
         {
             tipAndInfoButton.BackColor = System.Drawing.Color.AliceBlue;
@@ -57,15 +57,15 @@ namespace MaintenanceTracker
             {
                 //Fill form with array values.......
                 vehicleNumLabel.Text = "Wiper Info for Vehicle #" + wipersOptionsClass.Vehicle1Values[0];
-               
+
                 //installedDateTimePicker.Text = wipersOptionsClass.Vehicle1Values[2];
-                
+
                 //Call progressBar method.
                 //progressBar(vehicleNum, wipersOptionsClass.Vehicle1Values[0]);
             }
             else if (wipersOptionsClass.V2Stored == 1 && vehicleNum == 2)
             {
-                
+
                 vehicleNumLabel.Text = "Wiper Info for Vehicle #" + wipersOptionsClass.Vehicle2Values[0];
                 //installDateTextBox.Text = wipersOptionsClass.Vehicle2Values[2];
 
@@ -75,25 +75,25 @@ namespace MaintenanceTracker
             else if (wipersOptionsClass.V3Stored == 1 && vehicleNum == 3)
             {
                 //Fill form with array values.......
-                
+
                 //installedDateTimePicker.Text = wipersOptionsClass.Vehicle3Values[2];
                 vehicleNumLabel.Text = "Wiper Info for Vehicle #" + wipersOptionsClass.Vehicle3Values[0];
-                                
+
                 //Call progressBar method.
                 //progressBar(vehicleNum, wipersOptionsClass.Vehicle3Values[1]);
             }
             else if (wipersOptionsClass.V4Stored == 1 && vehicleNum == 4)
             {
-                
+
                 installedDateTimePicker.Text = wipersOptionsClass.Vehicle4Values[2];
                 vehicleNumLabel.Text = "Wiper Info for Vehicle #" + wipersOptionsClass.Vehicle4Values[0];
-                  
+
                 //Call progressBar method.
                 //progressBar(vehicleNum, wipersOptionsClass.Vehicle4Values[1]);
             }
             else
             {
-                
+
                 vehicleNumLabel.Text = "Wiper Info for Vehicle #" + vehicleNum;
 
                 ////Added for progressbar.
@@ -154,111 +154,75 @@ namespace MaintenanceTracker
         private void saveButton_Click_1(object sender, EventArgs e)
         {
             //***** NEED DATA STORAGE **************
-
-            
-            // Check to see if next replacement date is filled
             if (String.IsNullOrEmpty(nextReplaceDateDisplayLabel.Text))
             {
                 MessageBox.Show("Please select date wiper was installed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 installedDateTimePicker.Focus();
             }
-            else if (!String.IsNullOrEmpty(nextReplaceDateDisplayLabel.Text))
-            {
-                // Get the current date.
-                DateTime thisDay = installedDateTimePicker.Value.Date;
-
-                DateTime nextInstallDate = thisDay.AddDays(180);
-
-                nextInstallDateParse = nextInstallDate.ToString("D");
-
-                installedDateParse = thisDay.ToString("D");   // To be passed to be stored
-
-                // Display the next replacement date.
-                nextReplaceDateDisplayLabel.Text = nextInstallDateParse.ToString();
-            }
-            
-            // Customer can leave wiper size textboxes blank
-            // If textboxes are filled, check to see if they are in correct format
-            // Driver side
-            if (String.IsNullOrEmpty(driverSideTextBox.Text))
-            {
-                MessageBox.Show("Please enter driver side wiper size.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                
-            }
-            else
-            {
-                //double driver;
-                    if (!double.TryParse(driverSideTextBox.Text, out driver))
+                else if (String.IsNullOrEmpty(driverSideTextBox.Text))
+                {
+                    MessageBox.Show("Please enter driver side wiper size.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    driverSideTextBox.Focus();
+                }
+                    else if (String.IsNullOrEmpty(passagerSideTextBox.Text))
+                    {
+                        MessageBox.Show("Please enter passager side wiper size.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        passagerSideTextBox.Focus();
+                    }
+                        else if (String.IsNullOrEmpty(rearTextBox.Text))
+                        {
+                            MessageBox.Show("Please enter rear wiper size. Enter 0 if no rear wiper.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            rearTextBox.Focus();
+                        }
+                            else if (string.IsNullOrWhiteSpace(brandTextBox.Text))
+                            {
+                                MessageBox.Show("Please enter brand name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                brandTextBox.Focus();
+                                //notes = notesTextBox.Text;
+                            }
+                        else if (!double.TryParse(driverSideTextBox.Text, out driver))
+                        {
+                            MessageBox.Show("This is a number only field");
+                            driverSideTextBox.Focus();
+                            return;
+                        }
+                    else if (!double.TryParse(passagerSideTextBox.Text, out passager))
                     {
                         MessageBox.Show("This is a number only field");
-                        driverSideTextBox.Focus();
+                        passagerSideTextBox.Focus();
                         return;
                     }
-
-           }
-
-            //Passage side
-            if (String.IsNullOrEmpty(passagerSideTextBox.Text))
-            {
-                MessageBox.Show("Please enter passager side wiper size.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //dataGridView1.Rows.Clear();
-            }
-            else
-            {
-                //double passager;
-                if (!double.TryParse(passagerSideTextBox.Text, out passager))
-                {
-                    MessageBox.Show("This is a number only field");
-                    passagerSideTextBox.Focus();
-                    return;
-                }
-
-            }
-
-            //Rear
-            if (String.IsNullOrEmpty(rearTextBox.Text))
-            {
-                MessageBox.Show("Please enter rear wiper size.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //dataGridView1.Rows.Clear();
-            }
-            else
-            {
-                //double rear;
-                if (!double.TryParse(rearTextBox.Text, out rear))
+                else if (!double.TryParse(rearTextBox.Text, out rear))
                 {
                     MessageBox.Show("This is a number only field");
                     rearTextBox.Focus();
                     return;
                 }
-
-            }
-
             //Brand name
-            if (string.IsNullOrWhiteSpace(brandTextBox.Text))
+            else if (string.IsNullOrWhiteSpace(brandTextBox.Text))
             {
                 MessageBox.Show("Please enter brand name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 brandTextBox.Focus();
                 //notes = notesTextBox.Text;
             }
-            else
-            {
+        else
+        {
 
-                // Pass info to be stored
-                //storeWipersInfo(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brand, notesTextBox.Text);
+            // Pass info to be stored
+            //storeWipersInfo(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brand, notesTextBox.Text);
 
-                // Lock everything
-                installedDateTimePicker.Enabled = false;
-                nextReplaceDateDisplayLabel.Enabled = false;
-                driverSideTextBox.Enabled = false;
-                passagerSideTextBox.Enabled = false;
-                rearTextBox.Enabled = false;
-                brandTextBox.Enabled = false;
-                notesTextBox.Enabled = false;
-            }
+            // Lock all field after validated inputs
+            installedDateTimePicker.Enabled = false;
+            nextReplaceDateDisplayLabel.Enabled = false;
+            driverSideTextBox.Enabled = false;
+            passagerSideTextBox.Enabled = false;
+            rearTextBox.Enabled = false;
+            brandTextBox.Enabled = false;
+            notesTextBox.Enabled = false;
         }
-       
+
+        }
     }
-
-
 }
-
+ 
+        
