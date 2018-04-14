@@ -15,7 +15,7 @@ namespace MaintenanceTracker
         //Classes
         MainFormClass mFormClass = new MainFormClass();
         colorThemes cThemes = new colorThemes();
-           
+
         //Variables
         //Int
         private int mls = 15000,
@@ -34,10 +34,9 @@ namespace MaintenanceTracker
             secondaryColor = Color.FromArgb(255, 255, 255);
 
         //Strings
-        private string txt, 
-            vehicle,
+        private string vMake,
+            vModel,
             path = Path.Combine(Directory.GetCurrentDirectory(), "AirFilterData.txt");
-
 
         public AirFilterOptionsForm()
         {
@@ -45,6 +44,48 @@ namespace MaintenanceTracker
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            //Instantiate the vehicle object
+            Vehicle[] vehicle = new Vehicle[5];
+
+            //Switch between the selected vehicle
+            switch (mFormClass.VehicalNumber)
+            {
+                case 1:
+                    vMake = "Ford";
+                    vModel = "Mustange";
+                    vNumber = 1;
+                    break;
+                case 2:
+                    vMake = "Ford";
+                    vModel = "Fiesta";
+                    vNumber = 2;
+                    break;
+                case 3:
+                    vMake = "Subaru ";
+                    vModel = "Outback";
+                    vNumber = 3;
+                    break;
+                case 4:
+                    vMake = "Dodge";
+                    vModel = "Challenger";
+                    vNumber = 4;
+                    break;
+                default:
+                    vMake = "Ford";
+                    vModel = "Da-Pinto";
+                    vNumber = 0;
+                    break;
+            }
+
+            vehicle[0] = new Vehicle(1, vMake, vModel, 1);
+            vehicle[1] = new Vehicle(2, vMake, vModel, 2);
+            vehicle[2] = new Vehicle(3, vMake, vModel, 3);
+            vehicle[3] = new Vehicle(4, vMake, vModel, 4);
+            vehicle[4] = new Vehicle(5, vMake, vModel, 5);
+
+            //Create XML, or alter XML
+            CreateXMLFile(vehicle);
 
             //Assign the colors
             primaryColor = cThemes.PrimaryColor;
@@ -72,13 +113,31 @@ namespace MaintenanceTracker
             cabAirFilterLB.Text = "Current Cabin Air Filter: \n" +
                 "" + string.Format("{0:n0}", mls) + "/" + string.Format("{0:n0}", cMX) + " miles.";
 
-            //Track bars
+            //Track Bars Visibility
             engAirFilterTB.Visible = false;
             cabAirFilterTB.Visible = false;
 
-            //Track labels
+            //Labels Visibility
             engAirFilterTbLb.Visible = false;
             cabAirFilterTbLb.Visible = false;
+            engMaxMilesLabel.Visible = false;
+            cabMaxMilesLabel.Visible = false;
+
+            //Buttons Visibility
+            engFilterChangedBTTN.Visible = false;
+            cabFilterChangedBTTN.Visible = false;
+        }
+
+        private void EngFilterChangedBTTN_Click(object sender, EventArgs e)
+        {
+            //Update Base Date
+            //Update Base ODO
+        }
+
+        private void CabFilterChangedBTTN_Click(object sender, EventArgs e)
+        {
+            //Update Base Date
+            //Update Base ODO
         }
 
         //Engine's Filter Condition
@@ -148,6 +207,8 @@ namespace MaintenanceTracker
                 engAirFilter.Image = Resources.X120;
                 engAirFilterTB.Visible = true;
                 engAirFilterTbLb.Visible = true;
+                engMaxMilesLabel.Visible = true;
+                engFilterChangedBTTN.Visible = true;
                 engAirFilterTB.Scroll += new System.EventHandler(EngAirFilterSB_Scroll);
                 engAirFilterTB.Minimum = 0;
                 engAirFilterTB.Maximum = mx;
@@ -160,7 +221,7 @@ namespace MaintenanceTracker
             }
             else if (eCount == 1)
             {
-                engAirFilter.Text = "Engine Air Filter";
+                engAirFilter.Text = "Engine Air Filter Settings";
                 EngFilterStatusColor(mls);
                 engAirFilter.Image = null;
 
@@ -170,6 +231,8 @@ namespace MaintenanceTracker
                 //Hide the track bar and label
                 engAirFilterTB.Visible = false;
                 engAirFilterTbLb.Visible = false;
+                engMaxMilesLabel.Visible = false;
+                engFilterChangedBTTN.Visible = false;
                 eCount--;
             }
         }
@@ -183,6 +246,8 @@ namespace MaintenanceTracker
                 cabAirFilter.Image = Resources.X120;
                 cabAirFilterTB.Visible = true;
                 cabAirFilterTbLb.Visible = true;
+                cabMaxMilesLabel.Visible = true;
+                cabFilterChangedBTTN.Visible = true;
                 cabAirFilterTB.Scroll += new System.EventHandler(CabAirFilterSB_Scroll);
                 cabAirFilterTB.Minimum = 0;
                 cabAirFilterTB.Maximum = mx;
@@ -195,7 +260,7 @@ namespace MaintenanceTracker
             }
             else if (cCount == 1)
             {
-                cabAirFilter.Text = "Cabin Air Filter";
+                cabAirFilter.Text = "Cabin Air Filter Settings";
                 CabFilterStatusColor(mls);
                 cabAirFilter.Image = null;
 
@@ -205,6 +270,8 @@ namespace MaintenanceTracker
                 //Hide the track bar and label
                 cabAirFilterTB.Visible = false;
                 cabAirFilterTbLb.Visible = false;
+                cabMaxMilesLabel.Visible = false;
+                cabFilterChangedBTTN.Visible = false;
                 cCount--;
             }
         }
@@ -230,39 +297,12 @@ namespace MaintenanceTracker
 
         private void ResetBTTN_Click(object sender, EventArgs e)
         {
-            //Switch between the selected vehicle
-            switch (mFormClass.VehicalNumber)
-            {
-                case 1:
-                    this.vehicle = "Hennessey Venom F5";
-                    vNumber = 1;
-                    break;
-                case 2:
-                    this.vehicle = "Koenigsegg Agera RS";
-                    vNumber = 2;
-                    break;
-                case 3:
-                    this.vehicle = "Hennessey Venom GT ";
-                    vNumber = 3;
-                    break;
-                case 4:
-                    this.vehicle = "Bugatti Chiron";
-                    vNumber = 4;
-                    break;
-                default:
-                    this.vehicle = "Da-Pinto";
-                    break;
-            }
+            
+        }
 
-            //Display the result
-            generalMessageLB.Text = this.vehicle + " " + vNumber.ToString();
-
-            Vehicle[] vehicle = new Vehicle[4];
-            vehicle[0] = new Vehicle(1, "Ford", "Mustange", 1);
-            vehicle[1] = new Vehicle(2, "Ford", "Fiesta", 2);
-            vehicle[2] = new Vehicle(3, "Subaru", "Outback", 3);
-            vehicle[3] = new Vehicle(4, "Dodge", "Challenger", 4);
-
+        //Create XML, or alter XML
+        private static void CreateXMLFile(Vehicle[] vehicle)
+        {
             string filePath = "AirFilterData";
             string extensionType = ".XML";
 
@@ -290,18 +330,22 @@ namespace MaintenanceTracker
                     {
                         //Sub Vehicle Fields
                         write.WriteStartElement("Vehicle");
-                        write.WriteAttributeString("Number",v.Id.ToString());
+                        write.WriteAttributeString("Number", v.Id.ToString());
                         write.WriteElementString("Make", v.Make);
                         write.WriteElementString("Model", v.Model);
-                        write.WriteElementString("ODO", v.ODO.ToString());
+                        write.WriteElementString("Current_ODO", v.ODO.ToString());
 
-                        //Sub Filter Fields
-                        write.WriteStartElement("Filter");
-                        write.WriteElementString("Air_Filter", "AirFilter");
-                        write.WriteElementString("Engine_Filter", "EngineFilter");
-
-                        //End of Sub Filter Fields
-                        write.WriteEndElement();
+                            //Sub Filter Fields
+                            write.WriteStartElement("Air_Filter");
+                            write.WriteElementString("Max_ODO", "MaxODO");
+                            write.WriteElementString("DateFilterChangedLast", "DateFilterChangedLast");
+                            write.WriteEndElement();
+                            
+                            //Sub Filter Fields
+                            write.WriteStartElement("Cabin_Filter");
+                            write.WriteElementString("Max_ODO", "MaxODO");
+                            write.WriteElementString("DateFilterChangedLast", "DateFilterChangedLast");
+                            write.WriteEndElement();
 
                         //End of the Vehicle Fields
                         write.WriteEndElement();

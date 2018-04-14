@@ -49,7 +49,7 @@
             this.tiresButton.TabIndex = 0;
             this.tiresButton.Text = "Tires";
             this.tiresButton.UseVisualStyleBackColor = true;
-            this.tiresButton.Click += new System.EventHandler(this.tiresButton_Click);
+            this.tiresButton.Click += new System.EventHandler(this.TiresButton_Click);
             // 
             // wipersButton
             // 
@@ -62,7 +62,7 @@
             this.wipersButton.TabIndex = 1;
             this.wipersButton.Text = "Wipers";
             this.wipersButton.UseVisualStyleBackColor = true;
-            this.wipersButton.Click += new System.EventHandler(this.wipersButton_Click);
+            this.wipersButton.Click += new System.EventHandler(this.WipersButton_Click);
             // 
             // airFilterButton
             // 
@@ -75,7 +75,7 @@
             this.airFilterButton.TabIndex = 2;
             this.airFilterButton.Text = "Air Filter";
             this.airFilterButton.UseVisualStyleBackColor = true;
-            this.airFilterButton.Click += new System.EventHandler(this.airFilterButton_Click);
+            this.airFilterButton.Click += new System.EventHandler(this.AirFilterButton_Click);
             // 
             // oilButton
             // 
@@ -88,7 +88,7 @@
             this.oilButton.TabIndex = 3;
             this.oilButton.Text = "Oil";
             this.oilButton.UseVisualStyleBackColor = true;
-            this.oilButton.Click += new System.EventHandler(this.oilButton_Click);
+            this.oilButton.Click += new System.EventHandler(this.OilButton_Click);
             // 
             // mpgButton
             // 
@@ -101,7 +101,7 @@
             this.mpgButton.TabIndex = 4;
             this.mpgButton.Text = "MPG";
             this.mpgButton.UseVisualStyleBackColor = true;
-            this.mpgButton.Click += new System.EventHandler(this.mpgButton_Click);
+            this.mpgButton.Click += new System.EventHandler(this.MpgButton_Click);
             // 
             // settingsButton
             // 
@@ -114,7 +114,7 @@
             this.settingsButton.TabIndex = 5;
             this.settingsButton.Text = "Settings";
             this.settingsButton.UseVisualStyleBackColor = true;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            this.settingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // label2
             // 
@@ -141,7 +141,7 @@
             this.vehicalSelectList.Size = new System.Drawing.Size(253, 39);
             this.vehicalSelectList.TabIndex = 24;
             this.vehicalSelectList.Text = "Select A Vehical";
-            this.vehicalSelectList.SelectedIndexChanged += new System.EventHandler(this.vehicalSelectList_SelectedIndexChanged);
+            this.vehicalSelectList.SelectedIndexChanged += new System.EventHandler(this.VehicalSelectList_SelectedIndexChanged);
             // 
             // MainTracker
             // 
