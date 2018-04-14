@@ -36,7 +36,7 @@ namespace MaintenanceTracker
             settingsButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
         }
 
-        private void tiresButton_Click(object sender, EventArgs e)
+        private void TiresButton_Click(object sender, EventArgs e)
         {
             //Variable.
             int vn; //To hold vehical number.
@@ -84,6 +84,7 @@ namespace MaintenanceTracker
             }
         }
 
+
         private void airFilterButton_Click(object sender, EventArgs e)
         {
             //Call air filter option form.
@@ -102,7 +103,7 @@ namespace MaintenanceTracker
             }
         }
 
-        private void mpgButton_Click(object sender, EventArgs e)
+        private void MpgButton_Click(object sender, EventArgs e)
         {
             //Call mpg options form.
             MPGOptionsForm mPGOptionsForm = new MPGOptionsForm();
@@ -110,21 +111,21 @@ namespace MaintenanceTracker
             //mpg += 500;
         }
 
-        private void oilButton_Click(object sender, EventArgs e)
+        private void OilButton_Click(object sender, EventArgs e)
         {
             //Call oil options form.
             OilOptionsForm oilOptionsForm = new OilOptionsForm();
             oilOptionsForm.ShowDialog();
         }
 
-        private void settingsButton_Click(object sender, EventArgs e)
+        private void SettingsButton_Click(object sender, EventArgs e)
         {
             //Call settings option form.
             SettingsOptionForm settingsOptionForm = new SettingsOptionForm();
             settingsOptionForm.ShowDialog();
         }
 
-        private void vehicalSelectList_SelectedIndexChanged(object sender, EventArgs e)
+        private void VehicalSelectList_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Variable.
             int vn; //To hold vehical number.
