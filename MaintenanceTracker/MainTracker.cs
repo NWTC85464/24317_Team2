@@ -10,12 +10,6 @@ using System.Windows.Forms;
 
 namespace MaintenanceTracker
 {
-    //TODO......
-    //Add a text area to write additions about tires.
-    //
-    //Format installed date text box so entered correctly.
-    //
-    //
     public partial class MainTracker : System.Windows.Forms.Form
     {
         TireOptionsClass tireOptionsClass = new TireOptionsClass();
@@ -49,10 +43,35 @@ namespace MaintenanceTracker
 
             //Set vn to vehicalSelectList number and add 1.
             vn = vehicalSelectList.SelectedIndex + 1;
-
+            
             //Create new instance of tireOptionsForm and pass vn and MPG.
+            TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, mpg);            
+            
+             if (vehicalSelectList.SelectedItem == null)
+             {
+                 //Display message saying select vehical.              
+                 MessageBox.Show("Please Select a vehical first!");
+             }
+             else
+             {
+                 //Show the form.              
+                 tireOptionsForm.ShowDialog();
+             }
+            /*
+
+            //Test code only.........
+            int vn;
+            vn = 1;
             TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, mpg);
-           
+            tireOptionsForm.ShowDialog();
+            */
+        }
+
+        private void wipersButton_Click(object sender, EventArgs e)
+        {
+            //Call wipers options form.
+            WipersOptionForm wipersOptionForm = new WipersOptionForm();
+
             if (vehicalSelectList.SelectedItem == null)
             {
                 //Display message saying select vehical.              
@@ -60,19 +79,13 @@ namespace MaintenanceTracker
             }
             else
             {
-                //Show the form.              
-                tireOptionsForm.ShowDialog();
+                //Show the form.             
+                wipersOptionForm.ShowDialog();
             }
         }
 
-        private void WipersButton_Click(object sender, EventArgs e)
-        {
-            //Call wipers options form.
-            WipersOptionForm wipersOptionForm = new WipersOptionForm();
-            wipersOptionForm.ShowDialog();
-        }
 
-        private void AirFilterButton_Click(object sender, EventArgs e)
+        private void airFilterButton_Click(object sender, EventArgs e)
         {
             //Call air filter option form.
             AirFilterOptionsForm airFilterOptionsForm = new AirFilterOptionsForm();

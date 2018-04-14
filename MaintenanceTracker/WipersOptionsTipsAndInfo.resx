@@ -117,23 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="rotatePatern" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rotatePatern.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="unlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\unlock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="worn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\worn.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="X120" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\X120.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="wiper" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wiper.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>*Clean your windshield every time you
+fill your gas tank.
+
+*Gently wipe the rubber squeegee with
+a damp paper towel to remove any 
+loose dirt or oil.
+
+*Never use your windshield wipers to 
+de-ice your windshield. Instead, either 
+use an ice scraper or use your defroster 
+to melt snow and ice.
+
+*Pull your wiper blades away from the 
+windshield during winter months to 
+prevent ice build up on the rubber 
+squeegee and to prevent them 
+from sticking to the windshield.</value>
   </data>
 </root>
