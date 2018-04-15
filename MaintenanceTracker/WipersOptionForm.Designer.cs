@@ -199,7 +199,7 @@
             this.resetButton.TabIndex = 39;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click_1);
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // tipAndInfoButton
             // 
@@ -246,11 +246,10 @@
             // 
             // vehicleNumLabel
             // 
-            this.vehicleNumLabel.AutoSize = true;
             this.vehicleNumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehicleNumLabel.Location = new System.Drawing.Point(30, 9);
+            this.vehicleNumLabel.Location = new System.Drawing.Point(23, 9);
             this.vehicleNumLabel.Name = "vehicleNumLabel";
-            this.vehicleNumLabel.Size = new System.Drawing.Size(203, 20);
+            this.vehicleNumLabel.Size = new System.Drawing.Size(229, 20);
             this.vehicleNumLabel.TabIndex = 44;
             this.vehicleNumLabel.Text = "Wiper Info for Vehicle # ";
             // 

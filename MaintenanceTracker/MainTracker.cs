@@ -69,8 +69,12 @@ namespace MaintenanceTracker
 
         private void wipersButton_Click(object sender, EventArgs e)
         {
+            int vn; // Vehicle number
+
+            vn = vehicalSelectList.SelectedIndex + 1;
+
             //Call wipers options form.
-            WipersOptionForm wipersOptionForm = new WipersOptionForm();
+            WipersOptionForm wipersOptionForm = new WipersOptionForm(vn);
 
             if (vehicalSelectList.SelectedItem == null)
             {
