@@ -132,10 +132,7 @@
             this.vehicalSelectList.Name = "vehicalSelectList";
             this.vehicalSelectList.Size = new System.Drawing.Size(191, 33);
             this.vehicalSelectList.TabIndex = 24;
-
             this.vehicalSelectList.Text = "Select A Vehicle";
-            this.vehicalSelectList.SelectedIndexChanged += new System.EventHandler(this.vehicalSelectList_SelectedIndexChanged);
-
             // 
             // MainTracker
             // 

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MaintenanceTracker
@@ -16,6 +10,7 @@ namespace MaintenanceTracker
         MainFormClass mainFormClass = new MainFormClass();
    
         public int mpg;
+        private int vNum = 0;
 
         public MainTracker()
         {
@@ -67,10 +62,10 @@ namespace MaintenanceTracker
             */
         }
 
-        private void wipersButton_Click(object sender, EventArgs e)
+        private void WipersButton_Click(object sender, EventArgs e)
         {
             //Call wipers options form.
-            WipersOptionForm wipersOptionForm = new WipersOptionForm();
+            WipersOptionForm wipersOptionForm = new WipersOptionForm(vNum);
 
             if (vehicalSelectList.SelectedItem == null)
             {
@@ -85,7 +80,7 @@ namespace MaintenanceTracker
         }
 
 
-        private void airFilterButton_Click(object sender, EventArgs e)
+        private void AirFilterButton_Click(object sender, EventArgs e)
         {
             //Call air filter option form.
             AirFilterOptionsForm airFilterOptionsForm = new AirFilterOptionsForm();

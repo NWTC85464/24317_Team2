@@ -78,6 +78,10 @@ namespace MaintenanceTracker
                     break;
             }
 
+            //test
+
+            //end test
+
             vehicle[0] = new Vehicle(1, vMake, vModel, 1);
             vehicle[1] = new Vehicle(2, vMake, vModel, 2);
             vehicle[2] = new Vehicle(3, vMake, vModel, 3);
@@ -118,8 +122,8 @@ namespace MaintenanceTracker
             cabAirFilterTB.Visible = false;
 
             //Labels Visibility
-            engAirFilterTbLb.Visible = false;
-            cabAirFilterTbLb.Visible = false;
+            engAirFilterTBarLabel.Visible = false;
+            cabAirFilterTBarLabel.Visible = false;
             engMaxMilesLabel.Visible = false;
             cabMaxMilesLabel.Visible = false;
 
@@ -203,10 +207,11 @@ namespace MaintenanceTracker
             if (eCount == 0)
             {
                 engAirFilter.Text = "";
-                engAirFilter.BackColor = Color.White;
+                engAirFilter.BackColor = secondaryColor;
                 engAirFilter.Image = Resources.X120;
+                engFilterChangedBTTN.BackColor = secondaryColor;
                 engAirFilterTB.Visible = true;
-                engAirFilterTbLb.Visible = true;
+                engAirFilterTBarLabel.Visible = true;
                 engMaxMilesLabel.Visible = true;
                 engFilterChangedBTTN.Visible = true;
                 engAirFilterTB.Scroll += new System.EventHandler(EngAirFilterSB_Scroll);
@@ -216,7 +221,7 @@ namespace MaintenanceTracker
                 engAirFilterTB.LargeChange = 10000;
                 engAirFilterTB.SmallChange = 5000;
                 engAirFilterTB.Value = eMX;
-                engAirFilterTbLb.Text = eMX.ToString();
+                engAirFilterTBarLabel.Text = eMX.ToString();
                 eCount++;
             }
             else if (eCount == 1)
@@ -230,7 +235,7 @@ namespace MaintenanceTracker
 
                 //Hide the track bar and label
                 engAirFilterTB.Visible = false;
-                engAirFilterTbLb.Visible = false;
+                engAirFilterTBarLabel.Visible = false;
                 engMaxMilesLabel.Visible = false;
                 engFilterChangedBTTN.Visible = false;
                 eCount--;
@@ -242,10 +247,11 @@ namespace MaintenanceTracker
             if (cCount == 0)
             {
                 cabAirFilter.Text = "";
-                cabAirFilter.BackColor = Color.White;
+                cabAirFilter.BackColor = secondaryColor;
                 cabAirFilter.Image = Resources.X120;
+                cabFilterChangedBTTN.BackColor = secondaryColor;
                 cabAirFilterTB.Visible = true;
-                cabAirFilterTbLb.Visible = true;
+                cabAirFilterTBarLabel.Visible = true;
                 cabMaxMilesLabel.Visible = true;
                 cabFilterChangedBTTN.Visible = true;
                 cabAirFilterTB.Scroll += new System.EventHandler(CabAirFilterSB_Scroll);
@@ -255,7 +261,7 @@ namespace MaintenanceTracker
                 cabAirFilterTB.LargeChange = 10000;
                 cabAirFilterTB.SmallChange = 5000;
                 cabAirFilterTB.Value = cMX;
-                cabAirFilterTbLb.Text = cMX.ToString();
+                cabAirFilterTBarLabel.Text = cMX.ToString();
                 cCount++;
             }
             else if (cCount == 1)
@@ -269,7 +275,7 @@ namespace MaintenanceTracker
 
                 //Hide the track bar and label
                 cabAirFilterTB.Visible = false;
-                cabAirFilterTbLb.Visible = false;
+                cabAirFilterTBarLabel.Visible = false;
                 cabMaxMilesLabel.Visible = false;
                 cabFilterChangedBTTN.Visible = false;
                 cCount--;
@@ -279,14 +285,14 @@ namespace MaintenanceTracker
         private void EngAirFilterSB_Scroll(object sender, System.EventArgs e)
         {
             //Display the trackbar value in the text box.
-            engAirFilterTbLb.Text = "" + engAirFilterTB.Value;
+            engAirFilterTBarLabel.Text = "" + engAirFilterTB.Value;
             eMX = engAirFilterTB.Value;
         }
 
         private void CabAirFilterSB_Scroll(object sender, System.EventArgs e)
         {
             //Display the trackbar value in the text box.
-            cabAirFilterTbLb.Text = "" + cabAirFilterTB.Value;
+            cabAirFilterTBarLabel.Text = "" + cabAirFilterTB.Value;
             cMX = cabAirFilterTB.Value;
         }
 
