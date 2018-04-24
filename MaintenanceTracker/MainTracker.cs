@@ -139,6 +139,40 @@ namespace MaintenanceTracker
 
             //Set the Vehical Number
             mainFormClass.VehicalNumber = vn;
+
+            /*
+            switch (vn)
+            {
+                case 1:
+                    if 
+                    //objWrt = new System.IO.StreamWriter(@"mpg/mpg1.txt", true);
+                    //objWrt.WriteLine(createTxt);
+                    //objWrt.Close();
+
+
+                    break;
+                case 2:
+                    objWrt = new System.IO.StreamWriter(@"mpg/mpg2.txt", true);
+                    objWrt.WriteLine(createTxt);
+                    objWrt.Close();
+                    break;
+                case 3:
+                    objWrt = new System.IO.StreamWriter(@"mpg/mpg3.txt", true);
+                    objWrt.WriteLine(createTxt);
+                    objWrt.Close();
+                    break;
+                case 4:
+                    objWrt = new System.IO.StreamWriter(@"mpg/mpg4.txt", true);
+                    objWrt.WriteLine(createTxt);
+                    objWrt.Close();
+                    break;
+                default:
+                    MessageBox.Show("did not work");
+                    break;
+
+            }*/
+
+
         }
     }
 }
