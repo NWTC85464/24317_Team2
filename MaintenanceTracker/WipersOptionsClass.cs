@@ -38,5 +38,7 @@ namespace MaintenanceTracker
         public double Rear { get { return rSize; } }
         public string Brand { get { return bName; } }
         public string Notes { get { return n; } }
+
+      
     }
 }

@@ -46,9 +46,17 @@
             this.resetButton = new System.Windows.Forms.Button();
             this.tipAndInfoButton = new System.Windows.Forms.Button();
             this.nextReplaceDateDisplayLabel = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.percentLbl = new System.Windows.Forms.Label();
             this.vehicleNumLabel = new System.Windows.Forms.Label();
+            this.wiperPercentLabel = new System.Windows.Forms.Label();
+            this.wiperProgressBar = new System.Windows.Forms.ProgressBar();
+            this.displayNotesLabel = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.displayBrandLabel = new System.Windows.Forms.Label();
+            this.displayRearLabel = new System.Windows.Forms.Label();
+            this.displayPassSideLabel = new System.Windows.Forms.Label();
+            this.displayDrSideLabel = new System.Windows.Forms.Label();
+            this.displayNextDateLabel = new System.Windows.Forms.Label();
+            this.displayInstDateLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // installedDateLabel
@@ -84,16 +92,16 @@
             // 
             // brandTextBox
             // 
-            this.brandTextBox.Location = new System.Drawing.Point(68, 282);
+            this.brandTextBox.Location = new System.Drawing.Point(102, 272);
             this.brandTextBox.Name = "brandTextBox";
-            this.brandTextBox.Size = new System.Drawing.Size(184, 20);
+            this.brandTextBox.Size = new System.Drawing.Size(150, 20);
             this.brandTextBox.TabIndex = 36;
             // 
             // brandLabel
             // 
             this.brandLabel.AutoSize = true;
             this.brandLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brandLabel.Location = new System.Drawing.Point(20, 285);
+            this.brandLabel.Location = new System.Drawing.Point(48, 272);
             this.brandLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.brandLabel.Name = "brandLabel";
             this.brandLabel.Size = new System.Drawing.Size(44, 13);
@@ -102,15 +110,15 @@
             // 
             // rearTextBox
             // 
-            this.rearTextBox.Location = new System.Drawing.Point(162, 248);
+            this.rearTextBox.Location = new System.Drawing.Point(102, 248);
             this.rearTextBox.Name = "rearTextBox";
-            this.rearTextBox.Size = new System.Drawing.Size(90, 20);
+            this.rearTextBox.Size = new System.Drawing.Size(150, 20);
             this.rearTextBox.TabIndex = 34;
             // 
             // rearLabel
             // 
             this.rearLabel.AutoSize = true;
-            this.rearLabel.Location = new System.Drawing.Point(124, 255);
+            this.rearLabel.Location = new System.Drawing.Point(59, 255);
             this.rearLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.rearLabel.Name = "rearLabel";
             this.rearLabel.Size = new System.Drawing.Size(33, 13);
@@ -119,15 +127,15 @@
             // 
             // passagerSideTextBox
             // 
-            this.passagerSideTextBox.Location = new System.Drawing.Point(162, 224);
+            this.passagerSideTextBox.Location = new System.Drawing.Point(102, 224);
             this.passagerSideTextBox.Name = "passagerSideTextBox";
-            this.passagerSideTextBox.Size = new System.Drawing.Size(90, 20);
+            this.passagerSideTextBox.Size = new System.Drawing.Size(150, 20);
             this.passagerSideTextBox.TabIndex = 32;
             // 
             // passagerSideLabel
             // 
             this.passagerSideLabel.AutoSize = true;
-            this.passagerSideLabel.Location = new System.Drawing.Point(79, 231);
+            this.passagerSideLabel.Location = new System.Drawing.Point(14, 231);
             this.passagerSideLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.passagerSideLabel.Name = "passagerSideLabel";
             this.passagerSideLabel.Size = new System.Drawing.Size(78, 13);
@@ -136,15 +144,15 @@
             // 
             // driverSideTextBox
             // 
-            this.driverSideTextBox.Location = new System.Drawing.Point(162, 199);
+            this.driverSideTextBox.Location = new System.Drawing.Point(102, 199);
             this.driverSideTextBox.Name = "driverSideTextBox";
-            this.driverSideTextBox.Size = new System.Drawing.Size(90, 20);
+            this.driverSideTextBox.Size = new System.Drawing.Size(150, 20);
             this.driverSideTextBox.TabIndex = 30;
             // 
             // driverSideLabel
             // 
             this.driverSideLabel.AutoSize = true;
-            this.driverSideLabel.Location = new System.Drawing.Point(95, 206);
+            this.driverSideLabel.Location = new System.Drawing.Point(30, 206);
             this.driverSideLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.driverSideLabel.Name = "driverSideLabel";
             this.driverSideLabel.Size = new System.Drawing.Size(62, 13);
@@ -164,12 +172,11 @@
             // 
             // notesTextBox
             // 
-            this.notesTextBox.Location = new System.Drawing.Point(23, 319);
+            this.notesTextBox.Location = new System.Drawing.Point(23, 308);
             this.notesTextBox.Multiline = true;
             this.notesTextBox.Name = "notesTextBox";
-            this.notesTextBox.Size = new System.Drawing.Size(229, 33);
+            this.notesTextBox.Size = new System.Drawing.Size(229, 44);
             this.notesTextBox.TabIndex = 37;
-            this.notesTextBox.Text = "Notes";
             // 
             // exitButton
             // 
@@ -218,32 +225,6 @@
             this.nextReplaceDateDisplayLabel.Size = new System.Drawing.Size(232, 23);
             this.nextReplaceDateDisplayLabel.TabIndex = 11;
             // 
-            // progressBar1
-            // 
-            this.progressBar1.BackColor = System.Drawing.Color.White;
-            this.progressBar1.ForeColor = System.Drawing.Color.White;
-            this.progressBar1.Location = new System.Drawing.Point(21, 38);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
-            this.progressBar1.Maximum = 500;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.progressBar1.Size = new System.Drawing.Size(215, 28);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.TabIndex = 42;
-            // 
-            // percentLbl
-            // 
-            this.percentLbl.AutoSize = true;
-            this.percentLbl.BackColor = System.Drawing.SystemColors.Control;
-            this.percentLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.percentLbl.Location = new System.Drawing.Point(235, 53);
-            this.percentLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.percentLbl.Name = "percentLbl";
-            this.percentLbl.Size = new System.Drawing.Size(15, 13);
-            this.percentLbl.TabIndex = 43;
-            this.percentLbl.Text = "%";
-            this.percentLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // vehicleNumLabel
             // 
             this.vehicleNumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -253,16 +234,117 @@
             this.vehicleNumLabel.TabIndex = 44;
             this.vehicleNumLabel.Text = "Wiper Info for Vehicle # ";
             // 
+            // wiperPercentLabel
+            // 
+            this.wiperPercentLabel.AutoSize = true;
+            this.wiperPercentLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.wiperPercentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wiperPercentLabel.Location = new System.Drawing.Point(237, 55);
+            this.wiperPercentLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.wiperPercentLabel.Name = "wiperPercentLabel";
+            this.wiperPercentLabel.Size = new System.Drawing.Size(15, 13);
+            this.wiperPercentLabel.TabIndex = 47;
+            this.wiperPercentLabel.Text = "%";
+            this.wiperPercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // wiperProgressBar
+            // 
+            this.wiperProgressBar.BackColor = System.Drawing.Color.White;
+            this.wiperProgressBar.ForeColor = System.Drawing.Color.White;
+            this.wiperProgressBar.Location = new System.Drawing.Point(23, 40);
+            this.wiperProgressBar.Margin = new System.Windows.Forms.Padding(2);
+            this.wiperProgressBar.Maximum = 500;
+            this.wiperProgressBar.Name = "wiperProgressBar";
+            this.wiperProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.wiperProgressBar.Size = new System.Drawing.Size(215, 28);
+            this.wiperProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.wiperProgressBar.TabIndex = 46;
+            // 
+            // displayNotesLabel
+            // 
+            this.displayNotesLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.displayNotesLabel.Location = new System.Drawing.Point(23, 308);
+            this.displayNotesLabel.Name = "displayNotesLabel";
+            this.displayNotesLabel.Size = new System.Drawing.Size(229, 46);
+            this.displayNotesLabel.TabIndex = 85;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(24, 292);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 83;
+            this.label6.Text = "Notes:";
+            // 
+            // displayBrandLabel
+            // 
+            this.displayBrandLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.displayBrandLabel.Location = new System.Drawing.Point(102, 272);
+            this.displayBrandLabel.Name = "displayBrandLabel";
+            this.displayBrandLabel.Size = new System.Drawing.Size(155, 23);
+            this.displayBrandLabel.TabIndex = 82;
+            // 
+            // displayRearLabel
+            // 
+            this.displayRearLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.displayRearLabel.Location = new System.Drawing.Point(102, 245);
+            this.displayRearLabel.Name = "displayRearLabel";
+            this.displayRearLabel.Size = new System.Drawing.Size(155, 23);
+            this.displayRearLabel.TabIndex = 80;
+            // 
+            // displayPassSideLabel
+            // 
+            this.displayPassSideLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.displayPassSideLabel.Location = new System.Drawing.Point(102, 221);
+            this.displayPassSideLabel.Name = "displayPassSideLabel";
+            this.displayPassSideLabel.Size = new System.Drawing.Size(155, 23);
+            this.displayPassSideLabel.TabIndex = 79;
+            // 
+            // displayDrSideLabel
+            // 
+            this.displayDrSideLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.displayDrSideLabel.Location = new System.Drawing.Point(102, 196);
+            this.displayDrSideLabel.Name = "displayDrSideLabel";
+            this.displayDrSideLabel.Size = new System.Drawing.Size(155, 23);
+            this.displayDrSideLabel.TabIndex = 78;
+            // 
+            // displayNextDateLabel
+            // 
+            this.displayNextDateLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.displayNextDateLabel.Location = new System.Drawing.Point(33, 155);
+            this.displayNextDateLabel.Name = "displayNextDateLabel";
+            this.displayNextDateLabel.Size = new System.Drawing.Size(232, 23);
+            this.displayNextDateLabel.TabIndex = 73;
+            // 
+            // displayInstDateLabel
+            // 
+            this.displayInstDateLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.displayInstDateLabel.Location = new System.Drawing.Point(21, 102);
+            this.displayInstDateLabel.Name = "displayInstDateLabel";
+            this.displayInstDateLabel.Size = new System.Drawing.Size(229, 23);
+            this.displayInstDateLabel.TabIndex = 70;
+            // 
             // WipersOptionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MaintenanceTracker.Properties.Resources.wiper;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(271, 434);
+            this.ClientSize = new System.Drawing.Size(273, 434);
+            this.Controls.Add(this.displayNotesLabel);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.displayBrandLabel);
+            this.Controls.Add(this.displayRearLabel);
+            this.Controls.Add(this.displayPassSideLabel);
+            this.Controls.Add(this.displayDrSideLabel);
+            this.Controls.Add(this.displayNextDateLabel);
+            this.Controls.Add(this.displayInstDateLabel);
+            this.Controls.Add(this.wiperPercentLabel);
+            this.Controls.Add(this.wiperProgressBar);
             this.Controls.Add(this.vehicleNumLabel);
-            this.Controls.Add(this.percentLbl);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.nextReplaceDateDisplayLabel);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.saveButton);
@@ -309,8 +391,16 @@
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button tipAndInfoButton;
         private System.Windows.Forms.Label nextReplaceDateDisplayLabel;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label percentLbl;
         private System.Windows.Forms.Label vehicleNumLabel;
+        private System.Windows.Forms.Label wiperPercentLabel;
+        private System.Windows.Forms.ProgressBar wiperProgressBar;
+        private System.Windows.Forms.Label displayNotesLabel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label displayBrandLabel;
+        private System.Windows.Forms.Label displayRearLabel;
+        private System.Windows.Forms.Label displayPassSideLabel;
+        private System.Windows.Forms.Label displayDrSideLabel;
+        private System.Windows.Forms.Label displayNextDateLabel;
+        private System.Windows.Forms.Label displayInstDateLabel;
     }
 }
