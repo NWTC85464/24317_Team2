@@ -24,6 +24,10 @@ namespace MaintenanceTracker
         string[] odoRay = new string[10];
         //incrementer for stream writer
         int i = 0;
+        //To hold stream reader
+        string usedFile;
+        //to hold file name for stream writer
+        string fln;
         //current odometer reading(input by user)
         double odoCur;
         //current gallons used (input by user)
@@ -32,13 +36,14 @@ namespace MaintenanceTracker
         double curMpg;
         //gets current date
         DateTime today1 = DateTime.Today;
-        //object of new form
+        //object of new form to use switch statement
         MainFormClass main = new MainFormClass();
-
         //StreamReader fsMain;
-        string filePath = @"mpg/odo1.txt";
-
+        
+        //doulbe array holding current file.  will be overwritten when new switch created.
         string[,] dblArray = new string[10, 4];
+        public string[,] holdDbl;
+        //increment double array. 
         int x = 0, j = 0;
         private void MPGOptionsForm_Load(object sender, EventArgs e)
         {
@@ -51,8 +56,9 @@ namespace MaintenanceTracker
             }
             else
             {
+                //checking that folder path was created
                 DirectoryInfo mpg = Directory.CreateDirectory(@"mpg");
-
+                //states when path was created for new folder
                 Console.WriteLine("The directory was created successfully at {0}.",
                 Directory.GetCreationTime(@"mpg"));
             }
@@ -63,9 +69,13 @@ namespace MaintenanceTracker
                     case 1:
                     if (File.Exists(@"mpg/mpg1.txt"))
                     {
-                        string input = File.ReadAllText(@"mpg/mpg1.txt");
-                        //int[,] result = new int[10, 10];
-                        foreach (var row in input.Split('\n'))
+                        //fln = "@\"mpg/mpg1.txt\"";
+                        usedFile = File.ReadAllText(@"mpg/mpg1.txt");
+
+                        ArrayString(usedFile);
+
+                       
+                        /*foreach (var row in usedFile.Split('\n'))
                         {
                             j = 0;
                             foreach (var col in row.Trim().Split(' '))
@@ -73,113 +83,97 @@ namespace MaintenanceTracker
                                 dblArray[x, j] = col.Trim();
                                 j++;
                             }
-
+                            holdDbl = dblArray;
                             dgTrack.Rows.Add(dblArray[x, 0], dblArray[x, 1], dblArray[x, 2], dblArray[x, 3]);
                             x++;
-                        }
+                        }*/
                     }
                     else
                     {
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg1.txt"))
                         {
-                            sw.WriteLine("Hello World");
-                        }
+                            //use blank data when updating mpg first time. 
+                            sw.WriteLine("0/00/0000 00 0000 00 ");
+                            sw.Close();
+                            usedFile = File.ReadAllText(@"mpg/mpg1.txt");
+                            setup(usedFile);
 
-
-                    }
-                    /*else if (File.Exists(path))
-                    {
-                        using (var tw = new StreamWriter(path, true))
-                        {
-                            tw.WriteLine("The next line!");
+                            //int[,] result = new int[10, 10];
+                            /*foreach (var row in usedFile.Split('\n'))
+                            {
+                                j = 0;
+                                foreach (var col in row.Trim().Split(' '))
+                                {
+                                    dblArray[x, j] = col.Trim();
+                                    j++;
+                                }
+                                holdDbl = dblArray;
+                                dgTrack.Rows.Add(dblArray[x, 0], dblArray[x, 1], dblArray[x, 2], dblArray[x, 3]);
+                                //x++;
+                                break;
+                            }*/
+                            
                         }
                     }
-                    */
                     break;
+
                 case 2:
                     if (File.Exists(@"mpg/mpg2.txt"))
                     {
-                        string input = File.ReadAllText(@"mpg/mpg2.txt");
-                        //int[,] result = new int[10, 10];
-                        foreach (var row in input.Split('\n'))
-                        {
-                            j = 0;
-                            foreach (var col in row.Trim().Split(' '))
-                            {
-                                dblArray[x, j] = col.Trim();
-                                j++;
-                            }
-
-                            dgTrack.Rows.Add(dblArray[x, 0], dblArray[x, 1], dblArray[x, 2], dblArray[x, 3]);
-                            x++;
-                        }
+                        usedFile = File.ReadAllText(@"mpg/mpg2.txt");
+                        
+                        ArrayString(usedFile);
                     }
                     else
                     {
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg2.txt"))
                         {
-                            sw.WriteLine("Hello World");
+                            sw.WriteLine("0/00/0000 00 0000 00 ");
+                            sw.Close();
+                            usedFile = File.ReadAllText(@"mpg/mpg2.txt");
+                            setup(usedFile);
                         }
-
-
                     }
-                    //FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate);
                     break;
+
                 case 3:
                     if (File.Exists(@"mpg/mpg3.txt"))
                     {
-                        string input = File.ReadAllText(@"mpg/mpg3.txt");
-                        //int[,] result = new int[10, 10];
-                        foreach (var row in input.Split('\n'))
-                        {
-                            j = 0;
-                            foreach (var col in row.Trim().Split(' '))
-                            {
-                                dblArray[x, j] = col.Trim();
-                                j++;
-                            }
+                        
+                        usedFile = File.ReadAllText(@"mpg/mpg3.txt");
 
-                            dgTrack.Rows.Add(dblArray[x, 0], dblArray[x, 1], dblArray[x, 2], dblArray[x, 3]);
-                            x++;
-                        }
+                        ArrayString(usedFile);
                     }
                     else
                     {
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg3.txt"))
                         {
-                            sw.WriteLine("Hello World");
+                            //write blank line of data to use when mpg is updated
+                            sw.WriteLine("0/00/0000 00 0000 00 ");
+                            sw.Close();
+                            usedFile = File.ReadAllText(@"mpg/mpg3.txt");
+                            setup(usedFile);  
                         }
-
-
                     }
                     
                     break;
                 case 4:
                     if (File.Exists(@"mpg/mpg4.txt"))
                     {
-                        string input = File.ReadAllText(@"mpg/mpg4.txt");
-                        //int[,] result = new int[10, 10];
-                        foreach (var row in input.Split('\n'))
-                        {
-                            j = 0;
-                            foreach (var col in row.Trim().Split(' '))
-                            {
-                                dblArray[x, j] = col.Trim();
-                                j++;
-                            }
+                       
+                        usedFile = File.ReadAllText(@"mpg/mpg4.txt");
 
-                            dgTrack.Rows.Add(dblArray[x, 0], dblArray[x, 1], dblArray[x, 2], dblArray[x, 3]);
-                            x++;
-                        }
+                        ArrayString(usedFile);
                     }
                     else
                     {
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg4.txt"))
                         {
-                            sw.WriteLine("Hello World");
+                            sw.WriteLine("0/00/0000 00 0000 00");
+                            sw.Close();
+                            usedFile = File.ReadAllText(@"mpg/mpg4.txt");
+                            setup(usedFile); 
                         }
-
-
                     }
                     
                     break;
@@ -188,54 +182,6 @@ namespace MaintenanceTracker
                     MessageBox.Show("you broke something!");
                     break;
             }
-            
-
-            // Open the file to read from.
-            //using (StreamReader sr = File.OpenText(filePath))
-            //{
-                /*
-                string s = "";
-                while ((s = sr.ReadLine()) != null)
-                {
-                    
-                    //write each txt item to array
-                    odoRay[i]= s;
-                    //increment array 
-                    i++;
-                }
-                //reverse array for easier user viewing
-                Array.Reverse(odoRay);
-                //print array to list box
-                for (int i = 0; i < odoRay.Length; i++)
-                {
-                    mpgList.Items.Add(odoRay[i].ToString());
-                }
-                */
-            //}
-            //create double array with all info, rather than separate files for all info
-            //string input = File.ReadAllText(@"mpg/mpg1.txt");
-
-            /*
-             * 
-             * 
-            string[,] dblArray = new string[10,4];
-            int x = 0, j = 0;
-            int[,] result = new int[10, 10];
-            foreach (var row in input.Split('\n'))
-            {
-                j = 0;
-                foreach (var col in row.Trim().Split(' '))
-                {
-                    dblArray[x, j] = col.Trim();
-                    j++;
-                }
-                
-                dgTrack.Rows.Add(dblArray[x,0], dblArray[x,1], dblArray[x,2], dblArray[x,3]);
-                x++;
-            }
-            *
-            * 
-            */
 
         }
 
@@ -247,12 +193,44 @@ namespace MaintenanceTracker
                 //lblAlert.Text = "odoCur is: " + odoCur;
                 if (double.TryParse(txtbxGallonsRead.Text, out galCur))
                 {
-                    curMpg = odoCur / galCur;
+                    double oldOdo =  double.Parse( holdDbl[0, 2]);
+                    //double oldOdo = 
+                    curMpg = (odoCur-oldOdo) / galCur;
 
                     //lblAlert.Text = "Current MPG is: " + curMpg;
 
                     //Enter math code here!
                     dgTrack.Rows.Add(today1.ToString("d"), Math.Round(curMpg, 2), Math.Round(odoCur, 2), Math.Round(galCur, 2));
+                    string createTxt = "\n" + today1.ToString("d") + " " + Math.Round(curMpg, 2) + " " + Math.Round(odoCur, 2) + " " + Math.Round(galCur, 2);
+                    System.IO.StreamWriter objWrt;
+                    switch (main.VehicalNumber)
+                    {
+                        case 1:
+                            objWrt = new System.IO.StreamWriter(@"mpg/mpg1.txt", true);
+                            objWrt.WriteLine(createTxt);
+                            objWrt.Close();
+                            break;
+                        case 2:
+                            objWrt = new System.IO.StreamWriter(@"mpg/mpg2.txt", true);
+                            objWrt.WriteLine(createTxt);
+                            objWrt.Close();
+                            break;
+                        case 3:
+                            objWrt = new System.IO.StreamWriter(@"mpg/mpg3.txt", true);
+                            objWrt.WriteLine(createTxt);
+                            objWrt.Close();
+                            break;
+                        case 4:
+                            objWrt = new System.IO.StreamWriter(@"mpg/mpg4.txt", true);
+                            objWrt.WriteLine(createTxt);
+                            objWrt.Close();
+                            break;
+                        default:
+                            MessageBox.Show("did not work");
+                            break;
+
+                    }
+
                 }
                 else
                 {
@@ -289,6 +267,48 @@ namespace MaintenanceTracker
 
             // Open the file to read from.
             //string readText = File.ReadAllText(@"C:\Users\Andrew\Source\Repos\24317_Team2\MaintenanceTracker\Resources\odo.txt");
+        }
+
+
+        public void ArrayString(string fileName)
+        {
+
+            foreach (var row in fileName.Split('\r'))
+            {
+                j = 0;
+                foreach (var col in row.Trim().Split(' '))
+                {
+                    dblArray[x, j] = col.Trim();
+                    j++;
+                }
+
+                dgTrack.Rows.Add(dblArray[x, 0], dblArray[x, 1], dblArray[x, 2], dblArray[x, 3]);
+                x++;
+
+            }
+            holdDbl = dblArray;
+            //return;
+        }
+
+        public void setup(string newFile)
+        {
+            //usedFile = File.ReadAllText(@"mpg/mpg1.txt");
+
+            //int[,] result = new int[10, 10];
+            foreach (var row in newFile.Split('\r'))
+            {
+                j = 0;
+                foreach (var col in row.Trim().Split(' '))
+                {
+                    dblArray[x, j] = col.Trim();
+                    j++;
+                }
+                holdDbl = dblArray;
+                dgTrack.Rows.Add(dblArray[x, 0], dblArray[x, 1], dblArray[x, 2], dblArray[x, 3]);
+                //x++;
+                break;
+            }
+
         }
     }
 }
