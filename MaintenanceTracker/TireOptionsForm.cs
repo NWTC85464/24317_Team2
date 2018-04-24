@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,19 @@ using MaintenanceTracker.Properties;
 
 namespace MaintenanceTracker
 {
-    //TODO:
+    //TODO:   
     //
-    //Add install date format validation.
+    //Change how file gets writen on exit form so it wont error if someone doesnt save a file and closes.
+    //
+    //install date day month year validation?
     //
     //change reset message boxes
     //
     //change tip message box
     //
-    //change tire value message box
+   
     //
-    //Add tire milage start text?
+    //Remove scroll lock
     //
     //Add progress bar 2 for tire change feed back?
 
@@ -34,13 +37,21 @@ namespace MaintenanceTracker
         MainTracker mainTracker = new MainTracker();
 
         //Create new controls.
-        public Button setBtn1 = new Button();
+        public Button setBtn1 = new Button();   //Set values button.
+        Label tiLB = new Label();               //Tire info label.
+        Label ttLB = new Label();               //Tire tips label.
+        PictureBox pB = new PictureBox();       //Tire tips rotation picture.
+        FlowLayoutPanel flowPanel = new FlowLayoutPanel();
+       
 
         //Variables.
         public int vehicalNum;          //Holds vehical number.
         private int scrollLock = 0;     //Store value to lock track bar. 
-        public int milage;              //Store MPG mileage from MPG form.   
-        bool fileExsists = false;       //bool state if a file exsits.
+        public int milesDriven;              //Store MPG mileage from MPG form.  
+        public int odometer;
+        bool allDataEntered = false;
+        bool filesCreated = false;       //bool state if a file exsits.
+        bool fileDataExsits = false;
 
         //Create path to save text files.
         string path1 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v1Info.txt";
@@ -48,16 +59,20 @@ namespace MaintenanceTracker
         string path3 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v3Info.txt";
         string path4 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v4Info.txt";
         
-        public TireOptionsForm(int vehicalNum, int MPG)
+        public TireOptionsForm(int vehicalNum, int MilesDriven, int Odometer)
         {
             InitializeComponent();
 
             //Create files if not existing.
-            fileExsists = createTextFiles(vehicalNum, path1, path2, path3, path4, fileExsists);
-           
+            filesCreated = createTextFiles(vehicalNum, path1, path2, path3, path4, filesCreated);
+
+            //Check files for data.
+            fileDataExsits = checkFileData(vehicalNum, path1, path2, path3, path4, fileDataExsits);
+
             //Set vehical number and mpg from passed in value.
             this.vehicalNum = vehicalNum;
-            this.milage = MPG;
+            this.milesDriven = MilesDriven;
+            this.odometer = Odometer;
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -66,6 +81,7 @@ namespace MaintenanceTracker
 
             //Add vehical number to tire options form lbl
             tireOptionsFormLBL.Text = "Vehicle " + vehicalNum + " Tire Options";
+
             //Add items to combobox.
             this.comboBox1.Items.Add("30,000");
             this.comboBox1.Items.Add("40,000");
@@ -75,30 +91,108 @@ namespace MaintenanceTracker
             this.comboBox1.Items.Add("80,000");
             this.comboBox1.Items.Add("90,000");
             this.comboBox1.Items.Add("100,000");
-            /*
-            //Hide track bar, installDate textbox, and associated labels.
-            sliderValueLbl.Visible = false;
-            milesLbl.Visible = false;
-            sldLbl.Visible = false;
-            milageTrackBar.Visible = false;
-            lockTrackBarButton.Visible = false;
-            installLbl.Visible = false;
-            installDateTextBox.Visible = false;
-            saveValuesButton.Visible = false;
-            tireMilLbl.Visible = false;
-            comboBox1.Visible = false;*/
+
+            //Add tire info label controls to form.
+            // tiLB.Location = new Point(50, 100);
+            // tiLB.Height = 75;
+            // tiLB.Width = 175;
+            tiLB.AutoSize = true;
+           // tiLB.BackColor = Color.LightGreen;
+            tiLB.Margin = new Padding(40, 30, 40, 10);
+            tiLB.Visible = false;
+            //this.Controls.Add(tiLB);
+
+            //Add tire tips label and controls to form.
+            ttLB.Height = 100;
+            ttLB.Width = 250;
+            ttLB.Padding = new Padding(10, 10, 10, 10);
+            ttLB.Visible = false;
+
+////////////////////////////////////////////////////////////////////////////////////////////
+            //Add a click feature to expand the image "zoom"
+            //remove buttons and make area bigger less cluttered.
+            //Add tire tips picture box and controls to form.            
+            pB.Height = 85;
+            pB.Width = 225;
+            pB.BackgroundImage = new Bitmap(Resources.rotatePatern);
+            pB.BackgroundImageLayout = ImageLayout.Stretch;                        
+            pB.Margin = new Padding(10, 0, 10, 10);
+            pB.Visible = false;
+
+            //Add tire tips label and picture box to pannel.            
+            flowPanel.Height = 200;
+            flowPanel.Width = 250;
+            flowPanel.Location = new Point(this.ClientSize.Width / 2 - flowPanel.Size.Width / 2, 30);
+            flowPanel.Controls.Add(tiLB);
+            flowPanel.Controls.Add(ttLB);
+            flowPanel.Controls.Add(pB);
+            
+            flowPanel.FlowDirection = FlowDirection.TopDown;
+            Controls.Add(flowPanel);
+            flowPanel.BackColor = Color.LightGray;
+            flowPanel.Visible = false;
+
+            
             setTireValuesgroupBox.Visible = false;
         }
 
-        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private bool checkFileData(int vehicalNum, string path1, string path2, string path3, string path4, bool fileDataExsits)
         {
-            throw new NotImplementedException();
-        }        
+            bool fde = fileDataExsits;
+            switch (vehicalNum)
+            {
+                case 1:
+                    if ((new FileInfo(path1).Length == 0) || (new FileInfo(path1).Length == 10))
+                    {
+                        fde = false;   
+                    }
+                    else
+                    {
+                        fde = true;
+                    }     
+                    break;
+                case 2:
+                    if ((new FileInfo(path2).Length == 0) || (new FileInfo(path2).Length == 10))
+                    {
+                        fde = false;
+                    }
+                    else
+                    {
+                        fde = true;
+                    }
+                    break;
+                case 3:
+                    if ((new FileInfo(path3).Length == 0) || (new FileInfo(path3).Length == 10))
+                    {
+                        fde = false;
+                    }
+                    else
+                    {
+                        fde = true;
+                    }
+                    break;
+                case 4:
+                    if ((new FileInfo(path4).Length == 0) || (new FileInfo(path4).Length == 10))
+                    {
+                        fde = false;
+                    }
+                    else
+                    {
+                        fde = true;
+                    }
+                    break;
+
+                default:
+                    //
+                    break;
+            }
+            return fde;
+        }
 
         private void TireOptionsForm_Load(object sender, EventArgs e)
         {
             //If to check if file exsits, if it does call loadVehicalSavedValues method to load values from file.
-            if (fileExsists == true)
+            if (fileDataExsits == true)
             {
                 //Load values form saved text file.
                 loadVehicalSavedValues(vehicalNum);
@@ -120,6 +214,7 @@ namespace MaintenanceTracker
                 sliderValueLbl.Text = tireOptionsClass.Vehical1Values[1];
                 milageTrackBar.Value = Int32.Parse(tireOptionsClass.Vehical1Values[1]); 
                 installDateTextBox.Text = tireOptionsClass.Vehical1Values[2];
+                comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical1Values[3]);
                
                 //Deactivate the track bar slide
                 milageTrackBar.Enabled = false;
@@ -131,7 +226,7 @@ namespace MaintenanceTracker
                 scrollLock = 1;
 
                 //Call progressBar method.
-                pBarSet(vehicalNum, milage, tireOptionsClass.Vehical1Values[1]);
+                pBarSet(vehicalNum, milesDriven, tireOptionsClass.Vehical1Values[1]);
             }
             else if (tireOptionsClass.V2Stored == 1 && vehicalNum == 2)
             {
@@ -139,6 +234,7 @@ namespace MaintenanceTracker
                 sliderValueLbl.Text = tireOptionsClass.Vehical2Values[1];
                 milageTrackBar.Value = Int32.Parse(tireOptionsClass.Vehical2Values[1]);
                 installDateTextBox.Text = tireOptionsClass.Vehical2Values[2];
+                comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical1Values[3]);
                 tireOptionsFormLBL.Text = "Vehicle " + tireOptionsClass.Vehical2Values[0] + " Tire Options";
                 //infoLbl.Text = "Vehical" + tireOptionsClass.Vehical2Values[0];
 
@@ -152,7 +248,7 @@ namespace MaintenanceTracker
                 scrollLock = 1;
 
                 //Call progressBar method.
-                pBarSet(vehicalNum, milage, tireOptionsClass.Vehical2Values[1]);
+                pBarSet(vehicalNum, milesDriven, tireOptionsClass.Vehical2Values[1]);
             }
             else if (tireOptionsClass.V3Stored == 1 && vehicalNum == 3)
             {
@@ -160,6 +256,7 @@ namespace MaintenanceTracker
                 sliderValueLbl.Text = tireOptionsClass.Vehical3Values[1];
                 milageTrackBar.Value = Int32.Parse(tireOptionsClass.Vehical3Values[1]);
                 installDateTextBox.Text = tireOptionsClass.Vehical3Values[2];
+                comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical1Values[3]);
                 tireOptionsFormLBL.Text = "Vehical " + tireOptionsClass.Vehical3Values[0] + " Tire Options";
                 //infoLbl.Text = "Vehical" + tireOptionsClass.Vehical3Values[0];
 
@@ -173,7 +270,7 @@ namespace MaintenanceTracker
                 scrollLock = 1;
 
                 //Call progressBar method.
-                pBarSet(vehicalNum, milage, tireOptionsClass.Vehical3Values[1]);
+                pBarSet(vehicalNum, milesDriven, tireOptionsClass.Vehical3Values[1]);
             }
             else if (tireOptionsClass.V4Stored == 1 && vehicalNum == 4)
             {
@@ -181,6 +278,7 @@ namespace MaintenanceTracker
                 sliderValueLbl.Text = tireOptionsClass.Vehical4Values[1];
                 milageTrackBar.Value = Int32.Parse(tireOptionsClass.Vehical4Values[1]);
                 installDateTextBox.Text = tireOptionsClass.Vehical4Values[2];
+                comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical1Values[3]);
                 tireOptionsFormLBL.Text = "Vehical " + tireOptionsClass.Vehical4Values[0] + " Tire Options";
                 //infoLbl.Text = "Vehical" + tireOptionsClass.Vehical4Values[0];
 
@@ -194,7 +292,7 @@ namespace MaintenanceTracker
                 scrollLock = 1;
 
                 //Call progressBar method.
-                pBarSet(vehicalNum, milage, tireOptionsClass.Vehical4Values[1]);
+                pBarSet(vehicalNum, milesDriven, tireOptionsClass.Vehical4Values[1]);
             }
             else
             {
@@ -209,39 +307,151 @@ namespace MaintenanceTracker
                 progressBar1.Visible = false;
                 percentLbl.Visible = false;
             }
-        }       
+        }
 
         //Button to store the values enter in the text boxes into a list.
         private void saveValuesButton_Click(object sender, EventArgs e)
-        {           
-            //Pass values to storeArray method.
-            storeArrays(vehicalNum, installDateTextBox.Text, milageTrackBar.Value);
+        {
+            //Method to check if user entered set their prefrences
+            allDataEntered = checkDataEntered(allDataEntered, installDateTextBox.Text, milageTrackBar.Value, comboBox1.SelectedIndex);
 
-            //Deactivate the track bar slide
-            milageTrackBar.Enabled = false;
+            if (allDataEntered == true)
+            { 
+                //Pass values to storeArray method.
+                storeArrays(vehicalNum, installDateTextBox.Text, milageTrackBar.Value, comboBox1.SelectedIndex, odometer);
 
-            //Set the lock button back color.                
-            lockTrackBarButton.Image = Resources._lock;
+                //Deactivate the track bar slide
+                milageTrackBar.Enabled = false;
 
-            //Set scrollLock value to 1.
-            scrollLock = 1;
+                //Set the lock button back color.                
+                lockTrackBarButton.Image = Resources._lock;
 
-            //Set to visible.
-            //setMilageLbl.Visible = false;
-            /* sliderValueLbl.Visible = false;
-             milesLbl.Visible = false;
-             sldLbl.Visible = false;
-             milageTrackBar.Visible = false;
-             lockTrackBarButton.Visible = false;
-             installLbl.Visible = false;
-             installDateTextBox.Visible = false;
-             saveValuesButton.Visible = false;
-             comboBox1.Visible = false;
-             tireMilLbl.Visible = false;*/
-            progressBar1.Visible = true;
-            percentLbl.Visible = true;
-            setTireValuesgroupBox.Visible = false;
-            setBtn.Visible = true;
+                //Set scrollLock value to 1.
+                scrollLock = 1;
+
+                //Set backcolors back to default.
+                milageTrackBar.BackColor = default(Color);
+                installDateTextBox.BackColor = default(Color);
+                comboBox1.BackColor = default(Color);
+                saveValuesButton.Focus();
+
+                //Set to visible.
+                //setMilageLbl.Visible = false;
+                /* sliderValueLbl.Visible = false;
+                 milesLbl.Visible = false;
+                 sldLbl.Visible = false;
+                 milageTrackBar.Visible = false;
+                 lockTrackBarButton.Visible = false;
+                 installLbl.Visible = false;
+                 installDateTextBox.Visible = false;
+                 saveValuesButton.Visible = false;
+                 comboBox1.Visible = false;
+                 tireMilLbl.Visible = false;*/
+                progressBar1.Visible = true;
+                percentLbl.Visible = true;
+                setTireValuesgroupBox.Visible = false;
+                setBtn.Visible = true;
+            }
+        }
+
+        //Method to check if user has enterd data when pressing the save button.
+        public bool checkDataEntered(bool allDataEntered, string installDate, int milageBarValue, int maxTireMilage)
+        {
+            //Variables
+            bool aDE = allDataEntered;  //Passed in bool all data enterd.
+            bool checkedValues = false; //Local variable for while loop.
+
+            //While loop to check if all user preferences are enterd.
+            while (checkedValues != true)
+            {
+                //Check install date format.
+                bool dateGood = validateDate(installDate);
+                if(dateGood == false)
+                {
+                    aDE = false;
+                    break;
+                }
+
+                //Check if mileage bar has value set.
+                if (milageBarValue == 0)
+                {
+                    //Display message box to set rotation if item is not selected.
+                    MessageBox.Show("Please set Rotation Mileage Preference");
+
+                    //Set the focus to combobox.
+                    milageTrackBar.Focus();
+
+                    //Set back color to yellow.
+                    milageTrackBar.BackColor = Color.Yellow;
+                    break;
+                }
+                
+                //Check if combobox item is selected.
+                else if (comboBox1.SelectedItem == null)
+                {
+                    //Display messeage to select tire mileage.
+                    MessageBox.Show("Please select tire mileage");
+
+                    //Set focus to combobox.
+                    comboBox1.Focus();
+
+                    //Set combobox back color to yellow.
+                    comboBox1.BackColor = Color.Yellow;
+                    break;
+                }
+                else
+                {
+                    //Continue
+                    checkedValues = true;
+                }
+                aDE = true;
+            }            
+            return aDE;
+        }
+
+        //Check method to validate the install date text box.
+        private bool validateDate(string installDate)
+        {
+            //Variables.
+            bool dg;
+            DateTime Test;
+
+            //Check if install text box is empty string or empty mask.
+            if ((String.IsNullOrEmpty(installDate) || installDateTextBox.Text == "  /  /"))
+            {
+                //Display messeage to re-enter date.
+                MessageBox.Show("Please re-enter Install Date");
+
+                //Set the focus to install text box.
+                installDateTextBox.Focus();
+
+                //Set the back color to yellow.
+                installDateTextBox.BackColor = Color.Yellow;
+
+                dg = false;
+            }
+            //Check the format of the date entered.
+            else if (DateTime.TryParseExact(installDateTextBox.Text, "MM/dd/yyyy", null, DateTimeStyles.None, out Test) == true)
+            {    
+                //Add checker for months, day, yr maybe?
+                dg = true;                
+            }
+            else
+            {
+                //Display messeage to re-enter date.
+                MessageBox.Show("Please re-enter Install Date");
+
+                //Set the focus to install text box.
+                installDateTextBox.Focus();
+
+                //Set the back color to yellow.
+                installDateTextBox.BackColor = Color.Yellow;
+
+                dg = false;
+            }
+
+            //Return true if date is good or false if date is bad.
+            return dg;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -295,10 +505,15 @@ namespace MaintenanceTracker
             percentLbl.Visible = false;
             setTireValuesgroupBox.Visible = true;
             setBtn.Visible = false;
+
+            tiLB.Visible = false;
         }
         
         private void resetButton_Click(object sender, EventArgs e)
         {
+            //Hide tire info label.
+            tiLB.Visible = false;
+
             //Pass vehicalNum to method.
             resetValues(vehicalNum);           
         }
@@ -306,6 +521,7 @@ namespace MaintenanceTracker
         private void resetValues(int vehicalNum)
         {
             int vNum = vehicalNum;
+
             //Prompt user if they want to reset values.
             DialogResult res = MessageBox.Show("Are you sure you want to Reset Values?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (res == DialogResult.OK)
@@ -332,38 +548,42 @@ namespace MaintenanceTracker
                 {
                     case 1:
                         //Reset tire values array.          
-                        for (int index = 0; index < tireOptionsClass.Vehical1Values.Length; index++)
+                       /* for (int index = 0; index < tireOptionsClass.Vehical1Values.Length; index++)
                         {
                             tireOptionsClass.Vehical1Values[index] = "";
-                        }
-
+                            
+                        }*/
+                        Array.Clear(tireOptionsClass.Vehical1Values, 0, tireOptionsClass.Vehical1Values.Length);
                         tireOptionsClass.V1Stored = 0;
                         progressBar1.Value = 0;
                         break;
                     case 2:
                         //Reset tire values array.          
-                        for (int index = 0; index < tireOptionsClass.Vehical2Values.Length; index++)
+                       /* for (int index = 0; index < tireOptionsClass.Vehical2Values.Length; index++)
                         {
                             tireOptionsClass.Vehical2Values[index] = "";
-                        }
+                        }*/
+                        Array.Clear(tireOptionsClass.Vehical2Values, 0, tireOptionsClass.Vehical2Values.Length);
                         tireOptionsClass.V2Stored = 0;
                         progressBar1.Value = 0;
                         break;
                     case 3:
                         //Reset tire values array.          
-                        for (int index = 0; index < tireOptionsClass.Vehical3Values.Length; index++)
+                        /*for (int index = 0; index < tireOptionsClass.Vehical3Values.Length; index++)
                         {
                             tireOptionsClass.Vehical3Values[index] = "";
-                        }
+                        }*/
+                        Array.Clear(tireOptionsClass.Vehical3Values, 0, tireOptionsClass.Vehical3Values.Length);
                         tireOptionsClass.V3Stored = 0;
                         progressBar1.Value = 0;
                         break;
                     case 4:
                         //Reset tire values array.          
-                        for (int index = 0; index < tireOptionsClass.Vehical4Values.Length; index++)
+                        /*for (int index = 0; index < tireOptionsClass.Vehical4Values.Length; index++)
                         {
                             tireOptionsClass.Vehical4Values[index] = "";
-                        }
+                        }*/
+                        Array.Clear(tireOptionsClass.Vehical4Values, 0, tireOptionsClass.Vehical4Values.Length);
                         tireOptionsClass.V4Stored = 0;
                         progressBar1.Value = 0;
                         break;
@@ -383,21 +603,38 @@ namespace MaintenanceTracker
       
         //Button click will print array index values to dialogbox.
         private void tireInfoButton_Click(object sender, EventArgs e)
-        {           
-            if(vehicalNum == 1 && tireOptionsClass.V1Stored == 1)
+        {
+            //Hide progress bar.
+            progressBar1.Visible = false;
+            percentLbl.Visible = false;
+
+            //Make panel visable.
+            flowPanel.Visible = true;
+            tiLB.Visible = true;
+            ttLB.Visible = false;
+            pB.Visible = false;
+
+            if (vehicalNum == 1 && tireOptionsClass.V1Stored == 1)
             {
                 //Concatnat output string.
                 string Output = "Vehicle #" + vehicalNum + "\n" + "Tires Installed On " + tireOptionsClass.Vehical1Values[2].ToString()
-                    + "\n" + "Set Rotation Mileage " + tireOptionsClass.Vehical1Values[1];
-
-                //Display Output in messeage box.
-                MessageBox.Show(Output);
+                    + "\n" + "Set Rotation Mileage " + tireOptionsClass.Vehical1Values[1]
+                    + "\nTire Mileage Rating: " + tireOptionsClass.Vehical1Values[3]
+                    + "\nTire Tread Wear Rating: " + tireOptionsClass.Vehical1Values[4];               
+                
+                //Add String output to tire info listbox.
+                foreach (string line in Output.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
+                {
+                    tiLB.Text = Output;
+                }
             }
             else if (vehicalNum == 2 && tireOptionsClass.V2Stored == 1)
             {
                 //Concatnat output string.
                 string Output = "Vehicle #" + vehicalNum + "\n" + "Tires Installed On " + tireOptionsClass.Vehical2Values[2].ToString()
-                    + "\n" + "Set Rotation Mileage " + tireOptionsClass.Vehical2Values[1];
+                    + "\n" + "Set Rotation Mileage " + tireOptionsClass.Vehical2Values[1]
+                    + "\nTire Mileage Rating: " + tireOptionsClass.Vehical2Values[3]
+                    + "\nTire Tread Wear Rating: " + tireOptionsClass.Vehical2Values[4];
 
                 //Display Output in messeage box.
                 MessageBox.Show(Output);
@@ -406,7 +643,9 @@ namespace MaintenanceTracker
             {
                 //Concatnat output string.
                 string Output = "Vehicle #" + vehicalNum + "\n" + "Tires Installed On " + tireOptionsClass.Vehical3Values[2].ToString()
-                    + "\n" + "Set Rotation Mileage " + tireOptionsClass.Vehical3Values[1];
+                    + "\n" + "Set Rotation Mileage " + tireOptionsClass.Vehical3Values[1]
+                    + "\nTire Mileage Rating: " + tireOptionsClass.Vehical3Values[3]
+                    + "\nTire Tread Wear Rating: " + tireOptionsClass.Vehical3Values[4];
 
                 //Display Output in messeage box.
                 MessageBox.Show(Output);
@@ -415,7 +654,9 @@ namespace MaintenanceTracker
             {
                 //Concatnat output string.
                 string Output = "Vehicle #" + vehicalNum + "\n" + "Tires Installed On " + tireOptionsClass.Vehical4Values[2].ToString()
-                    + "\n" + "Set Rotation Mileage " + tireOptionsClass.Vehical4Values[1];
+                    + "\n" + "Set Rotation Mileage " + tireOptionsClass.Vehical4Values[1]
+                    + "\nTire Mileage Rating: " + tireOptionsClass.Vehical4Values[3]
+                    + "\nTire Tread Wear Rating: " + tireOptionsClass.Vehical4Values[4];
 
                 //Display Output in messeage box.
                 MessageBox.Show(Output);
@@ -427,10 +668,20 @@ namespace MaintenanceTracker
             }            
         }
 
-        private void otherInfoButton_Click(object sender, EventArgs e)
+        private void tireTipsButton_Click(object sender, EventArgs e)
         {
+            //Hide tire info label.
+            tiLB.Visible = false;
+            progressBar1.Visible = false;
+            percentLbl.Visible = false;           
+
             //Display other info in messege box.
-            MessageBox.Show(tireOptionsClass.RotateMessage, "Information");
+            //MessageBox.Show(tireOptionsClass.RotateMessage, "Information");
+            pB.Visible = true;
+            ttLB.Visible = true;
+            ttLB.Text = tireOptionsClass.RotateMessage;
+            flowPanel.Visible = true;
+            
         }
        
         private void pBarSet(int vehicalNum, int milage, string rotateValue)
@@ -480,14 +731,20 @@ namespace MaintenanceTracker
             installDateTextBox.Text = string.Empty;
         }
 
-        private void commentButton_Click(object sender, EventArgs e)
+        private void notepad_Click(object sender, EventArgs e)
         {
+            //Hide tire info label.
+            tiLB.Visible = false;
+
             //Load comments form.
             TireCommentForm tireCommentForm = new TireCommentForm(vehicalNum);
             tireCommentForm.Show();
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
+            //Hide tire info label.
+            tiLB.Visible = false;
+
             //Save values to textfiles.
             switch (vehicalNum)
             {
@@ -556,31 +813,36 @@ namespace MaintenanceTracker
         }
 
         //Methods....
-        private bool createTextFiles(int vn, string p1, string p2, string p3, string p4, bool fE)
+        private bool createTextFiles(int vn, string p1, string p2, string p3, string p4, bool cTf)
         {
             switch (vn)
             {
                 case 1:
                     if (!File.Exists(p1))
                     {
-                        // Create a file to write to for vehcial 1.
+                        using (File.Create(p1)) ;
+                        /*// Create a file to write to for vehcial 1.
                         using (StreamWriter sw = File.CreateText(p1))
                         {
+
                             sw.WriteLine(" ");
                             sw.WriteLine(" ");
                             sw.WriteLine(" ");
-                            fE = false;
-                        }
+                            sw.WriteLine(" ");
+                            sw.WriteLine(" ");
+                            
+                        }*/
+                        cTf = false;
                     }
                     else
                     {
-                        if (new FileInfo(p1).Length == 6)
+                        if ((new FileInfo(p1).Length == 0) || (new FileInfo(p1).Length == 10))
                         {
-                            fE = false;
+                            cTf = false;
                         }
                         else
                         {
-                            fE = true;
+                            cTf = true;
                         }
                        
                     }
@@ -594,18 +856,20 @@ namespace MaintenanceTracker
                             sw.WriteLine(" ");
                             sw.WriteLine(" ");
                             sw.WriteLine(" ");
-                            fE = false;
+                            sw.WriteLine(" ");
+                            sw.WriteLine(" ");
+                            cTf = false;
                         }
                     }
                     else
                     {
                         if (new FileInfo(p2).Length == 6)
                         {
-                            fE = false;
+                            cTf = false;
                         }
                         else
                         {
-                            fE = true;
+                            cTf = true;
                         }
 
                     }
@@ -619,18 +883,20 @@ namespace MaintenanceTracker
                             sw.WriteLine(" ");
                             sw.WriteLine(" ");
                             sw.WriteLine(" ");
-                            fE = false;
+                            sw.WriteLine(" ");
+                            sw.WriteLine(" ");
+                            cTf = false;
                         }
                     }
                     else
                     {
                         if (new FileInfo(p3).Length == 6)
                         {
-                            fE = false;
+                            cTf = false;
                         }
                         else
                         {
-                            fE = true;
+                            cTf = true;
                         }
 
                     }
@@ -644,18 +910,20 @@ namespace MaintenanceTracker
                             sw.WriteLine(" ");
                             sw.WriteLine(" ");
                             sw.WriteLine(" ");
-                            fE = false;
+                            sw.WriteLine(" ");
+                            sw.WriteLine(" ");
+                            cTf = false;
                         }
                     }
                     else
                     {
                         if (new FileInfo(p4).Length == 6)
                         {
-                            fE = false;
+                            cTf = false;
                         }
                         else
                         {
-                            fE = true;
+                            cTf = true;
                         }
 
                     }
@@ -664,7 +932,7 @@ namespace MaintenanceTracker
                     //
                     break;
             }
-            return fE;
+            return cTf;
         }
 
         private void loadVehicalSavedValues(int vehicalNum)
@@ -702,12 +970,14 @@ namespace MaintenanceTracker
             }
         }
 
-        private void storeArrays(int vehicalNum, string installDateTextBox, int milageTrackBar)
+        private void storeArrays(int vehicalNum, string installDateTextBox, int milageTrackBar, int tireTreadMilage, int odometer)
         {
             //Local variables.
             int vn = vehicalNum;
             int mtB = milageTrackBar;
             string iDTB = installDateTextBox;
+            int tTM = tireTreadMilage;
+            int odb = odometer;
 
             switch (vehicalNum)
             {
@@ -716,17 +986,25 @@ namespace MaintenanceTracker
                     tireOptionsClass.Vehical1Values[0] = vn.ToString();
                     tireOptionsClass.Vehical1Values[1] = mtB.ToString();
                     tireOptionsClass.Vehical1Values[2] = iDTB;
-                    pBarSet(vehicalNum, milage, tireOptionsClass.Vehical1Values[1]);
+                    tireOptionsClass.Vehical1Values[3] = tTM.ToString();
+                    tireOptionsClass.Vehical1Values[4] = odb.ToString();
+                    pBarSet(vehicalNum, milesDriven, tireOptionsClass.Vehical1Values[1]);
 
                     //Int to state values added to restore form on return.
                     tireOptionsClass.V1Stored = 1;
+
+                    //Write to file.
+
+
                     break;
                 case 2:
                     //Add tire values to array.
                     tireOptionsClass.Vehical2Values[0] = vn.ToString();
                     tireOptionsClass.Vehical2Values[1] = mtB.ToString();
                     tireOptionsClass.Vehical2Values[2] = iDTB;
-                    pBarSet(vehicalNum, milage, tireOptionsClass.Vehical2Values[1]);
+                    tireOptionsClass.Vehical2Values[3] = tTM.ToString();
+                    tireOptionsClass.Vehical2Values[4] = odb.ToString();
+                    pBarSet(vehicalNum, milesDriven, tireOptionsClass.Vehical2Values[1]);
 
                     //Int to state values added to restore form on return.
                     tireOptionsClass.V2Stored = 1;
@@ -736,7 +1014,9 @@ namespace MaintenanceTracker
                     tireOptionsClass.Vehical3Values[0] = vn.ToString();
                     tireOptionsClass.Vehical3Values[1] = mtB.ToString();
                     tireOptionsClass.Vehical3Values[2] = iDTB;
-                    pBarSet(vehicalNum, milage, tireOptionsClass.Vehical3Values[1]);
+                    tireOptionsClass.Vehical3Values[3] = tTM.ToString();
+                    tireOptionsClass.Vehical3Values[4] = odb.ToString();
+                    pBarSet(vehicalNum, milesDriven, tireOptionsClass.Vehical3Values[1]);
 
                     //Int to state values added to restore form on return.
                     tireOptionsClass.V3Stored = 1;
@@ -746,7 +1026,9 @@ namespace MaintenanceTracker
                     tireOptionsClass.Vehical4Values[0] = vn.ToString();
                     tireOptionsClass.Vehical4Values[1] = mtB.ToString();
                     tireOptionsClass.Vehical4Values[2] = iDTB;
-                    pBarSet(vehicalNum, milage, tireOptionsClass.Vehical4Values[1]);
+                    tireOptionsClass.Vehical4Values[3] = tTM.ToString();
+                    tireOptionsClass.Vehical4Values[4] = odb.ToString();
+                    pBarSet(vehicalNum, milesDriven, tireOptionsClass.Vehical4Values[1]);
 
                     //Int to state values added to restore form on return.
                     tireOptionsClass.V4Stored = 1;
