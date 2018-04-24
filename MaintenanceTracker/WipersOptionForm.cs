@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Drawing2D;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace MaintenanceTracker
 {
@@ -18,22 +19,23 @@ namespace MaintenanceTracker
         Wiper[] wiper = new Wiper[1];
         MainFormClass mainFormClass = new MainFormClass();
         MainTracker mainTracker = new MainTracker();
+        
 
         //Variables.
-        int vehicleNum;          // Holds Vehicle number.
+        int vehicleNum;                 // Holds Vehicle number.
         string nextInstallDateParse;    // Next wiper installation date
         string installedDateParse;      // Wiper installed date
         double driver;                  // Wiper size - driver
         double passager;                // Wiper size - passager
         double rear;                    // Wiper size - rear
-        //string brand;                   // Wiper brand
 
+        public object HttpContext { get; private set; }
 
         public WipersOptionForm(int vNum)
         {
             InitializeComponent();
 
-            //Set Vehicle number and mpg from passed in value.
+            //Set Vehicle number from passed in value.
             this.vehicleNum = vNum;
 
             //Form background color.
@@ -46,38 +48,127 @@ namespace MaintenanceTracker
 
             // Display wiper info for the selected vehicle
             vehicleNumLabel.Text = "Wiper Info for Vehicle #" + vehicleNum;
-            /*
-            XmlTextReader reader = new XmlTextReader("WiperData.xml");
 
-            while (reader.Read())
+            // VEHICLE #1
+            if (vehicleNum == 1)    // If vehicle number 1 is selected
             {
-                switch (reader.NodeType)
+                // Variable to hold file
+                string wiperDataFile = @"C:\Users\x12 t2015\source\repos\24317_Team2\MaintenanceTracker\bin\Debug\WiperData1.xml";
+
+                // If file exists or not
+                MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
+
+                //wiperProgressBar.Visible = true;    // Show progress bar
+                //installedDateTimePicker.Enabled = false;
+
+                if (File.Exists(wiperDataFile))
                 {
-                    case XmlNodeType.Element: // The node is an element.
-                        Console.Write("<" + reader.Name);
-                        Console.WriteLine(">");
-                        break;
-                    case XmlNodeType.Text: //Display the text in each element.
-                        Console.WriteLine(reader.Value);
-                        break;
-                    case XmlNodeType.EndElement: //Display the end of the element.
-                        Console.Write("</" + reader.Name);
-                        Console.WriteLine(">");
-                        break;
+                    // ***************NEED FOR KEEP OR DELETE FILE**************
+                    //***IF KEEP, THEN DISPLAY DATA FOR THE VEHICLE
+                    //***IF DELETE, DISPLAY FORM TO CREATE NEW DATA
+                      
+                   
+                    
+                    // Call and pass the xml file to be displayed
+                    displayWiperData(wiperDataFile);
+
+                    //*****display on new form
+                    //if click RESET, file will be delete and back to fill form for the vehicle
+                    //if click OK, back to the main form to select a different vehicle
+
                 }
+
             }
-            MessageBox.Show(Console.ReadLine());
-            */
+
+            // VEHICLE #2
+            if (vehicleNum == 2)    // If vehicle number 2 is selected
+            {
+                // Variable to hold file
+                string wiperDataFile = @"C:\Users\x12 t2015\source\repos\24317_Team2\MaintenanceTracker\bin\Debug\WiperData2.xml";
+
+                // If file exists or not
+                MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
+
+                //wiperProgressBar.Visible = true;    // Show progress bar
+                //installedDateTimePicker.Enabled = false;
+                if (File.Exists(wiperDataFile))
+                {
+                    // Call and pass the xml file to be displayed
+                    displayWiperData(wiperDataFile);
+
+                }
+
+            }
+
+            // VEHICLE #3
+            if (vehicleNum == 3)    // If vehicle number 3 is selected
+            {
+                // Variable to hold file
+                string wiperDataFile = @"C:\Users\x12 t2015\source\repos\24317_Team2\MaintenanceTracker\bin\Debug\WiperData3.xml";
+
+                // If file exists or not
+                MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
+
+                //wiperProgressBar.Visible = true;    // Show progress bar
+                //installedDateTimePicker.Enabled = false;
+                if (File.Exists(wiperDataFile))
+                {
+                    displayWiperData(wiperDataFile);
+                }
+
+            }
+
+            // VEHICLE #4
+            if (vehicleNum == 4)    // If vehicle number 4 is selected
+            {
+                // Variable to hold file
+                string wiperDataFile = @"C:\Users\x12 t2015\source\repos\24317_Team2\MaintenanceTracker\bin\Debug\WiperData4.xml";
+
+                // If file exists or not
+                MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
+
+                //wiperProgressBar.Visible = true;    // Show progress bar
+                //installedDateTimePicker.Enabled = false;
+                if (File.Exists(wiperDataFile))
+                {
+                    displayWiperData(wiperDataFile);
+                }
+
+            }
         }
 
-        private void WipersOptionForm_Load(object sender, EventArgs e)
+        private void displayWiperData(string wFile)
+        {
+            // Turn off fields that used to enter data
+            installedDateTimePicker.Visible = false;
+            nextReplaceDateDisplayLabel.Visible = false;
+            driverSideTextBox.Visible = false;
+            passagerSideTextBox.Visible = false;
+            rearTextBox.Visible = false;
+            brandTextBox.Visible = false;
+            notesTextBox.Visible = false;
+
+            XmlDocument d = new XmlDocument();
+            d.Load(wFile);
+            XmlElement root = d.DocumentElement;
+            vehicleNumLabel.Text = "Wiper Info for Vehicle #" + root.GetElementsByTagName("Vehicle_Number")[0].InnerText;
+            displayInstDateLabel.Text = root.GetElementsByTagName("Installed_Date")[0].InnerText;
+            displayNextDateLabel.Text = root.GetElementsByTagName("Next_Install_Date")[0].InnerText;
+            displayDrSideLabel.Text = root.GetElementsByTagName("Driver_Size")[0].InnerText;
+            displayPassSideLabel.Text = root.GetElementsByTagName("Passager_Size")[0].InnerText;
+            displayRearLabel.Text = root.GetElementsByTagName("Rear_Size")[0].InnerText;
+            displayBrandLabel.Text = root.GetElementsByTagName("Brand")[0].InnerText;
+            displayNotesLabel.Text = root.GetElementsByTagName("Notes")[0].InnerText;
+           
+        }
+        private void WipersOptionForm_Load(int vNum)
         {
             tipAndInfoButton.BackColor = System.Drawing.Color.AliceBlue;
 
             tipAndInfoButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
 
             tipAndInfoButton.FlatStyle = FlatStyle.Flat;
-            tipAndInfoButton.FlatAppearance.BorderSize = 2;
+            tipAndInfoButton.FlatAppearance.BorderSize = 2;           
 
         }
 
@@ -93,16 +184,16 @@ namespace MaintenanceTracker
         }
 
         // Select data wipers are installed
-        private void installedDateTimePicker_ValueChanged_1(object sender, EventArgs e)
+        public void installedDateTimePicker_ValueChanged_1(object sender, EventArgs e)
         {
             // Get the current date.
             DateTime thisDay = installedDateTimePicker.Value.Date;
 
-            installedDateParse = thisDay.ToString("D");   // To be passed to be stored
+            installedDateParse = thisDay.ToString("D");     // To be passed to be stored
 
-            DateTime answer = thisDay.AddDays(180); // Add 180 days to the installed date
+            DateTime answer = thisDay.AddDays(180);         // Add 180 days to the installed date
 
-            nextInstallDateParse = answer.ToString("D");      // Convert for display
+            nextInstallDateParse = answer.ToString("D");    // Convert for display
 
             // Display the next replacement date.
             nextReplaceDateDisplayLabel.Text = nextInstallDateParse.ToString();
@@ -128,150 +219,144 @@ namespace MaintenanceTracker
                 switch (v_N)
                 {
                     case 1:
-                        wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
 
-                        using (XmlWriter writer = XmlWriter.Create("WiperData1.xml"))
-                        {
-                            writer.WriteStartDocument();
-                            writer.WriteStartElement("Wiper");
+                        //*********** IF DELETE FILE, NEED CODES TO DELETE FILE AND CLEAR FIELDS *****
+                        //****NEED CODES TO CREATE FILE****
 
-                            foreach (Wiper w in wiper)
-                            {
-                                writer.WriteStartElement("Wiper");
-
-                                // Empty all elements
-                                writer.WriteElementString("Vehicle_Number", "");
-                                writer.WriteElementString("Installed_Date", "");
-                                writer.WriteElementString("Next_Install_Date", "");
-                                writer.WriteElementString("Driver_Size", "");
-                                writer.WriteElementString("Passage_Size", "");
-                                writer.WriteElementString("Rear_Size", "");
-                                writer.WriteElementString("Brand", "");
-                                writer.WriteElementString("Notes", "");
-
-                                writer.WriteEndElement();   // End writing 
-                            }
-
-                            writer.WriteEndElement();       // End writing 
-                            writer.WriteEndDocument();      // End writing to file
-                        }
+                        clearFields(v_N);
+                      
                         break;
 
                     case 2:
-                        wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
-
-                        using (XmlWriter writer = XmlWriter.Create("WiperData2.xml"))
-                        {
-                            writer.WriteStartDocument();
-                            writer.WriteStartElement("Wiper");
-
-                            foreach (Wiper w in wiper)
-                            {
-                                writer.WriteStartElement("Wiper");
-
-                                // Empty all elements
-                                writer.WriteElementString("Vehicle_Number", "");
-                                writer.WriteElementString("Installed_Date", "");
-                                writer.WriteElementString("Next_Install_Date", "");
-                                writer.WriteElementString("Driver_Size", "");
-                                writer.WriteElementString("Passage_Size", "");
-                                writer.WriteElementString("Rear_Size", "");
-                                writer.WriteElementString("Brand", "");
-                                writer.WriteElementString("Notes", "");
-
-                                writer.WriteEndElement();   // End writing 
-                            }
-
-                            writer.WriteEndElement();       // End writing 
-                            writer.WriteEndDocument();      // End writing to file
-                        }
+                        clearFields(v_N);
                         break;
 
                     case 3:
-                        wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
-
-                        using (XmlWriter writer = XmlWriter.Create("WiperData3.xml"))
-                        {
-                            writer.WriteStartDocument();
-                            writer.WriteStartElement("Wiper");
-
-                            foreach (Wiper w in wiper)
-                            {
-                                writer.WriteStartElement("Wiper");
-
-                                // Empty all elements
-                                writer.WriteElementString("Vehicle_Number", "");
-                                writer.WriteElementString("Installed_Date", "");
-                                writer.WriteElementString("Next_Install_Date", "");
-                                writer.WriteElementString("Driver_Size", "");
-                                writer.WriteElementString("Passage_Size", "");
-                                writer.WriteElementString("Rear_Size", "");
-                                writer.WriteElementString("Brand", "");
-                                writer.WriteElementString("Notes", "");
-
-                                writer.WriteEndElement();   // End writing 
-                            }
-
-                            writer.WriteEndElement();       // End writing 
-                            writer.WriteEndDocument();      // End writing to file
-                        }
+                        clearFields(v_N);
                         break;
 
                     case 4:
-                        wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
-
-                        using (XmlWriter writer = XmlWriter.Create("WiperData4.xml"))
-                        {
-                            writer.WriteStartDocument();
-                            writer.WriteStartElement("Wiper");
-
-                            foreach (Wiper w in wiper)
-                            {
-                                writer.WriteStartElement("Wiper");
-
-                                // Empty all elements
-                                writer.WriteElementString("Vehicle_Number", "");
-                                writer.WriteElementString("Installed_Date", "");
-                                writer.WriteElementString("Next_Install_Date", "");
-                                writer.WriteElementString("Driver_Size", "");
-                                writer.WriteElementString("Passage_Size", "");
-                                writer.WriteElementString("Rear_Size", "");
-                                writer.WriteElementString("Brand", "");
-                                writer.WriteElementString("Notes", "");
-
-                                writer.WriteEndElement();   // End writing 
-                            }
-
-                            writer.WriteEndElement();       // End writing 
-                            writer.WriteEndDocument();      // End writing to file
-                        }
+                        clearFields(v_N);
                         break;
 
                     default:
                         break;
 
-                        
+                    
                 }
-
-                // Empty fields
-                installedDateTimePicker.ResetText();
-                nextReplaceDateDisplayLabel.Text = "";
-                driverSideTextBox.Clear();
-                passagerSideTextBox.Clear();
-                rearTextBox.Clear();
-                brandTextBox.Clear();
-                notesTextBox.Clear();
-
-                // Enable the fields to be edited
-                installedDateTimePicker.Enabled = true;
-                nextReplaceDateDisplayLabel.Enabled = true;
-                driverSideTextBox.Enabled = true;
-                passagerSideTextBox.Enabled = true;
-                rearTextBox.Enabled = true;
-                brandTextBox.Enabled = true;
-                notesTextBox.Enabled = true;
+               
             }
         }
+
+        
+        private void clearFields(int vNum)
+        {
+            wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
+
+            using (XmlWriter writer = XmlWriter.Create("WiperData" + vNum + ".xml"))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("Wiper");
+
+                foreach (Wiper w in wiper)
+                {
+                    writer.WriteStartElement("Wiper");
+
+                    // Empty all elements
+                    writer.WriteElementString("Vehicle_Number", "");
+                    writer.WriteElementString("Installed_Date", "");
+                    writer.WriteElementString("Next_Install_Date", "");
+                    writer.WriteElementString("Driver_Size", "");
+                    writer.WriteElementString("Passager_Size", "");
+                    writer.WriteElementString("Rear_Size", "");
+                    writer.WriteElementString("Brand", "");
+                    writer.WriteElementString("Notes", "");
+
+                    writer.WriteEndElement();   // End writing 
+                }
+
+                writer.WriteEndElement();       // End writing 
+                writer.WriteEndDocument();      // End writing to file
+            }
+
+           
+            // Turn on fields that used to enter data
+            installedDateTimePicker.Visible = true;
+            nextReplaceDateDisplayLabel.Visible = true;
+            driverSideTextBox.Visible = true;
+            passagerSideTextBox.Visible = true;
+            rearTextBox.Visible = true;
+            brandTextBox.Visible = true;
+            notesTextBox.Visible = true;
+            
+
+            // Turn off display labels
+            displayInstDateLabel.Visible = false;
+            displayNextDateLabel.Visible = false;
+            displayDrSideLabel.Visible = false;
+            displayPassSideLabel.Visible = false;
+            displayRearLabel.Visible = false;
+            displayBrandLabel.Visible = false;
+            displayNotesLabel.Visible = false; 
+
+
+            // Empty fields
+            installedDateTimePicker.ResetText();
+            nextReplaceDateDisplayLabel.Text = "";
+            driverSideTextBox.Clear();
+            passagerSideTextBox.Clear();
+            rearTextBox.Clear();
+            brandTextBox.Clear();
+            notesTextBox.Clear();
+
+            // Enable the fields to be edited
+            installedDateTimePicker.Enabled = true;
+            nextReplaceDateDisplayLabel.Enabled = true;
+            driverSideTextBox.Enabled = true;
+            passagerSideTextBox.Enabled = true;
+            rearTextBox.Enabled = true;
+            brandTextBox.Enabled = true;
+            notesTextBox.Enabled = true;
+        }
+        
+        private void writeToXML(int v)
+        {
+            string wi = @"C:\Users\x12 t2015\source\repos\24317_Team2\MaintenanceTracker\bin\Debug\WiperData" + v + ".xml";
+
+            wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
+
+            if (File.Exists(wi))
+            {
+                //****if file already exists, just add the values to the xml file
+                //***if file not exist, create file and add values
+                //***create method to add file and method to create file and add values
+            }
+            using (XmlWriter writer = XmlWriter.Create("WiperData" + v + ".xml"))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("Wiper");
+
+                foreach (Wiper w in wiper)
+                {
+                    writer.WriteStartElement("Wiper");
+
+                    writer.WriteElementString("Vehicle_Number", w.vNumber.ToString());
+                    writer.WriteElementString("Installed_Date", w.Install);
+                    writer.WriteElementString("Next_Install_Date", w.Next);
+                    writer.WriteElementString("Driver_Size", w.Driver.ToString());
+                    writer.WriteElementString("Passager_Size", w.Passager.ToString());
+                    writer.WriteElementString("Rear_Size", w.Rear.ToString());
+                    writer.WriteElementString("Brand", w.Brand);
+                    writer.WriteElementString("Notes", w.Notes);
+
+                    writer.WriteEndElement();   // End writing 
+                }
+
+                writer.WriteEndElement();       // End writing 
+                writer.WriteEndDocument();      // End writing to file
+            }
+        }
+
 
         // Save the info entered
         private void saveButton_Click_1(object sender, EventArgs e)
@@ -359,119 +444,19 @@ namespace MaintenanceTracker
             switch (vehicleNum)
             {
                 case 1:
-                    wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brand, notes);
-                
-                    using (XmlWriter writer = XmlWriter.Create("WiperData1.xml"))
-                    {
-                        writer.WriteStartDocument();
-                        writer.WriteStartElement("Wiper");
-
-                        foreach (Wiper w in wiper)
-                        {
-                            writer.WriteStartElement("Wiper");
-
-                            writer.WriteElementString("Vehicle_Number", w.vNumber.ToString());
-                            writer.WriteElementString("Installed_Date", w.Install);
-                            writer.WriteElementString("Next_Install_Date", w.Next);
-                            writer.WriteElementString("Driver_Size", w.Driver.ToString());
-                            writer.WriteElementString("Passage_Size", w.Passager.ToString());
-                            writer.WriteElementString("Rear_Size", w.Rear.ToString());
-                            writer.WriteElementString("Brand", w.Brand);
-                            writer.WriteElementString("Notes", w.Notes);
-
-                            writer.WriteEndElement();   // End writing 
-                        }
-
-                        writer.WriteEndElement();       // End writing 
-                        writer.WriteEndDocument();      // End writing to file
-                    }
+                    writeToXML(vehicleNum);                   
                     break;
 
                 case 2:
-                    wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brand, notes);
-                
-                    using (XmlWriter writer = XmlWriter.Create("WiperData2.xml"))
-                    {
-                        writer.WriteStartDocument();
-                        writer.WriteStartElement("Wiper");
-
-                        foreach (Wiper w in wiper)
-                        {
-                            writer.WriteStartElement("Wiper");
-
-                            writer.WriteElementString("Vehicle_Number", w.vNumber.ToString());
-                            writer.WriteElementString("Installed_Date", w.Install);
-                            writer.WriteElementString("Next_Install_Date", w.Next);
-                            writer.WriteElementString("Driver_Size", w.Driver.ToString());
-                            writer.WriteElementString("Passage_Size", w.Passager.ToString());
-                            writer.WriteElementString("Rear_Size", w.Rear.ToString());
-                            writer.WriteElementString("Brand", w.Brand);
-                            writer.WriteElementString("Notes", w.Notes);
-
-                            writer.WriteEndElement();   // End writing 
-                        }
-
-                        writer.WriteEndElement();       // End writing 
-                        writer.WriteEndDocument();      // End writing to file
-                    }
+                    writeToXML(vehicleNum);
                     break;
 
                 case 3:
-                    wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brand, notes);
-                   
-                    using (XmlWriter writer = XmlWriter.Create("WiperData3.xml"))
-                    {
-                        writer.WriteStartDocument();
-                        writer.WriteStartElement("Wiper");
-
-                        foreach (Wiper w in wiper)
-                        {
-                            writer.WriteStartElement("Wiper");
-
-                            writer.WriteElementString("Vehicle_Number", w.vNumber.ToString());
-                            writer.WriteElementString("Installed_Date", w.Install);
-                            writer.WriteElementString("Next_Install_Date", w.Next);
-                            writer.WriteElementString("Driver_Size", w.Driver.ToString());
-                            writer.WriteElementString("Passage_Size", w.Passager.ToString());
-                            writer.WriteElementString("Rear_Size", w.Rear.ToString());
-                            writer.WriteElementString("Brand", w.Brand);
-                            writer.WriteElementString("Notes", w.Notes);
-
-                            writer.WriteEndElement();   // End writing 
-                        }
-
-                        writer.WriteEndElement();       // End writing 
-                        writer.WriteEndDocument();      // End writing to file
-                    }
+                    writeToXML(vehicleNum);
                     break;
 
                 case 4:
-                    wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brand, notes);
-
-                    using (XmlWriter writer = XmlWriter.Create("WiperData4.xml"))
-                    {
-                        writer.WriteStartDocument();
-                        writer.WriteStartElement("Wiper");
-
-                        foreach (Wiper w in wiper)
-                        {
-                            writer.WriteStartElement("Wiper");
-
-                            writer.WriteElementString("Vehicle_Number", w.vNumber.ToString());
-                            writer.WriteElementString("Installed_Date", w.Install);
-                            writer.WriteElementString("Next_Install_Date", w.Next);
-                            writer.WriteElementString("Driver_Size", w.Driver.ToString());
-                            writer.WriteElementString("Passage_Size", w.Passager.ToString());
-                            writer.WriteElementString("Rear_Size", w.Rear.ToString());
-                            writer.WriteElementString("Brand", w.Brand);
-                            writer.WriteElementString("Notes", w.Notes);
-
-                            writer.WriteEndElement();   // End writing 
-                        }
-
-                        writer.WriteEndElement();       // End writing 
-                        writer.WriteEndDocument();      // End writing to file
-                    }
+                    writeToXML(vehicleNum);
                     break;
 
                 default:
@@ -479,23 +464,20 @@ namespace MaintenanceTracker
 
             }
         }
-    }
-}
         
-    
-
         /*
         private void progressBar(int vehicalNum, string rotateValue)
         {
+           
             int vehNum = vehicalNum;
             //int miles = milage;
-            int rotate = Int32.Parse(rotateValue);
+            //int rotate = Int32.Parse(rotateValue);
             //double mil = System.Convert.ToDouble(milage);
-            double rot = double.Parse(rotateValue);
+            //double rot = double.Parse(rotateValue);
 
             //Display the percentage remaining and round.            
-            double percentLeft = Math.Round((100 - (100 * (mil / rot))), 2);
-            percentLbl.Text = percentLeft.ToString() + "%";
+            double percentLeft = Math.Round((180 - , 2);
+            wiperPercentLabel.Text = percentLeft.ToString() + "%";
 
             try
             {
@@ -523,9 +505,9 @@ namespace MaintenanceTracker
         {
             MessageBox.Show("Tire need to be rotated");
             //Do nothing.....
+        }*/
+        
         }
-        */
-        //}
-   // }
+   }
  
         
