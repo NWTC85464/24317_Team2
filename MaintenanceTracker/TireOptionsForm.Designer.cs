@@ -50,6 +50,8 @@
             this.setTireValuesgroupBox = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.percentLbl2 = new System.Windows.Forms.Label();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.milageTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lockTrackBarButton)).BeginInit();
             this.setTireValuesgroupBox.SuspendLayout();
@@ -189,7 +191,7 @@
             // 
             this.progressBar1.BackColor = System.Drawing.Color.White;
             this.progressBar1.ForeColor = System.Drawing.Color.White;
-            this.progressBar1.Location = new System.Drawing.Point(12, 37);
+            this.progressBar1.Location = new System.Drawing.Point(11, 42);
             this.progressBar1.Maximum = 500;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -202,7 +204,7 @@
             this.percentLbl.AutoSize = true;
             this.percentLbl.BackColor = System.Drawing.SystemColors.Control;
             this.percentLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.percentLbl.Location = new System.Drawing.Point(12, 83);
+            this.percentLbl.Location = new System.Drawing.Point(17, 53);
             this.percentLbl.Name = "percentLbl";
             this.percentLbl.Size = new System.Drawing.Size(23, 20);
             this.percentLbl.TabIndex = 27;
@@ -236,6 +238,15 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "30,000",
+            "40,000",
+            "50,000",
+            "60,000",
+            "70,000",
+            "80,000",
+            "90,000",
+            "100,000"});
             this.comboBox1.Location = new System.Drawing.Point(147, 63);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(102, 28);
@@ -265,7 +276,7 @@
             this.setTireValuesgroupBox.Controls.Add(this.groupBox2);
             this.setTireValuesgroupBox.Controls.Add(this.groupBox1);
             this.setTireValuesgroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.setTireValuesgroupBox.Location = new System.Drawing.Point(41, 50);
+            this.setTireValuesgroupBox.Location = new System.Drawing.Point(37, 53);
             this.setTireValuesgroupBox.Name = "setTireValuesgroupBox";
             this.setTireValuesgroupBox.Size = new System.Drawing.Size(321, 297);
             this.setTireValuesgroupBox.TabIndex = 35;
@@ -298,6 +309,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rotation Mileage Preference";
             // 
+            // percentLbl2
+            // 
+            this.percentLbl2.AutoSize = true;
+            this.percentLbl2.BackColor = System.Drawing.SystemColors.Control;
+            this.percentLbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.percentLbl2.Location = new System.Drawing.Point(17, 148);
+            this.percentLbl2.Name = "percentLbl2";
+            this.percentLbl2.Size = new System.Drawing.Size(23, 20);
+            this.percentLbl2.TabIndex = 36;
+            this.percentLbl2.Text = "%";
+            this.percentLbl2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.Location = new System.Drawing.Point(11, 99);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(386, 43);
+            this.progressBar2.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar2.TabIndex = 37;
+            // 
             // TireOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -305,7 +336,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(410, 667);
+            this.ClientSize = new System.Drawing.Size(416, 667);
+            this.Controls.Add(this.progressBar2);
+            this.Controls.Add(this.percentLbl2);
             this.Controls.Add(this.setTireValuesgroupBox);
             this.Controls.Add(this.setBtn);
             this.Controls.Add(this.notepad);
@@ -356,5 +389,7 @@
         private System.Windows.Forms.GroupBox setTireValuesgroupBox;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label percentLbl2;
+        private System.Windows.Forms.ProgressBar progressBar2;
     }
 }

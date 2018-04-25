@@ -36,6 +36,7 @@
             this.settingsButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.vehicalSelectList = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tiresButton
@@ -135,11 +136,22 @@
             this.vehicalSelectList.Text = "Select A Vehicle";
             this.vehicalSelectList.SelectedIndexChanged += new System.EventHandler(this.vehicalSelectList_SelectedIndexChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(142, 165);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(408, 667);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.vehicalSelectList);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.settingsButton);
@@ -166,6 +178,7 @@
         private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox vehicalSelectList;
+        private System.Windows.Forms.Button button1;
     }
 }
 
