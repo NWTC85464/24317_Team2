@@ -16,7 +16,7 @@ namespace MaintenanceTracker
         MainFormClass mainFormClass = new MainFormClass();
    
         public int milesDriven = 0;
-        public int odometerReading = 50000;
+        public int odometerReading = 0;
 
         public MainTracker()
         {
@@ -58,14 +58,14 @@ namespace MaintenanceTracker
                  //Show the form.              
                  tireOptionsForm.ShowDialog();
              }
+            
             /*
-            ///*
             //Test code only.........
             int vn;
             vn = 1;
             TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, milesDriven, odometerReading);
             tireOptionsForm.ShowDialog();
-           // */
+           */ 
         }
 
         private void wipersButton_Click(object sender, EventArgs e)
@@ -139,8 +139,8 @@ namespace MaintenanceTracker
 
         private void button1_Click(object sender, EventArgs e)
         {
-            milesDriven += 100;
-            odometerReading += 100;
+            //milesDriven += 100;
+            //odometerReading += 50000;
         }
     }
 }

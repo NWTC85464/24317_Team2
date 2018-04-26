@@ -50,7 +50,7 @@ namespace MaintenanceTracker
         public int milesDriven;              //Store MPG mileage from MPG form.  
         //public int prevOdometer;
         public int odometer;
-        public int storedOdometer;
+        //public int storedOdometer;
         bool allDataEntered = false;
         bool filesCreated = false;       //bool state if a file exsits.
         bool fileDataExsits = false;
@@ -166,7 +166,7 @@ namespace MaintenanceTracker
 
                 //Call progressBar method.
                 pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical1Values[1]);
-                pBar2Set(odometer, milesDriven, storedOdometer);
+                //pBar2Set(odometer, milesDriven, storedOdometer);
             }
             else if (tireOptionsClass.V2Stored == 1 && vehicalNum == 2)
             {
@@ -369,8 +369,8 @@ namespace MaintenanceTracker
                 //Concatnat output string.
                 string Output = "Vehicle #" + vehicalNum + "\n" + "Tires Installed On " + tireOptionsClass.Vehical1Values[2].ToString()
                     + "\n" + "Set Rotation Mileage " + tireOptionsClass.Vehical1Values[1]
-                    + "\nTire Mileage Rating: " + tMr
-                    + "\nCurrent Odometer: " + tireOptionsClass.Vehical1Values[5];               
+                    + "\nTire Mileage Rating: " + tMr;
+                    //+ "\nCurrent Odometer: " + tireOptionsClass.Vehical1Values[5];               
                 
                 //Add String output to tire info listbox.
                 foreach (string line in Output.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
@@ -386,8 +386,8 @@ namespace MaintenanceTracker
                 //Concatnat output string.
                 string Output = "Vehicle #" + vehicalNum + "\n" + "Tires Installed On " + tireOptionsClass.Vehical2Values[2].ToString()
                     + "\n" + "Set Rotation Mileage " + tireOptionsClass.Vehical2Values[1]
-                    + "\nTire Mileage Rating: " + tMr
-                     + "\nCurrent Odometer: " + tireOptionsClass.Vehical2Values[5];
+                    + "\nTire Mileage Rating: " + tMr;
+                     //+ "\nCurrent Odometer: " + tireOptionsClass.Vehical2Values[5];
                 //Add String output to tire info listbox.
                 foreach (string line in Output.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
                 {
@@ -402,8 +402,8 @@ namespace MaintenanceTracker
                 //Concatnat output string.
                 string Output = "Vehicle #" + vehicalNum + "\n" + "Tires Installed On " + tireOptionsClass.Vehical3Values[2].ToString()
                     + "\n" + "Set Rotation Mileage " + tireOptionsClass.Vehical3Values[1]
-                    + "\nTire Mileage Rating: " + tMr
-                     + "\nCurrent Odometer: " + tireOptionsClass.Vehical3Values[5];
+                    + "\nTire Mileage Rating: " + tMr;
+                     //+ "\nCurrent Odometer: " + tireOptionsClass.Vehical3Values[5];
 
                 //Add String output to tire info listbox.
                 foreach (string line in Output.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
@@ -419,8 +419,8 @@ namespace MaintenanceTracker
                 //Concatnat output string.
                 string Output = "Vehicle #" + vehicalNum + "\n" + "Tires Installed On " + tireOptionsClass.Vehical4Values[2].ToString()
                     + "\n" + "Set Rotation Mileage " + tireOptionsClass.Vehical4Values[1]
-                    + "\nTire Mileage Rating: " + tMr
-                     + "\nCurrent Odometer: " + tireOptionsClass.Vehical4Values[5];
+                    + "\nTire Mileage Rating: " + tMr;
+                    // + "\nCurrent Odometer: " + tireOptionsClass.Vehical4Values[5];
 
                 //Add String output to tire info listbox.
                 foreach (string line in Output.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
@@ -472,9 +472,6 @@ namespace MaintenanceTracker
             //Hide tire info label.
             tiLB.Visible = false;
 
-            int saveMd;
-            int toSave;
-
             //Save values to textfiles.
             switch (vehicalNum)
             {
@@ -484,14 +481,6 @@ namespace MaintenanceTracker
                             FileStream fs = File.Create("v1Info.txt"); //Creates v1Info.txt
                             fs.Close(); //Closes file stream
                         }
-
-                        //Save odometer and milesDriven into array before writing text file.
-                        saveMd = System.Convert.ToInt32(tireOptionsClass.Vehical1Values[4]);
-                        toSave = saveMd + milesDriven;
-
-                        tireOptionsClass.Vehical1Values[4] = toSave.ToString();
-                        //MessageBox.Show(tireOptionsClass.Vehical1Values[4]);
-                        tireOptionsClass.Vehical1Values[5] = odometer.ToString();
 
                         //Write each line of tireOptionsClass.Vehical1Values array to text file.               
                         foreach (string line in tireOptionsClass.Vehical1Values)
@@ -507,15 +496,7 @@ namespace MaintenanceTracker
                         FileStream fs = File.Create("v2Info.txt"); //Creates v2Info.txt
                         fs.Close(); //Closes file stream
                     }
-
-                    //Save odometer and milesDriven into array before writing text file.
-                    saveMd = System.Convert.ToInt32(tireOptionsClass.Vehical2Values[4]);
-                    toSave = saveMd + milesDriven;
-
-                    tireOptionsClass.Vehical2Values[4] = toSave.ToString();
-                    //MessageBox.Show(tireOptionsClass.Vehical2Values[4]);
-                    tireOptionsClass.Vehical2Values[5] = odometer.ToString();
-
+                    
                     //Write each line of tireOptionsClass.Vehical2Values array to text file.               
                     foreach (string line in tireOptionsClass.Vehical2Values)
                     {
@@ -531,14 +512,6 @@ namespace MaintenanceTracker
                         fs.Close(); //Closes file stream
                     }
 
-                    //Save odometer and milesDriven into array before writing text file.
-                    saveMd = System.Convert.ToInt32(tireOptionsClass.Vehical3Values[4]);
-                    toSave = saveMd + milesDriven;
-
-                    tireOptionsClass.Vehical3Values[4] = toSave.ToString();
-                    //MessageBox.Show(tireOptionsClass.Vehical2Values[4]);
-                    tireOptionsClass.Vehical3Values[5] = odometer.ToString();
-
                     //Write each line of tireOptionsClass.Vehical3Values array to text file.               
                     foreach (string line in tireOptionsClass.Vehical3Values)
                     {
@@ -553,15 +526,7 @@ namespace MaintenanceTracker
                         FileStream fs = File.Create("v4Info.txt"); //Creates v4Info.txt
                         fs.Close(); //Closes file stream
                     }
-
-                    //Save odometer and milesDriven into array before writing text file.
-                    saveMd = System.Convert.ToInt32(tireOptionsClass.Vehical4Values[4]);
-                    toSave = saveMd + milesDriven;
-
-                    tireOptionsClass.Vehical4Values[4] = toSave.ToString();
-                    //MessageBox.Show(tireOptionsClass.Vehical2Values[4]);
-                    tireOptionsClass.Vehical4Values[5] = odometer.ToString();
-
+                    
                     //Write each line of tireOptionsClass.Vehical4Values array to text file.               
                     foreach (string line in tireOptionsClass.Vehical4Values)
                     {
@@ -817,28 +782,24 @@ namespace MaintenanceTracker
                     var v1 = File.ReadAllLines(path1);
                     tireOptionsClass.Vehical1Values = File.ReadLines(path1).ToArray();
                     tireOptionsClass.V1Stored = 1;
-                    storedOdometer = System.Convert.ToInt32(tireOptionsClass.Vehical1Values[5]);
                     break;
                 case 2:
                     //Load vehical2 text values into array.
                     var v2 = File.ReadAllLines(path2);
                     tireOptionsClass.Vehical2Values = File.ReadLines(path2).ToArray();
                     tireOptionsClass.V2Stored = 1;
-                    storedOdometer = System.Convert.ToInt32(tireOptionsClass.Vehical2Values[5]);
                     break;
                 case 3:
                     //Load vehical3 text values into array.
                     var v3 = File.ReadAllLines(path3);
                     tireOptionsClass.Vehical3Values = File.ReadLines(path3).ToArray();
                     tireOptionsClass.V3Stored = 1;
-                    storedOdometer = System.Convert.ToInt32(tireOptionsClass.Vehical3Values[5]);
                     break;
                 case 4:
                     //Load vehical4 text values into array.
                     var v4 = File.ReadAllLines(path4);
                     tireOptionsClass.Vehical4Values = File.ReadLines(path4).ToArray();
                     tireOptionsClass.V4Stored = 1;
-                    storedOdometer = System.Convert.ToInt32(tireOptionsClass.Vehical4Values[5]);
                     break;
                 default:
                     //Nothing to load.
@@ -856,7 +817,16 @@ namespace MaintenanceTracker
 
             //Display the percentage remaining and round.            
             double percentLeft = Math.Round((100 - (100 * (mil / rot))), 2);
-            percentLbl.Text = percentLeft.ToString() + "%";
+            
+            //Set percent label to not show below 0%.
+            if(percentLeft > 0)
+            {
+                percentLbl.Text = percentLeft.ToString() + "%";
+            }
+            else
+            {
+                percentLbl.Text = "0%";
+            }
 
             try
             {
@@ -954,10 +924,10 @@ namespace MaintenanceTracker
                     tireOptionsClass.Vehical1Values[2] = iDTB;
                     tireOptionsClass.Vehical1Values[3] = tTM.ToString();
                     tireOptionsClass.Vehical1Values[4] = md.ToString();
-                    tireOptionsClass.Vehical1Values[5] = odom.ToString();
+                    //tireOptionsClass.Vehical1Values[5] = odom.ToString();
                     
                     pBar1Set(vehicalNum, md, tireOptionsClass.Vehical1Values[1]);
-                    pBar2Set(odom, md, storedOdometer);
+                    //pBar2Set(odom, md, storedOdometer);
 
                     //Int to state values added to restore form on return.
                     tireOptionsClass.V1Stored = 1;
@@ -969,10 +939,10 @@ namespace MaintenanceTracker
                     tireOptionsClass.Vehical2Values[2] = iDTB;
                     tireOptionsClass.Vehical2Values[3] = tTM.ToString();
                     tireOptionsClass.Vehical2Values[4] = md.ToString();
-                    tireOptionsClass.Vehical2Values[5] = odom.ToString();
+                    //tireOptionsClass.Vehical2Values[5] = odom.ToString();
 
                     pBar1Set(vehicalNum, md, tireOptionsClass.Vehical2Values[1]);
-                    pBar2Set(odom, md, storedOdometer);
+                    //pBar2Set(odom, md, storedOdometer);
 
                     //Int to state values added to restore form on return.
                     tireOptionsClass.V2Stored = 1;
@@ -984,10 +954,10 @@ namespace MaintenanceTracker
                     tireOptionsClass.Vehical3Values[2] = iDTB;
                     tireOptionsClass.Vehical3Values[3] = tTM.ToString();
                     tireOptionsClass.Vehical3Values[4] = md.ToString();
-                    tireOptionsClass.Vehical3Values[5] = odom.ToString();
+                    //tireOptionsClass.Vehical3Values[5] = odom.ToString();
 
                     pBar1Set(vehicalNum, md, tireOptionsClass.Vehical3Values[1]);
-                    pBar2Set(odom, md, storedOdometer);
+                   // pBar2Set(odom, md, storedOdometer);
 
                     //Int to state values added to restore form on return.
                     tireOptionsClass.V3Stored = 1;
@@ -999,10 +969,10 @@ namespace MaintenanceTracker
                     tireOptionsClass.Vehical4Values[2] = iDTB;
                     tireOptionsClass.Vehical4Values[3] = tTM.ToString();
                     tireOptionsClass.Vehical4Values[4] = md.ToString();
-                    tireOptionsClass.Vehical4Values[5] = odom.ToString();
+                    //tireOptionsClass.Vehical4Values[5] = odom.ToString();
 
                     pBar1Set(vehicalNum, md, tireOptionsClass.Vehical4Values[1]);
-                    pBar2Set(odom, md, storedOdometer);
+                    //pBar2Set(odom, md, storedOdometer);
 
                     //Int to state values added to restore form on return.
                     tireOptionsClass.V4Stored = 1;
@@ -1017,113 +987,7 @@ namespace MaintenanceTracker
         {
             int odometer = Odometer;
             int milesDriven = MilesDriven;
-            int storedOdometer = StoredOdometer;
-
-            //Get tireMileageRating from combobox.
-            string tireMileageRateing = getTireMileageRating();
-
-            //Remove characters.
-            tireMileageRateing = tireMileageRateing.Replace(",", "");
-
-            //Convert combobox string into an int.
-            int newtireMileageRateing = Convert.ToInt32(tireMileageRateing);
-                        
-            //Set progress bar 2 value and color.
-            progressBar2.Maximum = newtireMileageRateing;
-            progressBar2.Value = progressBar2.Maximum - milesDriven;
-           
-            if(storedOdometer < odometer)
-            {
-                if(storedOdometer != 0)
-                {
-                    //Calculate the miles driven.
-                    milesDriven = odometer - storedOdometer;
-
-                    //Calculate for progress bar 2 percent label.
-                    double ntmr = System.Convert.ToDouble(newtireMileageRateing);
-                    double md = System.Convert.ToDouble(milesDriven);
-
-                    //Display the percentage remaining and round.            
-                    double percentLeft = Math.Round((100 - (100 * (md / ntmr))), 2);
-                    percentLbl2.Text = percentLeft.ToString() + "%";
-                }
-                else
-                {
-                    //Calculate the miles driven.
-                    milesDriven = 0;
-
-                    //Calculate for progress bar 2 percent label.
-                    double ntmr = System.Convert.ToDouble(newtireMileageRateing);
-                    double md = System.Convert.ToDouble(milesDriven);
-
-                    //Display the percentage remaining and round.            
-                    double percentLeft = Math.Round((100 - (100 * (md / ntmr))), 2);
-                    percentLbl2.Text = percentLeft.ToString() + "%";
-                }
-                
-
-                try
-                {
-                    if (progressBar2.Value > (newtireMileageRateing / 2))
-                    {
-                        progressBar2.ForeColor = Color.Green;
-                    }
-                    else if ((progressBar2.Value <= (newtireMileageRateing / 2)) && progressBar2.Value > newtireMileageRateing / 4)
-                    {
-                        progressBar2.ForeColor = Color.Yellow;
-                    }
-                    else if (progressBar2.Value <= newtireMileageRateing / 4 && progressBar2.Value > 0)
-                    {
-                        progressBar2.ForeColor = Color.Red;
-                    }
-                    else if (progressBar2.Value <= 0)
-                    {
-                        MessageBox.Show("Tire need to be changed");
-                    }
-                }
-                catch
-                {
-                    //Do nothing.....
-                }
-            }
-            else //Stored odometer == new odometer.
-            {
-                //Calculate the miles driven.
-                milesDriven = System.Convert.ToInt32(tireOptionsClass.Vehical1Values[4]);
-
-
-                //Calculate for progress bar 2 percent label.
-                double ntmr = System.Convert.ToDouble(newtireMileageRateing);
-                double md = System.Convert.ToDouble(milesDriven);
-
-                //Display the percentage remaining and round.            
-                double percentLeft = Math.Round((100 - (100 * (md / ntmr))), 2);
-                percentLbl2.Text = percentLeft.ToString() + "%";
-                try
-                {
-                    if (progressBar2.Value > (newtireMileageRateing / 2))
-                    {
-                        progressBar2.ForeColor = Color.Green;
-                    }
-                    else if ((progressBar2.Value <= (newtireMileageRateing / 2)) && progressBar2.Value > newtireMileageRateing / 4)
-                    {
-                        progressBar2.ForeColor = Color.Yellow;
-                    }
-                    else if (progressBar2.Value <= newtireMileageRateing / 4 && progressBar2.Value > 0)
-                    {
-                        progressBar2.ForeColor = Color.Red;
-                    }
-                    else if (progressBar2.Value <= 0)
-                    {
-                        MessageBox.Show("Tire need to be changed");
-                    }
-                }
-                catch
-                {
-                    //Do nothing.....
-                }
-            }
-            
+            int storedOdometer = StoredOdometer;            
         }
 
         private void resetValues(int vehicalNum)
@@ -1162,6 +1026,8 @@ namespace MaintenanceTracker
                         progressBar2.Value = 0;
                         percentLbl.Text = "";
                         percentLbl2.Text = "";
+                        progressBar1.Visible = false;
+                        progressBar2.Visible = false;
                         break;
                     case 2:
                         //Reset tire values array. 
@@ -1171,6 +1037,8 @@ namespace MaintenanceTracker
                         progressBar2.Value = 0;
                         percentLbl.Text = "";
                         percentLbl2.Text = "";
+                        progressBar1.Visible = false;
+                        progressBar2.Visible = false;
                         break;
                     case 3:
                         //Reset tire values array. 
@@ -1180,6 +1048,8 @@ namespace MaintenanceTracker
                         progressBar2.Value = 0;
                         percentLbl.Text = "";
                         percentLbl2.Text = "";
+                        progressBar1.Visible = false;
+                        progressBar2.Visible = false;
                         break;
                     case 4:
                         //Reset tire values array.    
@@ -1189,6 +1059,8 @@ namespace MaintenanceTracker
                         progressBar2.Value = 0;
                         percentLbl.Text = "";
                         percentLbl2.Text = "";
+                        progressBar1.Visible = false;
+                        progressBar2.Visible = false;
                         break;
                     default:
                         //

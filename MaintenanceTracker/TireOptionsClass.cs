@@ -14,16 +14,21 @@ namespace MaintenanceTracker
             "Tires should be rotated every six months or 6,000 to 8,000 miles.";
 
         //Array list to hold the tire values. 
-        private static string[] vehical1Values = new string[6];
-        private static string[] vehical2Values = new string[6];
-        private static string[] vehical3Values = new string[6];
-        private static string[] vehical4Values = new string[6];
+        private static string[] vehical1Values = new string[5];
+        private static string[] vehical2Values = new string[5];
+        private static string[] vehical3Values = new string[5];
+        private static string[] vehical4Values = new string[5];
 
         //Move array and tire options varibables here.
         private static int v1Stored;
         private static int v2Stored;
         private static int v3Stored;
         private static int v4Stored;
+
+        //Progress bar difference.
+       // private static int pbDiff;
+
+        //public int PbDiff { get => pbDiff; set => pbDiff = value; }
 
         //Gets and sets.
         public int V1Stored { get => v1Stored; set => v1Stored = value; }
