@@ -1,29 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MaintenanceTracker.Classes
+﻿namespace MaintenanceTracker.Classes
 {
     class Vehicle
     {
-        int _id;
-        string _carMake;
-        string _carModel;
-        int _odo;
+        private int _id;
+        private string _carMake;
+        private string _carModel;
+        private int _odo;
 
-        public Vehicle(int id, string firstName, string lastName, int salary)
+        public Vehicle(int id, string make, string model, int odo)
         {
             this._id = id;
-            this._carMake = firstName;
-            this._carModel = lastName;
-            this._odo = salary;
+            this._carMake = make;
+            this._carModel = model;
+            this._odo = odo;
         }
 
         public int Id { get { return _id; } }
-        public string FirstName { get { return _carMake; } }
-        public string LastName { get { return _carModel; } }
-        public int Salary { get { return _odo; } }
+        public string Make { get { return _carMake; } }
+        public string Model { get { return _carModel; } }
+        public int ODO { get { return _odo; } }
     }
 }

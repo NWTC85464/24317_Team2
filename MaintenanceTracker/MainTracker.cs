@@ -37,7 +37,7 @@ namespace MaintenanceTracker
             settingsButton.Font = new Font("Rockwell", 10f, FontStyle.Bold);
         }
 
-        private void tiresButton_Click(object sender, EventArgs e)
+        private void TiresButton_Click(object sender, EventArgs e)
         {
             //Variable.
             int vn; //To hold vehical number.
@@ -70,8 +70,12 @@ namespace MaintenanceTracker
 
         private void wipersButton_Click(object sender, EventArgs e)
         {
+            int vn; // Vehicle number
+
+            vn = vehicalSelectList.SelectedIndex + 1;
+
             //Call wipers options form.
-            WipersOptionForm wipersOptionForm = new WipersOptionForm();
+            WipersOptionForm wipersOptionForm = new WipersOptionForm(vn);
 
             if (vehicalSelectList.SelectedItem == null)
             {
@@ -84,6 +88,7 @@ namespace MaintenanceTracker
                 wipersOptionForm.ShowDialog();
             }
         }
+
 
         private void airFilterButton_Click(object sender, EventArgs e)
         {
@@ -103,7 +108,7 @@ namespace MaintenanceTracker
             }
         }
 
-        private void mpgButton_Click(object sender, EventArgs e)
+        private void MpgButton_Click(object sender, EventArgs e)
         {
             //Call mpg options form.
             MPGOptionsForm mPGOptionsForm = new MPGOptionsForm();
@@ -111,21 +116,21 @@ namespace MaintenanceTracker
             //mpg += 500;
         }
 
-        private void oilButton_Click(object sender, EventArgs e)
+        private void OilButton_Click(object sender, EventArgs e)
         {
             //Call oil options form.
             OilOptionsForm oilOptionsForm = new OilOptionsForm();
             oilOptionsForm.ShowDialog();
         }
 
-        private void settingsButton_Click(object sender, EventArgs e)
+        private void SettingsButton_Click(object sender, EventArgs e)
         {
             //Call settings option form.
             SettingsOptionForm settingsOptionForm = new SettingsOptionForm();
             settingsOptionForm.ShowDialog();
         }
 
-        private void vehicalSelectList_SelectedIndexChanged(object sender, EventArgs e)
+        private void VehicalSelectList_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Variable.
             int vn; //To hold vehical number.
@@ -135,6 +140,40 @@ namespace MaintenanceTracker
 
             //Set the Vehical Number
             mainFormClass.VehicalNumber = vn;
+
+            /*
+            switch (vn)
+            {
+                case 1:
+                    if 
+                    //objWrt = new System.IO.StreamWriter(@"mpg/mpg1.txt", true);
+                    //objWrt.WriteLine(createTxt);
+                    //objWrt.Close();
+
+
+                    break;
+                case 2:
+                    objWrt = new System.IO.StreamWriter(@"mpg/mpg2.txt", true);
+                    objWrt.WriteLine(createTxt);
+                    objWrt.Close();
+                    break;
+                case 3:
+                    objWrt = new System.IO.StreamWriter(@"mpg/mpg3.txt", true);
+                    objWrt.WriteLine(createTxt);
+                    objWrt.Close();
+                    break;
+                case 4:
+                    objWrt = new System.IO.StreamWriter(@"mpg/mpg4.txt", true);
+                    objWrt.WriteLine(createTxt);
+                    objWrt.Close();
+                    break;
+                default:
+                    MessageBox.Show("did not work");
+                    break;
+
+            }*/
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
