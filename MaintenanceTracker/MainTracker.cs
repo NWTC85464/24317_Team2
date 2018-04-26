@@ -15,7 +15,8 @@ namespace MaintenanceTracker
         TireOptionsClass tireOptionsClass = new TireOptionsClass();
         MainFormClass mainFormClass = new MainFormClass();
    
-        public int mpg;
+        //public int milesDriven = 0;
+       // public int odometerReading = 0;
 
         public MainTracker()
         {
@@ -45,7 +46,7 @@ namespace MaintenanceTracker
             vn = vehicalSelectList.SelectedIndex + 1;
             
             //Create new instance of tireOptionsForm and pass vn and MPG.
-            TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, mpg);            
+            TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, milesDriven)//, odometerReading);            
             
              if (vehicalSelectList.SelectedItem == null)
              {
@@ -57,14 +58,14 @@ namespace MaintenanceTracker
                  //Show the form.              
                  tireOptionsForm.ShowDialog();
              }
+            
             /*
-
             //Test code only.........
             int vn;
             vn = 1;
-            TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, mpg);
+            TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, milesDriven, odometerReading);
             tireOptionsForm.ShowDialog();
-            */
+           */ 
         }
 
         private void wipersButton_Click(object sender, EventArgs e)
@@ -173,6 +174,12 @@ namespace MaintenanceTracker
             }*/
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //milesDriven += 100;
+            //odometerReading += 50000;
         }
     }
 }
