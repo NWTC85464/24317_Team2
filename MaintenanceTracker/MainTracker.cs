@@ -15,8 +15,8 @@ namespace MaintenanceTracker
         TireOptionsClass tireOptionsClass = new TireOptionsClass();
         MainFormClass mainFormClass = new MainFormClass();
    
-        public int milesDriven = 0;
-        public int odometerReading = 0;
+        //public int milesDriven = 0;
+       // public int odometerReading = 0;
 
         public MainTracker()
         {
@@ -46,7 +46,7 @@ namespace MaintenanceTracker
             vn = vehicalSelectList.SelectedIndex + 1;
             
             //Create new instance of tireOptionsForm and pass vn and MPG.
-            TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, milesDriven, odometerReading);            
+            TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, milesDriven)//, odometerReading);            
             
              if (vehicalSelectList.SelectedItem == null)
              {

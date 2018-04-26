@@ -61,7 +61,7 @@ namespace MaintenanceTracker
         string path3 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v3Info.txt";
         string path4 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v4Info.txt";
         
-        public TireOptionsForm(int vehicalNum, int MilesDriven, int odometerReading)
+        public TireOptionsForm(int vehicalNum, int MilesDriven)//, int odometerReading)
         {
             InitializeComponent();
 
@@ -74,7 +74,7 @@ namespace MaintenanceTracker
             //Set vehical number and mpg from passed in value.
             this.vehicalNum = vehicalNum;
             this.milesDriven = MilesDriven;
-            this.odometer = odometerReading;
+            //this.odometer = odometerReading;
             
 
             //Center form on the screen.
