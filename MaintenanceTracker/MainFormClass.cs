@@ -13,5 +13,10 @@ namespace MaintenanceTracker
 
         //Gets and sets.
         public int VehicalNumber { get => vehicalNumber; set => vehicalNumber = value; }
+
+
+        private static double milesDriven;
+
+        public double MilesDriven { get => milesDriven; set => milesDriven = value; }
     }
 }
