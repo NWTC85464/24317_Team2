@@ -38,6 +38,8 @@ namespace MaintenanceTracker
         DateTime today1 = DateTime.Today;
         //object of new form to use switch statement
         MainFormClass main = new MainFormClass();
+
+        MainTracker mainFrm = new MainTracker();
         //StreamReader fsMain;
         
         //doulbe array holding current file.  will be overwritten when new switch created.
@@ -69,7 +71,7 @@ namespace MaintenanceTracker
                     case 1:
                     if (File.Exists(@"mpg/mpg1.txt"))
                     {
-                        //fln = "@\"mpg/mpg1.txt\"";
+                        fln = @"mpg/mpg1.txt";
                         usedFile = File.ReadAllText(@"mpg/mpg1.txt");
 
                         ArrayString(usedFile);
@@ -93,7 +95,7 @@ namespace MaintenanceTracker
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg1.txt"))
                         {
                             //use blank data when updating mpg first time. 
-                            sw.WriteLine("0/00/0000 00 0000 00 ");
+                            sw.WriteLine("0/00/0000 00 0000 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg1.txt");
                             setup(usedFile);
@@ -128,7 +130,7 @@ namespace MaintenanceTracker
                     {
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg2.txt"))
                         {
-                            sw.WriteLine("0/00/0000 00 0000 00 ");
+                            sw.WriteLine("0/00/0000 00 0000 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg2.txt");
                             setup(usedFile);
@@ -149,7 +151,7 @@ namespace MaintenanceTracker
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg3.txt"))
                         {
                             //write blank line of data to use when mpg is updated
-                            sw.WriteLine("0/00/0000 00 0000 00 ");
+                            sw.WriteLine("0/00/0000 00 0000 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg3.txt");
                             setup(usedFile);  
@@ -187,15 +189,41 @@ namespace MaintenanceTracker
 
         private void btnEnterMpg_Click(object sender, EventArgs e)
         {
-            
+            //array to hold last odo input.
+            string[] holdOdo = new string[4];
+             
+            //parser user input to double.
             if(double.TryParse(txtbxOdoRead.Text, out odoCur))
             {
                 //lblAlert.Text = "odoCur is: " + odoCur;
                 if (double.TryParse(txtbxGallonsRead.Text, out galCur))
                 {
-                    double oldOdo =  double.Parse( holdDbl[0, 2]);
-                    //double oldOdo = 
-                    curMpg = (odoCur-oldOdo) / galCur;
+                    
+                    
+                    var lastLine = File.ReadLines(fln).Last();
+
+                    int j = 0;
+                    foreach (var col in lastLine.Trim().Split(' '))
+                    {
+                        holdOdo[j] = col.Trim();
+                        j++;
+                    }
+                    double oldOdo = double.Parse(holdOdo[2]);
+                    //double oldOdo =
+
+                    if (odoCur <= oldOdo)
+                    {
+                        MessageBox.Show("Please enter a Odometer reading greater than " + oldOdo);
+                        return;
+                    }
+
+                    double mileDiff = odoCur - oldOdo;
+
+                    //mainFrm.milesDriven = mileDiff;
+
+                    main.MilesDriven = mileDiff;
+
+                    curMpg = (mileDiff) / galCur;
 
                     //lblAlert.Text = "Current MPG is: " + curMpg;
 
