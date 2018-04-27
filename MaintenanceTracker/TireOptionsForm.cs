@@ -163,10 +163,22 @@ namespace MaintenanceTracker
 
                 //Set scrollLock value to 1.
                 scrollLock = 1;
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////need to send stored miles driven into pbar1.
                 //Call progressBar method.
-                pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical1Values[1]);
-                //pBar2Set(odometer, milesDriven, storedOdometer);
+                if(milesDriven != 0)
+                {
+                    milesDriven += Convert.ToInt32(tireOptionsClass.Vehical1Values[4]);
+                    pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical1Values[1]);
+                    //pBar2Set(odometer, milesDriven, storedOdometer);
+                }
+                else
+                {
+                    int mdd = Convert.ToInt32(tireOptionsClass.Vehical1Values[4]);
+                    pBar1Set(vehicalNum, mdd, tireOptionsClass.Vehical1Values[1]);
+                    //pBar2Set(odometer, milesDriven, storedOdometer);
+                }
+
             }
             else if (tireOptionsClass.V2Stored == 1 && vehicalNum == 2)
             {
@@ -476,19 +488,32 @@ namespace MaintenanceTracker
             switch (vehicalNum)
             {
                 case 1:
-                        if ((!File.Exists("v1Info.txt"))) //Checking if v1Info.txt exists or not
-                        {
-                            FileStream fs = File.Create("v1Info.txt"); //Creates v1Info.txt
-                            fs.Close(); //Closes file stream
-                        }
+                    if ((!File.Exists("v1Info.txt"))) //Checking if v1Info.txt exists or not
+                    {
+                        FileStream fs = File.Create("v1Info.txt"); //Creates v1Info.txt
+                        fs.Close(); //Closes file stream
+                    }
+                    if(milesDriven != 0)
+                    {
+                       // int sv = Convert.ToInt32(tireOptionsClass.Vehical1Values[4]);
+                      
+                        tireOptionsClass.Vehical1Values[4] = milesDriven.ToString();
+                    }
+                    else
+                    {
 
-                        //Write each line of tireOptionsClass.Vehical1Values array to text file.               
-                        foreach (string line in tireOptionsClass.Vehical1Values)
+                    }
+                    
+                    
+
+                    //Write each line of tireOptionsClass.Vehical1Values array to text file.               
+                    foreach (string line in tireOptionsClass.Vehical1Values)
                         {
                             //Write tireOptionsClass.Vehical1Values array values to file upon form exit.
                             File.WriteAllLines(path1, tireOptionsClass.Vehical1Values);
                             // MessageBox.Show(line);
-                        }                                        
+                        }
+                    mainFormClass.MilesDriven = 0;
                     break;
                 case 2:
                     if ((!File.Exists("v2Info.txt"))) //Checking if v2Info.txt exists or not
@@ -779,6 +804,7 @@ namespace MaintenanceTracker
             {
                 case 1:
                     //Load vehical1 text values into array.
+                    ///Add miles driven to array on loading
                     var v1 = File.ReadAllLines(path1);
                     tireOptionsClass.Vehical1Values = File.ReadLines(path1).ToArray();
                     tireOptionsClass.V1Stored = 1;
