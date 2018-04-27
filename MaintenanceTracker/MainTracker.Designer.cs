@@ -61,7 +61,7 @@
             this.wipersButton.TabIndex = 1;
             this.wipersButton.Text = "Wipers";
             this.wipersButton.UseVisualStyleBackColor = true;
-            this.wipersButton.Click += new System.EventHandler(this.WipersButton_Click);
+            this.wipersButton.Click += new System.EventHandler(this.wipersButton_Click);
             // 
             // airFilterButton
             // 
@@ -73,7 +73,7 @@
             this.airFilterButton.TabIndex = 2;
             this.airFilterButton.Text = "Air Filter";
             this.airFilterButton.UseVisualStyleBackColor = true;
-            this.airFilterButton.Click += new System.EventHandler(this.AirFilterButton_Click);
+            this.airFilterButton.Click += new System.EventHandler(this.airFilterButton_Click);
             // 
             // oilButton
             // 
@@ -135,7 +135,7 @@
             this.vehicalSelectList.TabIndex = 24;
 
             this.vehicalSelectList.Text = "Select A Vehicle";
-            this.vehicalSelectList.SelectedIndexChanged += new System.EventHandler(this.vehicalSelectList_SelectedIndexChanged);
+            this.vehicalSelectList.SelectedIndexChanged += new System.EventHandler(this.VehicalSelectList_SelectedIndexChanged);
 
             // 
             // button1
