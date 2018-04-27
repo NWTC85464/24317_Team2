@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MaintenanceTracker
 {
@@ -17,6 +18,12 @@ namespace MaintenanceTracker
    
         //public int milesDriven = 0;
        // public int odometerReading = 0;
+
+        public double odo;
+
+        //private double milesDriven=0;
+
+        //public double MilesDriven { get => milesDriven; set => milesDriven = value; }
 
         public MainTracker()
         {
@@ -39,6 +46,7 @@ namespace MaintenanceTracker
 
         private void TiresButton_Click(object sender, EventArgs e)
         {
+            double md = mainFormClass.MilesDriven;
             //Variable.
             int vn; //To hold vehical number.
 
@@ -112,8 +120,19 @@ namespace MaintenanceTracker
         {
             //Call mpg options form.
             MPGOptionsForm mPGOptionsForm = new MPGOptionsForm();
-             mPGOptionsForm.ShowDialog();
+             //mPGOptionsForm.ShowDialog();
             //mpg += 500;
+            if (vehicalSelectList.SelectedItem == null)
+            {
+                //Display message saying select vehical.              
+                MessageBox.Show("Please Select a vehical first!");
+            }
+            else
+            {
+                //Show the form.              
+                mPGOptionsForm.ShowDialog();
+            }
+            
         }
 
         private void OilButton_Click(object sender, EventArgs e)
@@ -141,37 +160,122 @@ namespace MaintenanceTracker
             //Set the Vehical Number
             mainFormClass.VehicalNumber = vn;
 
-            /*
+            string checkFile = "";
+            string[] holdOdo= new string[4];
+
             switch (vn)
             {
                 case 1:
-                    if 
-                    //objWrt = new System.IO.StreamWriter(@"mpg/mpg1.txt", true);
-                    //objWrt.WriteLine(createTxt);
-                    //objWrt.Close();
+                    checkFile = @"mpg/mpg1.txt";
 
+                    if (File.Exists(checkFile))
+                    {
+                        var lastLine = File.ReadLines(@"mpg/mpg1.txt").Last();
+                        MessageBox.Show(lastLine);
+
+
+                        int j = 0;
+                        foreach (var col in lastLine.Trim().Split(' '))
+                        {
+                            holdOdo[j] = col.Trim();
+                            j++;
+                        }
+
+
+                        odo = double.Parse(holdOdo[2]);
+                        MessageBox.Show("this is parsed: " + odo);
+
+                    }
+                    else
+                    {
+                        //do nothing
+                    }
 
                     break;
                 case 2:
-                    objWrt = new System.IO.StreamWriter(@"mpg/mpg2.txt", true);
-                    objWrt.WriteLine(createTxt);
-                    objWrt.Close();
+                    checkFile = @"mpg/mpg2.txt";
+
+                    if (File.Exists(checkFile))
+                    {
+                        var lastLine = File.ReadLines(@"mpg/mpg2.txt").Last();
+                        MessageBox.Show(lastLine);
+
+
+                        int j = 0;
+                        foreach (var col in lastLine.Trim().Split(' '))
+                        {
+                            holdOdo[j] = col.Trim();
+                            j++;
+                        }
+
+
+                        odo = double.Parse(holdOdo[2]);
+                        MessageBox.Show("this is parsed: " + odo);
+
+                    }
+                    else
+                    {
+                        //do nothing
+                    }
                     break;
                 case 3:
-                    objWrt = new System.IO.StreamWriter(@"mpg/mpg3.txt", true);
-                    objWrt.WriteLine(createTxt);
-                    objWrt.Close();
+                    checkFile = @"mpg/mpg3.txt";
+
+                    if (File.Exists(checkFile))
+                    {
+                        var lastLine = File.ReadLines(@"mpg/mpg3.txt").Last();
+                        MessageBox.Show(lastLine);
+
+
+                        int j = 0;
+                        foreach (var col in lastLine.Trim().Split(' '))
+                        {
+                            holdOdo[j] = col.Trim();
+                            j++;
+                        }
+
+
+                        odo = double.Parse(holdOdo[2]);
+                        MessageBox.Show("this is parsed: " + odo);
+
+                    }
+                    else
+                    {
+                        //do nothing
+                    }
                     break;
                 case 4:
-                    objWrt = new System.IO.StreamWriter(@"mpg/mpg4.txt", true);
-                    objWrt.WriteLine(createTxt);
-                    objWrt.Close();
+                     checkFile = @"mpg/mpg4.txt";
+                
+                    if (File.Exists(checkFile))
+                    {
+                        var lastLine = File.ReadLines(@"mpg/mpg4.txt").Last();
+                        MessageBox.Show(lastLine);
+
+                       
+                            int j = 0;
+                            foreach (var col in lastLine.Trim().Split(' '))
+                            {
+                                holdOdo[j] = col.Trim();
+                                j++;
+                            }
+                        
+
+                        odo = double.Parse(holdOdo[2]);
+                        MessageBox.Show("this is parsed: "+ odo);
+                            
+                    }
+                    else
+                    {
+                        //do nothing
+                    }
+
                     break;
                 default:
                     MessageBox.Show("did not work");
                     break;
 
-            }*/
+            }
 
 
         }
