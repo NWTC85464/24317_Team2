@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using MaintenanceTracker.Properties;
 
 namespace MaintenanceTracker
 {
@@ -39,29 +40,31 @@ namespace MaintenanceTracker
                 
                 if (vehNum == 1)
                 {
+                   
                     //Read comments text area and write to text file then close outputFile.            
-                    outputFile = File.CreateText("Vehical 1 Comments.txt");
+                    outputFile = File.CreateText("Veh1Com.txt");
                     outputFile.WriteLine(richTextBox1.Text);
                     outputFile.Close();
                 }
                 else if(vehNum == 2)
                 {
                     //Read comments text area and write to text file then close outputFile.     
-                    outputFile = File.CreateText("Vehical 2 Comments.txt");
+                    outputFile = File.CreateText("Veh2Com.txt");
                     outputFile.WriteLine(richTextBox1.Text);
                     outputFile.Close();
                 }
+
                 else if (vehNum == 3)
                 {
                     //Read comments text area and write to text file then close outputFile.     
-                    outputFile = File.CreateText("Vehical 3 Comments.txt");
+                    outputFile = File.CreateText("Veh3Com.txt");
                     outputFile.WriteLine(richTextBox1.Text);
                     outputFile.Close();
                 }
                 else if (vehNum == 4)
                 {
                     //Read comments text area and write to text file then close outputFile.     
-                    outputFile = File.CreateText("Vehical 4 Comments.txt");
+                    outputFile = File.CreateText("Veh4Com.txt");
                     outputFile.WriteLine(richTextBox1.Text);
                     outputFile.Close();
                 }
@@ -94,28 +97,28 @@ namespace MaintenanceTracker
             if (vehNum == 1)
             {
                 //Clear vehicalNumber's text file and close the file.
-                outputFile = File.CreateText("Vehical 1 Comments.txt");
+                outputFile = File.CreateText("Veh1Com.txt");
                 outputFile.WriteLine("");
                 outputFile.Close();
             }
             else if (vehNum == 2)
             {
                 //Clear vehicalNumber's text file and close the file.
-                outputFile = File.CreateText("Vehical 2 Comments.txt");
+                outputFile = File.CreateText("Veh2Com.txt");
                 outputFile.WriteLine("");
                 outputFile.Close();
             }
             else if (vehNum == 3)
             {
                 //Clear vehicalNumber's text file and close the file.
-                outputFile = File.CreateText("Vehical 3 Comments.txt");
+                outputFile = File.CreateText("Veh3Com.txt");
                 outputFile.WriteLine("");
                 outputFile.Close();
             }
             else if (vehNum == 4)
             {
                 //Clear vehicalNumber's text file and close the file.
-                outputFile = File.CreateText("Vehical 4 Comments.txt");
+                outputFile = File.CreateText("Veh4Com.txt");
                 outputFile.WriteLine("");
                 outputFile.Close();
             }
@@ -131,7 +134,7 @@ namespace MaintenanceTracker
                 if (vehNum == 1)
                 {                    
                     //Open vehical's text file.
-                    inputFile = File.OpenText("Vehical 1 Comments.txt");
+                    inputFile = File.OpenText("Veh1Com.txt");
                    
                     while (!inputFile.EndOfStream)
                     {
@@ -151,7 +154,7 @@ namespace MaintenanceTracker
                 else if (vehNum == 2)
                 {
                     //Open vehical's text file.
-                    inputFile = File.OpenText("Vehical 2 Comments.txt");
+                    inputFile = File.OpenText("Veh2Com.txt");
                     while (!inputFile.EndOfStream)
                     {
                         //Read vehical's text file into inputFile.
@@ -169,7 +172,7 @@ namespace MaintenanceTracker
                 else if (vehNum == 3)
                 {
                     //Open vehical's text file.
-                    inputFile = File.OpenText("Vehical 3 Comments.txt");
+                    inputFile = File.OpenText("Veh3Com.txt");
                     while (!inputFile.EndOfStream)
                     {
                         //Read vehical's text file into inputFile.
@@ -188,7 +191,7 @@ namespace MaintenanceTracker
                 else if (vehNum == 4)
                 {
                     //Open vehical's text file.
-                    inputFile = File.OpenText("Vehical 4 Comments.txt");
+                    inputFile = File.OpenText("Veh4Com.txt");
                     while (!inputFile.EndOfStream)
                     {
                         //Read vehical's text file into inputFile.
