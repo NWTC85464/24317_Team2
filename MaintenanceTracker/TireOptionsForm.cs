@@ -17,7 +17,7 @@ namespace MaintenanceTracker
     //
     //Change how file gets writen on exit form so it wont error if someone doesnt save a file and closes.
     //
-    //install date day month year validation?
+    //change reset to clear only text boxes and dropdown lists.
     //
     //change reset message boxes
     //
@@ -104,9 +104,7 @@ namespace MaintenanceTracker
             ttLB.Padding = new Padding(10, 10, 10, 10);
             ttLB.Visible = false;
 
-////////////////////////////////////////////////////////////////////////////////////////////
-            //Add a click feature to expand the image "zoom"
-            //remove buttons and make area bigger less cluttered.
+
             //Add tire tips picture box and controls to form.            
             pB.Height = 85;
             pB.Width = 225;
@@ -163,8 +161,7 @@ namespace MaintenanceTracker
 
                 //Set scrollLock value to 1.
                 scrollLock = 1;
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////need to send stored miles driven into pbar1.
+
                 //Call progressBar method.
                 if(milesDriven != 0)
                 {
@@ -183,11 +180,12 @@ namespace MaintenanceTracker
             else if (tireOptionsClass.V2Stored == 1 && vehicalNum == 2)
             {
                 //Fill form with array values.......
+                tireOptionsFormLBL.Text = "Vehicle " + tireOptionsClass.Vehical2Values[0] + " Tire Options";
                 sliderValueLbl.Text = tireOptionsClass.Vehical2Values[1];
                 milageTrackBar.Value = Int32.Parse(tireOptionsClass.Vehical2Values[1]);
                 installDateTextBox.Text = tireOptionsClass.Vehical2Values[2];
                 comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical2Values[3]);
-                tireOptionsFormLBL.Text = "Vehicle " + tireOptionsClass.Vehical2Values[0] + " Tire Options";
+
 
                 //Deactivate the track bar slide
                 milageTrackBar.Enabled = false;
@@ -199,16 +197,29 @@ namespace MaintenanceTracker
                 scrollLock = 1;
 
                 //Call progressBar method.
-                pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical2Values[1]);
+                if (milesDriven != 0)
+                {
+                    milesDriven += Convert.ToInt32(tireOptionsClass.Vehical2Values[4]);
+                    pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical2Values[1]);
+                    //pBar2Set(odometer, milesDriven, storedOdometer);
+                }
+                else
+                {
+                    int mdd = Convert.ToInt32(tireOptionsClass.Vehical2Values[4]);
+                    pBar1Set(vehicalNum, mdd, tireOptionsClass.Vehical2Values[1]);
+                    //pBar2Set(odometer, milesDriven, storedOdometer);
+                }
+
             }
             else if (tireOptionsClass.V3Stored == 1 && vehicalNum == 3)
             {
                 //Fill form with array values.......
+                tireOptionsFormLBL.Text = "Vehicle " + tireOptionsClass.Vehical3Values[0] + " Tire Options";
                 sliderValueLbl.Text = tireOptionsClass.Vehical3Values[1];
                 milageTrackBar.Value = Int32.Parse(tireOptionsClass.Vehical3Values[1]);
                 installDateTextBox.Text = tireOptionsClass.Vehical3Values[2];
                 comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical3Values[3]);
-                tireOptionsFormLBL.Text = "Vehical " + tireOptionsClass.Vehical3Values[0] + " Tire Options";
+
 
                 //Deactivate the track bar slide
                 milageTrackBar.Enabled = false;
@@ -220,16 +231,29 @@ namespace MaintenanceTracker
                 scrollLock = 1;
 
                 //Call progressBar method.
-                pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical3Values[1]);
+                if (milesDriven != 0)
+                {
+                    milesDriven += Convert.ToInt32(tireOptionsClass.Vehical3Values[4]);
+                    pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical3Values[1]);
+                    //pBar2Set(odometer, milesDriven, storedOdometer);
+                }
+                else
+                {
+                    int mdd = Convert.ToInt32(tireOptionsClass.Vehical3Values[4]);
+                    pBar1Set(vehicalNum, mdd, tireOptionsClass.Vehical3Values[1]);
+                    //pBar2Set(odometer, milesDriven, storedOdometer);
+                }
+
             }
             else if (tireOptionsClass.V4Stored == 1 && vehicalNum == 4)
             {
                 //Fill form with array values.......
+                tireOptionsFormLBL.Text = "Vehicle " + tireOptionsClass.Vehical4Values[0] + " Tire Options";
                 sliderValueLbl.Text = tireOptionsClass.Vehical4Values[1];
                 milageTrackBar.Value = Int32.Parse(tireOptionsClass.Vehical4Values[1]);
                 installDateTextBox.Text = tireOptionsClass.Vehical4Values[2];
                 comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical4Values[3]);
-                tireOptionsFormLBL.Text = "Vehical " + tireOptionsClass.Vehical4Values[0] + " Tire Options";
+
 
                 //Deactivate the track bar slide
                 milageTrackBar.Enabled = false;
@@ -241,7 +265,19 @@ namespace MaintenanceTracker
                 scrollLock = 1;
 
                 //Call progressBar method.
-                pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical4Values[1]);
+                if (milesDriven != 0)
+                {
+                    milesDriven += Convert.ToInt32(tireOptionsClass.Vehical4Values[4]);
+                    pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical4Values[1]);
+                    //pBar2Set(odometer, milesDriven, storedOdometer);
+                }
+                else
+                {
+                    int mdd = Convert.ToInt32(tireOptionsClass.Vehical4Values[4]);
+                    pBar1Set(vehicalNum, mdd, tireOptionsClass.Vehical4Values[1]);
+                    //pBar2Set(odometer, milesDriven, storedOdometer);
+                }
+
             }
             else
             {
@@ -502,9 +538,7 @@ namespace MaintenanceTracker
                     else
                     {
 
-                    }
-                    
-                    
+                    }            
 
                     //Write each line of tireOptionsClass.Vehical1Values array to text file.               
                     foreach (string line in tireOptionsClass.Vehical1Values)
@@ -516,49 +550,82 @@ namespace MaintenanceTracker
                     mainFormClass.MilesDriven = 0;
                     break;
                 case 2:
-                    if ((!File.Exists("v2Info.txt"))) //Checking if v2Info.txt exists or not
+                    if ((!File.Exists("v2Info.txt"))) //Checking if v1Info.txt exists or not
                     {
-                        FileStream fs = File.Create("v2Info.txt"); //Creates v2Info.txt
+                        FileStream fs = File.Create("v2Info.txt"); //Creates v1Info.txt
                         fs.Close(); //Closes file stream
                     }
-                    
-                    //Write each line of tireOptionsClass.Vehical2Values array to text file.               
+                    if (milesDriven != 0)
+                    {
+                        // int sv = Convert.ToInt32(tireOptionsClass.Vehical1Values[4]);
+
+                        tireOptionsClass.Vehical2Values[4] = milesDriven.ToString();
+                    }
+                    else
+                    {
+
+                    }
+
+                    //Write each line of tireOptionsClass.Vehical1Values array to text file.               
                     foreach (string line in tireOptionsClass.Vehical2Values)
                     {
-                        //Write tireOptionsClass.Vehical2Values array values to file upon form exit.
+                        //Write tireOptionsClass.Vehical1Values array values to file upon form exit.
                         File.WriteAllLines(path2, tireOptionsClass.Vehical2Values);
                         // MessageBox.Show(line);
                     }
+                    mainFormClass.MilesDriven = 0;
                     break;
                 case 3:
-                    if ((!File.Exists("v3Info.txt"))) //Checking if v3Info.txt exists or not
+                    if ((!File.Exists("v3Info.txt"))) //Checking if v1Info.txt exists or not
                     {
-                        FileStream fs = File.Create("v3Info.txt"); //Creates v3Info.txt
+                        FileStream fs = File.Create("v3Info.txt"); //Creates v1Info.txt
                         fs.Close(); //Closes file stream
+                    }
+                    if (milesDriven != 0)
+                    {
+                        // int sv = Convert.ToInt32(tireOptionsClass.Vehical1Values[4]);
+
+                        tireOptionsClass.Vehical3Values[4] = milesDriven.ToString();
+                    }
+                    else
+                    {
+
                     }
 
-                    //Write each line of tireOptionsClass.Vehical3Values array to text file.               
+                    //Write each line of tireOptionsClass.Vehical1Values array to text file.               
                     foreach (string line in tireOptionsClass.Vehical3Values)
                     {
-                        //Write tireOptionsClass.Vehical2Values array values to file upon form exit.
-                        File.WriteAllLines(path3, tireOptionsClass.Vehical3Values);
+                        //Write tireOptionsClass.Vehical1Values array values to file upon form exit.
+                        File.WriteAllLines(path3, tireOptionsClass.Vehical1Values);
                         // MessageBox.Show(line);
                     }
+                    mainFormClass.MilesDriven = 0;
                     break;
                 case 4:
-                    if ((!File.Exists("v4Info.txt"))) //Checking if v4Info.txt exists or not
+                    if ((!File.Exists("v4Info.txt"))) //Checking if v1Info.txt exists or not
                     {
-                        FileStream fs = File.Create("v4Info.txt"); //Creates v4Info.txt
+                        FileStream fs = File.Create("v4Info.txt"); //Creates v1Info.txt
                         fs.Close(); //Closes file stream
                     }
-                    
-                    //Write each line of tireOptionsClass.Vehical4Values array to text file.               
+                    if (milesDriven != 0)
+                    {
+                        // int sv = Convert.ToInt32(tireOptionsClass.Vehical1Values[4]);
+
+                        tireOptionsClass.Vehical4Values[4] = milesDriven.ToString();
+                    }
+                    else
+                    {
+
+                    }
+
+                    //Write each line of tireOptionsClass.Vehical1Values array to text file.               
                     foreach (string line in tireOptionsClass.Vehical4Values)
                     {
-                        //Write tireOptionsClass.Vehical4Values array values to file upon form exit.
+                        //Write tireOptionsClass.Vehical1Values array values to file upon form exit.
                         File.WriteAllLines(path4, tireOptionsClass.Vehical4Values);
                         // MessageBox.Show(line);
                     }
+                    mainFormClass.MilesDriven = 0;
                     break;
                 default:
                     //
