@@ -49,6 +49,8 @@ namespace MaintenanceTracker
         int x = 0, j = 0;
         private void MPGOptionsForm_Load(object sender, EventArgs e)
         {
+            //scroll data grid to bottom?
+            //dgTrack.FirstDisplayedScrollingRowIndex = dgTrack.RowCount - 1;
 
             //create folder path
             if (Directory.Exists(@"mpg"))
@@ -98,6 +100,7 @@ namespace MaintenanceTracker
                             sw.WriteLine("0/00/0000 00 0000 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg1.txt");
+                            fln = @"mpg/mpg1.txt";
                             setup(usedFile);
 
                             //int[,] result = new int[10, 10];
@@ -122,9 +125,11 @@ namespace MaintenanceTracker
                 case 2:
                     if (File.Exists(@"mpg/mpg2.txt"))
                     {
+                        fln = @"mpg/mpg2.txt";
                         usedFile = File.ReadAllText(@"mpg/mpg2.txt");
                         
                         ArrayString(usedFile);
+                        dgTrack.FirstDisplayedScrollingRowIndex = dgTrack.RowCount - 1;
                     }
                     else
                     {
@@ -133,6 +138,7 @@ namespace MaintenanceTracker
                             sw.WriteLine("0/00/0000 00 0000 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg2.txt");
+                            fln = @"mpg/mpg2.txt";
                             setup(usedFile);
                         }
                     }
@@ -141,7 +147,7 @@ namespace MaintenanceTracker
                 case 3:
                     if (File.Exists(@"mpg/mpg3.txt"))
                     {
-                        
+                        fln = @"mpg/mpg3.txt";
                         usedFile = File.ReadAllText(@"mpg/mpg3.txt");
 
                         ArrayString(usedFile);
@@ -154,6 +160,7 @@ namespace MaintenanceTracker
                             sw.WriteLine("0/00/0000 00 0000 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg3.txt");
+                            fln = @"mpg/mpg3.txt";
                             setup(usedFile);  
                         }
                     }
@@ -162,7 +169,7 @@ namespace MaintenanceTracker
                 case 4:
                     if (File.Exists(@"mpg/mpg4.txt"))
                     {
-                       
+                        fln = @"mpg/mpg4.txt";
                         usedFile = File.ReadAllText(@"mpg/mpg4.txt");
 
                         ArrayString(usedFile);
@@ -174,6 +181,7 @@ namespace MaintenanceTracker
                             sw.WriteLine("0/00/0000 00 0000 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg4.txt");
+                            fln = @"mpg/mpg4.txt";
                             setup(usedFile); 
                         }
                     }
@@ -199,29 +207,57 @@ namespace MaintenanceTracker
                 if (double.TryParse(txtbxGallonsRead.Text, out galCur))
                 {
                     
-                    
+                    //read last line from current file to get odometer reading
                     var lastLine = File.ReadLines(fln).Last();
-
+                    //incrementer for array
                     int j = 0;
+                    //splitting up the string based on " "<--spaces it finds
                     foreach (var col in lastLine.Trim().Split(' '))
                     {
+                        //storing split up string into an array
                         holdOdo[j] = col.Trim();
-                        j++;
+                        j++; //increment array
                     }
+                    //parse string to doulbe for MPG math
                     double oldOdo = double.Parse(holdOdo[2]);
-                    //double oldOdo =
-
+                    //check to make sure new odometer reading is greater than last reading.
                     if (odoCur <= oldOdo)
                     {
                         MessageBox.Show("Please enter a Odometer reading greater than " + oldOdo);
                         return;
                     }
-
+                    //finding the difference of miles driven since last mpg entered
                     double mileDiff = odoCur - oldOdo;
+                    //15000 is based on the average driver and how far they go in a year (13474 miles per year)
+                    //gives some flexibility incase driver forgets to add mpg for a long time, or travels a lot)
+                    if (mileDiff > 15000)
+                    {
 
+                        double limit=oldOdo + 15000;
+                        MessageBox.Show("Please enter a odometer reading less than " + limit);
+                        return;
+                    }
+                    //raised gallons number for Semi-truck drivers to use.
+                    //negative gallons???
+                    if (galCur > 400)
+                    {
+                        MessageBox.Show("Please enter a gallons less than 400");
+                        return;
+                    }
                     //mainFrm.milesDriven = mileDiff;
 
-                    main.MilesDriven = mileDiff;
+                    //count how many lines are in a file
+                    var lineCount = File.ReadLines(fln).Count();
+
+                    //if file line count is at 10, then shave off top line and append new line to bottom. 
+                    //rewrites file to get rid of first line. 
+                    if (lineCount == 9)
+                    {
+                        var lines = File.ReadAllLines(fln);
+                        File.WriteAllLines(fln, lines.Skip(1).ToArray());
+                    }
+
+                        main.MilesDriven = mileDiff;
 
                     curMpg = (mileDiff) / galCur;
 
@@ -229,7 +265,7 @@ namespace MaintenanceTracker
 
                     //Enter math code here!
                     dgTrack.Rows.Add(today1.ToString("d"), Math.Round(curMpg, 2), Math.Round(odoCur, 2), Math.Round(galCur, 2));
-                    string createTxt = "\n" + today1.ToString("d") + " " + Math.Round(curMpg, 2) + " " + Math.Round(odoCur, 2) + " " + Math.Round(galCur, 2);
+                    string createTxt =  today1.ToString("d") + " " + Math.Round(curMpg, 2) + " " + Math.Round(odoCur, 2) + " " + Math.Round(galCur, 2);
                     System.IO.StreamWriter objWrt;
                     switch (main.VehicalNumber)
                     {
@@ -298,10 +334,13 @@ namespace MaintenanceTracker
         }
 
 
-        public void ArrayString(string fileName)
+        public void ArrayString(string fileContent)
         {
+            //count how many lines are in a file
+            var lineCount = File.ReadLines(fln).Count();
 
-            foreach (var row in fileName.Split('\r'))
+            //if (lineCount==17)
+            foreach (var row in fileContent.Split('\r'))
             {
                 j = 0;
                 foreach (var col in row.Trim().Split(' '))

@@ -172,7 +172,7 @@ namespace MaintenanceTracker
                     if (File.Exists(checkFile))
                     {
                         var lastLine = File.ReadLines(@"mpg/mpg1.txt").Last();
-                        MessageBox.Show(lastLine);
+                        //MessageBox.Show(lastLine);
 
 
                         int j = 0;
@@ -184,7 +184,7 @@ namespace MaintenanceTracker
 
 
                         odo = double.Parse(holdOdo[2]);
-                        MessageBox.Show("this is parsed: " + odo);
+                        //MessageBox.Show("this is parsed: " + odo);
 
                     }
                     else
@@ -199,7 +199,7 @@ namespace MaintenanceTracker
                     if (File.Exists(checkFile))
                     {
                         var lastLine = File.ReadLines(@"mpg/mpg2.txt").Last();
-                        MessageBox.Show(lastLine);
+                        //MessageBox.Show(lastLine);
 
 
                         int j = 0;
@@ -211,7 +211,7 @@ namespace MaintenanceTracker
 
 
                         odo = double.Parse(holdOdo[2]);
-                        MessageBox.Show("this is parsed: " + odo);
+                        //MessageBox.Show("this is parsed: " + odo);
 
                     }
                     else
@@ -225,7 +225,7 @@ namespace MaintenanceTracker
                     if (File.Exists(checkFile))
                     {
                         var lastLine = File.ReadLines(@"mpg/mpg3.txt").Last();
-                        MessageBox.Show(lastLine);
+                        //MessageBox.Show(lastLine);
 
 
                         int j = 0;
@@ -237,7 +237,7 @@ namespace MaintenanceTracker
 
 
                         odo = double.Parse(holdOdo[2]);
-                        MessageBox.Show("this is parsed: " + odo);
+                        //MessageBox.Show("this is parsed: " + odo);
 
                     }
                     else
@@ -251,7 +251,7 @@ namespace MaintenanceTracker
                     if (File.Exists(checkFile))
                     {
                         var lastLine = File.ReadLines(@"mpg/mpg4.txt").Last();
-                        MessageBox.Show(lastLine);
+                        //MessageBox.Show(lastLine);
 
                        
                             int j = 0;
@@ -263,7 +263,7 @@ namespace MaintenanceTracker
                         
 
                         odo = double.Parse(holdOdo[2]);
-                        MessageBox.Show("this is parsed: "+ odo);
+                        //MessageBox.Show("this is parsed: "+ odo);
                             
                     }
                     else
