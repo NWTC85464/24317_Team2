@@ -57,6 +57,7 @@
             this.displayDrSideLabel = new System.Windows.Forms.Label();
             this.displayNextDateLabel = new System.Windows.Forms.Label();
             this.displayInstDateLabel = new System.Windows.Forms.Label();
+            this.newFormButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // installedDateLabel
@@ -314,7 +315,7 @@
             // displayNextDateLabel
             // 
             this.displayNextDateLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.displayNextDateLabel.Location = new System.Drawing.Point(33, 155);
+            this.displayNextDateLabel.Location = new System.Drawing.Point(23, 155);
             this.displayNextDateLabel.Name = "displayNextDateLabel";
             this.displayNextDateLabel.Size = new System.Drawing.Size(232, 23);
             this.displayNextDateLabel.TabIndex = 73;
@@ -322,10 +323,20 @@
             // displayInstDateLabel
             // 
             this.displayInstDateLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.displayInstDateLabel.Location = new System.Drawing.Point(21, 102);
+            this.displayInstDateLabel.Location = new System.Drawing.Point(23, 97);
             this.displayInstDateLabel.Name = "displayInstDateLabel";
             this.displayInstDateLabel.Size = new System.Drawing.Size(229, 23);
             this.displayInstDateLabel.TabIndex = 70;
+            // 
+            // newFormButton
+            // 
+            this.newFormButton.Location = new System.Drawing.Point(188, 358);
+            this.newFormButton.Name = "newFormButton";
+            this.newFormButton.Size = new System.Drawing.Size(55, 23);
+            this.newFormButton.TabIndex = 86;
+            this.newFormButton.Text = "New";
+            this.newFormButton.UseVisualStyleBackColor = true;
+            this.newFormButton.Click += new System.EventHandler(this.newFormButton_Click);
             // 
             // WipersOptionForm
             // 
@@ -333,7 +344,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MaintenanceTracker.Properties.Resources.wiper;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(273, 434);
+            this.ClientSize = new System.Drawing.Size(276, 434);
+            this.Controls.Add(this.newFormButton);
             this.Controls.Add(this.displayNotesLabel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.displayBrandLabel);
@@ -402,5 +414,6 @@
         private System.Windows.Forms.Label displayDrSideLabel;
         private System.Windows.Forms.Label displayNextDateLabel;
         private System.Windows.Forms.Label displayInstDateLabel;
+        private System.Windows.Forms.Button newFormButton;
     }
 }

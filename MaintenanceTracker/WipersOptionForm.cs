@@ -19,7 +19,6 @@ namespace MaintenanceTracker
         Wiper[] wiper = new Wiper[1];
         MainFormClass mainFormClass = new MainFormClass();
         MainTracker mainTracker = new MainTracker();
-        
 
         //Variables.
         int vehicleNum;                 // Holds Vehicle number.
@@ -41,7 +40,10 @@ namespace MaintenanceTracker
             //Form background color.
             this.BackColor = System.Drawing.Color.Aqua;
 
-            //this.BackgroundImage = Properties.Resources.wiper;  
+            //this.BackgroundImage = Properties.Resources.wiper; 
+
+            // Progress bar
+            wiperProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -49,53 +51,71 @@ namespace MaintenanceTracker
             // Display wiper info for the selected vehicle
             vehicleNumLabel.Text = "Wiper Info for Vehicle #" + vehicleNum;
 
+            // change reset to new/clear
+            // have EDIT when load data to edit 
+
             // VEHICLE #1
             if (vehicleNum == 1)    // If vehicle number 1 is selected
             {
                 // Variable to hold file
-                string wiperDataFile = @"C:\Users\x12 t2015\source\repos\24317_Team2\MaintenanceTracker\bin\Debug\WiperData1.xml";
+                string wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData1.xml";
 
                 // If file exists or not
                 MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
 
-                //wiperProgressBar.Visible = true;    // Show progress bar
-                //installedDateTimePicker.Enabled = false;
-
+                wiperProgressBar.Visible = true;    // Show progress bar
+                //progressBar(wiperDataFile);
+               /* if (displayNextDateLabel.Text == "")
+               {
+                    // If not file, enable the form to be filled
+                   newForm(vNum);
+                }
+                else
+                {
+                    File.Exists(wiperDataFile);
+                    displayWiperData(wiperDataFile);
+                }
+                */
                 if (File.Exists(wiperDataFile))
                 {
                     // ***************NEED FOR KEEP OR DELETE FILE**************
                     //***IF KEEP, THEN DISPLAY DATA FOR THE VEHICLE
                     //***IF DELETE, DISPLAY FORM TO CREATE NEW DATA
-                      
-                   
-                    
+
                     // Call and pass the xml file to be displayed
                     displayWiperData(wiperDataFile);
 
-                    //*****display on new form
-                    //if click RESET, file will be delete and back to fill form for the vehicle
-                    //if click OK, back to the main form to select a different vehicle
-
                 }
-
+                else
+                {                    
+                    // If not file, enable the form to be filled
+                    newForm(vNum);
+                }
+                
             }
 
             // VEHICLE #2
             if (vehicleNum == 2)    // If vehicle number 2 is selected
             {
                 // Variable to hold file
-                string wiperDataFile = @"C:\Users\x12 t2015\source\repos\24317_Team2\MaintenanceTracker\bin\Debug\WiperData2.xml";
+                string wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData2.xml";
 
                 // If file exists or not
                 MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
 
                 //wiperProgressBar.Visible = true;    // Show progress bar
-                //installedDateTimePicker.Enabled = false;
+
                 if (File.Exists(wiperDataFile))
                 {
                     // Call and pass the xml file to be displayed
                     displayWiperData(wiperDataFile);
 
+                }
+                else
+                {
+                    
+                    // If not file, enable the form to be filled
+                    newForm(vNum);
                 }
 
             }
@@ -104,16 +124,22 @@ namespace MaintenanceTracker
             if (vehicleNum == 3)    // If vehicle number 3 is selected
             {
                 // Variable to hold file
-                string wiperDataFile = @"C:\Users\x12 t2015\source\repos\24317_Team2\MaintenanceTracker\bin\Debug\WiperData3.xml";
+                string wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData3.xml";
 
                 // If file exists or not
                 MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
 
                 //wiperProgressBar.Visible = true;    // Show progress bar
-                //installedDateTimePicker.Enabled = false;
+
                 if (File.Exists(wiperDataFile))
                 {
+                    // Call and pass the xml file to be displayed
                     displayWiperData(wiperDataFile);
+                }
+                else
+                {
+                    // If not file, enable the form to be filled
+                    newForm(vNum);
                 }
 
             }
@@ -122,21 +148,25 @@ namespace MaintenanceTracker
             if (vehicleNum == 4)    // If vehicle number 4 is selected
             {
                 // Variable to hold file
-                string wiperDataFile = @"C:\Users\x12 t2015\source\repos\24317_Team2\MaintenanceTracker\bin\Debug\WiperData4.xml";
+                string wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData4.xml";
 
                 // If file exists or not
                 MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
 
-                //wiperProgressBar.Visible = true;    // Show progress bar
-                //installedDateTimePicker.Enabled = false;
                 if (File.Exists(wiperDataFile))
                 {
+                    // Call and pass the xml file to be displayed
                     displayWiperData(wiperDataFile);
                 }
-
+                else
+                {
+                    // If not file, enable the form to be filled
+                    newForm(vNum);
+                }
             }
         }
 
+        //Displaying information from the existing file for the selected vehicle
         private void displayWiperData(string wFile)
         {
             // Turn off fields that used to enter data
@@ -159,7 +189,18 @@ namespace MaintenanceTracker
             displayRearLabel.Text = root.GetElementsByTagName("Rear_Size")[0].InnerText;
             displayBrandLabel.Text = root.GetElementsByTagName("Brand")[0].InnerText;
             displayNotesLabel.Text = root.GetElementsByTagName("Notes")[0].InnerText;
-           
+
+            if(displayNextDateLabel.Text == "")
+            {
+                resetButton.Enabled = false;    //****need to be fixed******
+                resetButton.Visible = false;    // need to be fixed
+            }
+            else
+            {
+                newFormButton.Enabled = false;  // need to be fixed
+                newFormButton.Visible = false;  // need to be fixed
+            }
+
         }
         private void WipersOptionForm_Load(int vNum)
         {
@@ -168,22 +209,20 @@ namespace MaintenanceTracker
             tipAndInfoButton.Font = new Font("Rockwell", 20f, FontStyle.Bold);
 
             tipAndInfoButton.FlatStyle = FlatStyle.Flat;
-            tipAndInfoButton.FlatAppearance.BorderSize = 2;           
+
+            tipAndInfoButton.FlatAppearance.BorderSize = 2;
 
         }
-
-
-        // progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-
-
 
         // Exit the app
         private void exitButton_Click_1(object sender, EventArgs e)
         {
             this.Close();
+
+            // *****if form is blank, message to show that it's blank and previous info will be restored
         }
 
-        // Select data wipers are installed
+        // Select the date wipers are installed
         public void installedDateTimePicker_ValueChanged_1(object sender, EventArgs e)
         {
             // Get the current date.
@@ -224,7 +263,6 @@ namespace MaintenanceTracker
                         //****NEED CODES TO CREATE FILE****
 
                         clearFields(v_N);
-                      
                         break;
 
                     case 2:
@@ -241,19 +279,59 @@ namespace MaintenanceTracker
 
                     default:
                         break;
-
-                    
                 }
-               
+
             }
+            //***NEED TO TURN ON/OFF RESET BUTTON AND NEW BUTTON*****
+            resetButton.Visible = true;
+            resetButton.Enabled = true;
+
+            newFormButton.Enabled = false;
+            newFormButton.Visible = false;
         }
 
-        
+        // Set the form to be filled
+        private void newForm(int _vn)
+        {
+            int v = _vn;
+
+            switch (v)
+            {
+                case 1:
+
+                    //*********** IF DELETE FILE, NEED CODES TO DELETE FILE AND CLEAR FIELDS *****
+                    //****NEED CODES TO CREATE FILE****
+
+                    clearFields(v);
+                    break;
+
+                case 2:
+                    clearFields(v);
+                    break;
+
+                case 3:
+                    clearFields(v);
+                    break;
+
+                case 4:
+                    clearFields(v);
+                    break;
+
+                default:
+                    break;
+            }
+
+        }
+
+        // Clear the form
         private void clearFields(int vNum)
         {
+            //***WITHOUT THIS, IT WILL DISPLAY THE DATA FROM PREVIOUSLY SAVED****
+            //string wi = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + vNum + ".xml";
+            /*
             wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
-
-            using (XmlWriter writer = XmlWriter.Create("WiperData" + vNum + ".xml"))
+            //using (XmlWriter writer = XmlWriter.Create("WiperData" + vNum + ".xml"))
+            using (XmlWriter writer = XmlWriter.Create(wi))
             {
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Wiper");
@@ -263,7 +341,7 @@ namespace MaintenanceTracker
                     writer.WriteStartElement("Wiper");
 
                     // Empty all elements
-                    writer.WriteElementString("Vehicle_Number", "");
+                    writer.WriteElementString("Vehicle_Number", vNum.ToString());
                     writer.WriteElementString("Installed_Date", "");
                     writer.WriteElementString("Next_Install_Date", "");
                     writer.WriteElementString("Driver_Size", "");
@@ -278,8 +356,7 @@ namespace MaintenanceTracker
                 writer.WriteEndElement();       // End writing 
                 writer.WriteEndDocument();      // End writing to file
             }
-
-           
+            */
             // Turn on fields that used to enter data
             installedDateTimePicker.Visible = true;
             nextReplaceDateDisplayLabel.Visible = true;
@@ -288,7 +365,6 @@ namespace MaintenanceTracker
             rearTextBox.Visible = true;
             brandTextBox.Visible = true;
             notesTextBox.Visible = true;
-            
 
             // Turn off display labels
             displayInstDateLabel.Visible = false;
@@ -297,8 +373,7 @@ namespace MaintenanceTracker
             displayPassSideLabel.Visible = false;
             displayRearLabel.Visible = false;
             displayBrandLabel.Visible = false;
-            displayNotesLabel.Visible = false; 
-
+            displayNotesLabel.Visible = false;
 
             // Empty fields
             installedDateTimePicker.ResetText();
@@ -318,20 +393,22 @@ namespace MaintenanceTracker
             brandTextBox.Enabled = true;
             notesTextBox.Enabled = true;
         }
-        
+
+        // Write the information to XML file
         private void writeToXML(int v)
         {
-            string wi = @"C:\Users\x12 t2015\source\repos\24317_Team2\MaintenanceTracker\bin\Debug\WiperData" + v + ".xml";
+            string wi = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + v + ".xml";
 
             wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
 
-            if (File.Exists(wi))
-            {
-                //****if file already exists, just add the values to the xml file
-                //***if file not exist, create file and add values
-                //***create method to add file and method to create file and add values
-            }
-            using (XmlWriter writer = XmlWriter.Create("WiperData" + v + ".xml"))
+            //if (File.Exists(wi))
+            //{
+            //****if file already exists, just add the values to the xml file
+            //***if file not exist, create file and add values
+            //***create method to add file and method to create file and add values
+
+            //}            
+            using (XmlWriter writer = XmlWriter.Create(wi))
             {
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Wiper");
@@ -354,6 +431,7 @@ namespace MaintenanceTracker
 
                 writer.WriteEndElement();       // End writing 
                 writer.WriteEndDocument();      // End writing to file
+
             }
         }
 
@@ -361,27 +439,27 @@ namespace MaintenanceTracker
         // Save the info entered
         private void saveButton_Click_1(object sender, EventArgs e)
         {
-            //***** NEED DATA STORAGE **************
+            
             if (String.IsNullOrEmpty(nextReplaceDateDisplayLabel.Text))
             {
                 MessageBox.Show("Please select date wiper was installed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 installedDateTimePicker.Focus();
             }
             else if (String.IsNullOrEmpty(driverSideTextBox.Text))
-            {
+            {                               
                 MessageBox.Show("Please enter driver side wiper size.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 driverSideTextBox.Focus();
-            }
+            }           
             else if (String.IsNullOrEmpty(passagerSideTextBox.Text))
             {
                 MessageBox.Show("Please enter passager side wiper size.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 passagerSideTextBox.Focus();
-            }
+            }            
             else if (String.IsNullOrEmpty(rearTextBox.Text))
             {
                 MessageBox.Show("Please enter rear wiper size. Enter 0 if no rear wiper.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 rearTextBox.Focus();
-            }
+            }           
             else if (string.IsNullOrWhiteSpace(brandTextBox.Text))
             {
                 MessageBox.Show("Please enter brand name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -392,6 +470,12 @@ namespace MaintenanceTracker
             {
                 MessageBox.Show("This is a number only field");
                 driverSideTextBox.Focus();
+                return;                
+            }
+            else if (driver <= 0 || driver > 40)
+            {
+                MessageBox.Show("Please enter wiper size between: 0-40");
+                driverSideTextBox.Focus();
                 return;
             }
             else if (!double.TryParse(passagerSideTextBox.Text, out passager))
@@ -400,9 +484,21 @@ namespace MaintenanceTracker
                 passagerSideTextBox.Focus();
                 return;
             }
+            else if (passager <= 0 || passager > 40)
+            {
+                MessageBox.Show("Please enter wiper size between: 0-40");
+                passagerSideTextBox.Focus();
+                return;
+            }
             else if (!double.TryParse(rearTextBox.Text, out rear))
             {
                 MessageBox.Show("This is a number only field");
+                rearTextBox.Focus();
+                return;
+            }
+            else if (rear <= 0 || rear > 40)
+            {
+                MessageBox.Show("Please enter wiper size between: 0-40");
                 rearTextBox.Focus();
                 return;
             }
@@ -434,7 +530,15 @@ namespace MaintenanceTracker
         private void resetButton_Click(object sender, EventArgs e)
         {
             // Call reset method and passing vehicle number to it
-            reset(vehicleNum);
+            //*****NEED TO TURN RESET AND NEW ON/OFF*****
+            //resetButton.Visible = true;
+            //resetButton.Enabled = true;
+
+           // newFormButton.Enabled = false;
+           // newFormButton.Visible = false;
+
+            reset(vehicleNum);  
+            
         }
 
         // Store wiper's info
@@ -444,7 +548,7 @@ namespace MaintenanceTracker
             switch (vehicleNum)
             {
                 case 1:
-                    writeToXML(vehicleNum);                   
+                    writeToXML(vehicleNum);
                     break;
 
                 case 2:
@@ -464,12 +568,22 @@ namespace MaintenanceTracker
 
             }
         }
-        
-        /*
-        private void progressBar(int vehicalNum, string rotateValue)
+
+        private void newFormButton_Click(object sender, EventArgs e)
         {
-           
-            int vehNum = vehicalNum;
+            newForm(vehicleNum);
+        }
+
+        /*
+        private void progressBar(string wFile)
+        {
+            XmlDocument d = new XmlDocument();
+            d.Load(wFile);
+            XmlElement root = d.DocumentElement;
+                        
+            DateTime today = DateTime.Today;
+
+            string nextInstDate = root.GetElementsByTagName("Next_Install_Date")[0].InnerText;
             //int miles = milage;
             //int rotate = Int32.Parse(rotateValue);
             //double mil = System.Convert.ToDouble(milage);
@@ -481,33 +595,34 @@ namespace MaintenanceTracker
 
             try
             {
-                progressBar1.Maximum = rotate;
-                progressBar1.Value = progressBar1.Maximum - miles;
+                wiperProgressBar.Maximum = rotate;
+                wiperProgressBar.Value = wiperProgressBar.Maximum - miles;
 
-                if (progressBar1.Value > (rotate / 2))
+                if (wiperProgressBar.Value > (rotate / 2))
                 {
-                    progressBar1.ForeColor = Color.Green;
+                    wiperProgressBar.ForeColor = Color.Green;
                 }
-                else if ((progressBar1.Value <= (rotate / 2)) && progressBar1.Value > rotate / 4)
+                else if ((wiperProgressBar.Value <= (rotate / 2)) && wiperProgressBar.Value > rotate / 4)
                 {
-                    progressBar1.ForeColor = Color.Yellow;
+                    wiperProgressBar.ForeColor = Color.Yellow;
                 }
-                else if (progressBar1.Value <= rotate / 4 && progressBar1.Value > 0)
+                else if (wiperProgressBar.Value <= rotate / 4 && wiperProgressBar.Value > 0)
                 {
-                    progressBar1.ForeColor = Color.Red;
+                    wiperProgressBar.ForeColor = Color.Red;
                 }
-                else if (progressBar1.Value <= 0)
+                else if (wiperProgressBar.Value <= 0)
                 {
                     MessageBox.Show("Tire need to be rotated");
                 }
             }
-        catch
-        {
-            MessageBox.Show("Tire need to be rotated");
-            //Do nothing.....
+            catch
+            {
+                MessageBox.Show("Tire need to be rotated");
+                //Do nothing.....
+            }
+
         }*/
-        
-        }
-   }
+    }
+}
  
         
