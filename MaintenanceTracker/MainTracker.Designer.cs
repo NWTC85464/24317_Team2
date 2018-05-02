@@ -35,80 +35,93 @@
             this.mpgButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.vehicalSelectList = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tiresButton
             // 
+            this.tiresButton.BackColor = System.Drawing.SystemColors.Control;
             this.tiresButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.tiresButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tiresButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tiresButton.Location = new System.Drawing.Point(276, 468);
             this.tiresButton.Name = "tiresButton";
             this.tiresButton.Size = new System.Drawing.Size(122, 128);
             this.tiresButton.TabIndex = 0;
             this.tiresButton.Text = "Tires";
-            this.tiresButton.UseVisualStyleBackColor = true;
+            this.tiresButton.UseVisualStyleBackColor = false;
             this.tiresButton.Click += new System.EventHandler(this.TiresButton_Click);
             // 
             // wipersButton
             // 
+            this.wipersButton.BackColor = System.Drawing.SystemColors.Control;
             this.wipersButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.wipersButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wipersButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.wipersButton.Location = new System.Drawing.Point(142, 468);
             this.wipersButton.Name = "wipersButton";
             this.wipersButton.Size = new System.Drawing.Size(122, 128);
             this.wipersButton.TabIndex = 1;
             this.wipersButton.Text = "Wipers";
-            this.wipersButton.UseVisualStyleBackColor = true;
+            this.wipersButton.UseVisualStyleBackColor = false;
             this.wipersButton.Click += new System.EventHandler(this.wipersButton_Click);
             // 
             // airFilterButton
             // 
+            this.airFilterButton.BackColor = System.Drawing.SystemColors.Control;
             this.airFilterButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.airFilterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.airFilterButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.airFilterButton.Location = new System.Drawing.Point(10, 468);
             this.airFilterButton.Name = "airFilterButton";
             this.airFilterButton.Size = new System.Drawing.Size(122, 130);
             this.airFilterButton.TabIndex = 2;
             this.airFilterButton.Text = "Air Filter";
-            this.airFilterButton.UseVisualStyleBackColor = true;
+            this.airFilterButton.UseVisualStyleBackColor = false;
             this.airFilterButton.Click += new System.EventHandler(this.airFilterButton_Click);
             // 
             // oilButton
             // 
+            this.oilButton.BackColor = System.Drawing.SystemColors.Control;
             this.oilButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.oilButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oilButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.oilButton.Location = new System.Drawing.Point(10, 334);
             this.oilButton.Name = "oilButton";
             this.oilButton.Size = new System.Drawing.Size(191, 128);
             this.oilButton.TabIndex = 3;
             this.oilButton.Text = "Oil";
-            this.oilButton.UseVisualStyleBackColor = true;
+            this.oilButton.UseVisualStyleBackColor = false;
             this.oilButton.Click += new System.EventHandler(this.OilButton_Click);
             // 
             // mpgButton
             // 
+            this.mpgButton.BackColor = System.Drawing.SystemColors.Control;
             this.mpgButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.mpgButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mpgButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.mpgButton.Location = new System.Drawing.Point(207, 334);
             this.mpgButton.Name = "mpgButton";
             this.mpgButton.Size = new System.Drawing.Size(191, 128);
             this.mpgButton.TabIndex = 4;
             this.mpgButton.Text = "MPG";
-            this.mpgButton.UseVisualStyleBackColor = true;
+            this.mpgButton.UseVisualStyleBackColor = false;
             this.mpgButton.Click += new System.EventHandler(this.MpgButton_Click);
             // 
             // settingsButton
             // 
+            this.settingsButton.BackColor = System.Drawing.SystemColors.Control;
             this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.settingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.settingsButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.settingsButton.Location = new System.Drawing.Point(8, 610);
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(388, 46);
             this.settingsButton.TabIndex = 5;
             this.settingsButton.Text = "Settings";
-            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.UseVisualStyleBackColor = false;
             this.settingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // label2
@@ -120,41 +133,40 @@
             this.label2.Size = new System.Drawing.Size(0, 20);
             this.label2.TabIndex = 12;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackgroundImage = global::MaintenanceTracker.Properties.Resources.kaChow;
+            this.flowLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.flowLayoutPanel1.Controls.Add(this.vehicalSelectList);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(384, 305);
+            this.flowLayoutPanel1.TabIndex = 25;
+            // 
             // vehicalSelectList
             // 
-            this.vehicalSelectList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vehicalSelectList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vehicalSelectList.FormattingEnabled = true;
             this.vehicalSelectList.Items.AddRange(new object[] {
             "Vehicle #1",
             "Vehicle #2",
             "Vehicle #3",
             "Vehicle #4"});
-            this.vehicalSelectList.Location = new System.Drawing.Point(103, 12);
+            this.vehicalSelectList.Location = new System.Drawing.Point(3, 3);
             this.vehicalSelectList.Name = "vehicalSelectList";
-            this.vehicalSelectList.Size = new System.Drawing.Size(191, 33);
+            this.vehicalSelectList.Size = new System.Drawing.Size(309, 34);
             this.vehicalSelectList.TabIndex = 24;
-
-            this.vehicalSelectList.Text = "Select A Vehicle";
+            this.vehicalSelectList.Text = "Select A Vehicle to Start";
             this.vehicalSelectList.SelectedIndexChanged += new System.EventHandler(this.VehicalSelectList_SelectedIndexChanged);
-
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(142, 165);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 68);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(408, 667);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.vehicalSelectList);
+            this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.mpgButton);
@@ -162,9 +174,12 @@
             this.Controls.Add(this.airFilterButton);
             this.Controls.Add(this.wipersButton);
             this.Controls.Add(this.tiresButton);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "MainTracker";
+            this.ShowIcon = false;
             this.Text = "Maintenance Tracker";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,7 +195,7 @@
         private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox vehicalSelectList;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 

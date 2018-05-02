@@ -46,7 +46,7 @@ namespace MaintenanceTracker
 
         //Variables.
         public int vehicalNum;          //Holds vehical number.
-        private int scrollLock = 0;     //Store value to lock track bar. 
+       // private int scrollLock = 0;     //Store value to lock track bar. 
         public int milesDriven;              //Store MPG mileage from MPG form.  
         //public int prevOdometer;
         public int odometer;
@@ -135,10 +135,12 @@ namespace MaintenanceTracker
             
             flowPanel.FlowDirection = FlowDirection.TopDown;
             Controls.Add(flowPanel);
-            flowPanel.BackColor = Color.LightGray;
+            flowPanel.BackColor = Color.White;
             flowPanel.Visible = false;
             
             setTireValuesgroupBox.Visible = false;
+            resetRotationBtn.Visible = false;
+            resetButton.Enabled = false;
         }
 
 
@@ -166,13 +168,13 @@ namespace MaintenanceTracker
                 comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical1Values[3]);                
 
                 //Deactivate the track bar slide
-                milageTrackBar.Enabled = false;
+                //milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
                 lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
-                scrollLock = 1;
+               // scrollLock = 1;
 
                 //Set progress bars.
                 pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical1Values[1]);
@@ -190,13 +192,13 @@ namespace MaintenanceTracker
 
 
                 //Deactivate the track bar slide
-                milageTrackBar.Enabled = false;
+                //milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
                 lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
-                scrollLock = 1;
+               // scrollLock = 1;
 
                 //Set progress bars.
                 pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical2Values[1]);
@@ -214,13 +216,13 @@ namespace MaintenanceTracker
 
 
                 //Deactivate the track bar slide
-                milageTrackBar.Enabled = false;
+                //milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
                 lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
-                scrollLock = 1;
+                //scrollLock = 1;
 
                 //Set progress bars.
                 pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical3Values[1]);
@@ -238,13 +240,13 @@ namespace MaintenanceTracker
 
 
                 //Deactivate the track bar slide
-                milageTrackBar.Enabled = false;
+                //milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
                 lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
-                scrollLock = 1;
+               // scrollLock = 1;
 
                 //Set progress bars.
                 pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical4Values[1]);
@@ -282,13 +284,13 @@ namespace MaintenanceTracker
                 storeArrays(vehicalNum, installDateTextBox.Text, milageTrackBar.Value, comboBox1.SelectedIndex, odometer, milesDriven);
 
                 //Deactivate the track bar slide
-                milageTrackBar.Enabled = false;
+                //milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
                 lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
-                scrollLock = 1;
+                //scrollLock = 1;
 
                 //Set backcolors back to default.
                 milageTrackBar.BackColor = default(Color);
@@ -306,6 +308,11 @@ namespace MaintenanceTracker
                 tireInfoButton.Enabled = true;
                 notepad.Enabled = true;
                 tireTipsButton.Enabled = true;
+
+                //Hide rotate reset button.
+                resetRotationBtn.Visible = false;
+                resetTireTreadLife.Visible = false;
+                resetButton.Enabled = false;
             }
         }
         
@@ -316,7 +323,7 @@ namespace MaintenanceTracker
         }
 
         private void lockTrackBarButton_Click_1(object sender, EventArgs e)
-        {
+        {/*
             //If else statment to lock the track bar from being adjusted.
             if (scrollLock == 0)
             {
@@ -339,7 +346,7 @@ namespace MaintenanceTracker
 
                 //Set the scrollLock value to 0.
                 scrollLock = 0;
-            }
+            }*/
         }
 
         private void setBtn_Click(object sender, EventArgs e)
@@ -356,6 +363,8 @@ namespace MaintenanceTracker
             tireInfoButton.Enabled = false;
             notepad.Enabled = false;
             tireTipsButton.Enabled = false;
+            setBtn.Text = "Set Tire Values";
+            resetButton.Enabled = true;
         }
         
         private void resetButton_Click(object sender, EventArgs e)
@@ -364,7 +373,14 @@ namespace MaintenanceTracker
             tiLB.Visible = false;
 
             //Pass vehicalNum to method.
-            resetValues(vehicalNum);           
+            //resetValues(vehicalNum);       
+
+            //Set the slider, install box, and combobox values back to default.
+            sliderValueLbl.Text = "5000";
+            milageTrackBar.Value = 5000;
+            installDateTextBox.Text = "";
+            comboBox1.SelectedIndex = -1;
+            comboBox1.Text = "";
         }
 
         //Button click will print array index values to dialogbox.
@@ -926,11 +942,11 @@ namespace MaintenanceTracker
             //Set percent label to not show below 0%.
             if(percentLeft > 0)
             {
-                percentLbl.Text = percentLeft.ToString() + "%";
+                percentLbl.Text = percentLeft.ToString() + "% Till Next Tire Rotation";
             }
             else
             {
-                percentLbl.Text = "0%";
+                percentLbl.Text = "0% Till Next Tire Rotation";
             }
 
             try
@@ -949,10 +965,17 @@ namespace MaintenanceTracker
                 else if (progressBar1.Value <= rotate / 4 && progressBar1.Value > 0)
                 {
                     progressBar1.ForeColor = Color.Red;
+
+                    //Show rotate reset button.
+                    resetRotationBtn.Visible = true;
+                    setBtn.Text = "Reset Rotation / Set Tire Values";
                 }
                 else if (progressBar1.Value <= 0)
                 {
                     MessageBox.Show("Tire need to be rotated");
+                    //Show rotate reset button.
+                    resetRotationBtn.Visible = true;
+                    setBtn.Text = "Reset Rotation / Set Tire Values";
                 }
             }
             catch
@@ -1100,11 +1123,11 @@ namespace MaintenanceTracker
             //Set percent label to not show below 0%.
             if (percentLeft > 0)
             {
-                percentLbl2.Text = percentLeft.ToString() + "%";
+                percentLbl2.Text = percentLeft.ToString() + "% Tire Life Remaining";
             }
             else
             {
-                percentLbl2.Text = "0%";
+                percentLbl2.Text = "0% Tire Life Remaining";
             }
 
             try
@@ -1123,15 +1146,22 @@ namespace MaintenanceTracker
                 else if (progressBar2.Value <= si2 / 4 && progressBar2.Value > 0)
                 {
                     progressBar2.ForeColor = Color.Red;
+
+                    //Show rotate reset button.
+                    resetTireTreadLife.Visible = true;
+                    setBtn.Text = "Reset Tire Mileage / Set Tire Values";
                 }
                 else if (progressBar2.Value <= 0)
                 {
-                    MessageBox.Show("Tire need to be rotated");
+                    MessageBox.Show("Tire need to be changed");
+                    //Show rotate reset button.
+                    resetTireTreadLife.Visible = true;
+                    setBtn.Text = "Reset Tire Mileage / Set Tire Values";
                 }
             }
             catch
             {
-                MessageBox.Show("Tire need to be rotated");
+                MessageBox.Show("Tire need to be changed");
                 //Do nothing.....
             }
         }    
@@ -1161,7 +1191,7 @@ namespace MaintenanceTracker
                 lockTrackBarButton.Image = Resources.unlock;
 
                 //Set the scrollLock value to 0.
-                scrollLock = 0;
+                //scrollLock = 0;
 
                 //Set track bar value and lbl to "0".
                 milageTrackBar.Value = 5000;
@@ -1230,5 +1260,118 @@ namespace MaintenanceTracker
             }
         }
 
+        private void resetRotationBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Reset?", 
+                "Reset Rotation Preference", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //do something
+                switch(mainFormClass.VehicalNumber)
+                {
+                    case 1:
+                        //Clear file
+                        if (File.Exists(path1a) && path1a != null)
+                        {
+                            string clearFile = "0";
+                            //Read the file and save to tmd.
+                            File.WriteAllText(path1a, clearFile);
+                            sliderValueLbl.Text = "5000";
+                            milageTrackBar.Value = 5000;
+                            readMilesDriven = 0;
+                        }                       
+                        break;
+                    case 2:
+                        //Clear file
+                        if (File.Exists(path2a) && path2a != null)
+                        {
+                            string clearFile = "0";
+                            //Read the file and save to tmd.
+                            File.WriteAllText(path2a, clearFile);
+                            sliderValueLbl.Text = "5000";
+                            milageTrackBar.Value = 5000;
+                            readMilesDriven = 0;
+                        }
+                        break;
+                    case 3:
+                        //Clear file
+                        if (File.Exists(path3a) && path3a != null)
+                        {
+                            string clearFile = "0";
+                            //Read the file and save to tmd.
+                            File.WriteAllText(path3a, clearFile);
+                            sliderValueLbl.Text = "5000";
+                            milageTrackBar.Value = 5000;
+                            readMilesDriven = 0;
+                        }
+                        break;
+                    case 4:
+                        //Clear file
+                        if (File.Exists(path4a) && path4a != null)
+                        {
+                            string clearFile = "0";
+                            //Read the file and save to tmd.
+                            File.WriteAllText(path4a, clearFile);
+                            sliderValueLbl.Text = "5000";
+                            milageTrackBar.Value = 5000;
+                            readMilesDriven = 0;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //Do nothing.
+            }
+        }
+
+        private void resetTireTreadLife_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are You Sure You Want To Reset?",
+                "Reset Tire Tread Life", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //do something
+                switch (mainFormClass.VehicalNumber)
+                {
+                    case 1:
+                        //Clear Array value.
+                        tireOptionsClass.Vehical1Values[4] = "0";
+                        comboBox1.SelectedIndex = -1;
+                        comboBox1.Text = "";
+                        resetTireTreadLife.Visible = false;
+                        break;
+                    case 2:
+                        //Clear Array value.
+                        tireOptionsClass.Vehical2Values[4] = "0";
+                        comboBox1.SelectedIndex = -1;
+                        comboBox1.Text = "";
+                        resetTireTreadLife.Visible = false;
+                        break;
+                    case 3:
+                        //Clear Array value.
+                        tireOptionsClass.Vehical3Values[4] = "0";
+                        comboBox1.SelectedIndex = -1;
+                        comboBox1.Text = "";
+                        resetTireTreadLife.Visible = false;
+                        break;
+                    case 4:
+                        //Clear Array value.
+                        tireOptionsClass.Vehical4Values[4] = "0";
+                        comboBox1.SelectedIndex = -1;
+                        comboBox1.Text = "";
+                        resetTireTreadLife.Visible = false;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //Do nothing.
+            }
+        }
     }
 }

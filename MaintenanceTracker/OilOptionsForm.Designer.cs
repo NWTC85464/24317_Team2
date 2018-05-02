@@ -41,128 +41,150 @@
             this.AmountTotal = new System.Windows.Forms.TextBox();
             this.GYRTXT = new System.Windows.Forms.TextBox();
             this.GYR = new System.Windows.Forms.ProgressBar();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.Amount)).BeginInit();
             this.SuspendLayout();
             // 
-            // Option button
+            // Options
             // 
-            this.Options.Location = new System.Drawing.Point(210, 360);
-            this.Options.Name = "options";
-            this.Options.Size = new System.Drawing.Size(117, 51);
+            this.Options.BackColor = System.Drawing.SystemColors.Control;
+            this.Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Options.Location = new System.Drawing.Point(315, 554);
+            this.Options.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Options.Name = "Options";
+            this.Options.Size = new System.Drawing.Size(176, 78);
             this.Options.TabIndex = 0;
             this.Options.Text = "Options";
-            this.Options.UseVisualStyleBackColor = true;
+            this.Options.UseVisualStyleBackColor = false;
             // 
-            // Exit button
+            // Exit
             // 
-            this.Exit.Location = new System.Drawing.Point(210, 303);
-            this.Exit.Name = "exit";
-            this.Exit.Size = new System.Drawing.Size(117, 51);
+            this.Exit.BackColor = System.Drawing.SystemColors.Control;
+            this.Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Exit.Location = new System.Drawing.Point(315, 466);
+            this.Exit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(176, 78);
             this.Exit.TabIndex = 1;
             this.Exit.Text = "Exit";
-            this.Exit.UseVisualStyleBackColor = true;
+            this.Exit.UseVisualStyleBackColor = false;
             this.Exit.Click += new System.EventHandler(this.exit);
             // 
-            // trackBar oil amount
+            // Amount
             // 
-            this.Amount.Location = new System.Drawing.Point(0, 243);
-            this.Amount.Name = "amount";
-            this.Amount.Size = new System.Drawing.Size(253, 45);
+            this.Amount.Location = new System.Drawing.Point(0, 374);
+            this.Amount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Amount.Maximum = 60;
+            this.Amount.Name = "Amount";
+            this.Amount.Size = new System.Drawing.Size(380, 69);
+            this.Amount.TabIndex = 9;
             this.Amount.Scroll += new System.EventHandler(this.FindNumber);
             // 
-            // Lock button
+            // Lock
             // 
-            this.Lock.Location = new System.Drawing.Point(259, 243);
-            this.Lock.Name = "lockButton";
-            this.Lock.Size = new System.Drawing.Size(68, 35);
+            this.Lock.BackColor = System.Drawing.SystemColors.Control;
+            this.Lock.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lock.Location = new System.Drawing.Point(388, 374);
+            this.Lock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Lock.Name = "Lock";
+            this.Lock.Size = new System.Drawing.Size(102, 54);
             this.Lock.TabIndex = 3;
             this.Lock.Text = "Lock";
-            this.Lock.UseVisualStyleBackColor = true;
+            this.Lock.UseVisualStyleBackColor = false;
             this.Lock.Click += new System.EventHandler(this.LockScoll);
             // 
-            // Information TxT
+            // Information
             // 
-            this.Information.Location = new System.Drawing.Point(12, 300);
-            this.Information.Name = "richTextBox1";
-            this.Information.Size = new System.Drawing.Size(180, 100);
+            this.Information.Location = new System.Drawing.Point(18, 462);
+            this.Information.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Information.Name = "Information";
+            this.Information.ReadOnly = true;
+            this.Information.Size = new System.Drawing.Size(268, 152);
             this.Information.TabIndex = 4;
             this.Information.Text = "";
-            this.Information.ReadOnly = true;
             // 
-            // Brand of oil using
-            // 
-            this.brand.Location = new System.Drawing.Point(12, 89);
-            this.brand.Name = "brandOfOil";
-            this.brand.Text = "Brand of oil using";
-            this.brand.Size = new System.Drawing.Size(130, 20);
-            this.brand.TabIndex = 8;
-            this.brand.ReadOnly = true;
-            //
             // brand
-            //
-            this.oilBrand.Location = new System.Drawing.Point(150, 89);
-            this.oilBrand.Name = "brand";
-            this.oilBrand.Text = "";
-            this.oilBrand.Size = new System.Drawing.Size(130, 20);
+            // 
+            this.brand.Location = new System.Drawing.Point(18, 137);
+            this.brand.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.brand.Name = "brand";
+            this.brand.ReadOnly = true;
+            this.brand.Size = new System.Drawing.Size(193, 26);
+            this.brand.TabIndex = 8;
+            this.brand.Text = "Brand of oil using";
+            // 
+            // type
+            // 
+            this.type.Location = new System.Drawing.Point(18, 197);
+            this.type.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
+            this.type.Size = new System.Drawing.Size(193, 26);
+            this.type.TabIndex = 8;
+            this.type.Text = "Type of oil using";
+            // 
+            // oilBrand
+            // 
+            this.oilBrand.Location = new System.Drawing.Point(225, 137);
+            this.oilBrand.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.oilBrand.Name = "oilBrand";
+            this.oilBrand.Size = new System.Drawing.Size(193, 26);
             this.oilBrand.TabIndex = 8;
             this.oilBrand.TextChanged += new System.EventHandler(this.oilBrandChange);
             // 
-            // Type of oil using
+            // oilUse
             // 
-            this.type.Location = new System.Drawing.Point(12, 128);
-            this.type.Name = "oilType";
-            this.type.Text = "Type of oil using";
-            this.type.Size = new System.Drawing.Size(130, 20);
-            this.type.TabIndex = 8;
-            this.type.ReadOnly = true;
-            //
-            // oil
-            //
-            this.oilUse.Location = new System.Drawing.Point(150, 128);
-            this.oilUse.Name = "brand";
-            this.oilUse.Text = "";
-            this.oilUse.Size = new System.Drawing.Size(130, 20);
+            this.oilUse.Location = new System.Drawing.Point(225, 197);
+            this.oilUse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.oilUse.Name = "oilUse";
+            this.oilUse.Size = new System.Drawing.Size(193, 26);
             this.oilUse.TabIndex = 8;
             this.oilUse.TextChanged += new System.EventHandler(this.oilUseChange);
             // 
+            // TotalTxT
             // 
-            // Oil Amount Text
-            // 
-            this.TotalTxT.Location = new System.Drawing.Point(12, 192);
-            this.TotalTxT.Name = "OilAmount";
-            this.TotalTxT.Text = "Oil Amount";
-            this.TotalTxT.Size = new System.Drawing.Size(166, 20);
-            this.TotalTxT.TabIndex = 6;
+            this.TotalTxT.Location = new System.Drawing.Point(18, 295);
+            this.TotalTxT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TotalTxT.Name = "TotalTxT";
             this.TotalTxT.ReadOnly = true;
+            this.TotalTxT.Size = new System.Drawing.Size(247, 26);
+            this.TotalTxT.TabIndex = 6;
+            this.TotalTxT.Text = "Oil Amount";
             // 
-            // Oil Amount Total
+            // AmountTotal
             // 
-            this.AmountTotal.Location = new System.Drawing.Point(210, 192);
-            this.AmountTotal.Name = "AmountTxT";
-            this.AmountTotal.Size = new System.Drawing.Size(74, 10);
+            this.AmountTotal.Location = new System.Drawing.Point(315, 295);
+            this.AmountTotal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.AmountTotal.Name = "AmountTotal";
+            this.AmountTotal.Size = new System.Drawing.Size(109, 26);
             this.AmountTotal.TabIndex = 7;
             this.AmountTotal.TextChanged += new System.EventHandler(this.TotalChange);
-            //
-            // Time to change or not
-            //  
-            this.GYR.Location = new System.Drawing.Point(7, 12);
-            this.GYR.Name = "GYR_Bar";
-            this.GYR.Size = new System.Drawing.Size(320, 40);
-            //
-            // Time to change or not TXT
             // 
-            this.GYRTXT.Location = new System.Drawing.Point(7, 50);
-            this.GYRTXT.Name = "GYR_Txt";
-            this.GYRTXT.Text = "GOOD";
-            this.GYRTXT.Size = new System.Drawing.Size(320, 500);
+            // GYRTXT
+            // 
+            this.GYRTXT.Location = new System.Drawing.Point(10, 77);
+            this.GYRTXT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.GYRTXT.Name = "GYRTXT";
             this.GYRTXT.ReadOnly = true;
-            //
-            // Form
+            this.GYRTXT.Size = new System.Drawing.Size(478, 26);
+            this.GYRTXT.TabIndex = 1;
+            this.GYRTXT.Text = "GOOD";
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            // GYR
+            // 
+            this.GYR.Location = new System.Drawing.Point(10, 18);
+            this.GYR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.GYR.Name = "GYR";
+            this.GYR.Size = new System.Drawing.Size(480, 62);
+            this.GYR.TabIndex = 0;
+            // 
+            // OilOptionsForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 423);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(508, 651);
+            this.ControlBox = false;
             this.Controls.Add(this.GYR);
             this.Controls.Add(this.GYRTXT);
             this.Controls.Add(this.type);
@@ -176,7 +198,8 @@
             this.Controls.Add(this.Amount);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.Options);
-            this.Name = "oil Form";
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Name = "OilOptionsForm";
             this.Text = "Oil Options Form";
             this.Load += new System.EventHandler(this.OilTrackerForm);
             ((System.ComponentModel.ISupportInitialize)(this.Amount)).EndInit();
@@ -200,7 +223,7 @@
         private System.Windows.Forms.TextBox type;
         private System.Windows.Forms.TextBox GYRTXT;
         private System.Windows.Forms.ProgressBar GYR;
-
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

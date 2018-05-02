@@ -45,10 +45,9 @@
             // 
             // btnEnterMpg
             // 
-            this.btnEnterMpg.Location = new System.Drawing.Point(92, 96);
-            this.btnEnterMpg.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEnterMpg.Location = new System.Drawing.Point(138, 148);
             this.btnEnterMpg.Name = "btnEnterMpg";
-            this.btnEnterMpg.Size = new System.Drawing.Size(83, 34);
+            this.btnEnterMpg.Size = new System.Drawing.Size(124, 52);
             this.btnEnterMpg.TabIndex = 0;
             this.btnEnterMpg.Text = "Enter MPG";
             this.btnEnterMpg.UseVisualStyleBackColor = true;
@@ -57,46 +56,41 @@
             // lblOdometer
             // 
             this.lblOdometer.AutoSize = true;
-            this.lblOdometer.Location = new System.Drawing.Point(22, 41);
-            this.lblOdometer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblOdometer.Location = new System.Drawing.Point(33, 63);
             this.lblOdometer.Name = "lblOdometer";
-            this.lblOdometer.Size = new System.Drawing.Size(91, 13);
+            this.lblOdometer.Size = new System.Drawing.Size(137, 20);
             this.lblOdometer.TabIndex = 1;
             this.lblOdometer.Text = "Odometer reading";
             // 
             // lblGallons
             // 
             this.lblGallons.AutoSize = true;
-            this.lblGallons.Location = new System.Drawing.Point(160, 41);
-            this.lblGallons.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblGallons.Location = new System.Drawing.Point(240, 63);
             this.lblGallons.Name = "lblGallons";
-            this.lblGallons.Size = new System.Drawing.Size(66, 13);
+            this.lblGallons.Size = new System.Drawing.Size(99, 20);
             this.lblGallons.TabIndex = 2;
             this.lblGallons.Text = "Gallons filled";
             // 
             // txtbxOdoRead
             // 
-            this.txtbxOdoRead.Location = new System.Drawing.Point(24, 62);
-            this.txtbxOdoRead.Margin = new System.Windows.Forms.Padding(2);
+            this.txtbxOdoRead.Location = new System.Drawing.Point(36, 95);
             this.txtbxOdoRead.Name = "txtbxOdoRead";
-            this.txtbxOdoRead.Size = new System.Drawing.Size(85, 20);
+            this.txtbxOdoRead.Size = new System.Drawing.Size(126, 26);
             this.txtbxOdoRead.TabIndex = 3;
             // 
             // txtbxGallonsRead
             // 
-            this.txtbxGallonsRead.Location = new System.Drawing.Point(150, 61);
-            this.txtbxGallonsRead.Margin = new System.Windows.Forms.Padding(2);
+            this.txtbxGallonsRead.Location = new System.Drawing.Point(225, 94);
             this.txtbxGallonsRead.Name = "txtbxGallonsRead";
-            this.txtbxGallonsRead.Size = new System.Drawing.Size(85, 20);
+            this.txtbxGallonsRead.Size = new System.Drawing.Size(126, 26);
             this.txtbxGallonsRead.TabIndex = 4;
             // 
             // lblAlert
             // 
             this.lblAlert.AutoSize = true;
-            this.lblAlert.Location = new System.Drawing.Point(22, 41);
-            this.lblAlert.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAlert.Location = new System.Drawing.Point(33, 63);
             this.lblAlert.Name = "lblAlert";
-            this.lblAlert.Size = new System.Drawing.Size(0, 13);
+            this.lblAlert.Size = new System.Drawing.Size(0, 20);
             this.lblAlert.TabIndex = 10;
             // 
             // dgTrack
@@ -108,12 +102,11 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dgTrack.Location = new System.Drawing.Point(7, 134);
-            this.dgTrack.Margin = new System.Windows.Forms.Padding(2);
+            this.dgTrack.Location = new System.Drawing.Point(10, 206);
             this.dgTrack.Name = "dgTrack";
             this.dgTrack.ReadOnly = true;
             this.dgTrack.RowTemplate.Height = 24;
-            this.dgTrack.Size = new System.Drawing.Size(254, 244);
+            this.dgTrack.Size = new System.Drawing.Size(381, 375);
             this.dgTrack.TabIndex = 11;
             // 
             // date
@@ -147,10 +140,9 @@
             // 
             // btnExitMpg
             // 
-            this.btnExitMpg.Location = new System.Drawing.Point(105, 393);
-            this.btnExitMpg.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExitMpg.Location = new System.Drawing.Point(158, 605);
             this.btnExitMpg.Name = "btnExitMpg";
-            this.btnExitMpg.Size = new System.Drawing.Size(57, 31);
+            this.btnExitMpg.Size = new System.Drawing.Size(86, 48);
             this.btnExitMpg.TabIndex = 12;
             this.btnExitMpg.Text = "Exit MPG";
             this.btnExitMpg.UseVisualStyleBackColor = true;
@@ -158,9 +150,9 @@
             // 
             // MPGOptionsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 434);
+            this.ClientSize = new System.Drawing.Size(408, 668);
             this.ControlBox = false;
             this.Controls.Add(this.btnExitMpg);
             this.Controls.Add(this.dgTrack);
@@ -170,7 +162,6 @@
             this.Controls.Add(this.lblGallons);
             this.Controls.Add(this.lblOdometer);
             this.Controls.Add(this.btnEnterMpg);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MPGOptionsForm";
             this.Text = "MPGOptionsForm";
             this.Load += new System.EventHandler(this.MPGOptionsForm_Load);
