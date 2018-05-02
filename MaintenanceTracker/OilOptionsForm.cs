@@ -12,6 +12,7 @@ namespace MaintenanceTracker
 
         public string path;
         public string storage;
+        public string notePath;
         MainFormClass MainClass = new MainFormClass();
 
     
@@ -34,7 +35,7 @@ namespace MaintenanceTracker
         {
             AmountTotal.ReadOnly = true;
 
-         
+           // information[5] = "Notes";
 
             int car = MainClass.VehicalNumber;
 
@@ -42,23 +43,27 @@ namespace MaintenanceTracker
             switch (car)
             {
                 case 1:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car1.txt";
-                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car1.txt";
+                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car1a.txt";
+                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\carNotesa.txt";
+                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car1a.txt";
                     break;
 
                 case 2:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car2.txt";
-                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car2.txt";
+                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car2a.txt";
+                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\carNotes2a.txt";
+                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car2a.txt";
                     break;
 
                 case 3:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car3.txt";
-                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car3.txt";
+                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car3a.txt";
+                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\carNotes3a.txt";
+                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car3a.txt";
                     break;
 
                 case 4:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car4.txt";
-                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car4.txt";
+                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car4a.txt";
+                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\carNotes4a.txt";
+                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car4a.txt";
                     break;
 
                 default: Console.WriteLine("error404"); break;
@@ -108,6 +113,11 @@ namespace MaintenanceTracker
 
         }
 
+        // ------------------------------------------------
+        //
+        //                      Values
+        //
+        // ------------------------------------------------
 
         private void FindNumber(object sender, EventArgs e)
         {
@@ -190,19 +200,112 @@ namespace MaintenanceTracker
 
         }
 
-        private Boolean Clicked =true;
+        // ------------------------------------------------
+        //
+        //                      NOTES
+        //
+        // ------------------------------------------------
 
-        private void options(object sender, EventArgs e)
+        private void NotesButton(object sender, EventArgs e)
         {
-            if (Clicked)
+            if (notesButton.Text != "Back")
             {
-                
+                this.GYR.Visible = false;
+                this.GYRTXT.Visible = false;
+                this.brand.Visible = false;
+                this.oilBrand.Visible = false;
+                this.oilUse.Visible = false;
+                this.type.Visible = false;
+                this.Amount.Visible = false;
+                this.AmountTotal.Visible = false;
+                this.TotalTxT.Visible = false;
+                this.Lock.Visible = false;
+                this.Exit.Visible = false;
+                this.Information.Visible = false;
+
+                this.Notes.Visible = true;
+                this.SaveNotes.Visible = true;
+
+                notesButton.Text = "Back";
+
+
+                if (File.Exists(notePath))
+                {
+                    StreamReader info = File.OpenText(notePath);
+
+                    while (!info.EndOfStream)
+                    {
+                        Notes.Text = info.ReadLine();
+                    }
+                    info.Close();
+                }
+
+               // Notes.Text = information[5];
+
+            }
+            else
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult box;
+
+               
+                box = MessageBox.Show("Did you remember to save?", "Saved?", buttons);
+
+                if (box == System.Windows.Forms.DialogResult.Yes)
+                {
+                    
+                    this.GYR.Visible = true;
+                    this.GYRTXT.Visible = true;
+                    this.brand.Visible = true;
+                    this.oilBrand.Visible = true;
+                    this.oilUse.Visible = true;
+                    this.type.Visible = true;
+                    this.Amount.Visible = true;
+                    this.AmountTotal.Visible = true;
+                    this.TotalTxT.Visible = true;
+                    this.Lock.Visible = true;
+                    this.Exit.Visible = true;
+                    this.Information.Visible = true;
+
+                    this.Notes.Visible = false;
+                    this.SaveNotes.Visible = false;
+
+                    notesButton.Text = "Notes";    
+                        
+                }
             }
 
-
-
-
         }
+
+        private void SavingNotes(object sender, EventArgs e)
+        {
+
+            using (StreamWriter file =
+                       new StreamWriter(path))
+
+            {
+
+                //go though array and save new data
+                for (int i = 0; i < Notes.Text.Length; i++)
+                {
+                    var line = Notes.Text[i];
+                    file.WriteLine(line);
+
+                    Console.WriteLine(line);
+                }
+
+                file.Close();
+
+            }
+           // information[5] = Notes.Text;
+            Console.WriteLine("Saved");
+        }
+
+        // ------------------------------------------------
+        //
+        //                     Exit Window
+        //
+        // ------------------------------------------------
 
         private void exit(object sender, EventArgs e)
         {
@@ -341,10 +444,7 @@ namespace MaintenanceTracker
                     Save();
                 }
 
-
-
                Save();
-
 
             }
         }
@@ -396,7 +496,11 @@ namespace MaintenanceTracker
 
             }
 
-
+        // ------------------------------------------------
+        //
+        //                      ProgressBar
+        //
+        // ------------------------------------------------
 
 
         private DateTime Date = DateTime.Today;
@@ -411,9 +515,10 @@ namespace MaintenanceTracker
         {
             GYR.Minimum = 0;
 
-            StartDate = DateTime.Parse(information[3]);
-            ChangeDate = DateTime.Parse(information[4]);
-           
+  
+                StartDate = DateTime.Parse(information[3]);
+                ChangeDate = DateTime.Parse(information[4]);
+
 
             if (StartDate != compare)
             {
@@ -425,29 +530,33 @@ namespace MaintenanceTracker
 
                 int T = (int)(ChangeDate - Date).TotalDays;
 
-                Console.WriteLine((int) T);
+                Console.WriteLine((int)T);
 
-                int TimeLeft = (int) Time - T;
+                int TimeLeft = (int)Time - T;
 
-                GYR.Value += (int) Time - TimeLeft;
+                GYR.Value += (int)Time - TimeLeft;
+
+
 
             }
 
-            if (GYR.Value >= 80)
-            {    
-                GYR.ForeColor = System.Drawing.Color.Green;
-            }
-            else if (GYR.Value >= 45 && GYR.Value <= 79)
-            {
-               
-                GYR.ForeColor = System.Drawing.Color.Yellow;
-            }
-            else
-            {
-                
-                GYR.ForeColor = System.Drawing.Color.Red;
-            }
+                if (GYR.Value >= 80)
+                {
+                    GYRTXT.Text = "GOOD " + GYR.Value.ToString() + "%";
+                    GYR.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (GYR.Value >= 45 && GYR.Value <= 79)
+                {
+                    GYRTXT.Text = "Okay " + GYR.Value.ToString() + "%";
+                    GYR.ForeColor = System.Drawing.Color.Yellow;
+                }
+                else
+                {
+                    GYRTXT.Text = "Time to Change Now " + GYR.Value.ToString() + "%";
+                    GYR.ForeColor = System.Drawing.Color.Red;
+                }
 
+            
         }
 
 

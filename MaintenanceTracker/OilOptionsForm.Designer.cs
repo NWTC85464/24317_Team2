@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Options = new System.Windows.Forms.Button();
+            this.notesButton = new System.Windows.Forms.Button();
             this.Exit = new System.Windows.Forms.Button();
             this.Amount = new System.Windows.Forms.TrackBar();
             this.Lock = new System.Windows.Forms.Button();
@@ -41,17 +41,40 @@
             this.AmountTotal = new System.Windows.Forms.TextBox();
             this.GYRTXT = new System.Windows.Forms.TextBox();
             this.GYR = new System.Windows.Forms.ProgressBar();
+            this.Notes = new System.Windows.Forms.RichTextBox();
+            this.SaveNotes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Amount)).BeginInit();
             this.SuspendLayout();
             // 
             // Option button
             // 
-            this.Options.Location = new System.Drawing.Point(210, 360);
-            this.Options.Name = "options";
-            this.Options.Size = new System.Drawing.Size(117, 51);
-            this.Options.TabIndex = 0;
-            this.Options.Text = "Options";
-            this.Options.UseVisualStyleBackColor = true;
+            this.notesButton.Location = new System.Drawing.Point(210, 360);
+            this.notesButton.Name = "notes";
+            this.notesButton.Size = new System.Drawing.Size(117, 51);
+            this.notesButton.TabIndex = 0;
+            this.notesButton.Text = "Notes";
+            this.notesButton.UseVisualStyleBackColor = true;
+            this.notesButton.Click += new System.EventHandler(this.NotesButton);
+            //
+            // Notes
+            //
+            this.Notes.Location = new System.Drawing.Point(12, 12);
+            this.Notes.Name = "NOTES";
+            this.Notes.Size = new System.Drawing.Size(315, 250);
+            this.Notes.TabIndex = 4;
+            this.Notes.Text = "";
+            this.Notes.Visible = false;
+            //
+            // Exit Notes
+            //
+            this.SaveNotes.Location = new System.Drawing.Point(20, 360);
+            this.SaveNotes.Name = "saveNotes";
+            this.SaveNotes.Size = new System.Drawing.Size(117, 51);
+            this.SaveNotes.TabIndex = 1;
+            this.SaveNotes.Text = "Save";
+            this.SaveNotes.UseVisualStyleBackColor = true;
+            this.SaveNotes.Click += new System.EventHandler(this.SavingNotes);
+            this.SaveNotes.Visible = false;
             // 
             // Exit button
             // 
@@ -154,7 +177,7 @@
             // 
             this.GYRTXT.Location = new System.Drawing.Point(7, 50);
             this.GYRTXT.Name = "GYR_Txt";
-            this.GYRTXT.Text = "GOOD";
+            this.GYRTXT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.GYRTXT.Size = new System.Drawing.Size(320, 500);
             this.GYRTXT.ReadOnly = true;
             //
@@ -175,7 +198,9 @@
             this.Controls.Add(this.Lock);
             this.Controls.Add(this.Amount);
             this.Controls.Add(this.Exit);
-            this.Controls.Add(this.Options);
+            this.Controls.Add(this.notesButton);
+            this.Controls.Add(this.Notes);
+            this.Controls.Add(this.SaveNotes);
             this.Name = "oil Form";
             this.Text = "Oil Options Form";
             this.Load += new System.EventHandler(this.OilTrackerForm);
@@ -187,7 +212,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Options;
+        private System.Windows.Forms.Button notesButton;
         private System.Windows.Forms.Button Exit;
         private System.Windows.Forms.TrackBar Amount;
         private System.Windows.Forms.Button Lock;
@@ -200,7 +225,8 @@
         private System.Windows.Forms.TextBox type;
         private System.Windows.Forms.TextBox GYRTXT;
         private System.Windows.Forms.ProgressBar GYR;
-
+        private System.Windows.Forms.RichTextBox Notes;
+        private System.Windows.Forms.Button SaveNotes;
     }
 }
 
