@@ -14,6 +14,10 @@ using System.Xml.Linq;
 
 namespace MaintenanceTracker
 {
+    // for future updates
+    // add button to each form for each service to view if all forms were filled, files existed, data are there
+    // this way user doesn't have to go in and out to view info/data
+
     public partial class WipersOptionForm : System.Windows.Forms.Form
     {
         Wiper[] wiper = new Wiper[1];
@@ -62,7 +66,7 @@ namespace MaintenanceTracker
 
                 // If file exists or not
                 MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
-
+                ///
                 wiperProgressBar.Visible = true;    // Show progress bar
                 //progressBar(wiperDataFile);
                /* if (displayNextDateLabel.Text == "")
@@ -577,26 +581,58 @@ namespace MaintenanceTracker
         /*
         private void progressBar(string wFile)
         {
+            long today_Date;
+            long nextInstalled_Date;
             XmlDocument d = new XmlDocument();
             d.Load(wFile);
             XmlElement root = d.DocumentElement;
                         
             DateTime today = DateTime.Today;
+            Console.WriteLine("Today: " + today);
+            today_Date = today.Ticks;
+            Console.WriteLine("Ticks: " + today_Date);
+            string startDate = root.GetElementsByTagName("Installed_Date")[0].InnerText;
+            string endDate = root.GetElementsByTagName("Next_Install_Date")[0].InnerText;
 
-            string nextInstDate = root.GetElementsByTagName("Next_Install_Date")[0].InnerText;
-            //int miles = milage;
-            //int rotate = Int32.Parse(rotateValue);
-            //double mil = System.Convert.ToDouble(milage);
-            //double rot = double.Parse(rotateValue);
+            DateTime parsedStartDate = DateTime.Parse(startDate);
+            Console.WriteLine("Start date:" +parsedStartDate);
+
+            DateTime parsedEndDate = DateTime.Parse(endDate);
+            Console.WriteLine("End date:" + parsedEndDate);
+
+  
+           
+
+            nextInstalled_Date = parsedStartDate.Ticks;
+            Console.WriteLine("Tick parse date: " + nextInstalled_Date);
+
+            if(today_Date != nextInstalled_Date)
+            {
+                Console.WriteLine("not equal");
+            }
+            if(today_Date > nextInstalled_Date)
+            {
+                Console.WriteLine("today is bigger than next inst date");
+            }
+            if(today_Date < nextInstalled_Date)
+            {
+               Console.WriteLine("inst date is bigger than today");
+            }
+
+
+
 
             //Display the percentage remaining and round.            
-            double percentLeft = Math.Round((180 - , 2);
-            wiperPercentLabel.Text = percentLeft.ToString() + "%";
+            //Double Math.Round(Doublevalue, Int32 digits);
 
+            long percentLeft =  ((nextInstalled_Date - today_Date) / nextInstalled_Date) * 100;
+            wiperPercentLabel.Text = percentLeft.ToString() + "%";
+            Console.WriteLine(percentLeft);
+            /*
             try
             {
-                wiperProgressBar.Maximum = rotate;
-                wiperProgressBar.Value = wiperProgressBar.Maximum - miles;
+                wiperProgressBar.Maximum = endDate.Length;
+                wiperProgressBar.Value = wiperProgressBar.Maximum ;
 
                 if (wiperProgressBar.Value > (rotate / 2))
                 {
@@ -620,8 +656,9 @@ namespace MaintenanceTracker
                 MessageBox.Show("Tire need to be rotated");
                 //Do nothing.....
             }
-
-        }*/
+            
+        }
+        */
     }
 }
  
