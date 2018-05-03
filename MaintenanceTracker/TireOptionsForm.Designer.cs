@@ -39,22 +39,24 @@
             this.milesLbl = new System.Windows.Forms.Label();
             this.lockTrackBarButton = new System.Windows.Forms.PictureBox();
             this.tireInfoButton = new System.Windows.Forms.Button();
-            this.otherInfoButton = new System.Windows.Forms.Button();
+            this.tireTipsButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.percentLbl = new System.Windows.Forms.Label();
-            this.commentButton = new System.Windows.Forms.Button();
+            this.notepad = new System.Windows.Forms.Button();
             this.setBtn = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tireMilLbl = new System.Windows.Forms.Label();
             this.installDateTextBox = new System.Windows.Forms.MaskedTextBox();
             this.setTireValuesgroupBox = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.percentLbl2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.milageTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lockTrackBarButton)).BeginInit();
             this.setTireValuesgroupBox.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tireOptionsFormLBL
@@ -104,7 +106,7 @@
             // sliderValueLbl
             // 
             this.sliderValueLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sliderValueLbl.Location = new System.Drawing.Point(39, 57);
+            this.sliderValueLbl.Location = new System.Drawing.Point(39, 61);
             this.sliderValueLbl.Name = "sliderValueLbl";
             this.sliderValueLbl.Size = new System.Drawing.Size(107, 37);
             this.sliderValueLbl.TabIndex = 17;
@@ -141,7 +143,7 @@
             // milesLbl
             // 
             this.milesLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.milesLbl.Location = new System.Drawing.Point(141, 57);
+            this.milesLbl.Location = new System.Drawing.Point(141, 61);
             this.milesLbl.Name = "milesLbl";
             this.milesLbl.Size = new System.Drawing.Size(71, 37);
             this.milesLbl.TabIndex = 18;
@@ -153,7 +155,7 @@
             this.lockTrackBarButton.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lockTrackBarButton.Image = ((System.Drawing.Image)(resources.GetObject("lockTrackBarButton.Image")));
             this.lockTrackBarButton.InitialImage = ((System.Drawing.Image)(resources.GetObject("lockTrackBarButton.InitialImage")));
-            this.lockTrackBarButton.Location = new System.Drawing.Point(218, 60);
+            this.lockTrackBarButton.Location = new System.Drawing.Point(217, 71);
             this.lockTrackBarButton.Name = "lockTrackBarButton";
             this.lockTrackBarButton.Size = new System.Drawing.Size(28, 27);
             this.lockTrackBarButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -173,23 +175,23 @@
             this.tireInfoButton.UseVisualStyleBackColor = true;
             this.tireInfoButton.Click += new System.EventHandler(this.tireInfoButton_Click);
             // 
-            // otherInfoButton
+            // tireTipsButton
             // 
-            this.otherInfoButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.otherInfoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.otherInfoButton.Location = new System.Drawing.Point(12, 428);
-            this.otherInfoButton.Name = "otherInfoButton";
-            this.otherInfoButton.Size = new System.Drawing.Size(122, 130);
-            this.otherInfoButton.TabIndex = 22;
-            this.otherInfoButton.Text = "Tire Tips";
-            this.otherInfoButton.UseVisualStyleBackColor = true;
-            this.otherInfoButton.Click += new System.EventHandler(this.otherInfoButton_Click);
+            this.tireTipsButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.tireTipsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tireTipsButton.Location = new System.Drawing.Point(12, 428);
+            this.tireTipsButton.Name = "tireTipsButton";
+            this.tireTipsButton.Size = new System.Drawing.Size(122, 130);
+            this.tireTipsButton.TabIndex = 22;
+            this.tireTipsButton.Text = "Tire Tips";
+            this.tireTipsButton.UseVisualStyleBackColor = true;
+            this.tireTipsButton.Click += new System.EventHandler(this.tireTipsButton_Click);
             // 
             // progressBar1
             // 
             this.progressBar1.BackColor = System.Drawing.Color.White;
             this.progressBar1.ForeColor = System.Drawing.Color.White;
-            this.progressBar1.Location = new System.Drawing.Point(12, 37);
+            this.progressBar1.Location = new System.Drawing.Point(11, 42);
             this.progressBar1.Maximum = 500;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -202,24 +204,24 @@
             this.percentLbl.AutoSize = true;
             this.percentLbl.BackColor = System.Drawing.SystemColors.Control;
             this.percentLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.percentLbl.Location = new System.Drawing.Point(12, 83);
+            this.percentLbl.Location = new System.Drawing.Point(17, 53);
             this.percentLbl.Name = "percentLbl";
             this.percentLbl.Size = new System.Drawing.Size(23, 20);
             this.percentLbl.TabIndex = 27;
             this.percentLbl.Text = "%";
             this.percentLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // commentButton
+            // notepad
             // 
-            this.commentButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.commentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.commentButton.Location = new System.Drawing.Point(140, 428);
-            this.commentButton.Name = "commentButton";
-            this.commentButton.Size = new System.Drawing.Size(130, 130);
-            this.commentButton.TabIndex = 28;
-            this.commentButton.Text = "Notepad";
-            this.commentButton.UseVisualStyleBackColor = true;
-            this.commentButton.Click += new System.EventHandler(this.commentButton_Click);
+            this.notepad.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.notepad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notepad.Location = new System.Drawing.Point(140, 428);
+            this.notepad.Name = "notepad";
+            this.notepad.Size = new System.Drawing.Size(130, 130);
+            this.notepad.TabIndex = 28;
+            this.notepad.Text = "Notepad";
+            this.notepad.UseVisualStyleBackColor = true;
+            this.notepad.Click += new System.EventHandler(this.notepad_Click);
             // 
             // setBtn
             // 
@@ -236,6 +238,15 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "30,000",
+            "40,000",
+            "50,000",
+            "60,000",
+            "70,000",
+            "80,000",
+            "90,000",
+            "100,000"});
             this.comboBox1.Location = new System.Drawing.Point(147, 63);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(102, 28);
@@ -265,25 +276,12 @@
             this.setTireValuesgroupBox.Controls.Add(this.groupBox2);
             this.setTireValuesgroupBox.Controls.Add(this.groupBox1);
             this.setTireValuesgroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.setTireValuesgroupBox.Location = new System.Drawing.Point(41, 50);
+            this.setTireValuesgroupBox.Location = new System.Drawing.Point(46, 53);
             this.setTireValuesgroupBox.Name = "setTireValuesgroupBox";
             this.setTireValuesgroupBox.Size = new System.Drawing.Size(321, 297);
             this.setTireValuesgroupBox.TabIndex = 35;
             this.setTireValuesgroupBox.TabStop = false;
             this.setTireValuesgroupBox.Text = "Set Tire Values";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.milageTrackBar);
-            this.groupBox1.Controls.Add(this.milesLbl);
-            this.groupBox1.Controls.Add(this.sliderValueLbl);
-            this.groupBox1.Controls.Add(this.lockTrackBarButton);
-            this.groupBox1.Location = new System.Drawing.Point(18, 40);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(282, 107);
-            this.groupBox1.TabIndex = 36;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Rotation Mileage Preference";
             // 
             // groupBox2
             // 
@@ -298,6 +296,43 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Install Date and Mileage Rating";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.milageTrackBar);
+            this.groupBox1.Controls.Add(this.milesLbl);
+            this.groupBox1.Controls.Add(this.sliderValueLbl);
+            this.groupBox1.Controls.Add(this.lockTrackBarButton);
+            this.groupBox1.Location = new System.Drawing.Point(18, 40);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(282, 107);
+            this.groupBox1.TabIndex = 36;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Rotation Mileage Preference";
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.BackColor = System.Drawing.Color.White;
+            this.progressBar2.ForeColor = System.Drawing.Color.White;
+            this.progressBar2.Location = new System.Drawing.Point(10, 91);
+            this.progressBar2.Maximum = 500;
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.progressBar2.Size = new System.Drawing.Size(386, 43);
+            this.progressBar2.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar2.TabIndex = 38;
+            // 
+            // percentLbl2
+            // 
+            this.percentLbl2.AutoSize = true;
+            this.percentLbl2.BackColor = System.Drawing.SystemColors.Control;
+            this.percentLbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.percentLbl2.Location = new System.Drawing.Point(17, 100);
+            this.percentLbl2.Name = "percentLbl2";
+            this.percentLbl2.Size = new System.Drawing.Size(23, 20);
+            this.percentLbl2.TabIndex = 39;
+            this.percentLbl2.Text = "%";
+            this.percentLbl2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // TireOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -305,13 +340,15 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(408, 667);
+            this.ClientSize = new System.Drawing.Size(412, 667);
             this.Controls.Add(this.setTireValuesgroupBox);
+            this.Controls.Add(this.percentLbl2);
+            this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.setBtn);
-            this.Controls.Add(this.commentButton);
+            this.Controls.Add(this.notepad);
             this.Controls.Add(this.percentLbl);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.otherInfoButton);
+            this.Controls.Add(this.tireTipsButton);
             this.Controls.Add(this.tireInfoButton);
             this.Controls.Add(this.saveValuesButton);
             this.Controls.Add(this.resetButton);
@@ -325,9 +362,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.milageTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lockTrackBarButton)).EndInit();
             this.setTireValuesgroupBox.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,10 +382,10 @@
         private System.Windows.Forms.Label milesLbl;
         private System.Windows.Forms.PictureBox lockTrackBarButton;
         private System.Windows.Forms.Button tireInfoButton;
-        private System.Windows.Forms.Button otherInfoButton;
+        private System.Windows.Forms.Button tireTipsButton;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label percentLbl;
-        private System.Windows.Forms.Button commentButton;
+        private System.Windows.Forms.Button notepad;
         private System.Windows.Forms.Button setBtn;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label tireMilLbl;
@@ -356,5 +393,7 @@
         private System.Windows.Forms.GroupBox setTireValuesgroupBox;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.Label percentLbl2;
     }
 }
