@@ -67,8 +67,7 @@ namespace MaintenanceTracker
                 // If file exists or not
                 MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
                 ///
-                wiperProgressBar.Visible = true;    // Show progress bar
-                //progressBar(wiperDataFile);
+               
                /* if (displayNextDateLabel.Text == "")
                {
                     // If not file, enable the form to be filled
@@ -173,6 +172,10 @@ namespace MaintenanceTracker
         //Displaying information from the existing file for the selected vehicle
         private void displayWiperData(string wFile)
         {
+            wiperProgressBar.Visible = true;    // Show progress bar
+
+            progressBar(wFile);                 // Call progress bar method to be displayed
+
             // Turn off fields that used to enter data
             installedDateTimePicker.Visible = false;
             nextReplaceDateDisplayLabel.Visible = false;
@@ -578,87 +581,54 @@ namespace MaintenanceTracker
             newForm(vehicleNum);
         }
 
-        /*
+        
         private void progressBar(string wFile)
-        {
-            long today_Date;
-            long nextInstalled_Date;
-            XmlDocument d = new XmlDocument();
-            d.Load(wFile);
-            XmlElement root = d.DocumentElement;
-                        
-            DateTime today = DateTime.Today;
-            Console.WriteLine("Today: " + today);
-            today_Date = today.Ticks;
-            Console.WriteLine("Ticks: " + today_Date);
-            string startDate = root.GetElementsByTagName("Installed_Date")[0].InnerText;
-            string endDate = root.GetElementsByTagName("Next_Install_Date")[0].InnerText;
-
-            DateTime parsedStartDate = DateTime.Parse(startDate);
-            Console.WriteLine("Start date:" +parsedStartDate);
-
-            DateTime parsedEndDate = DateTime.Parse(endDate);
-            Console.WriteLine("End date:" + parsedEndDate);
-
-  
-           
-
-            nextInstalled_Date = parsedStartDate.Ticks;
-            Console.WriteLine("Tick parse date: " + nextInstalled_Date);
-
-            if(today_Date != nextInstalled_Date)
-            {
-                Console.WriteLine("not equal");
-            }
-            if(today_Date > nextInstalled_Date)
-            {
-                Console.WriteLine("today is bigger than next inst date");
-            }
-            if(today_Date < nextInstalled_Date)
-            {
-               Console.WriteLine("inst date is bigger than today");
-            }
-
-
-
-
-            //Display the percentage remaining and round.            
-            //Double Math.Round(Doublevalue, Int32 digits);
-
-            long percentLeft =  ((nextInstalled_Date - today_Date) / nextInstalled_Date) * 100;
-            wiperPercentLabel.Text = percentLeft.ToString() + "%";
-            Console.WriteLine(percentLeft);
-            /*
-            try
-            {
-                wiperProgressBar.Maximum = endDate.Length;
-                wiperProgressBar.Value = wiperProgressBar.Maximum ;
-
-                if (wiperProgressBar.Value > (rotate / 2))
-                {
-                    wiperProgressBar.ForeColor = Color.Green;
-                }
-                else if ((wiperProgressBar.Value <= (rotate / 2)) && wiperProgressBar.Value > rotate / 4)
-                {
-                    wiperProgressBar.ForeColor = Color.Yellow;
-                }
-                else if (wiperProgressBar.Value <= rotate / 4 && wiperProgressBar.Value > 0)
-                {
-                    wiperProgressBar.ForeColor = Color.Red;
-                }
-                else if (wiperProgressBar.Value <= 0)
-                {
-                    MessageBox.Show("Tire need to be rotated");
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Tire need to be rotated");
-                //Do nothing.....
-            }
+        {   
+            wiperProgressBar.Minimum = 0;       // Progress bar minimum value
+            wiperProgressBar.Maximum = 180;     // Progress bar maximum value
             
+            DateTime today = DateTime.Today;    // Get today's date
+            
+            XmlDocument loadFile = new XmlDocument();   
+            loadFile.Load(wFile); 
+            XmlElement root = loadFile.DocumentElement;            
+         
+            string startDate = root.GetElementsByTagName("Installed_Date")[0].InnerText;    // Get start date from xml file
+            string endDate = root.GetElementsByTagName("Next_Install_Date")[0].InnerText;   // Get end date from xml
+
+            DateTime parsedStartDate = DateTime.Parse(startDate);   // Parse into start date
+            //Console.WriteLine("Start date:" +parsedStartDate);
+
+            DateTime parsedEndDate = DateTime.Parse(endDate);       // Parse into end date
+            //Console.WriteLine("End date:" + parsedEndDate);
+
+            int currentDay = (int)(parsedEndDate - today).TotalDays;
+
+            int dayLeft = wiperProgressBar.Maximum - currentDay;
+
+            wiperProgressBar.Value += wiperProgressBar.Maximum - dayLeft;        
+
+            if (wiperProgressBar.Value <= wiperProgressBar.Maximum && wiperProgressBar.Value >=121)
+            {    
+                wiperProgressBar.ForeColor = System.Drawing.Color.Green;
+            }
+            else if (wiperProgressBar.Value >= 90 && wiperProgressBar.Value <= 120)
+            {
+
+                wiperProgressBar.ForeColor = System.Drawing.Color.Yellow;
+            }
+            else if(wiperProgressBar.Value >= wiperProgressBar.Minimum && wiperProgressBar.Value <=89)
+            {
+                wiperProgressBar.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                MessageBox.Show("Date is out of range.");
+            }
+
+
         }
-        */
+        
     }
 }
  

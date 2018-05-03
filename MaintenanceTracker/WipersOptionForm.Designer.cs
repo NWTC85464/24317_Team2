@@ -47,7 +47,6 @@
             this.tipAndInfoButton = new System.Windows.Forms.Button();
             this.nextReplaceDateDisplayLabel = new System.Windows.Forms.Label();
             this.vehicleNumLabel = new System.Windows.Forms.Label();
-            this.wiperPercentLabel = new System.Windows.Forms.Label();
             this.wiperProgressBar = new System.Windows.Forms.ProgressBar();
             this.displayNotesLabel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -235,19 +234,6 @@
             this.vehicleNumLabel.TabIndex = 44;
             this.vehicleNumLabel.Text = "Wiper Info for Vehicle # ";
             // 
-            // wiperPercentLabel
-            // 
-            this.wiperPercentLabel.AutoSize = true;
-            this.wiperPercentLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.wiperPercentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wiperPercentLabel.Location = new System.Drawing.Point(237, 55);
-            this.wiperPercentLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.wiperPercentLabel.Name = "wiperPercentLabel";
-            this.wiperPercentLabel.Size = new System.Drawing.Size(15, 13);
-            this.wiperPercentLabel.TabIndex = 47;
-            this.wiperPercentLabel.Text = "%";
-            this.wiperPercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // wiperProgressBar
             // 
             this.wiperProgressBar.BackColor = System.Drawing.Color.White;
@@ -257,7 +243,7 @@
             this.wiperProgressBar.Maximum = 500;
             this.wiperProgressBar.Name = "wiperProgressBar";
             this.wiperProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.wiperProgressBar.Size = new System.Drawing.Size(215, 28);
+            this.wiperProgressBar.Size = new System.Drawing.Size(229, 28);
             this.wiperProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.wiperProgressBar.TabIndex = 46;
             // 
@@ -354,7 +340,6 @@
             this.Controls.Add(this.displayDrSideLabel);
             this.Controls.Add(this.displayNextDateLabel);
             this.Controls.Add(this.displayInstDateLabel);
-            this.Controls.Add(this.wiperPercentLabel);
             this.Controls.Add(this.wiperProgressBar);
             this.Controls.Add(this.vehicleNumLabel);
             this.Controls.Add(this.nextReplaceDateDisplayLabel);
@@ -404,7 +389,6 @@
         private System.Windows.Forms.Button tipAndInfoButton;
         private System.Windows.Forms.Label nextReplaceDateDisplayLabel;
         private System.Windows.Forms.Label vehicleNumLabel;
-        private System.Windows.Forms.Label wiperPercentLabel;
         private System.Windows.Forms.ProgressBar wiperProgressBar;
         private System.Windows.Forms.Label displayNotesLabel;
         private System.Windows.Forms.Label label6;
