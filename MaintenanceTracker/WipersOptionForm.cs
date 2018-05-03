@@ -66,7 +66,7 @@ namespace MaintenanceTracker
 
                 // If file exists or not
                 MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
-
+                ///
                 wiperProgressBar.Visible = true;    // Show progress bar
                 //progressBar(wiperDataFile);
                /* if (displayNextDateLabel.Text == "")
