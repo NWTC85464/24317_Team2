@@ -184,6 +184,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="OilClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -205,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\TiresInfo\" />
+    <Folder Include="Resources\WiperInfo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\X120.png" />
