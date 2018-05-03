@@ -82,9 +82,6 @@ namespace MaintenanceTracker
 
         private void AirFilterButton_Click(object sender, EventArgs e)
         {
-            //Call air filter option form.
-            AirFilterOptionsForm airFilterOptionsForm = new AirFilterOptionsForm();
-
 
             if (vehicalSelectList.SelectedItem == null)
             {
@@ -93,6 +90,12 @@ namespace MaintenanceTracker
             }
             else
             {
+                //Define the Vehicle Number
+                mainFormClass.VehicalNumber = vehicalSelectList.SelectedIndex + 1;
+
+                //Call air filter option form.
+                AirFilterOptionsForm airFilterOptionsForm = new AirFilterOptionsForm();
+
                 //Show the form.             
                 airFilterOptionsForm.ShowDialog();
             }
