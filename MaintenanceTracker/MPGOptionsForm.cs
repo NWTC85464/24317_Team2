@@ -102,7 +102,8 @@ namespace MaintenanceTracker
                         if (cancStart == true)
                         {
                             cancStart = false;
-                            this.btnExitMpg.PerformClick();
+                            //this.btnExitMpg.PerformClick();
+                            this.Close();
                             return;
                         }
                         else
@@ -138,7 +139,8 @@ namespace MaintenanceTracker
                         if (cancStart == true)
                         {
                             cancStart = false;
-                            this.btnExitMpg.PerformClick();
+                            //this.btnExitMpg.PerformClick();
+                            this.Close();
                             return;
                         }
                         else
@@ -170,7 +172,8 @@ namespace MaintenanceTracker
                         if (cancStart == true)
                         {
                             cancStart = false;
-                            this.btnExitMpg.PerformClick();
+                            //this.btnExitMpg.PerformClick();
+                            this.Close();
                             return;
                         }
                         else
@@ -203,7 +206,8 @@ namespace MaintenanceTracker
                         if (cancStart == true)
                         {
                             cancStart = false;
-                            this.btnExitMpg.PerformClick();
+                            //this.btnExitMpg.PerformClick();
+                            this.Close();
                             return;
                         }
                         else
