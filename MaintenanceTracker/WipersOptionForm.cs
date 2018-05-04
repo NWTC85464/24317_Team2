@@ -185,7 +185,7 @@ namespace MaintenanceTracker
             wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + v + ".xml";
 
             // If file exists or not
-            MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
+            MessageBox.Show(File.Exists(wiperDataFile) ? "There is a file for this vehicle." : "There isn't a file for this vehicle. Please enter new data.");
             ///
 
             /* if (displayNextDateLabel.Text == "")
@@ -231,7 +231,7 @@ namespace MaintenanceTracker
                 displayRearLabel.Text = root.GetElementsByTagName("Rear_Size")[0].InnerText;
                 displayBrandLabel.Text = root.GetElementsByTagName("Brand")[0].InnerText;
                 displayNotesLabel.Text = root.GetElementsByTagName("Notes")[0].InnerText;
-
+/*
             if(displayNextDateLabel.Text == "")
             {
                 clearButton.Enabled = false;    //****need to be fixed******
@@ -241,7 +241,7 @@ namespace MaintenanceTracker
             {
                 //editButton.Enabled = false;  // need to be fixed
                 //editButton.Visible = false;  // need to be fixed
-            }
+            }*/
             }
             else
             {
@@ -281,12 +281,35 @@ namespace MaintenanceTracker
 
             installedDateParse = thisDay.ToString("D");     // To be passed to be stored
 
-            DateTime answer = thisDay.AddDays(4);         // Add 180 days to the installed date
+            DateTime answer = thisDay.AddDays(6);         // Add 180 days to the installed date
+            /*
+            DateTime b = thisDay.AddDays(-6);
+            TimeSpan daysAgo = thisDay.Subtract(today);
 
-            if(thisDay > today)
+            double daysPicked = daysAgo.TotalDays;
+
+            DateTimePicker dt = new DateTimePicker();
+
+            dt.MinDate = new DateTime();
+
+            Console.WriteLine("Days picked: " + daysPicked);
+            
+            TimeSpan daysAgo = today.Subtract(thisDay);
+            // 4.
+            // Get number of days ago.
+            double daysPicked = daysAgo.TotalDays;
+            Console.WriteLine("Days picked: " + daysPicked);
+            */
+
+            if (thisDay > today)
             {
                 MessageBox.Show("Please pick today's date or older.");
-            }
+                
+            }   
+            /*else if(thisDay < b)
+            {
+                MessageBox.Show("Please pick a date that is less than 6 days ago");
+            }*/
             else
             {
                 nextInstallDateParse = answer.ToString("D");    // Convert for display
@@ -303,6 +326,9 @@ namespace MaintenanceTracker
             //Call Tips and Info form.
             WipersOptionsTipsAndInfo wipersTipsAndInfo = new WipersOptionsTipsAndInfo();
             wipersTipsAndInfo.ShowDialog();
+
+            //Center form on the screen.
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         // Reset/clear the form
@@ -342,11 +368,11 @@ namespace MaintenanceTracker
 
             }
             //***NEED TO TURN ON/OFF RESET BUTTON AND NEW BUTTON*****
-            clearButton.Visible = true;
-            clearButton.Enabled = true;
+            //clearButton.Visible = true;
+            //clearButton.Enabled = true;
 
-            editButton.Enabled = false;
-            editButton.Visible = false;
+            //editButton.Enabled = false;
+            //editButton.Visible = false;
         }
 
         // Set the form to be filled
@@ -581,6 +607,7 @@ namespace MaintenanceTracker
                 rearTextBox.Enabled = false;
                 brandTextBox.Enabled = false;
                 notesTextBox.Enabled = false;
+                
             }
 
         }
@@ -611,13 +638,13 @@ namespace MaintenanceTracker
                     break;
 
             }
-        }
-        /*
-        private void newFormButton_Click(object sender, EventArgs e)
-        {
-            newForm(vehicleNum);
-        }
-        */
+
+            // Set the file that just saved
+            string wiperFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
+
+            progressBar(wiperFile); // Passing the saved file to be displayed the number of days left
+                                    // before the next installation
+        }        
         
         private void progressBar(string wFile)
         {
@@ -641,39 +668,40 @@ namespace MaintenanceTracker
             TimeSpan totalDays = parsedEndDate.Subtract(parsedStartDate);
             //TimeSpan elapsed = now.Subtract(parsedEndDate);
             TimeSpan daysLeft = parsedEndDate.Subtract(now);
-            // 4.
+            
             // Get number of days ago.
             double tDays = totalDays.TotalDays;
            // double daysToGo = elapsed.TotalDays;
             double daysToGo = daysLeft.TotalDays;
-            Console.WriteLine("{0} is {1} days ago",
-                endDate,
-                tDays.ToString("0"));
-            /*
-            Console.WriteLine("{0} is {1} days to go",
+            //Console.WriteLine("{0} is {1} days ago",
+            //    endDate,
+            //    tDays.ToString("0"));
+            
+            /*Console.WriteLine("{0} is {1} days to go",
                 startDate,
                 daysToGo.ToString("0"));
-                */
-            Console.WriteLine("{0} is {1} days to go",
-                endDate,
-                daysToGo.ToString("0"));
+              */  
+            //Console.WriteLine("{0} is {1} days to go",
+           //     endDate,
+            //    daysToGo.ToString("0"));
 
             wiperProgressBar.Minimum = 0;       // Progress bar minimum value
 
             wiperProgressBar.Maximum = Convert.ToInt32(tDays); ;     // Progress bar maximum value
 
-            wiperProgressBar.Value = Convert.ToInt32(daysToGo);    // Break when pick future dates 
-                                                                             // Fine if past dates
+            wiperProgressBar.Value = Convert.ToInt32(daysToGo);
 
-            if (wiperProgressBar.Value <= wiperProgressBar.Maximum && wiperProgressBar.Value >= 2)
+            daysLeftLabel.Text = daysToGo.ToString("0") +" days left";
+
+            if (wiperProgressBar.Value <= wiperProgressBar.Maximum && wiperProgressBar.Value >= 5)
             {
                 wiperProgressBar.ForeColor = System.Drawing.Color.Green;
             }
-            //else if (wiperProgressBar.Value >= 90 && wiperProgressBar.Value <= 1)
-           // {
-            //    wiperProgressBar.ForeColor = System.Drawing.Color.Yellow;
-           // }
-            else if (wiperProgressBar.Value >= wiperProgressBar.Minimum && wiperProgressBar.Value <= 1)
+            else if (wiperProgressBar.Value >= 3 && wiperProgressBar.Value <= 4)
+            {
+                wiperProgressBar.ForeColor = System.Drawing.Color.Yellow;
+            }
+            else if (wiperProgressBar.Value >= wiperProgressBar.Minimum && wiperProgressBar.Value <= 2)
             {
                 wiperProgressBar.ForeColor = System.Drawing.Color.Red;
             }
