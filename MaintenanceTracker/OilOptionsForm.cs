@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 namespace MaintenanceTracker
 {
@@ -10,9 +11,11 @@ namespace MaintenanceTracker
         //streamwriter
         private string[] information = new string[5];
 
-        public string path;
-        public string storage;
-        public string notePath;
+        private string path;
+        private string storage;
+        private string notePath;
+        private string mpgFile;
+        private string ODreading;
         MainFormClass MainClass = new MainFormClass();
 
     
@@ -21,7 +24,7 @@ namespace MaintenanceTracker
         {
             InitializeComponent();
 
-            this.BackColor = System.Drawing.Color.Aqua;
+            //this.BackColor = System.Drawing.Color.Orange;
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -46,24 +49,28 @@ namespace MaintenanceTracker
                     path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car1a.txt";
                     notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\carNotesa.txt";
                     storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car1a.txt";
+                    mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 2:
                     path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car2a.txt";
                     notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\carNotes2a.txt";
                     storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car2a.txt";
+                    mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 3:
                     path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car3a.txt";
                     notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\carNotes3a.txt";
                     storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car3a.txt";
+                    mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 4:
                     path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car4a.txt";
                     notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\carNotes4a.txt";
                     storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car4a.txt";
+                    mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 default: Console.WriteLine("error404"); break;
@@ -73,6 +80,17 @@ namespace MaintenanceTracker
             Console.WriteLine("loading....");
 
 
+
+            if (File.Exists(notePath))
+            {
+                StreamReader info = File.OpenText(notePath);
+
+                while (!info.EndOfStream)
+                {
+                    Information.Text = info.ReadToEnd();
+                }
+                info.Close();
+            }
 
             if (File.Exists(path))
             {
@@ -90,9 +108,38 @@ namespace MaintenanceTracker
                     index++;
                 }
 
+
                 ProgressBar();
 
                 info.Close();
+
+                Console.WriteLine("Getting last OD reading");
+
+               // StreamReader mpg = File.OpenText(mpgFile);
+
+                if (File.Exists(mpgFile))
+                {
+                    string mpgData = File.ReadLines(mpgFile).Last();
+
+                    string[] section = mpgData.Split(' ');
+                    foreach (string x in section)
+                    {
+                        Console.WriteLine(x);
+                    }
+
+                    ODreading = section[2];
+                   
+                }
+                else
+                {
+                    MessageBox.Show("!You have not entered anything in the MPG for this car!");
+                    Console.WriteLine("There was no OD reading");
+                }
+
+
+
+              //  mpg.Close();
+
 
                 Console.WriteLine("Completed");
 
@@ -100,7 +147,7 @@ namespace MaintenanceTracker
                 oilUse.Text = information[1];
                 AmountTotal.Text = information[2];
 
-                Amount.Enabled = false;
+               /////////////////// Amount.Enabled = false;
                 oilBrand.ReadOnly = true;
                 oilUse.ReadOnly = true;
                 Lock.Text = "Unlock";
@@ -235,7 +282,7 @@ namespace MaintenanceTracker
 
                     while (!info.EndOfStream)
                     {
-                        Notes.Text = info.ReadLine();
+                        Notes.Text = info.ReadToEnd();
                     }
                     info.Close();
                 }
@@ -270,8 +317,19 @@ namespace MaintenanceTracker
                     this.Notes.Visible = false;
                     this.SaveNotes.Visible = false;
 
-                    notesButton.Text = "Notes";    
-                        
+                    notesButton.Text = "Notes";  
+
+
+                    if (File.Exists(notePath))
+                    {
+                        StreamReader info = File.OpenText(notePath);
+
+                        while (!info.EndOfStream)
+                        {
+                            Information.Text = info.ReadToEnd();
+                        }
+                        info.Close();
+                    }   
                 }
             }
 
@@ -281,7 +339,7 @@ namespace MaintenanceTracker
         {
 
             using (StreamWriter file =
-                       new StreamWriter(path))
+                   new StreamWriter(notePath))
 
             {
 
@@ -289,9 +347,9 @@ namespace MaintenanceTracker
                 for (int i = 0; i < Notes.Text.Length; i++)
                 {
                     var line = Notes.Text[i];
-                    file.WriteLine(line);
+                    file.Write(line);
 
-                    Console.WriteLine(line);
+                    Console.Write(line);
                 }
 
                 file.Close();
@@ -314,7 +372,7 @@ namespace MaintenanceTracker
             {
                 Console.WriteLine("Saving Dates");
 
-                StartDate = DateTime.Today;
+               // StartDate = DateTime.Today;
 
                 ChangeDate = StartDate.AddMonths(3);
 
@@ -526,7 +584,7 @@ namespace MaintenanceTracker
 
                 double Time = (ChangeDate.Date - StartDate.Date).TotalDays;
                 GYR.Maximum = (int)Time;
-                Console.WriteLine(Time);
+                //Console.WriteLine(Time);
 
                 int T = (int)(ChangeDate - Date).TotalDays;
 

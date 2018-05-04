@@ -33,11 +33,11 @@
             this.Amount = new System.Windows.Forms.TrackBar();
             this.Lock = new System.Windows.Forms.Button();
             this.Information = new System.Windows.Forms.RichTextBox();
-            this.brand = new System.Windows.Forms.TextBox();
-            this.type = new System.Windows.Forms.TextBox();
+            this.brand = new System.Windows.Forms.Label();
+            this.type = new System.Windows.Forms.Label();
             this.oilBrand = new System.Windows.Forms.TextBox();
             this.oilUse = new System.Windows.Forms.TextBox();
-            this.TotalTxT = new System.Windows.Forms.TextBox();
+            this.TotalTxT = new System.Windows.Forms.Label();
             this.AmountTotal = new System.Windows.Forms.TextBox();
             this.GYRTXT = new System.Windows.Forms.TextBox();
             this.GYR = new System.Windows.Forms.ProgressBar();
@@ -46,11 +46,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Amount)).BeginInit();
             this.SuspendLayout();
             // 
-            // Option button
+            // Notes button
             // 
-            this.notesButton.Location = new System.Drawing.Point(210, 360);
+            this.notesButton.Location = new System.Drawing.Point(168, 289);
             this.notesButton.Name = "notes";
-            this.notesButton.Size = new System.Drawing.Size(117, 51);
+            this.notesButton.Size = new System.Drawing.Size(100, 51);
             this.notesButton.TabIndex = 0;
             this.notesButton.Text = "Notes";
             this.notesButton.UseVisualStyleBackColor = true;
@@ -65,9 +65,9 @@
             this.Notes.Text = "";
             this.Notes.Visible = false;
             //
-            // Exit Notes
+            // Save Notes
             //
-            this.SaveNotes.Location = new System.Drawing.Point(20, 360);
+            this.SaveNotes.Location = new System.Drawing.Point(20, 303);
             this.SaveNotes.Name = "saveNotes";
             this.SaveNotes.Size = new System.Drawing.Size(117, 51);
             this.SaveNotes.TabIndex = 1;
@@ -76,29 +76,29 @@
             this.SaveNotes.Click += new System.EventHandler(this.SavingNotes);
             this.SaveNotes.Visible = false;
             // 
-            // Exit button
+            // Exit button      
             // 
-            this.Exit.Location = new System.Drawing.Point(210, 303);
+            this.Exit.Location = new System.Drawing.Point(168, 356);
             this.Exit.Name = "exit";
-            this.Exit.Size = new System.Drawing.Size(117, 51);
+            this.Exit.Size = new System.Drawing.Size(100, 51);
             this.Exit.TabIndex = 1;
-            this.Exit.Text = "Exit";
+            this.Exit.Text = "Exit and Save";
             this.Exit.UseVisualStyleBackColor = true;
             this.Exit.Click += new System.EventHandler(this.exit);
             // 
-            // trackBar oil amount
+            // trackBar oil 
             // 
-            this.Amount.Location = new System.Drawing.Point(0, 243);
+            this.Amount.Location = new System.Drawing.Point(65, 227);
             this.Amount.Name = "amount";
-            this.Amount.Size = new System.Drawing.Size(253, 45);
+            this.Amount.Size = new System.Drawing.Size(172, 10);
             this.Amount.Maximum = 60;
             this.Amount.Scroll += new System.EventHandler(this.FindNumber);
             // 
             // Lock button
             // 
-            this.Lock.Location = new System.Drawing.Point(259, 243);
+            this.Lock.Location = new System.Drawing.Point(271, 289);
             this.Lock.Name = "lockButton";
-            this.Lock.Size = new System.Drawing.Size(68, 35);
+            this.Lock.Size = new System.Drawing.Size(65, 118);
             this.Lock.TabIndex = 3;
             this.Lock.Text = "Lock";
             this.Lock.UseVisualStyleBackColor = true;
@@ -106,9 +106,9 @@
             // 
             // Information TxT
             // 
-            this.Information.Location = new System.Drawing.Point(12, 300);
-            this.Information.Name = "richTextBox1";
-            this.Information.Size = new System.Drawing.Size(180, 100);
+            this.Information.Location = new System.Drawing.Point(12, 289);
+            this.Information.Name = "information";
+            this.Information.Size = new System.Drawing.Size(150, 120);
             this.Information.TabIndex = 4;
             this.Information.Text = "";
             this.Information.ReadOnly = true;
@@ -117,10 +117,10 @@
             // 
             this.brand.Location = new System.Drawing.Point(12, 89);
             this.brand.Name = "brandOfOil";
-            this.brand.Text = "Brand of oil using";
+            this.brand.Text = "Brand of oil using:";
             this.brand.Size = new System.Drawing.Size(130, 20);
             this.brand.TabIndex = 8;
-            this.brand.ReadOnly = true;
+           // this.brand.ReadOnly = true;
             //
             // brand
             //
@@ -135,10 +135,10 @@
             // 
             this.type.Location = new System.Drawing.Point(12, 128);
             this.type.Name = "oilType";
-            this.type.Text = "Type of oil using";
+            this.type.Text = "Type of oil using:";
             this.type.Size = new System.Drawing.Size(130, 20);
             this.type.TabIndex = 8;
-            this.type.ReadOnly = true;
+         //   this.type.ReadOnly = true;
             //
             // oil
             //
@@ -150,18 +150,18 @@
             this.oilUse.TextChanged += new System.EventHandler(this.oilUseChange);
             // 
             // 
-            // Oil Amount Text
+            // Oil TxT
             // 
-            this.TotalTxT.Location = new System.Drawing.Point(12, 192);
+            this.TotalTxT.Location = new System.Drawing.Point(3, 235);
             this.TotalTxT.Name = "OilAmount";
-            this.TotalTxT.Text = "Oil Amount";
+            this.TotalTxT.Text = "Oil Amount:";
             this.TotalTxT.Size = new System.Drawing.Size(166, 20);
             this.TotalTxT.TabIndex = 6;
-            this.TotalTxT.ReadOnly = true;
+           // this.TotalTxT.ReadOnly = true;
             // 
-            // Oil Amount Total
+            // Oil Quntity
             // 
-            this.AmountTotal.Location = new System.Drawing.Point(210, 192);
+            this.AmountTotal.Location = new System.Drawing.Point(250, 235);
             this.AmountTotal.Name = "AmountTxT";
             this.AmountTotal.Size = new System.Drawing.Size(74, 10);
             this.AmountTotal.TabIndex = 7;
@@ -190,13 +190,13 @@
             this.Controls.Add(this.GYRTXT);
             this.Controls.Add(this.type);
             this.Controls.Add(this.oilUse);
+            this.Controls.Add(this.Information);
+            this.Controls.Add(this.Amount);
             this.Controls.Add(this.AmountTotal);
             this.Controls.Add(this.TotalTxT);
             this.Controls.Add(this.brand);
             this.Controls.Add(this.oilBrand);
-            this.Controls.Add(this.Information);
             this.Controls.Add(this.Lock);
-            this.Controls.Add(this.Amount);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.notesButton);
             this.Controls.Add(this.Notes);
@@ -217,12 +217,12 @@
         private System.Windows.Forms.TrackBar Amount;
         private System.Windows.Forms.Button Lock;
         private System.Windows.Forms.RichTextBox Information;
-        private System.Windows.Forms.TextBox brand;
-        private System.Windows.Forms.TextBox TotalTxT;
+        private System.Windows.Forms.Label brand;
+        private System.Windows.Forms.Label TotalTxT;
         private System.Windows.Forms.TextBox oilBrand;
         private System.Windows.Forms.TextBox oilUse;
         private System.Windows.Forms.TextBox AmountTotal;
-        private System.Windows.Forms.TextBox type;
+        private System.Windows.Forms.Label type;
         private System.Windows.Forms.TextBox GYRTXT;
         private System.Windows.Forms.ProgressBar GYR;
         private System.Windows.Forms.RichTextBox Notes;
