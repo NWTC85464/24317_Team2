@@ -141,6 +141,7 @@ namespace MaintenanceTracker
             setTireValuesgroupBox.Visible = false;
             resetRotationBtn.Visible = false;
             resetButton.Enabled = false;
+            resetTireTreadLife.Visible = false;
         }
 
 
@@ -498,10 +499,11 @@ namespace MaintenanceTracker
         {
             //Hide tire info label.
             tiLB.Visible = false;
-
+            this.SendToBack();
             //Load comments form.
             TireCommentForm tireCommentForm = new TireCommentForm(vehicalNum);
-            tireCommentForm.Show();
+           
+            tireCommentForm.ShowDialog();
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
@@ -894,33 +896,80 @@ namespace MaintenanceTracker
 
         private void loadVehicalSavedValues(int vehicalNum)
         {
+            double rmpg;
+
             //Switch to read saved text file values and load into arrays. Switches with vehical number.
             switch (vehicalNum)
             {
                 case 1:
+                    //Read miles file.
+                    rmpg = readMPGMilesDrivenFile(path1a, path2a, path3a, path4a);
+
                     //Load vehical1 text values into array.
                     ///Add miles driven to array on loading
                     var v1 = File.ReadAllLines(path1);
                     tireOptionsClass.Vehical1Values = File.ReadLines(path1).ToArray();
                     tireOptionsClass.V1Stored = 1;
+
+                    if(tireOptionsClass.Vehical1Values[4] == "0")
+                    {
+                        tireOptionsClass.Vehical1Values[4] = rmpg.ToString();
+                    }
+                    else if(Convert.ToDouble(tireOptionsClass.Vehical1Values[4]) <= rmpg)
+                    {
+                        tireOptionsClass.Vehical1Values[4] = rmpg.ToString();
+                    }
                     break;
                 case 2:
+                    //Read miles file.
+                    rmpg = readMPGMilesDrivenFile(path1a, path2a, path3a, path4a);
                     //Load vehical2 text values into array.
                     var v2 = File.ReadAllLines(path2);
                     tireOptionsClass.Vehical2Values = File.ReadLines(path2).ToArray();
                     tireOptionsClass.V2Stored = 1;
+
+                    if (tireOptionsClass.Vehical2Values[4] == "0")
+                    {
+                        tireOptionsClass.Vehical2Values[4] = rmpg.ToString();
+                    }
+                    else if (Convert.ToDouble(tireOptionsClass.Vehical2Values[4]) <= rmpg)
+                    {
+                        tireOptionsClass.Vehical2Values[4] = rmpg.ToString();
+                    }
                     break;
                 case 3:
+                    //Read miles file.
+                    rmpg = readMPGMilesDrivenFile(path1a, path2a, path3a, path4a);
                     //Load vehical3 text values into array.
                     var v3 = File.ReadAllLines(path3);
                     tireOptionsClass.Vehical3Values = File.ReadLines(path3).ToArray();
                     tireOptionsClass.V3Stored = 1;
+
+                    if (tireOptionsClass.Vehical3Values[4] == "0")
+                    {
+                        tireOptionsClass.Vehical3Values[4] = rmpg.ToString();
+                    }
+                    else if (Convert.ToDouble(tireOptionsClass.Vehical3Values[4]) <= rmpg)
+                    {
+                        tireOptionsClass.Vehical3Values[4] = rmpg.ToString();
+                    }
                     break;
                 case 4:
+                    //Read miles file.
+                    rmpg = readMPGMilesDrivenFile(path1a, path2a, path3a, path4a);
                     //Load vehical4 text values into array.
                     var v4 = File.ReadAllLines(path4);
                     tireOptionsClass.Vehical4Values = File.ReadLines(path4).ToArray();
                     tireOptionsClass.V4Stored = 1;
+
+                    if (tireOptionsClass.Vehical4Values[4] == "0")
+                    {
+                        tireOptionsClass.Vehical4Values[4] = rmpg.ToString();
+                    }
+                    else if (Convert.ToDouble(tireOptionsClass.Vehical4Values[4]) <= rmpg)
+                    {
+                        tireOptionsClass.Vehical4Values[4] = rmpg.ToString();
+                    }
                     break;
                 default:
                     //Nothing to load.
@@ -956,7 +1005,7 @@ namespace MaintenanceTracker
 
                 if (progressBar1.Value > (rotate / 2))
                 {
-                    progressBar1.ForeColor = Color.Green;
+                    progressBar1.ForeColor = Color.Lime;
                 }
                 else if ((progressBar1.Value <= (rotate / 2)) && progressBar1.Value > rotate / 4)
                 {
@@ -985,6 +1034,64 @@ namespace MaintenanceTracker
             }
         }
 
+        private void pBar2Set(int vehicleNum, int MilesDriven, int tireRatingIndexNum)
+        {
+            int vn = vehicleNum;
+            int milesDriven = MilesDriven;
+
+            //Get tire mileage rating
+            string si = getTireMileageRating(tireRatingIndexNum);
+            double si2 = Convert.ToDouble(si);
+
+            //Set progress bar.
+            //Display the percentage remaining and round.            
+            double percentLeft = Math.Round((100 - (100 * (milesDriven / si2))), 2);
+
+            //Set percent label to not show below 0%.
+            if (percentLeft > 0)
+            {
+                percentLbl2.Text = percentLeft.ToString() + "% Tire Life Remaining";
+            }
+            else
+            {
+                percentLbl2.Text = "0% Tire Life Remaining";
+            }
+
+            try
+            {
+                progressBar2.Maximum = Convert.ToInt32(si2);
+                progressBar2.Value = progressBar2.Maximum - milesDriven;
+
+                if (progressBar2.Value > (si2 / 2))
+                {
+                    progressBar2.ForeColor = Color.Lime;
+                }
+                else if ((progressBar2.Value <= (si2 / 2)) && progressBar2.Value > si2 / 4)
+                {
+                    progressBar2.ForeColor = Color.Yellow;
+                }
+                else if (progressBar2.Value <= si2 / 4 && progressBar2.Value > 0)
+                {
+                    progressBar2.ForeColor = Color.Red;
+
+                    //Show rotate reset button.
+                    resetTireTreadLife.Visible = true;
+                    setBtn.Text = "Reset Tire Mileage / Set Tire Values";
+                }
+                else if (progressBar2.Value <= 0)
+                {
+                    MessageBox.Show("Tire need to be changed");
+                    //Show rotate reset button.
+                    resetTireTreadLife.Visible = true;
+                    setBtn.Text = "Reset Tire Mileage / Set Tire Values";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Tire need to be changed");
+                //Do nothing.....
+            }
+        }
         //Check method to validate the install date text box.
         private bool validateDate(string installDate)
         {
@@ -1107,64 +1214,6 @@ namespace MaintenanceTracker
             }
         }
 
-        private void pBar2Set(int vehicleNum, int MilesDriven, int tireRatingIndexNum)
-        {
-            int vn = vehicleNum;
-            int milesDriven = MilesDriven;            
-
-            //Get tire mileage rating
-            string si = getTireMileageRating(tireRatingIndexNum);
-            double si2 = Convert.ToDouble(si);
-
-            //Set progress bar.
-            //Display the percentage remaining and round.            
-            double percentLeft = Math.Round((100 - (100 * (milesDriven / si2))), 2);
-
-            //Set percent label to not show below 0%.
-            if (percentLeft > 0)
-            {
-                percentLbl2.Text = percentLeft.ToString() + "% Tire Life Remaining";
-            }
-            else
-            {
-                percentLbl2.Text = "0% Tire Life Remaining";
-            }
-
-            try
-            {
-                progressBar2.Maximum = Convert.ToInt32(si2);
-                progressBar2.Value = progressBar2.Maximum - milesDriven;
-
-                if (progressBar2.Value > (si2 / 2))
-                {
-                    progressBar2.ForeColor = Color.Green;
-                }
-                else if ((progressBar2.Value <= (si2 / 2)) && progressBar2.Value > si2 / 4)
-                {
-                    progressBar2.ForeColor = Color.Yellow;
-                }
-                else if (progressBar2.Value <= si2 / 4 && progressBar2.Value > 0)
-                {
-                    progressBar2.ForeColor = Color.Red;
-
-                    //Show rotate reset button.
-                    resetTireTreadLife.Visible = true;
-                    setBtn.Text = "Reset Tire Mileage / Set Tire Values";
-                }
-                else if (progressBar2.Value <= 0)
-                {
-                    MessageBox.Show("Tire need to be changed");
-                    //Show rotate reset button.
-                    resetTireTreadLife.Visible = true;
-                    setBtn.Text = "Reset Tire Mileage / Set Tire Values";
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Tire need to be changed");
-                //Do nothing.....
-            }
-        }    
 
         string si;
         private string getTireMileageRating(int tireRatingIndexNum)

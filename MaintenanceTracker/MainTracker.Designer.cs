@@ -35,9 +35,9 @@
             this.mpgButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.vehicalSelectList = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tiresButton
@@ -133,40 +133,41 @@
             this.label2.Size = new System.Drawing.Size(0, 20);
             this.label2.TabIndex = 12;
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BackgroundImage = global::MaintenanceTracker.Properties.Resources.kaChow;
-            this.flowLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.flowLayoutPanel1.Controls.Add(this.vehicalSelectList);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(384, 305);
-            this.flowLayoutPanel1.TabIndex = 25;
-            // 
             // vehicalSelectList
             // 
-            this.vehicalSelectList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vehicalSelectList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vehicalSelectList.FormattingEnabled = true;
             this.vehicalSelectList.Items.AddRange(new object[] {
             "Vehicle #1",
             "Vehicle #2",
             "Vehicle #3",
             "Vehicle #4"});
-            this.vehicalSelectList.Location = new System.Drawing.Point(3, 3);
+            this.vehicalSelectList.Location = new System.Drawing.Point(69, 27);
             this.vehicalSelectList.Name = "vehicalSelectList";
-            this.vehicalSelectList.Size = new System.Drawing.Size(309, 34);
-            this.vehicalSelectList.TabIndex = 24;
+            this.vehicalSelectList.Size = new System.Drawing.Size(285, 33);
+            this.vehicalSelectList.TabIndex = 25;
             this.vehicalSelectList.Text = "Select A Vehicle to Start";
-            this.vehicalSelectList.SelectedIndexChanged += new System.EventHandler(this.VehicalSelectList_SelectedIndexChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::MaintenanceTracker.Properties.Resources.kaChow;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(388, 305);
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
             // 
             // MainTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(408, 667);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.ClientSize = new System.Drawing.Size(410, 667);
             this.ControlBox = false;
+            this.Controls.Add(this.vehicalSelectList);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.mpgButton);
@@ -174,12 +175,12 @@
             this.Controls.Add(this.airFilterButton);
             this.Controls.Add(this.wipersButton);
             this.Controls.Add(this.tiresButton);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "MainTracker";
             this.ShowIcon = false;
             this.Text = "Maintenance Tracker";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,7 +196,7 @@
         private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox vehicalSelectList;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

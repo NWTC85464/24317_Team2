@@ -329,7 +329,6 @@ namespace MaintenanceTracker
 
         private void btnExitMpg_Click(object sender, EventArgs e)
         {
-            
             //save vehicle values to file
             saveMilesDriven(main.MilesDriven); 
 
@@ -353,6 +352,9 @@ namespace MaintenanceTracker
 
         private void saveMilesDriven(double milesDriven)
         {
+            //Create file method.
+            createFile(main.VehicalNumber);
+
             //Read exsisting files and add new miles driven to file.
             switch (main.VehicalNumber)
             {                
@@ -381,6 +383,7 @@ namespace MaintenanceTracker
                     {
                         //Set tmd to 0.
                         tMD = 0;
+                        main.MilesDriven = 0;
                     }
                     break;
                 case 3:
@@ -394,6 +397,7 @@ namespace MaintenanceTracker
                     {
                         //Set tmd to 0.
                         tMD = 0;
+                        main.MilesDriven = 0;
                     }
                     break;
                 case 4:
@@ -407,6 +411,7 @@ namespace MaintenanceTracker
                     {
                         //Set tmd to 0.
                         tMD = 0;
+                        main.MilesDriven = 0;
                     }
                     break;
                 default:
@@ -438,6 +443,54 @@ namespace MaintenanceTracker
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void createFile(int vehicalNumber)
+        {
+            //Create file paths for each vehicle.
+            StreamWriter sw;
+            switch (vehicalNumber)
+            {
+                case 1:
+                    if(!File.Exists(path1a))
+                    {                   
+                        using (sw = File.CreateText(path1a))
+                        {
+                            sw.WriteLine("0");
+                        }
+                    }                    
+                    break;
+                case 2:
+                    if (!File.Exists(path2a))
+                    {
+                        using (sw = File.CreateText(path2a))
+                        {
+                            sw.WriteLine("0");
+                        }
+                    }
+                    break;
+                case 3:
+                    if (!File.Exists(path3a))
+                    {
+                        using (sw = File.CreateText(path3a))
+                        {
+                            sw.WriteLine("0");
+                        }
+                    }
+                    break;
+                case 4:
+                    if (!File.Exists(path4a))
+                    {
+                        using (sw = File.CreateText(path4a))
+                        {
+                            sw.WriteLine("0");
+                        }
+                    }
+                    break;
+                default:
+                    break;
+
             }
         }
 
