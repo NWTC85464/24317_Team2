@@ -21,7 +21,19 @@ namespace MaintenanceTracker
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
+
         MpgSetupForm setupFrm = new MpgSetupForm();
+        //Path to miles driven files.
+        string path1a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v1Miles.txt";
+        string path2a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v2Miles.txt";
+        string path3a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v3Miles.txt";
+        string path4a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v4Miles.txt";
+
+        //Temp variable.
+        //string tempMilesDriven;
+        double tMD;
+
+
         //array for odometer readings
         string[] odoRay = new string[10];
         //incrementer for stream writer
@@ -339,14 +351,20 @@ namespace MaintenanceTracker
 
         private void btnExitMpg_Click(object sender, EventArgs e)
         {
-            //System.IO.StreamWriter objWrt;
+            
+            //save vehicle values to file
+            saveMilesDriven(main.MilesDriven); 
+
+            //Close the form.
             this.Close();
-           // private string path = Path.Combine(Environment.CurrentDirectory, @"Resources\", "odo.txt");
+
+            //System.IO.StreamWriter objWrt;
+            // private string path = Path.Combine(Environment.CurrentDirectory, @"Resources\", "odo.txt");
             //line below works
             //objWrt = new System.IO.StreamWriter(@".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\odo.txt", true);
             //texting this write file path.
             //objWrt = new System.IO.StreamWriter(path, true);
-           // string createText = odoCur + "\n";
+            // string createText = odoCur + "\n";
             //objWrt.WriteLine(createText);
             //objWrt.Close();
             //File.WriteAllText(@"C:\Users\Andrew\Source\Repos\24317_Team2\MaintenanceTracker\Resources\odo.txt", createText);
@@ -355,6 +373,105 @@ namespace MaintenanceTracker
             //string readText = File.ReadAllText(@"C:\Users\Andrew\Source\Repos\24317_Team2\MaintenanceTracker\Resources\odo.txt");
         }
 
+        private void saveMilesDriven(double milesDriven)
+        {
+            //Read exsisting files and add new miles driven to file.
+            switch (main.VehicalNumber)
+            {                
+                case 1:
+                    if (File.Exists(path1a))
+                    {
+                        //Read the file and save to tmd.
+                        usedFile = File.ReadAllText(path1a);
+                        tMD = Convert.ToDouble(usedFile);
+                    }
+                    else if (!File.Exists(path1a))
+                    {
+                        //Set tmd to 0.
+                        tMD = 0;
+                    }
+                    break;
+                case 2:
+                    if (File.Exists(path2a))
+                    {
+                        //Read the file and save to tmd.
+                        usedFile = File.ReadAllText(path2a);
+                        tMD = Convert.ToDouble(usedFile);
+                    }
+                    else if (!File.Exists(path2a))
+                    {
+                        //Set tmd to 0.
+                        tMD = 0;
+                    }
+                    break;
+                case 3:
+                    if (File.Exists(path3a))
+                    {
+                        //Read the file and save to tmd.
+                        usedFile = File.ReadAllText(path3a);
+                        tMD = Convert.ToDouble(usedFile);
+                    }
+                    else if (!File.Exists(path3a))
+                    {
+                        //Set tmd to 0.
+                        tMD = 0;
+                    }
+                    break;
+                case 4:
+                    if (File.Exists(path4a))
+                    { 
+                        //Read the file and save to tmd.
+                        usedFile = File.ReadAllText(path4a);
+                        tMD = Convert.ToDouble(usedFile);
+                    }
+                    else if (!File.Exists(path4a))
+                    {
+                        //Set tmd to 0.
+                        tMD = 0;
+                    }
+                    break;
+                default:
+                    //Do nothing.......
+                    break;
+            }
+
+            //Add new value to file value.
+            main.MilesDriven += tMD;
+
+            //Write the file for vehicle mpg.
+            System.IO.StreamWriter objWrt;
+
+            switch (main.VehicalNumber)
+            {
+                case 1:
+
+                    //Write the file for v1 with new values.
+                    objWrt = new System.IO.StreamWriter(path1a, true);
+                    objWrt.WriteLine(main.MilesDriven);
+                    objWrt.Close();
+                    break;
+                case 2:
+                    //Write the file for v2with new values.
+                    objWrt = new System.IO.StreamWriter(path2a, true);
+                    objWrt.WriteLine(main.MilesDriven);
+                    objWrt.Close();
+                    break;
+                case 3:
+                    //Write the file for v3 with new values.
+                    objWrt = new System.IO.StreamWriter(path3a, true);
+                    objWrt.WriteLine(main.MilesDriven);
+                    objWrt.Close();
+                    break;
+                case 4:
+                    //Write the file for v4 with new values.
+                    objWrt = new System.IO.StreamWriter(path4a, true);
+                    objWrt.WriteLine(main.MilesDriven);
+                    objWrt.Close();
+                    break;
+                default:
+                    break;
+            }
+        }
 
         public void ArrayString(string fileContent)
         {
