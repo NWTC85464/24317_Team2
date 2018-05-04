@@ -97,6 +97,12 @@
     <Compile Include="MPGOptionsForm.Designer.cs">
       <DependentUpon>MPGOptionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MpgSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MpgSetupForm.Designer.cs">
+      <DependentUpon>MpgSetupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OilOptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MPGOptionsForm.resx">
       <DependentUpon>MPGOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MpgSetupForm.resx">
+      <DependentUpon>MpgSetupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OilOptionsForm.resx">
       <DependentUpon>OilOptionsForm.cs</DependentUpon>
