@@ -43,11 +43,10 @@
             this.notesTextBox = new System.Windows.Forms.TextBox();
             this.exitButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
-            this.resetButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
             this.tipAndInfoButton = new System.Windows.Forms.Button();
             this.nextReplaceDateDisplayLabel = new System.Windows.Forms.Label();
             this.vehicleNumLabel = new System.Windows.Forms.Label();
-            this.wiperPercentLabel = new System.Windows.Forms.Label();
             this.wiperProgressBar = new System.Windows.Forms.ProgressBar();
             this.displayNotesLabel = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -57,7 +56,7 @@
             this.displayDrSideLabel = new System.Windows.Forms.Label();
             this.displayNextDateLabel = new System.Windows.Forms.Label();
             this.displayInstDateLabel = new System.Windows.Forms.Label();
-            this.newFormButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // installedDateLabel
@@ -181,7 +180,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(183, 399);
+            this.exitButton.Location = new System.Drawing.Point(197, 399);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(55, 23);
             this.exitButton.TabIndex = 41;
@@ -191,27 +190,27 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(102, 399);
+            this.saveButton.Location = new System.Drawing.Point(141, 357);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(55, 23);
+            this.saveButton.Size = new System.Drawing.Size(111, 23);
             this.saveButton.TabIndex = 40;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click_1);
             // 
-            // resetButton
+            // clearButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(21, 399);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(55, 23);
-            this.resetButton.TabIndex = 39;
-            this.resetButton.Text = "Reset";
-            this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            this.clearButton.Location = new System.Drawing.Point(21, 399);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(55, 23);
+            this.clearButton.TabIndex = 39;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click_1);
             // 
             // tipAndInfoButton
             // 
-            this.tipAndInfoButton.Location = new System.Drawing.Point(68, 358);
+            this.tipAndInfoButton.Location = new System.Drawing.Point(21, 358);
             this.tipAndInfoButton.Name = "tipAndInfoButton";
             this.tipAndInfoButton.Size = new System.Drawing.Size(114, 23);
             this.tipAndInfoButton.TabIndex = 38;
@@ -235,19 +234,6 @@
             this.vehicleNumLabel.TabIndex = 44;
             this.vehicleNumLabel.Text = "Wiper Info for Vehicle # ";
             // 
-            // wiperPercentLabel
-            // 
-            this.wiperPercentLabel.AutoSize = true;
-            this.wiperPercentLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.wiperPercentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wiperPercentLabel.Location = new System.Drawing.Point(237, 55);
-            this.wiperPercentLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.wiperPercentLabel.Name = "wiperPercentLabel";
-            this.wiperPercentLabel.Size = new System.Drawing.Size(15, 13);
-            this.wiperPercentLabel.TabIndex = 47;
-            this.wiperPercentLabel.Text = "%";
-            this.wiperPercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // wiperProgressBar
             // 
             this.wiperProgressBar.BackColor = System.Drawing.Color.White;
@@ -257,7 +243,7 @@
             this.wiperProgressBar.Maximum = 500;
             this.wiperProgressBar.Name = "wiperProgressBar";
             this.wiperProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.wiperProgressBar.Size = new System.Drawing.Size(215, 28);
+            this.wiperProgressBar.Size = new System.Drawing.Size(229, 28);
             this.wiperProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.wiperProgressBar.TabIndex = 46;
             // 
@@ -328,24 +314,24 @@
             this.displayInstDateLabel.Size = new System.Drawing.Size(229, 23);
             this.displayInstDateLabel.TabIndex = 70;
             // 
-            // newFormButton
+            // editButton
             // 
-            this.newFormButton.Location = new System.Drawing.Point(188, 358);
-            this.newFormButton.Name = "newFormButton";
-            this.newFormButton.Size = new System.Drawing.Size(55, 23);
-            this.newFormButton.TabIndex = 86;
-            this.newFormButton.Text = "New";
-            this.newFormButton.UseVisualStyleBackColor = true;
-            this.newFormButton.Click += new System.EventHandler(this.newFormButton_Click);
+            this.editButton.Location = new System.Drawing.Point(111, 399);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(55, 23);
+            this.editButton.TabIndex = 86;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // WipersOptionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::MaintenanceTracker.Properties.Resources.wiper;
+            this.BackColor = System.Drawing.Color.SkyBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(276, 434);
-            this.Controls.Add(this.newFormButton);
+            this.Controls.Add(this.editButton);
             this.Controls.Add(this.displayNotesLabel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.displayBrandLabel);
@@ -354,13 +340,12 @@
             this.Controls.Add(this.displayDrSideLabel);
             this.Controls.Add(this.displayNextDateLabel);
             this.Controls.Add(this.displayInstDateLabel);
-            this.Controls.Add(this.wiperPercentLabel);
             this.Controls.Add(this.wiperProgressBar);
             this.Controls.Add(this.vehicleNumLabel);
             this.Controls.Add(this.nextReplaceDateDisplayLabel);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.resetButton);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.tipAndInfoButton);
             this.Controls.Add(this.brandTextBox);
             this.Controls.Add(this.brandLabel);
@@ -400,11 +385,10 @@
         private System.Windows.Forms.TextBox notesTextBox;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button tipAndInfoButton;
         private System.Windows.Forms.Label nextReplaceDateDisplayLabel;
         private System.Windows.Forms.Label vehicleNumLabel;
-        private System.Windows.Forms.Label wiperPercentLabel;
         private System.Windows.Forms.ProgressBar wiperProgressBar;
         private System.Windows.Forms.Label displayNotesLabel;
         private System.Windows.Forms.Label label6;
@@ -414,6 +398,6 @@
         private System.Windows.Forms.Label displayDrSideLabel;
         private System.Windows.Forms.Label displayNextDateLabel;
         private System.Windows.Forms.Label displayInstDateLabel;
-        private System.Windows.Forms.Button newFormButton;
+        private System.Windows.Forms.Button editButton;
     }
 }
