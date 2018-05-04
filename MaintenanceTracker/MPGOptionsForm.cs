@@ -20,6 +20,8 @@ namespace MaintenanceTracker
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
         }
+
+        MpgSetupForm setupFrm = new MpgSetupForm();
         //array for odometer readings
         string[] odoRay = new string[10];
         //incrementer for stream writer
@@ -34,6 +36,9 @@ namespace MaintenanceTracker
         double galCur;
         //holds current MPG after user input
         double curMpg;
+
+        public static Boolean cancStart = false;
+        public static double startOdo;
         //gets current date
         DateTime today1 = DateTime.Today;
         //object of new form to use switch statement
@@ -78,46 +83,30 @@ namespace MaintenanceTracker
 
                         ArrayString(usedFile);
 
-                       
-                        /*foreach (var row in usedFile.Split('\n'))
-                        {
-                            j = 0;
-                            foreach (var col in row.Trim().Split(' '))
-                            {
-                                dblArray[x, j] = col.Trim();
-                                j++;
-                            }
-                            holdDbl = dblArray;
-                            dgTrack.Rows.Add(dblArray[x, 0], dblArray[x, 1], dblArray[x, 2], dblArray[x, 3]);
-                            x++;
-                        }*/
                     }
                     else
                     {
+                        startFile();
+                        if (cancStart == true)
+                        {
+                            cancStart = false;
+                            this.btnExitMpg.PerformClick();
+                            return;
+                        }
+                        else
+                        {
+                            //do nothing
+                        }
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg1.txt"))
                         {
+                            //startFile();
                             //use blank data when updating mpg first time. 
-                            sw.WriteLine("0/00/0000 00 0000 00");
+                            sw.WriteLine(today1.ToString("d")+" 00 " +startOdo+" 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg1.txt");
                             fln = @"mpg/mpg1.txt";
                             setup(usedFile);
-
-                            //int[,] result = new int[10, 10];
-                            /*foreach (var row in usedFile.Split('\n'))
-                            {
-                                j = 0;
-                                foreach (var col in row.Trim().Split(' '))
-                                {
-                                    dblArray[x, j] = col.Trim();
-                                    j++;
-                                }
-                                holdDbl = dblArray;
-                                dgTrack.Rows.Add(dblArray[x, 0], dblArray[x, 1], dblArray[x, 2], dblArray[x, 3]);
-                                //x++;
-                                break;
-                            }*/
-                            
+  
                         }
                     }
                     break;
@@ -133,9 +122,20 @@ namespace MaintenanceTracker
                     }
                     else
                     {
+                        startFile();
+                        if (cancStart == true)
+                        {
+                            cancStart = false;
+                            this.btnExitMpg.PerformClick();
+                            return;
+                        }
+                        else
+                        {
+                            //do nothing
+                        }
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg2.txt"))
                         {
-                            sw.WriteLine("0/00/0000 00 0000 00");
+                            sw.WriteLine(today1.ToString("d") + " 00 " + startOdo + " 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg2.txt");
                             fln = @"mpg/mpg2.txt";
@@ -154,10 +154,21 @@ namespace MaintenanceTracker
                     }
                     else
                     {
+                        startFile();
+                        if (cancStart == true)
+                        {
+                            cancStart = false;
+                            this.btnExitMpg.PerformClick();
+                            return;
+                        }
+                        else
+                        {
+                            //do nothing
+                        }
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg3.txt"))
                         {
                             //write blank line of data to use when mpg is updated
-                            sw.WriteLine("0/00/0000 00 0000 00");
+                            sw.WriteLine(today1.ToString("d") + " 00 " + startOdo + " 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg3.txt");
                             fln = @"mpg/mpg3.txt";
@@ -176,9 +187,20 @@ namespace MaintenanceTracker
                     }
                     else
                     {
+                        startFile();
+                        if (cancStart == true)
+                        {
+                            cancStart = false;
+                            this.btnExitMpg.PerformClick();
+                            return;
+                        }
+                        else
+                        {
+                            //do nothing
+                        }
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg4.txt"))
                         {
-                            sw.WriteLine("0/00/0000 00 0000 00");
+                            sw.WriteLine(today1.ToString("d") + " 00 " + startOdo + " 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg4.txt");
                             fln = @"mpg/mpg4.txt";
@@ -239,9 +261,9 @@ namespace MaintenanceTracker
                     }
                     //raised gallons number for Semi-truck drivers to use.
                     //negative gallons???
-                    if (galCur > 400)
+                    if (galCur > 400 || galCur<0)
                     {
-                        MessageBox.Show("Please enter a gallons less than 400");
+                        MessageBox.Show("Please enter gallons less than 400 and greater than 0");
                         return;
                     }
                     //mainFrm.milesDriven = mileDiff;
@@ -340,12 +362,13 @@ namespace MaintenanceTracker
             var lineCount = File.ReadLines(fln).Count();
 
             //if (lineCount==17)
-            foreach (var row in fileContent.Split('\r'))
+            foreach (var row in fileContent.Split('\n')) //works with \r in split
             {
                 j = 0;
                 foreach (var col in row.Trim().Split(' '))
                 {
                     dblArray[x, j] = col.Trim();
+                    Console.WriteLine(dblArray.Length + " legnth");
                     j++;
                 }
 
@@ -354,6 +377,12 @@ namespace MaintenanceTracker
 
             }
             holdDbl = dblArray;
+
+
+            Array.Clear(dblArray, 0, dblArray.Length);
+            x = 0;
+            j = 0;
+            Console.WriteLine(dblArray.Length+ " new legnth");
             //return;
         }
 
@@ -377,5 +406,75 @@ namespace MaintenanceTracker
             }
 
         }
+
+        private void btnDeleteRow_Click(object sender, EventArgs e)
+        {
+
+            var confirmResult = MessageBox.Show("Are you REALLY sure you want to delete this item ??",
+                                     "Confirm Delete!!",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                //MessageBox.Show("Things being deleted as we speak!");
+
+                //var lines = System.IO.File.ReadAllLines(fln);
+               // System.IO.File.WriteAllLines("...", lines.Take(lines.Length - 1).ToArray());
+
+                ///////////////////////////////////////////////////////////////////////////////
+                var lineCount = File.ReadLines(fln).Count();
+
+                //if file line count is greater than 1, then shave off bottom line and append new line to bottom. 
+                //rewrites file to get rid of first line. 
+                if (lineCount > 1)
+                {
+                    var lines = File.ReadAllLines(fln);
+                    File.WriteAllLines(fln, lines.Take(lines.Length-1).ToArray());
+                    usedFile = File.ReadAllText(fln);
+                    dgTrack.Rows.Clear();
+                    dgTrack.Refresh();
+                    ArrayString(usedFile);
+                }
+                else
+                {
+                    var lastResult = MessageBox.Show("Deleting this line will DELETE YOUR FILE, are you sure you wish to continue?",
+                                     "Delete File?!",
+                                     MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        File.Delete(fln);
+                        MessageBox.Show("You will need to re-enter start odometer. Exiting now!");
+                        this.Close();
+
+                    }
+                    else {
+
+                        MessageBox.Show("Last line NOT deleted");
+
+                    }
+                        
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        public void startFile()
+        {
+            setupFrm.ShowDialog();
+            /* if (cancStart == true)
+             {
+                 this.btnExitMpg.PerformClick();
+             }
+             else
+             {
+                 //do nothing
+             }*/
+            Console.WriteLine(cancStart + " boolean");
+
+        }
+
+
     }
 }
