@@ -24,7 +24,9 @@ namespace MaintenanceTracker
         {
             InitializeComponent();
 
+
             //this.BackColor = System.Drawing.Color.Orange;
+
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -440,7 +442,7 @@ namespace MaintenanceTracker
                     if (box == System.Windows.Forms.DialogResult.Yes)
                     {
                         Console.WriteLine("Saving incomplete data");
-                        Save();
+                       // Save();
                         this.Close();
                     }
                     else if (box == System.Windows.Forms.DialogResult.No)

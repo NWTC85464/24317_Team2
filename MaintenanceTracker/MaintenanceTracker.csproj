@@ -97,6 +97,12 @@
     <Compile Include="MPGOptionsForm.Designer.cs">
       <DependentUpon>MPGOptionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MpgSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MpgSetupForm.Designer.cs">
+      <DependentUpon>MpgSetupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OilOptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,18 +117,18 @@
     <Compile Include="SettingsOptionForm.Designer.cs">
       <DependentUpon>SettingsOptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TireCommentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TireCommentForm.Designer.cs">
+      <DependentUpon>TireCommentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TireOptionsClass.cs" />
     <Compile Include="TireOptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TireOptionsForm.Designer.cs">
       <DependentUpon>TireOptionsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TireCommentForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TireCommentForm.Designer.cs">
-      <DependentUpon>TireCommentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WipersOptionForm.cs">
       <SubType>Form</SubType>
@@ -146,6 +152,9 @@
     <EmbeddedResource Include="MPGOptionsForm.resx">
       <DependentUpon>MPGOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MpgSetupForm.resx">
+      <DependentUpon>MpgSetupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OilOptionsForm.resx">
       <DependentUpon>OilOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,11 +171,11 @@
     <EmbeddedResource Include="SettingsOptionForm.resx">
       <DependentUpon>SettingsOptionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TireOptionsForm.resx">
-      <DependentUpon>TireOptionsForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="TireCommentForm.resx">
       <DependentUpon>TireCommentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TireOptionsForm.resx">
+      <DependentUpon>TireOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WipersOptionForm.resx">
       <DependentUpon>WipersOptionForm.cs</DependentUpon>
@@ -189,9 +198,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\X120.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\rotatePatern.png" />
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +216,7 @@
     <Folder Include="Resources\TiresInfo\" />
     <Folder Include="Resources\WiperInfo\" />
   </ItemGroup>
+
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
