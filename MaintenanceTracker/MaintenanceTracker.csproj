@@ -219,10 +219,6 @@
     <Folder Include="Resources\TiresInfo\" />
     <Folder Include="Resources\WiperInfo\" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\kaChow.jpg" />
-    <None Include="Resources\kaChow1.jpg" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

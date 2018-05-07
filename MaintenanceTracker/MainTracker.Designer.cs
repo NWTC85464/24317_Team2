@@ -160,7 +160,7 @@
             // 
             // pictureBox1
             // 
-
+            /*
             this.button1.Location = new System.Drawing.Point(126, 132);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
@@ -169,7 +169,7 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-
+            */
             // 
             // MainTracker
             // 
@@ -178,7 +178,7 @@
 
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(363, 534);
-            this.Controls.Add(this.button1);
+            //this.Controls.Add(this.button1);
 
             this.Controls.Add(this.vehicalSelectList);
             this.Controls.Add(this.label2);
