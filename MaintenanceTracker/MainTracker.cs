@@ -139,8 +139,16 @@ namespace MaintenanceTracker
         private void OilButton_Click(object sender, EventArgs e)
         {
             //Call oil options form.
-            OilOptionsForm oilOptionsForm = new OilOptionsForm();
-            oilOptionsForm.ShowDialog();
+            if (vehicalSelectList.SelectedItem == null)
+            {
+                //Display message saying select vehical.              
+                MessageBox.Show("Please Select a vehical first!");
+            }
+            else
+            {
+                OilOptionsForm oilOptionsForm = new OilOptionsForm();
+                oilOptionsForm.ShowDialog();
+            }
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
@@ -199,7 +207,7 @@ namespace MaintenanceTracker
                     if (File.Exists(checkFile))
                     {
                         var lastLine = File.ReadLines(@"mpg/mpg2.txt").Last();
-                        //MessageBox.Show(lastLine);
+
 
 
                         int j = 0;
@@ -251,7 +259,7 @@ namespace MaintenanceTracker
                     if (File.Exists(checkFile))
                     {
                         var lastLine = File.ReadLines(@"mpg/mpg4.txt").Last();
-                        //MessageBox.Show(lastLine);
+
 
                        
                             int j = 0;
@@ -263,7 +271,7 @@ namespace MaintenanceTracker
                         
 
                         odo = double.Parse(holdOdo[2]);
-                        //MessageBox.Show("this is parsed: "+ odo);
+
                             
                     }
                     else
