@@ -43,6 +43,10 @@
             this.GYR = new System.Windows.Forms.ProgressBar();
             this.Notes = new System.Windows.Forms.RichTextBox();
             this.SaveNotes = new System.Windows.Forms.Button();
+            this.StartingDateTxT = new System.Windows.Forms.Label();
+            this.Start = new System.Windows.Forms.DateTimePicker();
+            this.ODStartingTxT = new System.Windows.Forms.Label();
+            this.ODStart = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Amount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +54,7 @@
             // 
             this.notesButton.Location = new System.Drawing.Point(168, 289);
             this.notesButton.Name = "notes";
-            this.notesButton.Size = new System.Drawing.Size(100, 51);
+            this.notesButton.Size = new System.Drawing.Size(100, 57);
             this.notesButton.TabIndex = 0;
             this.notesButton.Text = "Notes";
             this.notesButton.UseVisualStyleBackColor = true;
@@ -60,14 +64,14 @@
             //
             this.Notes.Location = new System.Drawing.Point(12, 12);
             this.Notes.Name = "NOTES";
-            this.Notes.Size = new System.Drawing.Size(315, 250);
+            this.Notes.Size = new System.Drawing.Size(315, 230);
             this.Notes.TabIndex = 4;
             this.Notes.Text = "";
             this.Notes.Visible = false;
             //
             // Save Notes
             //
-            this.SaveNotes.Location = new System.Drawing.Point(20, 303);
+            this.SaveNotes.Location = new System.Drawing.Point(20, 289);
             this.SaveNotes.Name = "saveNotes";
             this.SaveNotes.Size = new System.Drawing.Size(117, 51);
             this.SaveNotes.TabIndex = 1;
@@ -78,9 +82,9 @@
             // 
             // Exit button      
             // 
-            this.Exit.Location = new System.Drawing.Point(168, 356);
+            this.Exit.Location = new System.Drawing.Point(168, 348);
             this.Exit.Name = "exit";
-            this.Exit.Size = new System.Drawing.Size(100, 51);
+            this.Exit.Size = new System.Drawing.Size(100, 60);
             this.Exit.TabIndex = 1;
             this.Exit.Text = "Exit and Save";
             this.Exit.UseVisualStyleBackColor = true;
@@ -88,7 +92,7 @@
             // 
             // trackBar oil 
             // 
-            this.Amount.Location = new System.Drawing.Point(65, 227);
+            this.Amount.Location = new System.Drawing.Point(65, 240);
             this.Amount.Name = "amount";
             this.Amount.Size = new System.Drawing.Size(172, 10);
             this.Amount.Maximum = 60;
@@ -96,9 +100,9 @@
             // 
             // Lock button
             // 
-            this.Lock.Location = new System.Drawing.Point(271, 289);
+            this.Lock.Location = new System.Drawing.Point(267, 289);
             this.Lock.Name = "lockButton";
-            this.Lock.Size = new System.Drawing.Size(65, 118);
+            this.Lock.Size = new System.Drawing.Size(60, 118);
             this.Lock.TabIndex = 3;
             this.Lock.Text = "Lock";
             this.Lock.UseVisualStyleBackColor = true;
@@ -106,9 +110,9 @@
             // 
             // Information TxT
             // 
-            this.Information.Location = new System.Drawing.Point(12, 289);
+            this.Information.Location = new System.Drawing.Point(4, 289);
             this.Information.Name = "information";
-            this.Information.Size = new System.Drawing.Size(150, 120);
+            this.Information.Size = new System.Drawing.Size(158, 120);
             this.Information.TabIndex = 4;
             this.Information.Text = "";
             this.Information.ReadOnly = true;
@@ -120,7 +124,6 @@
             this.brand.Text = "Brand of oil using:";
             this.brand.Size = new System.Drawing.Size(130, 20);
             this.brand.TabIndex = 8;
-           // this.brand.ReadOnly = true;
             //
             // brand
             //
@@ -138,7 +141,6 @@
             this.type.Text = "Type of oil using:";
             this.type.Size = new System.Drawing.Size(130, 20);
             this.type.TabIndex = 8;
-         //   this.type.ReadOnly = true;
             //
             // oil
             //
@@ -149,19 +151,53 @@
             this.oilUse.TabIndex = 8;
             this.oilUse.TextChanged += new System.EventHandler(this.oilUseChange);
             // 
+            // OD Reading Start date TxT
+            // 
+            this.ODStartingTxT.Location = new System.Drawing.Point(12, 167);
+            this.ODStartingTxT.Name = "ODTxTStart";
+            this.ODStartingTxT.Text = "Begaining OD Reading:";
+            this.ODStartingTxT.Size = new System.Drawing.Size(130, 20);
+            this.ODStartingTxT.TabIndex = 8;  
+            //
+            // OD reading
+            //
+            this.ODStart.Location = new System.Drawing.Point(150, 167);
+            this.ODStart.Name = "ODStart";
+            this.ODStart.Text = "";
+            this.ODStart.Size = new System.Drawing.Size(130, 20);
+            this.ODStart.TabIndex = 8;
+            this.ODStart.TextChanged += new System.EventHandler(this.ODFirstReading);
+            // 
+            // Starting date txt
+            // 
+            this.StartingDateTxT.Location = new System.Drawing.Point(12, 200);
+            this.StartingDateTxT.Name = "StartDateTXT";
+            this.StartingDateTxT.Text = "Last Oil Change:";
+            this.StartingDateTxT.Size = new System.Drawing.Size(130, 20);
+            this.StartingDateTxT.TabIndex = 8;
+            //
+            // Starting date
+            //
+            this.Start.Location = new System.Drawing.Point(150, 200);
+            this.Start.Name = "StartDate";
+            this.Start.Size = new System.Drawing.Size(130, 20);
+            this.Start.TabIndex = 9;
+            this.Start.TabStop = false;
+            this.Start.Value = System.DateTime.Now;
+            this.Start.ValueChanged += new System.EventHandler(this.StartingDatePicker);
+            // 
             // 
             // Oil TxT
             // 
-            this.TotalTxT.Location = new System.Drawing.Point(3, 235);
+            this.TotalTxT.Location = new System.Drawing.Point(3, 250);
             this.TotalTxT.Name = "OilAmount";
             this.TotalTxT.Text = "Oil Amount:";
             this.TotalTxT.Size = new System.Drawing.Size(166, 20);
             this.TotalTxT.TabIndex = 6;
-           // this.TotalTxT.ReadOnly = true;
             // 
             // Oil Quntity
             // 
-            this.AmountTotal.Location = new System.Drawing.Point(250, 235);
+            this.AmountTotal.Location = new System.Drawing.Point(250, 248);
             this.AmountTotal.Name = "AmountTxT";
             this.AmountTotal.Size = new System.Drawing.Size(74, 10);
             this.AmountTotal.TabIndex = 7;
@@ -171,23 +207,28 @@
             //  
             this.GYR.Location = new System.Drawing.Point(7, 12);
             this.GYR.Name = "GYR_Bar";
-            this.GYR.Size = new System.Drawing.Size(320, 40);
+            this.GYR.Size = new System.Drawing.Size(317, 40);
             //
             // Time to change or not TXT
             // 
-            this.GYRTXT.Location = new System.Drawing.Point(7, 50);
+            this.GYRTXT.Location = new System.Drawing.Point(137, 52);
             this.GYRTXT.Name = "GYR_Txt";
+            this.GYRTXT.Text = "Unknow %";
             this.GYRTXT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.GYRTXT.Size = new System.Drawing.Size(320, 500);
+            this.GYRTXT.Size = new System.Drawing.Size(70, 2);
             this.GYRTXT.ReadOnly = true;
             //
             // Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 423);
-            this.Controls.Add(this.GYR);
+            this.ClientSize = new System.Drawing.Size(330, 432);
+            this.Controls.Add(this.Start);
             this.Controls.Add(this.GYRTXT);
+            this.Controls.Add(this.GYR);
+            this.Controls.Add(this.StartingDateTxT);
+            this.Controls.Add(this.ODStartingTxT);
+            this.Controls.Add(this.ODStart);
             this.Controls.Add(this.type);
             this.Controls.Add(this.oilUse);
             this.Controls.Add(this.Information);
@@ -227,6 +268,10 @@
         private System.Windows.Forms.ProgressBar GYR;
         private System.Windows.Forms.RichTextBox Notes;
         private System.Windows.Forms.Button SaveNotes;
+        private System.Windows.Forms.Label StartingDateTxT;
+        private System.Windows.Forms.DateTimePicker Start;
+        private System.Windows.Forms.Label ODStartingTxT;
+        private System.Windows.Forms.TextBox ODStart;
     }
 }
 
