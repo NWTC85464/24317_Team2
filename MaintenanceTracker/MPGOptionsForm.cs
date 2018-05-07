@@ -20,6 +20,9 @@ namespace MaintenanceTracker
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
         }
+
+
+        MpgSetupForm setupFrm = new MpgSetupForm();
         //Path to miles driven files.
         string path1a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v1Miles.txt";
         string path2a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v2Miles.txt";
@@ -30,12 +33,15 @@ namespace MaintenanceTracker
         //string tempMilesDriven;
         double tMD;
 
+
         //array for odometer readings
         string[] odoRay = new string[10];
         //incrementer for stream writer
         int i = 0;
         //To hold stream reader
         string usedFile;
+        //To hold miles driven read file.
+        string uFile;       
         //to hold file name for stream writer
         string fln;
         //current odometer reading(input by user)
@@ -44,6 +50,9 @@ namespace MaintenanceTracker
         double galCur;
         //holds current MPG after user input
         double curMpg;
+
+        public static Boolean cancStart = false;
+        public static double startOdo;
         //gets current date
         DateTime today1 = DateTime.Today;
         //object of new form to use switch statement
@@ -88,46 +97,31 @@ namespace MaintenanceTracker
 
                         ArrayString(usedFile);
 
-                       
-                        /*foreach (var row in usedFile.Split('\n'))
-                        {
-                            j = 0;
-                            foreach (var col in row.Trim().Split(' '))
-                            {
-                                dblArray[x, j] = col.Trim();
-                                j++;
-                            }
-                            holdDbl = dblArray;
-                            dgTrack.Rows.Add(dblArray[x, 0], dblArray[x, 1], dblArray[x, 2], dblArray[x, 3]);
-                            x++;
-                        }*/
                     }
                     else
                     {
+                        startFile();
+                        if (cancStart == true)
+                        {
+                            cancStart = false;
+                            //this.btnExitMpg.PerformClick();
+                            this.Close();
+                            return;
+                        }
+                        else
+                        {
+                            //do nothing
+                        }
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg1.txt"))
                         {
+                            //startFile();
                             //use blank data when updating mpg first time. 
-                            sw.WriteLine("0/00/0000 00 0000 00");
+                            sw.WriteLine(today1.ToString("d")+" 00 " +startOdo+" 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg1.txt");
                             fln = @"mpg/mpg1.txt";
                             setup(usedFile);
-
-                            //int[,] result = new int[10, 10];
-                            /*foreach (var row in usedFile.Split('\n'))
-                            {
-                                j = 0;
-                                foreach (var col in row.Trim().Split(' '))
-                                {
-                                    dblArray[x, j] = col.Trim();
-                                    j++;
-                                }
-                                holdDbl = dblArray;
-                                dgTrack.Rows.Add(dblArray[x, 0], dblArray[x, 1], dblArray[x, 2], dblArray[x, 3]);
-                                //x++;
-                                break;
-                            }*/
-                            
+  
                         }
                     }
                     break;
@@ -143,9 +137,21 @@ namespace MaintenanceTracker
                     }
                     else
                     {
+                        startFile();
+                        if (cancStart == true)
+                        {
+                            cancStart = false;
+                            //this.btnExitMpg.PerformClick();
+                            this.Close();
+                            return;
+                        }
+                        else
+                        {
+                            //do nothing
+                        }
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg2.txt"))
                         {
-                            sw.WriteLine("0/00/0000 00 0000 00");
+                            sw.WriteLine(today1.ToString("d") + " 00 " + startOdo + " 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg2.txt");
                             fln = @"mpg/mpg2.txt";
@@ -164,10 +170,22 @@ namespace MaintenanceTracker
                     }
                     else
                     {
+                        startFile();
+                        if (cancStart == true)
+                        {
+                            cancStart = false;
+                            //this.btnExitMpg.PerformClick();
+                            this.Close();
+                            return;
+                        }
+                        else
+                        {
+                            //do nothing
+                        }
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg3.txt"))
                         {
                             //write blank line of data to use when mpg is updated
-                            sw.WriteLine("0/00/0000 00 0000 00");
+                            sw.WriteLine(today1.ToString("d") + " 00 " + startOdo + " 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg3.txt");
                             fln = @"mpg/mpg3.txt";
@@ -186,9 +204,21 @@ namespace MaintenanceTracker
                     }
                     else
                     {
+                        startFile();
+                        if (cancStart == true)
+                        {
+                            cancStart = false;
+                            //this.btnExitMpg.PerformClick();
+                            this.Close();
+                            return;
+                        }
+                        else
+                        {
+                            //do nothing
+                        }
                         using (StreamWriter sw = File.CreateText(@"mpg/mpg4.txt"))
                         {
-                            sw.WriteLine("0/00/0000 00 0000 00");
+                            sw.WriteLine(today1.ToString("d") + " 00 " + startOdo + " 00");
                             sw.Close();
                             usedFile = File.ReadAllText(@"mpg/mpg4.txt");
                             fln = @"mpg/mpg4.txt";
@@ -249,9 +279,9 @@ namespace MaintenanceTracker
                     }
                     //raised gallons number for Semi-truck drivers to use.
                     //negative gallons???
-                    if (galCur > 400)
+                    if (galCur > 400 || galCur<0)
                     {
-                        MessageBox.Show("Please enter a gallons less than 400");
+                        MessageBox.Show("Please enter gallons less than 400 and greater than 0");
                         return;
                     }
                     //mainFrm.milesDriven = mileDiff;
@@ -327,7 +357,6 @@ namespace MaintenanceTracker
 
         private void btnExitMpg_Click(object sender, EventArgs e)
         {
-            
             //save vehicle values to file
             saveMilesDriven(main.MilesDriven); 
 
@@ -351,20 +380,24 @@ namespace MaintenanceTracker
 
         private void saveMilesDriven(double milesDriven)
         {
+            //Create file method.
+            createFile(main.VehicalNumber);
+
             //Read exsisting files and add new miles driven to file.
             switch (main.VehicalNumber)
             {                
                 case 1:
-                    if (File.Exists(path1a))
+                    if (File.Exists(path1a) && path1a != null)
                     {
                         //Read the file and save to tmd.
-                        usedFile = File.ReadAllText(path1a);
-                        tMD = Convert.ToDouble(usedFile);
+                        uFile = File.ReadAllText(path1a);
+                        tMD = Convert.ToDouble(uFile);
                     }
                     else if (!File.Exists(path1a))
                     {
                         //Set tmd to 0.
                         tMD = 0;
+                        main.MilesDriven = 0;
                     }
                     break;
                 case 2:
@@ -378,6 +411,7 @@ namespace MaintenanceTracker
                     {
                         //Set tmd to 0.
                         tMD = 0;
+                        main.MilesDriven = 0;
                     }
                     break;
                 case 3:
@@ -391,6 +425,7 @@ namespace MaintenanceTracker
                     {
                         //Set tmd to 0.
                         tMD = 0;
+                        main.MilesDriven = 0;
                     }
                     break;
                 case 4:
@@ -404,6 +439,7 @@ namespace MaintenanceTracker
                     {
                         //Set tmd to 0.
                         tMD = 0;
+                        main.MilesDriven = 0;
                     }
                     break;
                 default:
@@ -412,40 +448,77 @@ namespace MaintenanceTracker
             }
 
             //Add new value to file value.
-            main.MilesDriven += tMD;
-
-            //Write the file for vehicle mpg.
-            System.IO.StreamWriter objWrt;
+            main.MilesDriven = main.MilesDriven + tMD;
+            string convMD = main.MilesDriven.ToString();
 
             switch (main.VehicalNumber)
             {
                 case 1:
-
-                    //Write the file for v1 with new values.
-                    objWrt = new System.IO.StreamWriter(path1a, true);
-                    objWrt.WriteLine(main.MilesDriven);
-                    objWrt.Close();
+                    //Overwrite the file with new values.
+                    File.WriteAllText(path1a, convMD);                   
                     break;
                 case 2:
-                    //Write the file for v2with new values.
-                    objWrt = new System.IO.StreamWriter(path2a, true);
-                    objWrt.WriteLine(main.MilesDriven);
-                    objWrt.Close();
+                    //Overwrite the file with new values.
+                    File.WriteAllText(path2a, convMD);
                     break;
                 case 3:
-                    //Write the file for v3 with new values.
-                    objWrt = new System.IO.StreamWriter(path3a, true);
-                    objWrt.WriteLine(main.MilesDriven);
-                    objWrt.Close();
+                    //Overwrite the file with new values.
+                    File.WriteAllText(path3a, convMD);
                     break;
                 case 4:
-                    //Write the file for v4 with new values.
-                    objWrt = new System.IO.StreamWriter(path4a, true);
-                    objWrt.WriteLine(main.MilesDriven);
-                    objWrt.Close();
+                    //Overwrite the file with new values.
+                    File.WriteAllText(path4a, convMD);
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void createFile(int vehicalNumber)
+        {
+            //Create file paths for each vehicle.
+            StreamWriter sw;
+            switch (vehicalNumber)
+            {
+                case 1:
+                    if(!File.Exists(path1a))
+                    {                   
+                        using (sw = File.CreateText(path1a))
+                        {
+                            sw.WriteLine("0");
+                        }
+                    }                    
+                    break;
+                case 2:
+                    if (!File.Exists(path2a))
+                    {
+                        using (sw = File.CreateText(path2a))
+                        {
+                            sw.WriteLine("0");
+                        }
+                    }
+                    break;
+                case 3:
+                    if (!File.Exists(path3a))
+                    {
+                        using (sw = File.CreateText(path3a))
+                        {
+                            sw.WriteLine("0");
+                        }
+                    }
+                    break;
+                case 4:
+                    if (!File.Exists(path4a))
+                    {
+                        using (sw = File.CreateText(path4a))
+                        {
+                            sw.WriteLine("0");
+                        }
+                    }
+                    break;
+                default:
+                    break;
+
             }
         }
 
@@ -455,12 +528,13 @@ namespace MaintenanceTracker
             var lineCount = File.ReadLines(fln).Count();
 
             //if (lineCount==17)
-            foreach (var row in fileContent.Split('\r'))
+            foreach (var row in fileContent.Split('\n')) //works with \r in split
             {
                 j = 0;
                 foreach (var col in row.Trim().Split(' '))
                 {
                     dblArray[x, j] = col.Trim();
+                    Console.WriteLine(dblArray.Length + " legnth");
                     j++;
                 }
 
@@ -469,6 +543,12 @@ namespace MaintenanceTracker
 
             }
             holdDbl = dblArray;
+
+
+            Array.Clear(dblArray, 0, dblArray.Length);
+            x = 0;
+            j = 0;
+            Console.WriteLine(dblArray.Length+ " new legnth");
             //return;
         }
 
@@ -492,5 +572,75 @@ namespace MaintenanceTracker
             }
 
         }
+
+        private void btnDeleteRow_Click(object sender, EventArgs e)
+        {
+
+            var confirmResult = MessageBox.Show("Are you REALLY sure you want to delete this item ??",
+                                     "Confirm Delete!!",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                //MessageBox.Show("Things being deleted as we speak!");
+
+                //var lines = System.IO.File.ReadAllLines(fln);
+               // System.IO.File.WriteAllLines("...", lines.Take(lines.Length - 1).ToArray());
+
+                ///////////////////////////////////////////////////////////////////////////////
+                var lineCount = File.ReadLines(fln).Count();
+
+                //if file line count is greater than 1, then shave off bottom line and append new line to bottom. 
+                //rewrites file to get rid of first line. 
+                if (lineCount > 1)
+                {
+                    var lines = File.ReadAllLines(fln);
+                    File.WriteAllLines(fln, lines.Take(lines.Length-1).ToArray());
+                    usedFile = File.ReadAllText(fln);
+                    dgTrack.Rows.Clear();
+                    dgTrack.Refresh();
+                    ArrayString(usedFile);
+                }
+                else
+                {
+                    var lastResult = MessageBox.Show("Deleting this line will DELETE YOUR FILE, are you sure you wish to continue?",
+                                     "Delete File?!",
+                                     MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        File.Delete(fln);
+                        MessageBox.Show("You will need to re-enter start odometer. Exiting now!");
+                        this.Close();
+
+                    }
+                    else {
+
+                        MessageBox.Show("Last line NOT deleted");
+
+                    }
+                        
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        public void startFile()
+        {
+            setupFrm.ShowDialog();
+            /* if (cancStart == true)
+             {
+                 this.btnExitMpg.PerformClick();
+             }
+             else
+             {
+                 //do nothing
+             }*/
+            Console.WriteLine(cancStart + " boolean");
+
+        }
+
+
     }
 }

@@ -31,6 +31,7 @@ namespace MaintenanceTracker
         double driver;                  // Wiper size - driver
         double passager;                // Wiper size - passager
         double rear;                    // Wiper size - rear
+        string wiperDataFile;
 
         public object HttpContext { get; private set; }
 
@@ -42,7 +43,7 @@ namespace MaintenanceTracker
             this.vehicleNum = vNum;
 
             //Form background color.
-            this.BackColor = System.Drawing.Color.Aqua;
+            //this.BackColor = System.Drawing.Color.Aqua;
 
             //this.BackgroundImage = Properties.Resources.wiper; 
 
@@ -61,14 +62,15 @@ namespace MaintenanceTracker
             // VEHICLE #1
             if (vehicleNum == 1)    // If vehicle number 1 is selected
             {
+                displayWiperData(vehicleNum);
+                /*
                 // Variable to hold file
-                string wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData1.xml";
+                wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData1.xml";
 
                 // If file exists or not
                 MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
                 ///
-                wiperProgressBar.Visible = true;    // Show progress bar
-                //progressBar(wiperDataFile);
+               
                /* if (displayNextDateLabel.Text == "")
                {
                     // If not file, enable the form to be filled
@@ -80,6 +82,7 @@ namespace MaintenanceTracker
                     displayWiperData(wiperDataFile);
                 }
                 */
+                /*
                 if (File.Exists(wiperDataFile))
                 {
                     // ***************NEED FOR KEEP OR DELETE FILE**************
@@ -95,14 +98,16 @@ namespace MaintenanceTracker
                     // If not file, enable the form to be filled
                     newForm(vNum);
                 }
-                
+                */
             }
-
+            
             // VEHICLE #2
             if (vehicleNum == 2)    // If vehicle number 2 is selected
             {
+                displayWiperData(vehicleNum);
+                /*
                 // Variable to hold file
-                string wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData2.xml";
+                wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData2.xml";
 
                 // If file exists or not
                 MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
@@ -116,19 +121,20 @@ namespace MaintenanceTracker
 
                 }
                 else
-                {
-                    
+                {                    
                     // If not file, enable the form to be filled
                     newForm(vNum);
                 }
-
+                */
             }
 
             // VEHICLE #3
             if (vehicleNum == 3)    // If vehicle number 3 is selected
             {
+                displayWiperData(vehicleNum);
+                /*
                 // Variable to hold file
-                string wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData3.xml";
+                wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData3.xml";
 
                 // If file exists or not
                 MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
@@ -145,14 +151,16 @@ namespace MaintenanceTracker
                     // If not file, enable the form to be filled
                     newForm(vNum);
                 }
-
+                */
             }
 
             // VEHICLE #4
             if (vehicleNum == 4)    // If vehicle number 4 is selected
             {
+                displayWiperData(vehicleNum);
+                /*
                 // Variable to hold file
-                string wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData4.xml";
+                wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData4.xml";
 
                 // If file exists or not
                 MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
@@ -166,44 +174,81 @@ namespace MaintenanceTracker
                 {
                     // If not file, enable the form to be filled
                     newForm(vNum);
-                }
+                }*/
             }
         }
 
         //Displaying information from the existing file for the selected vehicle
-        private void displayWiperData(string wFile)
+        private void displayWiperData(int v)
         {
-            // Turn off fields that used to enter data
-            installedDateTimePicker.Visible = false;
-            nextReplaceDateDisplayLabel.Visible = false;
-            driverSideTextBox.Visible = false;
-            passagerSideTextBox.Visible = false;
-            rearTextBox.Visible = false;
-            brandTextBox.Visible = false;
-            notesTextBox.Visible = false;
+            // Variable to hold file
+            wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + v + ".xml";
 
-            XmlDocument d = new XmlDocument();
-            d.Load(wFile);
-            XmlElement root = d.DocumentElement;
-            vehicleNumLabel.Text = "Wiper Info for Vehicle #" + root.GetElementsByTagName("Vehicle_Number")[0].InnerText;
-            displayInstDateLabel.Text = root.GetElementsByTagName("Installed_Date")[0].InnerText;
-            displayNextDateLabel.Text = root.GetElementsByTagName("Next_Install_Date")[0].InnerText;
-            displayDrSideLabel.Text = root.GetElementsByTagName("Driver_Size")[0].InnerText;
-            displayPassSideLabel.Text = root.GetElementsByTagName("Passager_Size")[0].InnerText;
-            displayRearLabel.Text = root.GetElementsByTagName("Rear_Size")[0].InnerText;
-            displayBrandLabel.Text = root.GetElementsByTagName("Brand")[0].InnerText;
-            displayNotesLabel.Text = root.GetElementsByTagName("Notes")[0].InnerText;
+            // If file exists or not
+            MessageBox.Show(File.Exists(wiperDataFile) ? "There is a file for this vehicle." : "There isn't a file for this vehicle. Please enter new data.");
+            ///
 
+            /* if (displayNextDateLabel.Text == "")
+            {
+                 // If not file, enable the form to be filled
+                newForm(vNum);
+             }
+             else
+             {
+                 File.Exists(wiperDataFile);
+                 displayWiperData(wiperDataFile);
+             }
+             */
+            if (File.Exists(wiperDataFile))
+            {
+                // ***************NEED FOR KEEP OR DELETE FILE**************
+                //***IF KEEP, THEN DISPLAY DATA FOR THE VEHICLE
+                //***IF DELETE, DISPLAY FORM TO CREATE NEW DATA
+
+                // Call and pass the xml file to be displayed
+                //displayWiperData(wiperDataFile);
+                wiperProgressBar.Visible = true;    // Show progress bar
+
+                progressBar(wiperDataFile);                 // Call progress bar method to be displayed
+
+                // Turn off fields that used to enter data
+                installedDateTimePicker.Visible = false;
+                nextReplaceDateDisplayLabel.Visible = false;
+                driverSideTextBox.Visible = false;
+                passagerSideTextBox.Visible = false;
+                rearTextBox.Visible = false;
+                brandTextBox.Visible = false;
+                notesTextBox.Visible = false;
+
+                XmlDocument d = new XmlDocument();
+                d.Load(wiperDataFile);
+                XmlElement root = d.DocumentElement;
+                vehicleNumLabel.Text = "Wiper Info for Vehicle #" + root.GetElementsByTagName("Vehicle_Number")[0].InnerText;
+                displayInstDateLabel.Text = root.GetElementsByTagName("Installed_Date")[0].InnerText;
+                displayNextDateLabel.Text = root.GetElementsByTagName("Next_Install_Date")[0].InnerText;
+                displayDrSideLabel.Text = root.GetElementsByTagName("Driver_Size")[0].InnerText;
+                displayPassSideLabel.Text = root.GetElementsByTagName("Passager_Size")[0].InnerText;
+                displayRearLabel.Text = root.GetElementsByTagName("Rear_Size")[0].InnerText;
+                displayBrandLabel.Text = root.GetElementsByTagName("Brand")[0].InnerText;
+                displayNotesLabel.Text = root.GetElementsByTagName("Notes")[0].InnerText;
+/*
             if(displayNextDateLabel.Text == "")
             {
-                resetButton.Enabled = false;    //****need to be fixed******
-                resetButton.Visible = false;    // need to be fixed
+                clearButton.Enabled = false;    //****need to be fixed******
+                clearButton.Visible = false;    // need to be fixed
             }
             else
             {
-                newFormButton.Enabled = false;  // need to be fixed
-                newFormButton.Visible = false;  // need to be fixed
+                //editButton.Enabled = false;  // need to be fixed
+                //editButton.Visible = false;  // need to be fixed
+            }*/
             }
+            else
+            {
+                // If not file, enable the form to be filled
+                newForm(v);
+            }
+            
 
         }
         private void WipersOptionForm_Load(int vNum)
@@ -232,14 +277,47 @@ namespace MaintenanceTracker
             // Get the current date.
             DateTime thisDay = installedDateTimePicker.Value.Date;
 
+            DateTime today = DateTime.Now;
+
             installedDateParse = thisDay.ToString("D");     // To be passed to be stored
 
-            DateTime answer = thisDay.AddDays(180);         // Add 180 days to the installed date
+            DateTime answer = thisDay.AddDays(6);         // Add 180 days to the installed date
+            /*
+            DateTime b = thisDay.AddDays(-6);
+            TimeSpan daysAgo = thisDay.Subtract(today);
 
-            nextInstallDateParse = answer.ToString("D");    // Convert for display
+            double daysPicked = daysAgo.TotalDays;
 
-            // Display the next replacement date.
-            nextReplaceDateDisplayLabel.Text = nextInstallDateParse.ToString();
+            DateTimePicker dt = new DateTimePicker();
+
+            dt.MinDate = new DateTime();
+
+            Console.WriteLine("Days picked: " + daysPicked);
+            
+            TimeSpan daysAgo = today.Subtract(thisDay);
+            // 4.
+            // Get number of days ago.
+            double daysPicked = daysAgo.TotalDays;
+            Console.WriteLine("Days picked: " + daysPicked);
+            */
+
+            if (thisDay > today)
+            {
+                MessageBox.Show("Please pick today's date or older.");
+                
+            }   
+            /*else if(thisDay < b)
+            {
+                MessageBox.Show("Please pick a date that is less than 6 days ago");
+            }*/
+            else
+            {
+                nextInstallDateParse = answer.ToString("D");    // Convert for display
+
+                // Display the next replacement date.
+                nextReplaceDateDisplayLabel.Text = nextInstallDateParse.ToString();
+            }
+           
         }
 
         // View tips and more info
@@ -248,15 +326,18 @@ namespace MaintenanceTracker
             //Call Tips and Info form.
             WipersOptionsTipsAndInfo wipersTipsAndInfo = new WipersOptionsTipsAndInfo();
             wipersTipsAndInfo.ShowDialog();
+
+            //Center form on the screen.
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        // Reset the form
-        private void reset(int vN)
+        // Reset/clear the form
+        private void clear(int vN)
         {
             int v_N = vN;
 
             //Prompt user if they want to reset values.
-            DialogResult res = MessageBox.Show("Are you sure you want to reset the form?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult res = MessageBox.Show("Are you sure you want to clear the form?\n" + "Click Cancel to go back.", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (res == DialogResult.OK)
             {
                 switch (v_N)
@@ -287,11 +368,11 @@ namespace MaintenanceTracker
 
             }
             //***NEED TO TURN ON/OFF RESET BUTTON AND NEW BUTTON*****
-            resetButton.Visible = true;
-            resetButton.Enabled = true;
+            //clearButton.Visible = true;
+            //clearButton.Enabled = true;
 
-            newFormButton.Enabled = false;
-            newFormButton.Visible = false;
+            //editButton.Enabled = false;
+            //editButton.Visible = false;
         }
 
         // Set the form to be filled
@@ -515,7 +596,6 @@ namespace MaintenanceTracker
             }
             else
             {
-
                 // Pass info to be stored
                 storeWiperInfo(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
 
@@ -527,24 +607,11 @@ namespace MaintenanceTracker
                 rearTextBox.Enabled = false;
                 brandTextBox.Enabled = false;
                 notesTextBox.Enabled = false;
+                
             }
 
         }
-
-        private void resetButton_Click(object sender, EventArgs e)
-        {
-            // Call reset method and passing vehicle number to it
-            //*****NEED TO TURN RESET AND NEW ON/OFF*****
-            //resetButton.Visible = true;
-            //resetButton.Enabled = true;
-
-           // newFormButton.Enabled = false;
-           // newFormButton.Visible = false;
-
-            reset(vehicleNum);  
-            
-        }
-
+        
         // Store wiper's info
         private void storeWiperInfo(int vehicleNum, string installedDateParse, string nextInstallDateParse, double driver, double passager, double rear, string brand, string notes)
         {
@@ -571,94 +638,124 @@ namespace MaintenanceTracker
                     break;
 
             }
-        }
 
-        private void newFormButton_Click(object sender, EventArgs e)
-        {
-            newForm(vehicleNum);
-        }
+            // Set the file that just saved
+            string wiperFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
 
-        /*
+            progressBar(wiperFile); // Passing the saved file to be displayed the number of days left
+                                    // before the next installation
+        }        
+        
         private void progressBar(string wFile)
         {
-            long today_Date;
-            long nextInstalled_Date;
+            XmlDocument loadFile = new XmlDocument();
+            loadFile.Load(wFile);
+            XmlElement root = loadFile.DocumentElement;
+
+            string startDate = root.GetElementsByTagName("Installed_Date")[0].InnerText;    // Get start date from xml file
+            string endDate = root.GetElementsByTagName("Next_Install_Date")[0].InnerText;   // Get end date from xml
+
+            DateTime parsedStartDate = DateTime.Parse(startDate);   // Parse into start date
+            //Console.WriteLine("Start date:" +parsedStartDate);
+
+            DateTime parsedEndDate = DateTime.Parse(endDate);       // Parse into end date
+            //Console.WriteLine("End date:" + parsedEndDate);          
+                      
+            // Get the current DateTime.
+            DateTime now = DateTime.Now;
+                    
+            // Get the TimeSpan of the difference.
+            TimeSpan totalDays = parsedEndDate.Subtract(parsedStartDate);
+            //TimeSpan elapsed = now.Subtract(parsedEndDate);
+            TimeSpan daysLeft = parsedEndDate.Subtract(now);
+            
+            // Get number of days ago.
+            double tDays = totalDays.TotalDays;
+           // double daysToGo = elapsed.TotalDays;
+            double daysToGo = daysLeft.TotalDays;
+            //Console.WriteLine("{0} is {1} days ago",
+            //    endDate,
+            //    tDays.ToString("0"));
+            
+            /*Console.WriteLine("{0} is {1} days to go",
+                startDate,
+                daysToGo.ToString("0"));
+              */  
+            //Console.WriteLine("{0} is {1} days to go",
+           //     endDate,
+            //    daysToGo.ToString("0"));
+
+            wiperProgressBar.Minimum = 0;       // Progress bar minimum value
+
+            wiperProgressBar.Maximum = Convert.ToInt32(tDays); ;     // Progress bar maximum value
+
+            wiperProgressBar.Value = Convert.ToInt32(daysToGo);
+
+            daysLeftLabel.Text = daysToGo.ToString("0") +" days left";
+
+            if (wiperProgressBar.Value <= wiperProgressBar.Maximum && wiperProgressBar.Value >= 5)
+            {
+                wiperProgressBar.ForeColor = System.Drawing.Color.Green;
+            }
+            else if (wiperProgressBar.Value >= 3 && wiperProgressBar.Value <= 4)
+            {
+                wiperProgressBar.ForeColor = System.Drawing.Color.Yellow;
+            }
+            else if (wiperProgressBar.Value >= wiperProgressBar.Minimum && wiperProgressBar.Value <= 2)
+            {
+                wiperProgressBar.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                MessageBox.Show("Date is out of range.");
+            }
+
+        }
+        
+        private void clearButton_Click_1(object sender, EventArgs e)
+        {
+            clear(vehicleNum);
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            editField(wiperDataFile);
+        }
+        
+        private void editField(string wiperInfoFile)
+        {            
+            // Turn on fields that used to enter data
+            installedDateTimePicker.Visible = true;
+            nextReplaceDateDisplayLabel.Visible = true;
+            driverSideTextBox.Visible = true;
+            passagerSideTextBox.Visible = true;
+            rearTextBox.Visible = true;
+            brandTextBox.Visible = true;
+            notesTextBox.Visible = true;
+            
+            // Turn off display labels
+            displayInstDateLabel.Visible = false;
+            displayNextDateLabel.Visible = false;
+            displayDrSideLabel.Visible = false;
+            displayPassSideLabel.Visible = false;
+            displayRearLabel.Visible = false;
+            displayBrandLabel.Visible = false;
+            displayNotesLabel.Visible = false;                     
+
             XmlDocument d = new XmlDocument();
-            d.Load(wFile);
+            d.Load(wiperInfoFile);
             XmlElement root = d.DocumentElement;
-                        
-            DateTime today = DateTime.Today;
-            Console.WriteLine("Today: " + today);
-            today_Date = today.Ticks;
-            Console.WriteLine("Ticks: " + today_Date);
-            string startDate = root.GetElementsByTagName("Installed_Date")[0].InnerText;
-            string endDate = root.GetElementsByTagName("Next_Install_Date")[0].InnerText;
 
-            DateTime parsedStartDate = DateTime.Parse(startDate);
-            Console.WriteLine("Start date:" +parsedStartDate);
-
-            DateTime parsedEndDate = DateTime.Parse(endDate);
-            Console.WriteLine("End date:" + parsedEndDate);
-
-  
-           
-
-            nextInstalled_Date = parsedStartDate.Ticks;
-            Console.WriteLine("Tick parse date: " + nextInstalled_Date);
-
-            if(today_Date != nextInstalled_Date)
-            {
-                Console.WriteLine("not equal");
-            }
-            if(today_Date > nextInstalled_Date)
-            {
-                Console.WriteLine("today is bigger than next inst date");
-            }
-            if(today_Date < nextInstalled_Date)
-            {
-               Console.WriteLine("inst date is bigger than today");
-            }
-
-
-
-
-            //Display the percentage remaining and round.            
-            //Double Math.Round(Doublevalue, Int32 digits);
-
-            long percentLeft =  ((nextInstalled_Date - today_Date) / nextInstalled_Date) * 100;
-            wiperPercentLabel.Text = percentLeft.ToString() + "%";
-            Console.WriteLine(percentLeft);
-            /*
-            try
-            {
-                wiperProgressBar.Maximum = endDate.Length;
-                wiperProgressBar.Value = wiperProgressBar.Maximum ;
-
-                if (wiperProgressBar.Value > (rotate / 2))
-                {
-                    wiperProgressBar.ForeColor = Color.Green;
-                }
-                else if ((wiperProgressBar.Value <= (rotate / 2)) && wiperProgressBar.Value > rotate / 4)
-                {
-                    wiperProgressBar.ForeColor = Color.Yellow;
-                }
-                else if (wiperProgressBar.Value <= rotate / 4 && wiperProgressBar.Value > 0)
-                {
-                    wiperProgressBar.ForeColor = Color.Red;
-                }
-                else if (wiperProgressBar.Value <= 0)
-                {
-                    MessageBox.Show("Tire need to be rotated");
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Tire need to be rotated");
-                //Do nothing.....
-            }
+            vehicleNumLabel.Text = "Wiper Info for Vehicle #" + root.GetElementsByTagName("Vehicle_Number")[0].InnerText;
+            displayInstDateLabel.Text = root.GetElementsByTagName("Installed_Date")[0].InnerText;
+            displayNextDateLabel.Text = root.GetElementsByTagName("Next_Install_Date")[0].InnerText;
+            driverSideTextBox.Text = root.GetElementsByTagName("Driver_Size")[0].InnerText;
+            passagerSideTextBox.Text = root.GetElementsByTagName("Passager_Size")[0].InnerText;
+            rearTextBox.Text = root.GetElementsByTagName("Rear_Size")[0].InnerText;
+            brandTextBox.Text = root.GetElementsByTagName("Brand")[0].InnerText;
+            notesTextBox.Text = root.GetElementsByTagName("Notes")[0].InnerText;
             
         }
-        */
     }
 }
  
