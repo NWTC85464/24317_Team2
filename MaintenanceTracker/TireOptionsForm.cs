@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaintenanceTracker.Properties;
+using System.Windows.Forms.VisualStyles;
 
 namespace MaintenanceTracker
 {
@@ -60,16 +61,16 @@ namespace MaintenanceTracker
         bool fileDataExsits = false;
 
         //Create path to save vehicle data to text files.
-        string path1 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v1Info.txt";
-        string path2 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v2Info.txt";
-        string path3 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v3Info.txt";
-        string path4 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v4Info.txt";
+        string path1 = @"..\..\Resources\TiresInfo\v1Info.txt";
+        string path2 = @"..\..\Resources\TiresInfo\v2Info.txt";
+        string path3 = @"..\..\Resources\TiresInfo\v3Info.txt";
+        string path4 = @"..\..\Resources\TiresInfo\v4Info.txt";
 
         //Paths to miles driven saved from MPG form.
-        string path1a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v1Miles.txt";
-        string path2a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v2Miles.txt";
-        string path3a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v3Miles.txt";
-        string path4a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v4Miles.txt";
+        string path1a = @"..\..\Resources\TiresInfo\v1Miles.txt";
+        string path2a = @"..\..\Resources\TiresInfo\v2Miles.txt";
+        string path3a = @"..\..\Resources\TiresInfo\v3Miles.txt";
+        string path4a = @"..\..\Resources\TiresInfo\v4Miles.txt";
 
 
         public TireOptionsForm(int vehicalNum, int MilesDriven)//, int odometerReading)
@@ -142,8 +143,8 @@ namespace MaintenanceTracker
             resetRotationBtn.Visible = false;
             resetButton.Enabled = false;
             resetTireTreadLife.Visible = false;
+            
         }
-
 
         private void TireOptionsForm_Load(object sender, EventArgs e)
         {
@@ -172,7 +173,7 @@ namespace MaintenanceTracker
                 //milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
-                lockTrackBarButton.Image = Resources._lock;
+                //lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
                // scrollLock = 1;
@@ -196,7 +197,7 @@ namespace MaintenanceTracker
                 //milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
-                lockTrackBarButton.Image = Resources._lock;
+                //lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
                // scrollLock = 1;
@@ -220,7 +221,7 @@ namespace MaintenanceTracker
                 //milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
-                lockTrackBarButton.Image = Resources._lock;
+                //lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
                 //scrollLock = 1;
@@ -244,7 +245,7 @@ namespace MaintenanceTracker
                 //milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
-                lockTrackBarButton.Image = Resources._lock;
+                //lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
                // scrollLock = 1;
@@ -288,7 +289,7 @@ namespace MaintenanceTracker
                 //milageTrackBar.Enabled = false;
 
                 //Set the lock button back color.                
-                lockTrackBarButton.Image = Resources._lock;
+                //lockTrackBarButton.Image = Resources._lock;
 
                 //Set scrollLock value to 1.
                 //scrollLock = 1;
@@ -365,7 +366,7 @@ namespace MaintenanceTracker
             notepad.Enabled = false;
             tireTipsButton.Enabled = false;
             setBtn.Text = "Set Tire Values";
-            resetButton.Enabled = true;
+            resetButton.Enabled = true;            
         }
         
         private void resetButton_Click(object sender, EventArgs e)
@@ -1017,20 +1018,19 @@ namespace MaintenanceTracker
 
                     //Show rotate reset button.
                     resetRotationBtn.Visible = true;
-                    setBtn.Text = "Reset Rotation / Set Tire Values";
                 }
                 else if (progressBar1.Value <= 0)
                 {
                     MessageBox.Show("Tire need to be rotated");
                     //Show rotate reset button.
                     resetRotationBtn.Visible = true;
-                    setBtn.Text = "Reset Rotation / Set Tire Values";
+                   
                 }
             }
             catch
             {
-                MessageBox.Show("Tire need to be rotated");
-                //Do nothing.....
+                MessageBox.Show("Tire need to be rotated");               
+                resetRotationBtn.Visible = true;
             }
         }
 
@@ -1076,20 +1076,20 @@ namespace MaintenanceTracker
 
                     //Show rotate reset button.
                     resetTireTreadLife.Visible = true;
-                    setBtn.Text = "Reset Tire Mileage / Set Tire Values";
+                    //setBtn.Text = "Reset Tire Mileage / Set Tire Values";
                 }
                 else if (progressBar2.Value <= 0)
                 {
                     MessageBox.Show("Tire need to be changed");
                     //Show rotate reset button.
                     resetTireTreadLife.Visible = true;
-                    setBtn.Text = "Reset Tire Mileage / Set Tire Values";
+                    
                 }
             }
             catch
             {
                 MessageBox.Show("Tire need to be changed");
-                //Do nothing.....
+                resetTireTreadLife.Visible = true;
             }
         }
         //Check method to validate the install date text box.
@@ -1237,7 +1237,7 @@ namespace MaintenanceTracker
                 milageTrackBar.Enabled = true;
 
                 //Set the lock button back to unlock.
-                lockTrackBarButton.Image = Resources.unlock;
+                //lockTrackBarButton.Image = Resources.unlock;
 
                 //Set the scrollLock value to 0.
                 //scrollLock = 0;
