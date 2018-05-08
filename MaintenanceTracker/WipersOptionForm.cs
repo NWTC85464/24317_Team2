@@ -41,12 +41,7 @@ namespace MaintenanceTracker
 
             //Set Vehicle number from passed in value.
             this.vehicleNum = vNum;
-
-            //Form background color.
-            //this.BackColor = System.Drawing.Color.Aqua;
-
-            //this.BackgroundImage = Properties.Resources.wiper; 
-
+           
             // Progress bar
             wiperProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
 
@@ -58,6 +53,11 @@ namespace MaintenanceTracker
 
             // change reset to new/clear
             // have EDIT when load data to edit 
+
+            //***** disabling progress bar - can't have negative value
+            //***** will work on for future update
+            wiperProgressBar.Visible = false;    // Show progress bar
+            wiperProgressBar.Enabled = false;
 
             // VEHICLE #1
             if (vehicleNum == 1)    // If vehicle number 1 is selected
@@ -105,76 +105,21 @@ namespace MaintenanceTracker
             if (vehicleNum == 2)    // If vehicle number 2 is selected
             {
                 displayWiperData(vehicleNum);
-                /*
-                // Variable to hold file
-                wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData2.xml";
-
-                // If file exists or not
-                MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
-
-                //wiperProgressBar.Visible = true;    // Show progress bar
-
-                if (File.Exists(wiperDataFile))
-                {
-                    // Call and pass the xml file to be displayed
-                    displayWiperData(wiperDataFile);
-
-                }
-                else
-                {                    
-                    // If not file, enable the form to be filled
-                    newForm(vNum);
-                }
-                */
+                
             }
 
             // VEHICLE #3
             if (vehicleNum == 3)    // If vehicle number 3 is selected
             {
                 displayWiperData(vehicleNum);
-                /*
-                // Variable to hold file
-                wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData3.xml";
-
-                // If file exists or not
-                MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
-
-                //wiperProgressBar.Visible = true;    // Show progress bar
-
-                if (File.Exists(wiperDataFile))
-                {
-                    // Call and pass the xml file to be displayed
-                    displayWiperData(wiperDataFile);
-                }
-                else
-                {
-                    // If not file, enable the form to be filled
-                    newForm(vNum);
-                }
-                */
+               
             }
 
             // VEHICLE #4
             if (vehicleNum == 4)    // If vehicle number 4 is selected
             {
                 displayWiperData(vehicleNum);
-                /*
-                // Variable to hold file
-                wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData4.xml";
-
-                // If file exists or not
-                MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
-
-                if (File.Exists(wiperDataFile))
-                {
-                    // Call and pass the xml file to be displayed
-                    displayWiperData(wiperDataFile);
-                }
-                else
-                {
-                    // If not file, enable the form to be filled
-                    newForm(vNum);
-                }*/
+               
             }
         }
 
@@ -186,19 +131,7 @@ namespace MaintenanceTracker
 
             // If file exists or not
             MessageBox.Show(File.Exists(wiperDataFile) ? "There is a file for this vehicle." : "There isn't a file for this vehicle. Please enter new data.");
-            ///
-
-            /* if (displayNextDateLabel.Text == "")
-            {
-                 // If not file, enable the form to be filled
-                newForm(vNum);
-             }
-             else
-             {
-                 File.Exists(wiperDataFile);
-                 displayWiperData(wiperDataFile);
-             }
-             */
+           
             if (File.Exists(wiperDataFile))
             {
                 // ***************NEED FOR KEEP OR DELETE FILE**************
@@ -206,10 +139,10 @@ namespace MaintenanceTracker
                 //***IF DELETE, DISPLAY FORM TO CREATE NEW DATA
 
                 // Call and pass the xml file to be displayed
-                //displayWiperData(wiperDataFile);
-                wiperProgressBar.Visible = true;    // Show progress bar
+                //displayWiperData(wiperDataFile);                
 
                 progressBar(wiperDataFile);                 // Call progress bar method to be displayed
+                
 
                 // Turn off fields that used to enter data
                 installedDateTimePicker.Visible = false;
@@ -231,17 +164,7 @@ namespace MaintenanceTracker
                 displayRearLabel.Text = root.GetElementsByTagName("Rear_Size")[0].InnerText;
                 displayBrandLabel.Text = root.GetElementsByTagName("Brand")[0].InnerText;
                 displayNotesLabel.Text = root.GetElementsByTagName("Notes")[0].InnerText;
-/*
-            if(displayNextDateLabel.Text == "")
-            {
-                clearButton.Enabled = false;    //****need to be fixed******
-                clearButton.Visible = false;    // need to be fixed
-            }
-            else
-            {
-                //editButton.Enabled = false;  // need to be fixed
-                //editButton.Visible = false;  // need to be fixed
-            }*/
+
             }
             else
             {
@@ -281,26 +204,9 @@ namespace MaintenanceTracker
 
             installedDateParse = thisDay.ToString("D");     // To be passed to be stored
 
-            DateTime answer = thisDay.AddDays(6);         // Add 180 days to the installed date
-            /*
-            DateTime b = thisDay.AddDays(-6);
-            TimeSpan daysAgo = thisDay.Subtract(today);
-
-            double daysPicked = daysAgo.TotalDays;
-
-            DateTimePicker dt = new DateTimePicker();
-
-            dt.MinDate = new DateTime();
-
-            Console.WriteLine("Days picked: " + daysPicked);
+            //***Use 6 days for example
+            DateTime answer = thisDay.AddDays(6);         // Add 180 days to the installed date                                                       
             
-            TimeSpan daysAgo = today.Subtract(thisDay);
-            // 4.
-            // Get number of days ago.
-            double daysPicked = daysAgo.TotalDays;
-            Console.WriteLine("Days picked: " + daysPicked);
-            */
-
             if (thisDay > today)
             {
                 MessageBox.Show("Please pick today's date or older.");
@@ -342,11 +248,7 @@ namespace MaintenanceTracker
             {
                 switch (v_N)
                 {
-                    case 1:
-
-                        //*********** IF DELETE FILE, NEED CODES TO DELETE FILE AND CLEAR FIELDS *****
-                        //****NEED CODES TO CREATE FILE****
-
+                    case 1:                        
                         clearFields(v_N);
                         break;
 
@@ -367,12 +269,7 @@ namespace MaintenanceTracker
                 }
 
             }
-            //***NEED TO TURN ON/OFF RESET BUTTON AND NEW BUTTON*****
-            //clearButton.Visible = true;
-            //clearButton.Enabled = true;
-
-            //editButton.Enabled = false;
-            //editButton.Visible = false;
+            
         }
 
         // Set the form to be filled
@@ -482,7 +379,8 @@ namespace MaintenanceTracker
         // Write the information to XML file
         private void writeToXML(int v)
         {
-            string wi = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + v + ".xml";
+           
+            string wdf = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + v + ".xml";
 
             wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
 
@@ -493,7 +391,7 @@ namespace MaintenanceTracker
             //***create method to add file and method to create file and add values
 
             //}            
-            using (XmlWriter writer = XmlWriter.Create(wi))
+            using (XmlWriter writer = XmlWriter.Create(wdf))
             {
                 writer.WriteStartDocument();
                 writer.WriteStartElement("Wiper");
@@ -523,8 +421,7 @@ namespace MaintenanceTracker
 
         // Save the info entered
         private void saveButton_Click_1(object sender, EventArgs e)
-        {
-            
+        {            
             if (String.IsNullOrEmpty(nextReplaceDateDisplayLabel.Text))
             {
                 MessageBox.Show("Please select date wiper was installed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -640,10 +537,12 @@ namespace MaintenanceTracker
             }
 
             // Set the file that just saved
-            string wiperFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
 
-            progressBar(wiperFile); // Passing the saved file to be displayed the number of days left
-                                    // before the next installation
+            wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
+
+            progressBar(wiperDataFile); // Passing the saved file to be displayed the number of days left
+                                        // before the next installation
+           
         }        
         
         private void progressBar(string wFile)
@@ -673,26 +572,16 @@ namespace MaintenanceTracker
             double tDays = totalDays.TotalDays;
            // double daysToGo = elapsed.TotalDays;
             double daysToGo = daysLeft.TotalDays;
-            //Console.WriteLine("{0} is {1} days ago",
-            //    endDate,
-            //    tDays.ToString("0"));
             
-            /*Console.WriteLine("{0} is {1} days to go",
-                startDate,
-                daysToGo.ToString("0"));
-              */  
-            //Console.WriteLine("{0} is {1} days to go",
-           //     endDate,
-            //    daysToGo.ToString("0"));
-
+            /*
             wiperProgressBar.Minimum = 0;       // Progress bar minimum value
 
-            wiperProgressBar.Maximum = Convert.ToInt32(tDays); ;     // Progress bar maximum value
+            wiperProgressBar.Maximum = Convert.ToInt32(tDays);     // Progress bar maximum value
 
             wiperProgressBar.Value = Convert.ToInt32(daysToGo);
-
+            
             daysLeftLabel.Text = daysToGo.ToString("0") +" days left";
-
+            
             if (wiperProgressBar.Value <= wiperProgressBar.Maximum && wiperProgressBar.Value >= 5)
             {
                 wiperProgressBar.ForeColor = System.Drawing.Color.Green;
@@ -705,11 +594,55 @@ namespace MaintenanceTracker
             {
                 wiperProgressBar.ForeColor = System.Drawing.Color.Red;
             }
+            else if (wiperProgressBar.Value <= wiperProgressBar.Minimum)
+            {
+                wiperProgressBar.Value = wiperProgressBar.Maximum;
+                wiperProgressBar.ForeColor = System.Drawing.Color.Red;
+                daysLeftLabel.Text = "Install new wipers now.";
+            }
             else
             {
                 MessageBox.Show("Date is out of range.");
-            }
+            }           
 
+            */
+
+            //************ disable progress bar - can't have min value of less than 0 with date picked
+            
+            double myNegInt = Math.Abs(daysToGo);   // Convert negative to positive
+
+            daysLeftLabel.Text = myNegInt.ToString("0") + " days left";
+
+            //wiperProgressBar.Value = wiperProgressBar.Maximum;
+            if (daysToGo <= tDays && daysToGo >= 5)
+            {
+                daysLeftLabel.BackColor = System.Drawing.Color.Green;
+                //wiperProgressBar.ForeColor = System.Drawing.Color.Green;
+            }
+            else if (daysToGo >= 3 && daysToGo <= 4)
+            {
+                daysLeftLabel.BackColor = System.Drawing.Color.Yellow;
+                //wiperProgressBar.ForeColor = System.Drawing.Color.Yellow;
+            }
+            else if (daysToGo >= 0 && daysToGo <= 2)
+            {
+                daysLeftLabel.BackColor = System.Drawing.Color.Red;
+                //wiperProgressBar.ForeColor = System.Drawing.Color.Red;
+            }
+            else if (daysToGo < 0)
+            {
+                daysLeftLabel.BackColor = System.Drawing.Color.Red;
+                //wiperProgressBar.ForeColor = System.Drawing.Color.Red;
+                daysLeftLabel.Text = myNegInt.ToString("0") + " days over due. Install new wipers now!";
+                //daysLeftLabel.Text = ;
+                
+            }            
+            else
+            {
+                MessageBox.Show("Date is out of range."); 
+                // *******************show when cleared and saved and color not showing******************
+            }
+            
         }
         
         private void clearButton_Click_1(object sender, EventArgs e)
@@ -719,11 +652,8 @@ namespace MaintenanceTracker
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            editField(wiperDataFile);
-        }
-        
-        private void editField(string wiperInfoFile)
-        {            
+            wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
+
             // Turn on fields that used to enter data
             installedDateTimePicker.Visible = true;
             nextReplaceDateDisplayLabel.Visible = true;
@@ -732,7 +662,7 @@ namespace MaintenanceTracker
             rearTextBox.Visible = true;
             brandTextBox.Visible = true;
             notesTextBox.Visible = true;
-            
+
             // Turn off display labels
             displayInstDateLabel.Visible = false;
             displayNextDateLabel.Visible = false;
@@ -740,10 +670,10 @@ namespace MaintenanceTracker
             displayPassSideLabel.Visible = false;
             displayRearLabel.Visible = false;
             displayBrandLabel.Visible = false;
-            displayNotesLabel.Visible = false;                     
+            displayNotesLabel.Visible = false;
 
             XmlDocument d = new XmlDocument();
-            d.Load(wiperInfoFile);
+            d.Load(wiperDataFile);
             XmlElement root = d.DocumentElement;
 
             vehicleNumLabel.Text = "Wiper Info for Vehicle #" + root.GetElementsByTagName("Vehicle_Number")[0].InnerText;
@@ -754,8 +684,16 @@ namespace MaintenanceTracker
             rearTextBox.Text = root.GetElementsByTagName("Rear_Size")[0].InnerText;
             brandTextBox.Text = root.GetElementsByTagName("Brand")[0].InnerText;
             notesTextBox.Text = root.GetElementsByTagName("Notes")[0].InnerText;
-            
+
+            installedDateTimePicker.Enabled = true;
+            nextReplaceDateDisplayLabel.Enabled = true;
+            driverSideTextBox.Enabled = true;
+            passagerSideTextBox.Enabled = true;
+            rearTextBox.Enabled = true;
+            brandTextBox.Enabled = true;
+            notesTextBox.Enabled = true;
         }
+
     }
 }
  
