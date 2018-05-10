@@ -1,8 +1,8 @@
 <Vehicle>
   <Vehicle_Details Vehicle_Number="0">
-    <Make>Ford</Make>
-    <Model>Da-Pinto</Model>
-    <Current_ODO>10000</Current_ODO>
+    <Make />
+    <Model />
+    <Current_ODO>0</Current_ODO>
     <Eng_Stored_ODO>0</Eng_Stored_ODO>
     <Max_Eng_ODO>30000</Max_Eng_ODO>
     <Eng_DateFilterChangedLast />
@@ -14,7 +14,7 @@
     <Make>Ford</Make>
     <Model>Mustange</Model>
     <Current_ODO>19000</Current_ODO>
-    <Eng_Stored_ODO>5000</Eng_Stored_ODO>
+    <Eng_Stored_ODO>55</Eng_Stored_ODO>
     <Max_Eng_ODO>30000</Max_Eng_ODO>
     <Eng_DateFilterChangedLast>0</Eng_DateFilterChangedLast>
     <Cab_Stored_ODO>0</Cab_Stored_ODO>
@@ -33,17 +33,6 @@
     <Cab_DateFilterChangedLast />
   </Vehicle_Details>
   <Vehicle_Details Vehicle_Number="3">
-    <Make>Subaru </Make>
-    <Model>Outback</Model>
-    <Current_ODO>0</Current_ODO>
-    <Eng_Stored_ODO>0</Eng_Stored_ODO>
-    <Max_Eng_ODO>30000</Max_Eng_ODO>
-    <Eng_DateFilterChangedLast>0</Eng_DateFilterChangedLast>
-    <Cab_Stored_ODO>0</Cab_Stored_ODO>
-    <Max_Cab_ODO>30000</Max_Cab_ODO>
-    <Cab_DateFilterChangedLast>0</Cab_DateFilterChangedLast>
-  </Vehicle_Details>
-  <Vehicle_Details Vehicle_Number="4">
     <Make />
     <Model />
     <Current_ODO>0</Current_ODO>
@@ -53,5 +42,16 @@
     <Cab_Stored_ODO>0</Cab_Stored_ODO>
     <Max_Cab_ODO>30000</Max_Cab_ODO>
     <Cab_DateFilterChangedLast />
+  </Vehicle_Details>
+  <Vehicle_Details Vehicle_Number="4">
+    <Make>Dodge</Make>
+    <Model>Challenger</Model>
+    <Current_ODO>123</Current_ODO>
+    <Eng_Stored_ODO>0</Eng_Stored_ODO>
+    <Max_Eng_ODO>30000</Max_Eng_ODO>
+    <Eng_DateFilterChangedLast>0</Eng_DateFilterChangedLast>
+    <Cab_Stored_ODO>0</Cab_Stored_ODO>
+    <Max_Cab_ODO>30000</Max_Cab_ODO>
+    <Cab_DateFilterChangedLast>0</Cab_DateFilterChangedLast>
   </Vehicle_Details>
 </Vehicle>
