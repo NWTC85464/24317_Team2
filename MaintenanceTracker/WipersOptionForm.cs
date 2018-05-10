@@ -70,7 +70,7 @@ namespace MaintenanceTracker
                 //*****Saving this for future use**********
                 /*
                 // Variable to hold file
-                wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData1.xml";
+                wiperDataFile = @"..\..\Resources\WiperInfo\WiperData1.xml";
 
                 // If file exists or not
                 MessageBox.Show(File.Exists(wiperDataFile) ? "File exists." : "File does not exist.");
@@ -132,7 +132,7 @@ namespace MaintenanceTracker
         private void displayWiperData(int v)
         {
             // Variable to hold file
-            wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + v + ".xml";
+            wiperDataFile = @"..\..\Resources\WiperInfo\WiperData" + v + ".xml";
 
             // If file exists or not
             MessageBox.Show(File.Exists(wiperDataFile) ? "There is a file for this vehicle." : "There isn't a file for this vehicle. Please enter new data.");
@@ -304,7 +304,7 @@ namespace MaintenanceTracker
         private void clearFields(int vNum)
         {
             //***WITHOUT THIS, IT WILL DISPLAY THE DATA FROM PREVIOUSLY SAVED****
-            //string wi = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + vNum + ".xml";
+            //string wi = @"..\..\Resources\WiperInfo\WiperData" + vNum + ".xml";
             /*
             wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
             //using (XmlWriter writer = XmlWriter.Create("WiperData" + vNum + ".xml"))
@@ -377,7 +377,7 @@ namespace MaintenanceTracker
         private void writeToXML(int v)
         {
             // Variable to hold wiper data file
-            string wdf = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + v + ".xml";
+            string wdf = @"..\..\Resources\WiperInfo\WiperData" + v + ".xml";
 
             wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
             
@@ -526,7 +526,7 @@ namespace MaintenanceTracker
             }
 
             // Set the file that just saved
-            wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
+            wiperDataFile = @"..\..\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
 
             progressBar(wiperDataFile); // Passing the saved file to be displayed the number of days left
                                         // before the next installation
@@ -640,7 +640,7 @@ namespace MaintenanceTracker
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
+            wiperDataFile = @"..\..\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
 
             // Turn on fields that used to enter data
             installedDateTimePicker.Visible = true;

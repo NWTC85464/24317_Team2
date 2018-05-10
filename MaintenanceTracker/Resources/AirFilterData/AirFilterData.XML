@@ -1,7 +1,7 @@
 <Vehicle>
   <Vehicle_Details Vehicle_Number="0">
-    <Make />
-    <Model />
+    <Make>Ford</Make>
+    <Model>Da-Pinto</Model>
     <Current_ODO>0</Current_ODO>
     <Eng_Stored_ODO>0</Eng_Stored_ODO>
     <Max_Eng_ODO>30000</Max_Eng_ODO>
@@ -13,8 +13,8 @@
   <Vehicle_Details Vehicle_Number="1">
     <Make>Ford</Make>
     <Model>Mustange</Model>
-    <Current_ODO>19000</Current_ODO>
-    <Eng_Stored_ODO>55</Eng_Stored_ODO>
+    <Current_ODO>0</Current_ODO>
+    <Eng_Stored_ODO>0</Eng_Stored_ODO>
     <Max_Eng_ODO>30000</Max_Eng_ODO>
     <Eng_DateFilterChangedLast>0</Eng_DateFilterChangedLast>
     <Cab_Stored_ODO>0</Cab_Stored_ODO>

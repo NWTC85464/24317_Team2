@@ -34,10 +34,10 @@ namespace MaintenanceTracker
         string path4a = @"..\..\Resources\TiresInfo\v4Miles.txt";
 
         //Path to miles driven files.
-        string path1b = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\Veh1Com.txt";
-        string path2b = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\Veh2Com.txt";
-        string path3b = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\Veh3Com.txt";
-        string path4b = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\Veh4Com.txt";
+        string path1b = @"..\..\Resources\TiresInfo\Veh1Com.txt";
+        string path2b = @"..\..\Resources\TiresInfo\Veh2Com.txt";
+        string path3b = @"..\..\Resources\TiresInfo\Veh3Com.txt";
+        string path4b = @"..\..\Resources\TiresInfo\Veh4Com.txt";
 
         //Mpg file path
         string mpg1 = @"mpg/mpg1.txt";
@@ -45,6 +45,8 @@ namespace MaintenanceTracker
         string mpg3 = @"mpg/mpg3.txt";
         string mpg4 = @"mpg/mpg4.txt";
 
+        //AirFilterData
+        string _AirFilterDataPath = @"..\..\Resources\AirFilterData\AirFilterData.XML";
 
         private void button1_Click(object sender, EventArgs e)
         {      
@@ -61,6 +63,9 @@ namespace MaintenanceTracker
 
                         //Mpg 1 text file.
                         File.Delete(mpg1);
+
+                        //Delete AirFilterData.XML File
+                        File.Delete(_AirFilterDataPath);
 
                         //Display message all files have been deleted.
                         MessageBox.Show("All files have been destroyed!!\n" +
