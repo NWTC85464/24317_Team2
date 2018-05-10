@@ -20,19 +20,6 @@ namespace MaintenanceTracker
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-
-
-        MpgSetupForm setupFrm = new MpgSetupForm();
-        //Path to miles driven files.
-        string path1a = @"..\..\Resources\TiresInfo\v1Miles.txt";
-        string path2a = @"..\..\Resources\TiresInfo\v2Miles.txt";
-        string path3a = @"..\..\Resources\TiresInfo\v3Miles.txt";
-        string path4a = @"..\..\Resources\TiresInfo\v4Miles.txt";
-
-        //Temp variable.
-        //string tempMilesDriven;
-        double tMD;
-
         //array for odometer readings
         string[] odoRay = new string[10];
         //incrementer for stream writer
@@ -298,7 +285,7 @@ namespace MaintenanceTracker
             this.Close();
            // private string path = Path.Combine(Environment.CurrentDirectory, @"Resources\", "odo.txt");
             //line below works
-            //objWrt = new System.IO.StreamWriter(@".\..\Resources\odo.txt", true);
+            //objWrt = new System.IO.StreamWriter(@".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\odo.txt", true);
             //texting this write file path.
             //objWrt = new System.IO.StreamWriter(path, true);
            // string createText = odoCur + "\n";
