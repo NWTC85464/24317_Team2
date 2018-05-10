@@ -14,22 +14,6 @@ using System.Windows.Forms.VisualStyles;
 
 namespace MaintenanceTracker
 {
-    //TODO:   
-    //
-    //Change how file gets writen on exit form so it wont error if someone doesnt save a file and closes.
-    //
-    //change reset to clear only text boxes and dropdown lists.
-    //
-    //change reset message boxes
-    //
-    //change tip message box
-    //
-   
-    //
-    //Remove scroll lock
-    //
-    //Add progress bar 2 for tire change feed back?
-
     public partial class TireOptionsForm : System.Windows.Forms.Form
     {
         //Create instances.
@@ -53,8 +37,8 @@ namespace MaintenanceTracker
         double miles;                   //Temp variable.
         int ttsv;                       //Store value to hide or show tire tips panel.
         bool allDataEntered = false;    //Bool state if all data is stored.
-        bool filesCreated = false;      //bool state if a file exsits.
-        bool fileDataExsits = false;
+        bool filesCreated = false;      //bool state if a file are created.
+        bool fileDataExsits = false;    //Bool states if files exsist.
 
         //Create path to save vehicle data to text files.
         string path1 = @"..\..\Resources\TiresInfo\v1Info.txt";
@@ -162,21 +146,11 @@ namespace MaintenanceTracker
                 sliderValueLbl.Text = tireOptionsClass.Vehical1Values[1];
                 milageTrackBar.Value = Int32.Parse(tireOptionsClass.Vehical1Values[1]); 
                 installDateTextBox.Text = tireOptionsClass.Vehical1Values[2];
-                comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical1Values[3]);                
-
-                //Deactivate the track bar slide
-                //milageTrackBar.Enabled = false;
-
-                //Set the lock button back color.                
-                //lockTrackBarButton.Image = Resources._lock;
-
-                //Set scrollLock value to 1.
-                //scrollLock = 1;
+                comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical1Values[3]); 
 
                 //Set progress bars.
                 pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical1Values[1]);
-                pBar2Set(vehicalNum, Convert.ToInt32(tireOptionsClass.Vehical1Values[4]), Convert.ToInt32(tireOptionsClass.Vehical1Values[3]));
-                
+                pBar2Set(vehicalNum, Convert.ToInt32(tireOptionsClass.Vehical1Values[4]), Convert.ToInt32(tireOptionsClass.Vehical1Values[3]));                
             }
             else if (tireOptionsClass.V2Stored == 1 && vehicalNum == 2)
             {
@@ -187,20 +161,9 @@ namespace MaintenanceTracker
                 installDateTextBox.Text = tireOptionsClass.Vehical2Values[2];
                 comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical2Values[3]);
 
-
-                //Deactivate the track bar slide
-                //milageTrackBar.Enabled = false;
-
-                //Set the lock button back color.                
-                //lockTrackBarButton.Image = Resources._lock;
-
-                //Set scrollLock value to 1.
-                //scrollLock = 1;
-
                 //Set progress bars.
                 pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical2Values[1]);
                 pBar2Set(vehicalNum, Convert.ToInt32(tireOptionsClass.Vehical2Values[4]), Convert.ToInt32(tireOptionsClass.Vehical2Values[3]));
-
             }
             else if (tireOptionsClass.V3Stored == 1 && vehicalNum == 3)
             {
@@ -211,20 +174,9 @@ namespace MaintenanceTracker
                 installDateTextBox.Text = tireOptionsClass.Vehical3Values[2];
                 comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical3Values[3]);
 
-
-                //Deactivate the track bar slide
-                //milageTrackBar.Enabled = false;
-
-                //Set the lock button back color.                
-                //lockTrackBarButton.Image = Resources._lock;
-
-                //Set scrollLock value to 1.
-                //scrollLock = 1;
-
                 //Set progress bars.
                 pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical3Values[1]);
                 pBar2Set(vehicalNum, Convert.ToInt32(tireOptionsClass.Vehical3Values[4]), Convert.ToInt32(tireOptionsClass.Vehical3Values[3]));
-
             }
             else if (tireOptionsClass.V4Stored == 1 && vehicalNum == 4)
             {
@@ -235,21 +187,9 @@ namespace MaintenanceTracker
                 installDateTextBox.Text = tireOptionsClass.Vehical4Values[2];
                 comboBox1.SelectedIndex = Convert.ToInt32(tireOptionsClass.Vehical4Values[3]);
 
-
-                //Deactivate the track bar slide
-                //milageTrackBar.Enabled = false;
-
-                //Set the lock button back color.                
-                //lockTrackBarButton.Image = Resources._lock;
-
-                //Set scrollLock value to 1.
-                //scrollLock = 1;
-
                 //Set progress bars.
                 pBar1Set(vehicalNum, milesDriven, tireOptionsClass.Vehical4Values[1]);
                 pBar2Set(vehicalNum, Convert.ToInt32(tireOptionsClass.Vehical4Values[4]), Convert.ToInt32(tireOptionsClass.Vehical4Values[3]));
-
-
             }
             else
             {
@@ -279,15 +219,6 @@ namespace MaintenanceTracker
             { 
                 //Pass values to storeArray method.
                 storeArrays(vehicalNum, installDateTextBox.Text, milageTrackBar.Value, comboBox1.SelectedIndex, odometer, milesDriven);
-
-                //Deactivate the track bar slide
-                //milageTrackBar.Enabled = false;
-
-                //Set the lock button back color.                
-                //lockTrackBarButton.Image = Resources._lock;
-
-                //Set scrollLock value to 1.
-                //scrollLock = 1;
 
                 //Set backcolors back to default.
                 milageTrackBar.BackColor = default(Color);
@@ -486,13 +417,11 @@ namespace MaintenanceTracker
                 ttLB.Visible = false;
                 pB.Visible = false;
                 tivs = 0;
-            }
-            
+            }            
         }
         
         private void tireTipsButton_Click(object sender, EventArgs e)
-        {
-            
+        {            
             if(ttsv == 0)
             {
                 //Hide tire info label.
@@ -514,8 +443,7 @@ namespace MaintenanceTracker
             {
                 flowPanel.Visible = false;
                 ttsv = 0;
-            }
-                     
+            }                     
         }       
 
         private void installDateTextBox_Click(object sender, EventArgs e)
@@ -860,7 +788,6 @@ namespace MaintenanceTracker
 
         private string getTireMileageRating()
         {
-
             //Store selected item in object.
             Object selectedItem = comboBox1.SelectedItem;
 
@@ -1051,8 +978,7 @@ namespace MaintenanceTracker
                 {
                     MessageBox.Show("Tire need to be rotated");
                     //Show rotate reset button.
-                    resetRotationBtn.Visible = true;
-                   
+                    resetRotationBtn.Visible = true;                   
                 }
             }
             catch
@@ -1175,8 +1101,6 @@ namespace MaintenanceTracker
             int tTM = tireTreadMilage;
             int md = milesDriven;
             int odom = odometer;
-            //int pOdo = preOdometer;
-            //int newOdb=0; 
 
             switch (vehicalNum)
             {

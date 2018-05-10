@@ -187,7 +187,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(408, 668);
+            this.ClientSize = new System.Drawing.Size(675, 668);
             this.ControlBox = false;
             this.Controls.Add(this.GYR);
             this.Controls.Add(this.GYRTXT);
@@ -205,6 +205,7 @@
             this.Controls.Add(this.Notes);
             this.Controls.Add(this.SaveNotes);
             this.Name = "OilOptionsForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Oil Options Form";
             this.Load += new System.EventHandler(this.OilTrackerForm);
             ((System.ComponentModel.ISupportInitialize)(this.Amount)).EndInit();

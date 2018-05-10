@@ -366,8 +366,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(408, 668);
@@ -386,8 +384,8 @@
             this.Controls.Add(this.tireOptionsFormLBL);
             this.Controls.Add(this.progressBar1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "TireOptionsForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "TireOptionsForm";
             this.Load += new System.EventHandler(this.TireOptionsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.milageTrackBar)).EndInit();

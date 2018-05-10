@@ -186,6 +186,7 @@
             this.Controls.Add(this.btnEnterMpg);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MPGOptionsForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "MPGOptionsForm";
             this.Load += new System.EventHandler(this.MPGOptionsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgTrack)).EndInit();
