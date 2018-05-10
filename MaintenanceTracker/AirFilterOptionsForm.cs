@@ -204,11 +204,11 @@ namespace MaintenanceTracker
             engTextBox.Text = _EngStoredODO.ToString();
             cabTextBox.Text = _CabStoredODO.ToString();
 
-            //Reset & Exit Buttons
-            resetBTTN.BackColor = _SecondaryColor;
+            //Exit Buttons
             exitBTTN.BackColor = _SecondaryColor;
         }
 
+        //Engine reset value button
         private void EngFilterChangedBTTN_Click(object sender, EventArgs e)
         {
             //Load the XML file
@@ -241,6 +241,7 @@ namespace MaintenanceTracker
             engDateTimePicker.Value = DateTime.Parse(_EngStoredDate.ToString());
         }
 
+        //Cabine reset value button
         private void CabFilterChangedBTTN_Click(object sender, EventArgs e)
         {
             //Load the XML file
@@ -627,12 +628,6 @@ namespace MaintenanceTracker
         private void ExitBTTN_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        //Reset Button
-        private void ResetBTTN_Click(object sender, EventArgs e)
-        {
-            
         }
 
         //Create XML

@@ -14,7 +14,7 @@
     <Make>Ford</Make>
     <Model>Mustange</Model>
     <Current_ODO>19000</Current_ODO>
-    <Eng_Stored_ODO>19000</Eng_Stored_ODO>
+    <Eng_Stored_ODO>5000</Eng_Stored_ODO>
     <Max_Eng_ODO>30000</Max_Eng_ODO>
     <Eng_DateFilterChangedLast>0</Eng_DateFilterChangedLast>
     <Cab_Stored_ODO>0</Cab_Stored_ODO>

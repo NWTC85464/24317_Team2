@@ -36,7 +36,6 @@
             this.cabAirFilterLB = new System.Windows.Forms.Label();
             this.engAirFilterTB = new System.Windows.Forms.TrackBar();
             this.cabAirFilterTB = new System.Windows.Forms.TrackBar();
-            this.resetBTTN = new System.Windows.Forms.Button();
             this.exitBTTN = new System.Windows.Forms.Button();
             this.generalMessageLB = new System.Windows.Forms.Label();
             this.engMaxMilesLabel = new System.Windows.Forms.Label();
@@ -50,13 +49,13 @@
             this.cabMaxMilesLabelToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.generalMessagePanel = new System.Windows.Forms.Panel();
             this.engAirFilterPanel = new System.Windows.Forms.Panel();
+            this.engDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.engTextBox = new System.Windows.Forms.TextBox();
             this.cabAirFilterPanel = new System.Windows.Forms.Panel();
+            this.cabDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.cabTextBox = new System.Windows.Forms.TextBox();
             this.engFilterReplacementToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.cabFilterReplacementToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.engTextBox = new System.Windows.Forms.TextBox();
-            this.cabTextBox = new System.Windows.Forms.TextBox();
-            this.engDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.cabDateTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.engAirFilterTB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cabAirFilterTB)).BeginInit();
             this.generalMessagePanel.SuspendLayout();
@@ -122,23 +121,12 @@
             this.cabAirFilterTB.Size = new System.Drawing.Size(256, 90);
             this.cabAirFilterTB.TabIndex = 8;
             // 
-            // resetBTTN
-            // 
-            this.resetBTTN.Location = new System.Drawing.Point(12, 767);
-            this.resetBTTN.Margin = new System.Windows.Forms.Padding(4);
-            this.resetBTTN.Name = "resetBTTN";
-            this.resetBTTN.Size = new System.Drawing.Size(256, 56);
-            this.resetBTTN.TabIndex = 11;
-            this.resetBTTN.Text = "Reset";
-            this.resetBTTN.UseVisualStyleBackColor = true;
-            this.resetBTTN.Click += new System.EventHandler(this.ResetBTTN_Click);
-            // 
             // exitBTTN
             // 
-            this.exitBTTN.Location = new System.Drawing.Point(276, 766);
+            this.exitBTTN.Location = new System.Drawing.Point(12, 766);
             this.exitBTTN.Margin = new System.Windows.Forms.Padding(4);
             this.exitBTTN.Name = "exitBTTN";
-            this.exitBTTN.Size = new System.Drawing.Size(256, 56);
+            this.exitBTTN.Size = new System.Drawing.Size(520, 56);
             this.exitBTTN.TabIndex = 10;
             this.exitBTTN.Text = "Exit";
             this.exitBTTN.UseVisualStyleBackColor = true;
@@ -258,6 +246,22 @@
             this.engAirFilterPanel.TabIndex = 27;
             this.engAirFilterPanel.Tag = "";
             // 
+            // engDateTimePicker
+            // 
+            this.engDateTimePicker.CustomFormat = "MM-dd-yyyy";
+            this.engDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.engDateTimePicker.Location = new System.Drawing.Point(11, 124);
+            this.engDateTimePicker.Name = "engDateTimePicker";
+            this.engDateTimePicker.Size = new System.Drawing.Size(200, 31);
+            this.engDateTimePicker.TabIndex = 4;
+            // 
+            // engTextBox
+            // 
+            this.engTextBox.Location = new System.Drawing.Point(11, 34);
+            this.engTextBox.Name = "engTextBox";
+            this.engTextBox.Size = new System.Drawing.Size(200, 31);
+            this.engTextBox.TabIndex = 3;
+            // 
             // cabAirFilterPanel
             // 
             this.cabAirFilterPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -270,29 +274,6 @@
             this.cabAirFilterPanel.Size = new System.Drawing.Size(256, 219);
             this.cabAirFilterPanel.TabIndex = 28;
             // 
-            // engTextBox
-            // 
-            this.engTextBox.Location = new System.Drawing.Point(11, 34);
-            this.engTextBox.Name = "engTextBox";
-            this.engTextBox.Size = new System.Drawing.Size(200, 31);
-            this.engTextBox.TabIndex = 3;
-            // 
-            // cabTextBox
-            // 
-            this.cabTextBox.Location = new System.Drawing.Point(11, 34);
-            this.cabTextBox.Name = "cabTextBox";
-            this.cabTextBox.Size = new System.Drawing.Size(200, 31);
-            this.cabTextBox.TabIndex = 4;
-            // 
-            // engDateTimePicker
-            // 
-            this.engDateTimePicker.CustomFormat = "MM-dd-yyyy";
-            this.engDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.engDateTimePicker.Location = new System.Drawing.Point(11, 124);
-            this.engDateTimePicker.Name = "engDateTimePicker";
-            this.engDateTimePicker.Size = new System.Drawing.Size(200, 31);
-            this.engDateTimePicker.TabIndex = 4;
-            // 
             // cabDateTimePicker
             // 
             this.cabDateTimePicker.CustomFormat = "MM-dd-yyyy";
@@ -301,6 +282,13 @@
             this.cabDateTimePicker.Name = "cabDateTimePicker";
             this.cabDateTimePicker.Size = new System.Drawing.Size(200, 31);
             this.cabDateTimePicker.TabIndex = 5;
+            // 
+            // cabTextBox
+            // 
+            this.cabTextBox.Location = new System.Drawing.Point(11, 34);
+            this.cabTextBox.Name = "cabTextBox";
+            this.cabTextBox.Size = new System.Drawing.Size(200, 31);
+            this.cabTextBox.TabIndex = 4;
             // 
             // AirFilterOptionsForm
             // 
@@ -318,7 +306,6 @@
             this.Controls.Add(this.engMaxMilesLabel);
             this.Controls.Add(this.calLB);
             this.Controls.Add(this.cabAirFilterTBarLabel);
-            this.Controls.Add(this.resetBTTN);
             this.Controls.Add(this.exitBTTN);
             this.Controls.Add(this.cabAirFilter);
             this.Controls.Add(this.engAirFilter);
@@ -356,7 +343,6 @@
         private System.Windows.Forms.Label cabAirFilterLB;
         private System.Windows.Forms.TrackBar engAirFilterTB;
         private System.Windows.Forms.TrackBar cabAirFilterTB;
-        private System.Windows.Forms.Button resetBTTN;
         private System.Windows.Forms.Button exitBTTN;
         private System.Windows.Forms.Label generalMessageLB;
         private System.Windows.Forms.Label engMaxMilesLabel;
