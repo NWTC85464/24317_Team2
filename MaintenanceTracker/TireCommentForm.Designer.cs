@@ -33,6 +33,7 @@
             this.commentFormClearButton = new System.Windows.Forms.Button();
             this.saveCommentButton = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.notePadLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // returnButton
@@ -64,20 +65,27 @@
             resources.ApplyResources(this.richTextBox1, "richTextBox1");
             this.richTextBox1.Name = "richTextBox1";
             // 
+            // notePadLbl
+            // 
+            resources.ApplyResources(this.notePadLbl, "notePadLbl");
+            this.notePadLbl.Name = "notePadLbl";
+            // 
             // TireCommentForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ControlBox = false;
+            this.Controls.Add(this.notePadLbl);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.saveCommentButton);
             this.Controls.Add(this.commentFormClearButton);
             this.Controls.Add(this.returnButton);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "TireCommentForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Load += new System.EventHandler(this.TireCommentForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -87,5 +95,6 @@
         private System.Windows.Forms.Button commentFormClearButton;
         private System.Windows.Forms.Button saveCommentButton;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label notePadLbl;
     }
 }
