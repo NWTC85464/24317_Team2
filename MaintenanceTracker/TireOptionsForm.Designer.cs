@@ -127,7 +127,7 @@
             this.milageTrackBar.Size = new System.Drawing.Size(269, 40);
             this.milageTrackBar.SmallChange = 100;
             this.milageTrackBar.TabIndex = 4;
-            this.milageTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.milageTrackBar.TickFrequency = 1000;
             this.milageTrackBar.Value = 5000;
             this.milageTrackBar.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
@@ -195,14 +195,14 @@
             // percentLbl
             // 
             this.percentLbl.AutoSize = true;
-            this.percentLbl.BackColor = System.Drawing.SystemColors.Control;
+            this.percentLbl.BackColor = System.Drawing.Color.White;
             this.percentLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.percentLbl.Location = new System.Drawing.Point(57, 64);
+            this.percentLbl.Location = new System.Drawing.Point(63, 79);
             this.percentLbl.Name = "percentLbl";
             this.percentLbl.Size = new System.Drawing.Size(269, 25);
             this.percentLbl.TabIndex = 27;
             this.percentLbl.Text = "% Remaining on Tire Rotation";
-            this.percentLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.percentLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // notepad
             // 
@@ -269,7 +269,7 @@
             // 
             // setTireValuesgroupBox
             // 
-            this.setTireValuesgroupBox.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.setTireValuesgroupBox.BackColor = System.Drawing.SystemColors.ControlLight;
             this.setTireValuesgroupBox.Controls.Add(this.groupBox2);
             this.setTireValuesgroupBox.Controls.Add(this.groupBox1);
             this.setTireValuesgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -353,24 +353,22 @@
             // percentLbl2
             // 
             this.percentLbl2.AutoSize = true;
-            this.percentLbl2.BackColor = System.Drawing.SystemColors.Control;
+            this.percentLbl2.BackColor = System.Drawing.Color.White;
             this.percentLbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.percentLbl2.Location = new System.Drawing.Point(57, 176);
+            this.percentLbl2.Location = new System.Drawing.Point(102, 191);
             this.percentLbl2.Name = "percentLbl2";
-            this.percentLbl2.Size = new System.Drawing.Size(286, 25);
+            this.percentLbl2.Size = new System.Drawing.Size(174, 25);
             this.percentLbl2.TabIndex = 39;
-            this.percentLbl2.Text = "% Remaining on Tire Tread Life";
-            this.percentLbl2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.percentLbl2.Text = "% Till Tire Change";
+            this.percentLbl2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TireOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(412, 667);
+            this.ClientSize = new System.Drawing.Size(408, 668);
             this.ControlBox = false;
             this.Controls.Add(this.setTireValuesgroupBox);
             this.Controls.Add(this.percentLbl);
@@ -386,8 +384,8 @@
             this.Controls.Add(this.tireOptionsFormLBL);
             this.Controls.Add(this.progressBar1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "TireOptionsForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "TireOptionsForm";
             this.Load += new System.EventHandler(this.TireOptionsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.milageTrackBar)).EndInit();
