@@ -165,8 +165,10 @@
             this.btnDeleteRow.Size = new System.Drawing.Size(143, 35);
             this.btnDeleteRow.TabIndex = 13;
             this.btnDeleteRow.Text = "Delete Last Row";
+
             this.btnDeleteRow.UseVisualStyleBackColor = false;
             this.btnDeleteRow.Click += new System.EventHandler(this.btnDeleteRow_Click);
+
             // 
             // MPGOptionsForm
             // 
