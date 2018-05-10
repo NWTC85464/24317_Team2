@@ -20,7 +20,7 @@ namespace MaintenanceTracker
 
 
         //MPGOptionsForm Optionform = new MPGOptionsForm();
-        double startOdo;
+        public double startOdo = 0;
 
         private void enterBtn_Click(object sender, EventArgs e)
         {

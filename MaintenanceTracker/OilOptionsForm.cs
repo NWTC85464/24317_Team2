@@ -24,9 +24,7 @@ namespace MaintenanceTracker
         {
             InitializeComponent();
 
-
             //this.BackColor = System.Drawing.Color.Orange;
-
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -48,30 +46,30 @@ namespace MaintenanceTracker
             switch (car)
             {
                 case 1:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains1\oil\car1a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains1\oil\carNotesa.txt";
-                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car1a.txt";
+                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car1a.txt";
+                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes1a.txt";
+                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car1aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 2:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains1\oil\car2a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains1\oil\carNotes2a.txt";
-                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car2a.txt";
+                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car2a.txt";
+                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes2a.txt";
+                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car2aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 3:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains1\oil\car3a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains1\oil\carNotes3a.txt";
-                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car3a.txt";
+                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car3a.txt";
+                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes3a.txt";
+                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car3aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 4:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains1\oil\car4a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains1\oil\carNotes4a.txt";
-                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil  \car4a.txt";
+                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car4a.txt";
+                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes4a.txt";
+                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car4aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
@@ -442,7 +440,7 @@ namespace MaintenanceTracker
                     if (box == System.Windows.Forms.DialogResult.Yes)
                     {
                         Console.WriteLine("Saving incomplete data");
-                       // Save();
+                        Save();
                         this.Close();
                     }
                     else if (box == System.Windows.Forms.DialogResult.No)
@@ -582,6 +580,8 @@ namespace MaintenanceTracker
                         file.WriteLine(line);
                     }
 
+                   
+
                     file.Close();
 
 
@@ -656,8 +656,6 @@ namespace MaintenanceTracker
                 int TimeLeft = T - (int)Time ;
 
                 GYR.Value += (int)Time - TimeLeft;
-
-
 
             }
 

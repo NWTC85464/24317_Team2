@@ -179,7 +179,7 @@
             this.btnDeleteRow.TabIndex = 13;
             this.btnDeleteRow.Text = "Delete Last Row";
             this.btnDeleteRow.UseVisualStyleBackColor = true;
-            this.btnDeleteRow.Click += new System.EventHandler(this.btnDeleteRow_Click);
+            //this.btnDeleteRow.Click += new System.EventHandler(this.btnDeleteRow_Click);
             // 
             // MPGOptionsForm
             // 
