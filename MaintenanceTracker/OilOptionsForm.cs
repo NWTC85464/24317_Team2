@@ -9,13 +9,13 @@ namespace MaintenanceTracker
     public partial class OilOptionsForm : System.Windows.Forms.Form
     {
         //streamwriter
-        private string[] information = new string[5];
+        private string[] information = new string[6];
 
         private string path;
         private string storage;
         private string notePath;
         private string mpgFile;
-        private string ODreading;
+        private string ODreading ;
         MainFormClass MainClass = new MainFormClass();
 
     
@@ -24,9 +24,7 @@ namespace MaintenanceTracker
         {
             InitializeComponent();
 
-
             //this.BackColor = System.Drawing.Color.Orange;
-
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -48,30 +46,30 @@ namespace MaintenanceTracker
             switch (car)
             {
                 case 1:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car1a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\carNotesa.txt";
-                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car1a.txt";
+                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car1a.txt";
+                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes1a.txt";
+                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car1aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 2:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car2a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\carNotes2a.txt";
-                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car2a.txt";
+                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car2a.txt";
+                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes2a.txt";
+                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car2aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 3:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car3a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\carNotes3a.txt";
-                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car3a.txt";
+                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car3a.txt";
+                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes3a.txt";
+                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car3aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 4:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\car4a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\mains\oil\carNotes4a.txt";
-                    storage = @"C:.\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\back-ups\oil\car4a.txt";
+                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car4a.txt";
+                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes4a.txt";
+                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car4aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
@@ -138,7 +136,9 @@ namespace MaintenanceTracker
                     Console.WriteLine("There was no OD reading");
                 }
 
+                var date = information[3];
 
+               // 
 
               //  mpg.Close();
 
@@ -148,10 +148,18 @@ namespace MaintenanceTracker
                 oilBrand.Text = information[0];
                 oilUse.Text = information[1];
                 AmountTotal.Text = information[2];
+                //Amount.Value = int.Parse(information[2]);
+                Start.Value = DateTime.Parse(information[3]);
+
+                ODStart.Text = information[5];
+               // int ODST = int.Parse(information[5]);
 
                /////////////////// Amount.Enabled = false;
                 oilBrand.ReadOnly = true;
                 oilUse.ReadOnly = true;
+                ODStart.ReadOnly = true;
+                Start.Enabled = false;
+
                 Lock.Text = "Unlock";
 
             }
@@ -181,6 +189,7 @@ namespace MaintenanceTracker
 
 
 
+
         private void LockScoll(object sender, EventArgs e)
         {
             //lock or unlock slider
@@ -188,22 +197,44 @@ namespace MaintenanceTracker
             if (oilBrand.ReadOnly == false && oilUse.ReadOnly == false && Amount.Enabled == true)
             {
                 Amount.Enabled = false;
+                Start.Enabled = false;
                 oilBrand.ReadOnly = true;
                 oilUse.ReadOnly = true;
+                ODStart.ReadOnly = true;
+                ODStart.ReadOnly = true;
 
                 Lock.Text = "Unlock";
             }
             else
             {
                 Amount.Enabled = true;
+                Start.Enabled = true;
                 oilBrand.ReadOnly = false;
                 oilUse.ReadOnly = false;
+                ODStart.ReadOnly = true;
+                ODStart.ReadOnly = false;
 
                 Lock.Text = "Lock";
             }
 
         }
 
+
+        private void ODFirstReading(object sender, EventArgs e)
+        {
+
+            if (int.TryParse(ODStart.Text, out int num) == true)
+            {
+                information[4] = ODStart.Text;
+                Console.WriteLine(information[4]);
+            }
+            else
+            {
+                MessageBox.Show("this is not a number");
+                information[4] = null;
+            }
+
+        }
 
 
 
@@ -213,9 +244,6 @@ namespace MaintenanceTracker
             {
                 information[0] = oilBrand.Text;
                 Console.WriteLine(information[0]);
-
-
-
             }
             else
             {
@@ -246,8 +274,19 @@ namespace MaintenanceTracker
 
             //Console.WriteLine(information[2]);
 
-
         }
+
+
+        private void StartingDatePicker(object sender, EventArgs e)
+        {
+            Start.Format = DateTimePickerFormat.Custom;
+            Start.CustomFormat = "MM-dd-yyyy hh:mm:ss";
+            //  StartDate = Start.Value;
+
+            information[3] = Start.Value.ToString();
+            Console.WriteLine(information[3]);
+        }
+
 
         // ------------------------------------------------
         //
@@ -271,6 +310,10 @@ namespace MaintenanceTracker
                 this.Lock.Visible = false;
                 this.Exit.Visible = false;
                 this.Information.Visible = false;
+                this.ODStartingTxT.Visible = false;
+                this.ODStart.Visible = false;
+                this.StartingDateTxT.Visible = false;
+                this.Start.Visible = false;
 
                 this.Notes.Visible = true;
                 this.SaveNotes.Visible = true;
@@ -315,6 +358,10 @@ namespace MaintenanceTracker
                     this.Lock.Visible = true;
                     this.Exit.Visible = true;
                     this.Information.Visible = true;
+                    this.ODStartingTxT.Visible = true;
+                    this.ODStart.Visible = true;
+                    this.StartingDateTxT.Visible = true;
+                    this.Start.Visible = true;
 
                     this.Notes.Visible = false;
                     this.SaveNotes.Visible = false;
@@ -361,6 +408,7 @@ namespace MaintenanceTracker
             Console.WriteLine("Saved");
         }
 
+
         // ------------------------------------------------
         //
         //                     Exit Window
@@ -369,19 +417,8 @@ namespace MaintenanceTracker
 
         private void exit(object sender, EventArgs e)
         {
-
-            if (StartDate == compare && ChangeDate == compare)
-            {
-                Console.WriteLine("Saving Dates");
-
-               // StartDate = DateTime.Today;
-
-                ChangeDate = StartDate.AddMonths(3);
-
-                information[3] = StartDate.ToString();
-                information[4] = ChangeDate.ToString();
-
-            }
+           // information[4] = ChangeDate.ToString();
+            information[5] = ODStart.Text;
 
             //save information if not null
             int pos = Array.IndexOf(information, null);
@@ -403,7 +440,7 @@ namespace MaintenanceTracker
                     if (box == System.Windows.Forms.DialogResult.Yes)
                     {
                         Console.WriteLine("Saving incomplete data");
-                       // Save();
+                        Save();
                         this.Close();
                     }
                     else if (box == System.Windows.Forms.DialogResult.No)
@@ -416,6 +453,16 @@ namespace MaintenanceTracker
             }
             else
             {
+                Console.WriteLine("Saving Dates");
+
+                // StartDate = DateTime.Today;
+                StartDate = Start.Value;
+
+                ChangeDate = StartDate.AddMonths(3);
+
+                information[3] = StartDate.ToString();
+                information[4] = ChangeDate.ToString();
+
                 CheckIFHaveFiles();
 
             }
@@ -533,6 +580,8 @@ namespace MaintenanceTracker
                         file.WriteLine(line);
                     }
 
+                   
+
                     file.Close();
 
 
@@ -570,33 +619,43 @@ namespace MaintenanceTracker
 
         private Timer Progress = new Timer();
 
-     
+        private int total = 0;
+        private int ODS = 0;
+        private int ODR = 0;
+    
+
+
         private void ProgressBar()
         {
             GYR.Minimum = 0;
 
-  
+
                 StartDate = DateTime.Parse(information[3]);
                 ChangeDate = DateTime.Parse(information[4]);
+
+            if (ODreading != null)
+            {
+                ODS = int.Parse(ODStart.Text);
+                ODR = int.Parse(ODreading);
+                total = int.Parse(ODreading) - int.Parse(ODStart.Text);
+            }
 
 
             if (StartDate != compare)
             {
+                
 
-
-                double Time = (ChangeDate.Date - StartDate.Date).TotalDays;
-                GYR.Maximum = (int)Time;
+                double Time = ((ChangeDate.Date - StartDate.Date).TotalDays) + ODR;
+                GYR.Maximum = (int)Time + total;
                 //Console.WriteLine(Time);
 
-                int T = (int)(ChangeDate - Date).TotalDays;
+                int T = ((int)(ChangeDate - Date).TotalDays) + total;
 
                 Console.WriteLine((int)T);
 
-                int TimeLeft = (int)Time - T;
+                int TimeLeft = T - (int)Time ;
 
                 GYR.Value += (int)Time - TimeLeft;
-
-
 
             }
 
@@ -615,7 +674,7 @@ namespace MaintenanceTracker
                     GYRTXT.Text = "Time to Change Now " + GYR.Value.ToString() + "%";
                     GYR.ForeColor = System.Drawing.Color.Red;
                 }
-
+           
             
         }
 
