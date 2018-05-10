@@ -240,7 +240,7 @@
             this.wiperProgressBar.BackColor = System.Drawing.Color.White;
             this.wiperProgressBar.ForeColor = System.Drawing.Color.White;
             this.wiperProgressBar.Location = new System.Drawing.Point(23, 40);
-            this.wiperProgressBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.wiperProgressBar.Margin = new System.Windows.Forms.Padding(2);
             this.wiperProgressBar.Maximum = 500;
             this.wiperProgressBar.Name = "wiperProgressBar";
             this.wiperProgressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -334,7 +334,6 @@
             this.daysLeftLabel.Name = "daysLeftLabel";
             this.daysLeftLabel.Size = new System.Drawing.Size(229, 28);
             this.daysLeftLabel.TabIndex = 87;
-            this.daysLeftLabel.Text = "days left";
             this.daysLeftLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // WipersOptionForm
@@ -375,7 +374,7 @@
             this.Controls.Add(this.nextReplaceDateLabel);
             this.Controls.Add(this.installedDateTimePicker);
             this.Controls.Add(this.installedDateLabel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WipersOptionForm";
