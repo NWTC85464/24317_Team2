@@ -46,30 +46,30 @@ namespace MaintenanceTracker
             switch (car)
             {
                 case 1:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car1a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes1a.txt";
-                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car1aBACKUP.txt";
+                    path = @"..\..\Resources\oil\car1a.txt";
+                    notePath = @"..\..\Resources\oil\carNotes1a.txt";
+                    storage = @"..\..\Resources\oil\car1aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 2:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car2a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes2a.txt";
-                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car2aBACKUP.txt";
+                    path = @"..\..\Resources\oil\car2a.txt";
+                    notePath = @"..\..\Resources\oil\carNotes2a.txt";
+                    storage = @"..\..\Resources\oil\car2aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 3:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car3a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes3a.txt";
-                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car3aBACKUP.txt";
+                    path = @"..\..\Resources\oil\car3a.txt";
+                    notePath = @"..\..\Resources\oil\carNotes3a.txt";
+                    storage = @"..\..\Resources\oil\car3aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 4:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car4a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes4a.txt";
-                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car4aBACKUP.txt";
+                    path = @"..\..\Resources\oil\car4a.txt";
+                    notePath = @"..\..\Resources\oil\carNotes4a.txt";
+                    storage = @"..\..\Resources\oil\car4aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
@@ -440,7 +440,7 @@ namespace MaintenanceTracker
                     if (box == System.Windows.Forms.DialogResult.Yes)
                     {
                         Console.WriteLine("Saving incomplete data");
-                        Save();
+                        CheckIFHaveFiles();
                         this.Close();
                     }
                     else if (box == System.Windows.Forms.DialogResult.No)
@@ -474,27 +474,42 @@ namespace MaintenanceTracker
 
         private void CheckIFHaveFiles()
         {
-            if (!File.Exists(storage) && !File.Exists(path))
+
+            if (Directory.Exists(@"..\..\Resources\oil"))
             {
-                Console.WriteLine("No Oil Files Created Yet for this Car");
-                Console.WriteLine("Now Preparing to create the files");
-                //make back-up
-                Console.WriteLine("Back-up file created");
-                File.Create(storage);
+                if (!File.Exists(storage) && !File.Exists(path))
+                {
+                    Console.WriteLine("No Oil Files Created Yet for this Car");
+                    Console.WriteLine("Now Preparing to create the files");
+                    //make back-up
+                    Console.WriteLine("Back-up file created");
+                    var back=File.Create(storage);
+                    back.Close();
 
-                //make path
-                Console.WriteLine("Main file created");
-                File.Create(path);
+                    //make path
+                    Console.WriteLine("Main file created");
+                    var car=File.Create(path);
+                    car.Close();
 
-                Console.WriteLine("Files completed");
-                Console.WriteLine("Back-up Stored at " + storage);
-                Console.WriteLine("Main Stored at " + path);
+                    Console.WriteLine("Files completed");
+                    Console.WriteLine("Back-up Stored at " + storage);
+                    Console.WriteLine("Main Stored at " + path);
 
-                BackUp();
+                    BackUp();
+                }
+                else
+                {
+                    BackUp();
+                }
             }
             else
             {
-                BackUp();
+                DirectoryInfo folderoil = Directory.CreateDirectory(@"..\..\Resources\oil");
+                //states when path was created for new folder
+                Console.WriteLine("The directory was created successfully at {0}.",
+                Directory.GetCreationTime(@"..\..\Resources\oil"));
+
+                CheckIFHaveFiles();
             }
         }
 
