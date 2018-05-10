@@ -35,7 +35,10 @@ namespace MaintenanceTracker
         double driver;                  // Wiper size - driver
         double passager;                // Wiper size - passager
         double rear;                    // Wiper size - rear
-        string wiperDataFile;
+        string wiperDataFile;           // Wiper data file
+        DateTime thisDay;               // Date picker date
+        DateTime today;                 // Today's date
+        DateTime daysAdd;               // Date for days added to the installed date
 
         public object HttpContext { get; private set; }
 
@@ -133,7 +136,7 @@ namespace MaintenanceTracker
         private void displayWiperData(int v)
         {
             // Variable to hold file
-            wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + v + ".xml";
+            wiperDataFile = @"..\..\Resources\WiperInfo\WiperData" + v + ".xml";
 
             // If file exists or not
             MessageBox.Show(File.Exists(wiperDataFile) ? "There is a file for this vehicle." : "There isn't a file for this vehicle. Please enter new data.");
@@ -147,8 +150,7 @@ namespace MaintenanceTracker
                 // Call and pass the xml file to be displayed
                 //displayWiperData(wiperDataFile);                
 
-                progressBar(wiperDataFile); // Call progress bar method to be displayed
-                
+                progressBar(wiperDataFile); // Call progress bar method to be displayed                
 
                 // Turn off fields that used to enter data
                 installedDateTimePicker.Visible = false;
@@ -202,14 +204,14 @@ namespace MaintenanceTracker
         // Select the date wipers are installed
         public void installedDateTimePicker_ValueChanged_1(object sender, EventArgs e)
         {
-            DateTime thisDay = installedDateTimePicker.Value.Date;  // Date selected - start date
+            thisDay = installedDateTimePicker.Value.Date;  // Date selected - start date
 
-            DateTime today = DateTime.Now;  // Today's date
+            today = DateTime.Now;  // Today's date
 
             installedDateParse = thisDay.ToString("D");     // To be passed to be stored
 
-            //***Use 6 days for example***
-            DateTime daysAdd = thisDay.AddDays(6);         // Add 180 days to the installed date                                                       
+            //***Use 10 days for example***
+            daysAdd = thisDay.AddDays(10);         // Add 180 days to the installed date                                                       
             
             if (thisDay > today)
             {
@@ -378,7 +380,7 @@ namespace MaintenanceTracker
         private void writeToXML(int v)
         {
             // Variable to hold wiper data file
-            string wdf = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + v + ".xml";
+            string wdf = @"..\..\Resources\WiperInfo\WiperData" + v + ".xml";
 
             wiper[0] = new Wiper(vehicleNum, installedDateParse, nextInstallDateParse, driver, passager, rear, brandTextBox.Text, notesTextBox.Text);
             
@@ -411,25 +413,30 @@ namespace MaintenanceTracker
 
         // Save the info entered
         private void saveButton_Click_1(object sender, EventArgs e)
-        {            
-            if (String.IsNullOrEmpty(nextReplaceDateDisplayLabel.Text))
+        {  
+            if(thisDay > today)
+            {
+                MessageBox.Show("Please select today's date or a date older.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                installedDateTimePicker.Focus();
+            }
+            else if (String.IsNullOrEmpty(nextReplaceDateDisplayLabel.Text))
             {
                 MessageBox.Show("Please select date wiper was installed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 installedDateTimePicker.Focus();
             }
             else if (String.IsNullOrEmpty(driverSideTextBox.Text))
             {                               
-                MessageBox.Show("Please enter driver side wiper size.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter driver side wiper size. Enter 0 if no wiper.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 driverSideTextBox.Focus();
             }           
             else if (String.IsNullOrEmpty(passagerSideTextBox.Text))
             {
-                MessageBox.Show("Please enter passager side wiper size.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter passager side wiper size. Enter 0 if no wiper.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 passagerSideTextBox.Focus();
             }            
             else if (String.IsNullOrEmpty(rearTextBox.Text))
             {
-                MessageBox.Show("Please enter rear wiper size. Enter 0 if no rear wiper.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter rear wiper size. Enter 0 if no wiper.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 rearTextBox.Focus();
             }           
             else if (string.IsNullOrWhiteSpace(brandTextBox.Text))
@@ -444,7 +451,7 @@ namespace MaintenanceTracker
                 driverSideTextBox.Focus();
                 return;                
             }
-            else if (driver <= 0 || driver > 40)
+            else if (driver < 0 || driver > 40)
             {
                 MessageBox.Show("Please enter wiper size between: 0-40");
                 driverSideTextBox.Focus();
@@ -456,7 +463,7 @@ namespace MaintenanceTracker
                 passagerSideTextBox.Focus();
                 return;
             }
-            else if (passager <= 0 || passager > 40)
+            else if (passager < 0 || passager > 40)
             {
                 MessageBox.Show("Please enter wiper size between: 0-40");
                 passagerSideTextBox.Focus();
@@ -468,7 +475,7 @@ namespace MaintenanceTracker
                 rearTextBox.Focus();
                 return;
             }
-            else if (rear <= 0 || rear > 40)
+            else if (rear < 0 || rear > 40)
             {
                 MessageBox.Show("Please enter wiper size between: 0-40");
                 rearTextBox.Focus();
@@ -527,7 +534,7 @@ namespace MaintenanceTracker
             }
 
             // Set the file that just saved
-            wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
+            wiperDataFile = @"..\..\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
 
             progressBar(wiperDataFile); // Passing the saved file to be displayed the number of days left
                                         // before the next installation
@@ -561,6 +568,11 @@ namespace MaintenanceTracker
             double tDays = totalDays.TotalDays;
            // double daysToGo = elapsed.TotalDays;
             double daysToGo = daysLeft.TotalDays;
+
+            // Parse into int
+            int total = Convert.ToInt32(tDays);
+
+            int dToGo = Convert.ToInt32(daysToGo);
 
             //************ disable progress bar - can't have min value of less than 0 with date picked
             /*
@@ -599,27 +611,27 @@ namespace MaintenanceTracker
 
             //************ disable progress bar - can't have min value of less than 0 with date picked
 
-            double myNegInt = Math.Abs(daysToGo);   // Convert negative to positive
+            double myNegInt = Math.Abs(dToGo);   // Convert negative to positive
 
             daysLeftLabel.Text = myNegInt.ToString("0") + " days left";
 
             //wiperProgressBar.Value = wiperProgressBar.Maximum;
-            if (daysToGo <= tDays && daysToGo >= 5)
+            if ( dToGo >= 8)
             {
                 daysLeftLabel.BackColor = System.Drawing.Color.Green;
                 //wiperProgressBar.ForeColor = System.Drawing.Color.Green;
             }
-            else if (daysToGo >= 3 && daysToGo <= 4)
+            else if (dToGo <= 7 && dToGo >= 5)
             {
                 daysLeftLabel.BackColor = System.Drawing.Color.Yellow;
                 //wiperProgressBar.ForeColor = System.Drawing.Color.Yellow;
             }
-            else if (daysToGo >= 0 && daysToGo <= 2)
+            else if (dToGo <= 4 && dToGo >= 0)
             {
                 daysLeftLabel.BackColor = System.Drawing.Color.Red;
                 //wiperProgressBar.ForeColor = System.Drawing.Color.Red;
             }
-            else if (daysToGo < 0)
+            else if (dToGo < 0)
             {
                 daysLeftLabel.BackColor = System.Drawing.Color.Red;
                 //wiperProgressBar.ForeColor = System.Drawing.Color.Red;
@@ -641,7 +653,7 @@ namespace MaintenanceTracker
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            wiperDataFile = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
+            wiperDataFile = @"..\..\Resources\WiperInfo\WiperData" + vehicleNum + ".xml";
 
             // Turn on fields that used to enter data
             installedDateTimePicker.Visible = true;
