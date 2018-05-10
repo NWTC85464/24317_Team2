@@ -44,14 +44,14 @@
     <Cab_DateFilterChangedLast />
   </Vehicle_Details>
   <Vehicle_Details Vehicle_Number="4">
-    <Make />
-    <Model />
-    <Current_ODO>0</Current_ODO>
+    <Make>Dodge</Make>
+    <Model>Challenger</Model>
+    <Current_ODO>123</Current_ODO>
     <Eng_Stored_ODO>0</Eng_Stored_ODO>
     <Max_Eng_ODO>30000</Max_Eng_ODO>
-    <Eng_DateFilterChangedLast />
+    <Eng_DateFilterChangedLast>0</Eng_DateFilterChangedLast>
     <Cab_Stored_ODO>0</Cab_Stored_ODO>
     <Max_Cab_ODO>30000</Max_Cab_ODO>
-    <Cab_DateFilterChangedLast />
+    <Cab_DateFilterChangedLast>0</Cab_DateFilterChangedLast>
   </Vehicle_Details>
 </Vehicle>
