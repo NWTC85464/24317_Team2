@@ -60,16 +60,16 @@ namespace MaintenanceTracker
         bool fileDataExsits = false;
 
         //Create path to save vehicle data to text files.
-        string path1 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v1Info.txt";
-        string path2 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v2Info.txt";
-        string path3 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v3Info.txt";
-        string path4 = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v4Info.txt";
+        string path1 = @"..\..\Resources\TiresInfo\v1Info.txt";
+        string path2 = @"..\..\Resources\TiresInfo\v2Info.txt";
+        string path3 = @"..\..\Resources\TiresInfo\v3Info.txt";
+        string path4 = @"..\..\Resources\TiresInfo\v4Info.txt";
 
         //Paths to miles driven saved from MPG form.
-        string path1a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v1Miles.txt";
-        string path2a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v2Miles.txt";
-        string path3a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v3Miles.txt";
-        string path4a = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\v4Miles.txt";
+        string path1a = @"..\..\Resources\TiresInfo\v1Miles.txt";
+        string path2a = @"..\..\Resources\TiresInfo\v2Miles.txt";
+        string path3a = @"..\..\Resources\TiresInfo\v3Miles.txt";
+        string path4a = @"..\..\Resources\TiresInfo\v4Miles.txt";
 
 
         public TireOptionsForm(int vehicalNum, int MilesDriven)//, int odometerReading)
