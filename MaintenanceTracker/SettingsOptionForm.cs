@@ -34,10 +34,10 @@ namespace MaintenanceTracker
         string path4a = @"..\..\Resources\TiresInfo\v4Miles.txt";
 
         //Path to miles driven files.
-        string path1b = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\Veh1Com.txt";
-        string path2b = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\Veh2Com.txt";
-        string path3b = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\Veh3Com.txt";
-        string path4b = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\Veh4Com.txt";
+        string path1b = @"..\..\Resources\TiresInfo\Veh1Com.txt";
+        string path2b = @"..\..\Resources\TiresInfo\Veh2Com.txt";
+        string path3b = @"..\..\Resources\TiresInfo\Veh3Com.txt";
+        string path4b = @"..\..\Resources\TiresInfo\Veh4Com.txt";
 
         //Mpg file path
         string mpg1 = @"mpg/mpg1.txt";
@@ -47,11 +47,12 @@ namespace MaintenanceTracker
 
 
         private void button1_Click(object sender, EventArgs e)
-        {      
+        {
+            DialogResult dialogResult;
             switch (carNum.SelectedIndex+1)
-            {
+            {                
                 case 1:
-                    DialogResult dialogResult = MessageBox.Show("Sure you want to delete?", "Delete saved files", MessageBoxButtons.YesNo);
+                    dialogResult = MessageBox.Show("Sure you want to delete?", "Delete saved files", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         //Tire 1 text file.
@@ -70,6 +71,69 @@ namespace MaintenanceTracker
                     {
                         //do nothing.
                     }          
+                    break;
+                case 2:
+                    dialogResult = MessageBox.Show("Sure you want to delete?", "Delete saved files", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        //Tire 1 text file.
+                        File.Delete(path2);
+                        File.Delete(path2a);
+                        File.Delete(path2b);
+
+                        //Mpg 1 text file.
+                        File.Delete(mpg2);
+
+                        //Display message all files have been deleted.
+                        MessageBox.Show("All files have been destroyed!!\n" +
+                            "Have a nice day :)");
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        //do nothing.
+                    }
+                    break;
+                case 3:
+                    dialogResult = MessageBox.Show("Sure you want to delete?", "Delete saved files", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        //Tire 1 text file.
+                        File.Delete(path3);
+                        File.Delete(path3a);
+                        File.Delete(path3b);
+
+                        //Mpg 1 text file.
+                        File.Delete(mpg3);
+
+                        //Display message all files have been deleted.
+                        MessageBox.Show("All files have been destroyed!!\n" +
+                            "Have a nice day :)");
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        //do nothing.
+                    }
+                    break;
+                case 4:
+                    dialogResult = MessageBox.Show("Sure you want to delete?", "Delete saved files", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        //Tire 1 text file.
+                        File.Delete(path4);
+                        File.Delete(path4a);
+                        File.Delete(path4b);
+
+                        //Mpg 1 text file.
+                        File.Delete(mpg4);
+
+                        //Display message all files have been deleted.
+                        MessageBox.Show("All files have been destroyed!!\n" +
+                            "Have a nice day :)");
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        //do nothing.
+                    }
                     break;
                 default:
                     MessageBox.Show("Select a vehicle first");

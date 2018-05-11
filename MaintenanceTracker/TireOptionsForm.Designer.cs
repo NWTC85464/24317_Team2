@@ -42,7 +42,6 @@
             this.percentLbl = new System.Windows.Forms.Label();
             this.notepad = new System.Windows.Forms.Button();
             this.setBtn = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tireMilLbl = new System.Windows.Forms.Label();
             this.installDateTextBox = new System.Windows.Forms.MaskedTextBox();
             this.setTireValuesgroupBox = new System.Windows.Forms.GroupBox();
@@ -52,6 +51,7 @@
             this.resetRotationBtn = new System.Windows.Forms.Button();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.percentLbl2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.milageTrackBar)).BeginInit();
             this.setTireValuesgroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -231,23 +231,6 @@
             this.setBtn.UseVisualStyleBackColor = false;
             this.setBtn.Click += new System.EventHandler(this.setBtn_Click);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "30,000",
-            "40,000",
-            "50,000",
-            "60,000",
-            "70,000",
-            "80,000",
-            "90,000",
-            "100,000"});
-            this.comboBox1.Location = new System.Drawing.Point(147, 63);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(102, 28);
-            this.comboBox1.TabIndex = 30;
-            // 
             // tireMilLbl
             // 
             this.tireMilLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -283,9 +266,9 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.resetTireTreadLife);
             this.groupBox2.Controls.Add(this.installDateTextBox);
-            this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.installLbl);
             this.groupBox2.Controls.Add(this.tireMilLbl);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -362,6 +345,14 @@
             this.percentLbl2.Text = "% Till Tire Change";
             this.percentLbl2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(147, 63);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(102, 28);
+            this.comboBox1.TabIndex = 42;
+            // 
             // TireOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -414,7 +405,6 @@
         private System.Windows.Forms.Label percentLbl;
         private System.Windows.Forms.Button notepad;
         private System.Windows.Forms.Button setBtn;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label tireMilLbl;
         private System.Windows.Forms.MaskedTextBox installDateTextBox;
         private System.Windows.Forms.GroupBox setTireValuesgroupBox;
@@ -424,5 +414,6 @@
         private System.Windows.Forms.Label percentLbl2;
         private System.Windows.Forms.Button resetRotationBtn;
         private System.Windows.Forms.Button resetTireTreadLife;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

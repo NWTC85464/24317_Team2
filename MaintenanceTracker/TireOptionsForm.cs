@@ -57,6 +57,10 @@ namespace MaintenanceTracker
         {
             InitializeComponent();
 
+            //Create folder if not exsist.
+            CreateIfFolderMissing();
+            
+
             //Create files if not existing.
             filesCreated = createTextFiles(vehicalNum, path1, path2, path3, path4, filesCreated);
 
@@ -622,6 +626,13 @@ namespace MaintenanceTracker
             return miles;
         }
 
+        private void CreateIfFolderMissing()
+        {
+            bool tInfo = Directory.Exists(@"..\..\Resources\TiresInfo");
+            if (!tInfo)
+                Directory.CreateDirectory(@"..\..\Resources\TiresInfo");
+        }
+        
         private bool createTextFiles(int vn, string p1, string p2, string p3, string p4, bool cTf)
         {
             switch (vn)

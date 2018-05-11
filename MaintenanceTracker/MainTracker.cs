@@ -48,6 +48,7 @@ namespace MaintenanceTracker
         {
             double md = mainFormClass.MilesDriven;
             int mmdd = Convert.ToInt32(md);
+
             //Variable.
             int vn; //To hold vehical number.
 
@@ -66,15 +67,7 @@ namespace MaintenanceTracker
              {
                  //Show the form.              
                  tireOptionsForm.ShowDialog();
-             }
-            
-            /*
-            //Test code only.........
-            int vn;
-            vn = 1;
-            TireOptionsForm tireOptionsForm = new TireOptionsForm(vn, milesDriven, odometerReading);
-            tireOptionsForm.ShowDialog();
-           */ 
+             }            
         }
 
         private void wipersButton_Click(object sender, EventArgs e)
