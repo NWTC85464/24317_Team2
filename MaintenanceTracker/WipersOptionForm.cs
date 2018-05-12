@@ -46,6 +46,9 @@ namespace MaintenanceTracker
         {
             InitializeComponent();
 
+            //Create folder if missing.
+            CreateIfFolderMissing();
+
             //Set Vehicle number from passed in value.
             this.vehicleNum = vNum;
            
@@ -375,7 +378,12 @@ namespace MaintenanceTracker
             brandTextBox.Enabled = true;
             notesTextBox.Enabled = true;
         }
-
+        private void CreateIfFolderMissing()
+        {
+            bool tInfo = Directory.Exists(@"..\..\Resources\WiperInfo");
+            if (!tInfo)
+                Directory.CreateDirectory(@"..\..\Resources\WiperInfo");
+        }
         // Write the information to XML file
         private void writeToXML(int v)
         {
