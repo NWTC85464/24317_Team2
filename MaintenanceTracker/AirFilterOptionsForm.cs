@@ -3,6 +3,7 @@ using MaintenanceTracker.Properties;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
@@ -18,14 +19,16 @@ namespace MaintenanceTracker
 
         //Variables
         //Int
-        private int _CurrentODOReading = 10000,
-            _EngStoredODO = 0, 
-            _CabStoredODO = 0,
-            _MAX = 30000,
+        private int _CurrentODOReading = 0,
+            _EngStoredODO = 0,
+            _EngODODiff = 0,
             _EngineMAX = 30000,
-            _CabinMAX = 30000,
             _EgnineCount = 0,
+            _CabStoredODO = 0,
+            _CabODODiff = 0,
+            _CabinMAX = 30000,
             _CabinCount = 0,
+            _MAX = 30000,
             _OneFourth = 0,
             _OneHalf = 0,
             _ThreeFourth = 0,
@@ -40,11 +43,16 @@ namespace MaintenanceTracker
             _VehicleModel = null,
             _FilePath = @"..\..\Resources\AirFilterData\",
             _FileName = "AirFilterData",
-            _FileExtensionType = ".XML";
+            _FileExtensionType = ".XML",
+            _EngStoredDate = null,
+            _CabStoredDate = null;
 
         public AirFilterOptionsForm()
         {
             InitializeComponent();
+
+            //Create folder if not exsist.
+            CreateIfFolderMissing();
 
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -91,6 +99,9 @@ namespace MaintenanceTracker
                     break;
             }
 
+            //Pull the current ODO value
+            ODOReadings(_VehicleNumber, out _CurrentODOReading);
+
             //Create XML
             CreateXMLFile(_Vehicle, _FilePath, _FileName, _FileExtensionType, 
                 _VehicleNumber, _VehicleMake, _VehicleModel, _CurrentODOReading,
@@ -118,42 +129,57 @@ namespace MaintenanceTracker
                         if (_SubNode.Name == "Current_ODO") { _CurrentODOReading = Int32.Parse(_SubNode.InnerText); }
                         if (_SubNode.Name == "Cab_Stored_ODO" && _SubNode.InnerText != "") { _CabStoredODO = Int32.Parse(_SubNode.InnerText); }
                         if (_SubNode.Name == "Max_Cab_ODO" && _SubNode.InnerText != "") { _CabinMAX  = Int32.Parse(_SubNode.InnerText); }
-                        //if (_SubNode.Name == "Cab_DateFilterChangedLast") { _EngineMAX = Int32.Parse(_SubNode.InnerText); }
+                        if (_SubNode.Name == "Cab_DateFilterChangedLast") { _CabStoredDate = _SubNode.InnerText; }
                         if (_SubNode.Name == "Eng_Stored_ODO" && _SubNode.InnerText != "") { _EngStoredODO = Int32.Parse(_SubNode.InnerText); }
                         if (_SubNode.Name == "Max_Eng_ODO" && _SubNode.InnerText != "") { _EngineMAX = Int32.Parse(_SubNode.InnerText); }
-                        //if (_SubNode.Name == "Eng_DateFilterChangedLast") { _EngineMAX = Int32.Parse(_SubNode.InnerText); }
+                        if (_SubNode.Name == "Eng_DateFilterChangedLast") { _EngStoredDate = _SubNode.InnerText; }
                     }
                 }
             }
             
             //OnLoad Display
             this.BackColor = _PrimaryColor;
+            generalMessagePanel.BackColor = _SecondaryColor;
+            engAirFilterPanel.BackColor = _SecondaryColor;
+            cabAirFilterPanel.BackColor = _SecondaryColor;
+            
+            //ODO Diff
+            _EngODODiff = _CurrentODOReading - _EngStoredODO;
+            _CabODODiff = _CurrentODOReading - _CabStoredODO;
+
+            //Date
+            _EngStoredDate = engDateTimePicker.Value.ToString();
+            _CabStoredDate = cabDateTimePicker.Value.ToString();
 
             //OnLoad Methods
-            EngFilterStatusCondition(_CurrentODOReading);
-            CabFilterStatusCondition(_CurrentODOReading);
+            EngFilterStatusCondition(_EngODODiff);
+            CabFilterStatusCondition(_CabODODiff);
 
             //Save the changes
             _AirFilterData.Save(_FilePath + _FileName + _FileExtensionType);
 
             //General Message Label
             generalMessageLB.Font = new Font(generalMessageLB.Font.FontFamily, 9);
-            generalMessageLB.Text = "The engine and cabin air filters in your car are \n" +
-                "recommended to be replaced between 15,000 \n" +
-                "to 30,000 miles or once a year.";
+            generalMessageLB.Text = "The engine and cabin air filters in a veicle \n" +
+                "are recommended to be replaced between \n" +
+                "15,000 to 30,000 miles or once a year.";
 
             //Engine & Cabin Air Filter Text
             engAirFilterLB.Font = new Font(engAirFilterLB.Font.FontFamily, 9);
             engAirFilterLB.Text = "Miles Driven: " + "\n" +
-                        string.Format("{0:n0}", _CurrentODOReading) + "\n" +
+                        string.Format("{0:n0}", _EngODODiff) + "\n" +
                     "Remaining Miles: " + "\n" +
-                        string.Format("{0:n0}", (_EngineMAX - _CurrentODOReading));
+                        string.Format("{0:n0}", (_EngineMAX - _EngODODiff)) + "\n" +
+                    "Last Replacement:\n" +
+                        _EngStoredDate;
 
             cabAirFilterLB.Font = new Font(cabAirFilterLB.Font.FontFamily, 9);
             cabAirFilterLB.Text = "Miles Driven: " + "\n" +
-                        string.Format("{0:n0}", _CurrentODOReading) + "\n" +
+                        string.Format("{0:n0}", _CabODODiff) + "\n" +
                     "Remaining Miles: " + "\n" +
-                        string.Format("{0:n0}", (_CabinMAX - _CurrentODOReading));
+                        string.Format("{0:n0}", (_CabinMAX - _CabODODiff)) + "\n" +
+                    "Last Replacement:\n" +
+                        _CabStoredDate;
 
             //Track Bars Visibility
             engAirFilterTB.Visible = false;
@@ -169,11 +195,23 @@ namespace MaintenanceTracker
             engFilterChangedBTTN.Visible = false;
             cabFilterChangedBTTN.Visible = false;
 
-            //Reset & Exit Buttons
-            resetBTTN.BackColor = _SecondaryColor;
+            //TextBox Visibility
+            engTextBox.Visible = false;
+            cabTextBox.Visible = false;
+
+            //DateTimePicker Visibility
+            engDateTimePicker.Visible = false;
+            cabDateTimePicker.Visible = false;
+
+            //TextBox Values
+            engTextBox.Text = _EngStoredODO.ToString();
+            cabTextBox.Text = _CabStoredODO.ToString();
+
+            //Exit Buttons
             exitBTTN.BackColor = _SecondaryColor;
         }
 
+        //Engine reset value button
         private void EngFilterChangedBTTN_Click(object sender, EventArgs e)
         {
             //Load the XML file
@@ -187,11 +225,11 @@ namespace MaintenanceTracker
             {
                 if (_Node.Attributes["Vehicle_Number"].Value == _VehicleNumber.ToString())
                 {
-                   foreach (XmlNode _SubNode in _Node)
+                    foreach (XmlNode _SubNode in _Node)
                     {
                         //Update the field values
-                        if (_SubNode.Name == "Make") { _SubNode.InnerText = _VehicleMake; }
-                        if (_SubNode.Name == "Model") { _SubNode.InnerText = _VehicleMake; }
+                        if (_SubNode.Name == "Eng_Stored_ODO") { _SubNode.InnerText = _CurrentODOReading.ToString(); }
+                        if (_SubNode.Name == "Eng_DateFilterChangedLast") { _EngStoredDate = _SubNode.InnerText; }
                     }
                 }
             }
@@ -199,14 +237,44 @@ namespace MaintenanceTracker
             //Save the changes
             _AirFilterData.Save(_FilePath + _FileName + _FileExtensionType);
 
-            //Update Base Date
             //Update Base ODO
+            engTextBox.Text = _EngStoredODO.ToString();
+
+            //Update Base Date
+            engDateTimePicker.Value = DateTime.Parse(_EngStoredDate.ToString());
         }
 
+        //Cabine reset value button
         private void CabFilterChangedBTTN_Click(object sender, EventArgs e)
         {
-            //Update Base Date
+            //Load the XML file
+            XmlDocument _AirFilterData = new XmlDocument();
+            _AirFilterData.Load(_FilePath + _FileName + _FileExtensionType);
+
+            XmlElement root = _AirFilterData.DocumentElement;
+            XmlNodeList _Nodes = root.SelectNodes("Vehicle_Details");
+
+            foreach (XmlNode _Node in _Nodes)
+            {
+                if (_Node.Attributes["Vehicle_Number"].Value == _VehicleNumber.ToString())
+                {
+                    foreach (XmlNode _SubNode in _Node)
+                    {
+                        //Update the field values
+                        if (_SubNode.Name == "Cab_Stored_ODO") { _SubNode.InnerText = _CurrentODOReading.ToString(); }
+                        if (_SubNode.Name == "Cab_DateFilterChangedLast") { _CabStoredDate = _SubNode.InnerText; }
+                    }
+                }
+            }
+
+            //Save the changes
+            _AirFilterData.Save(_FilePath + _FileName + _FileExtensionType);
+            
             //Update Base ODO
+            cabTextBox.Text = _CabStoredODO.ToString();
+
+            //Update Base Date
+            cabDateTimePicker.Value = DateTime.Parse(_CabStoredDate.ToString());
         }
 
         //Engine's Filter Condition
@@ -267,11 +335,17 @@ namespace MaintenanceTracker
             }
         }
 
+        //Engine's Open, Close, for the settings
         private void EngAirFilter_Click(object sender, EventArgs e)
         {
             if (_EgnineCount == 0)
             {
-                engAirFilterGroupBox.Visible = false;
+                engAirFilterLB.Text = "ODO @ Rep: \n\n\n" + 
+                    "Date Stored:";
+                engTextBox.Visible = true;
+                engTextBox.Text = _EngStoredODO.ToString();
+                engDateTimePicker.Visible = true;
+                engDateTimePicker.Value.ToShortDateString();
 
                 engAirFilter.Text = "";
                 engAirFilter.BackColor = _SecondaryColor;
@@ -282,43 +356,113 @@ namespace MaintenanceTracker
                 engMaxMilesLabel.Visible = true;
                 engFilterChangedBTTN.Visible = true;
                 engAirFilterTB.Scroll += new EventHandler(EngAirFilterSB_Scroll);
-                engAirFilterTB.Minimum = _CurrentODOReading;
+                engAirFilterTB.Minimum = _EngODODiff;
                 engAirFilterTB.Maximum = _MAX;
                 engAirFilterTB.TickFrequency = 5000;
                 engAirFilterTB.LargeChange = 10000;
                 engAirFilterTB.SmallChange = 5000;
                 engAirFilterTB.Value = _EngineMAX;
                 engAirFilterTBarLabel.Text = _EngineMAX.ToString();
+
                 _EgnineCount++;
             }
             else if (_EgnineCount == 1)
             {
-                engAirFilterGroupBox.Visible = true;
+                //Validate if the inpute value in the text field is correct.
+                if (engTextBox.Text != _EngStoredODO.ToString())
+                {
+                    DialogResult dialogResult = MessageBox.Show("Are you wanting to change your historical ODO value?", "Are you sure?", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes && int.TryParse(engTextBox.Text, out int intCheck))
+                    {
+                        if ((_CurrentODOReading - int.Parse(engTextBox.Text)) < 0)
+                        {
+                            MessageBox.Show("Your value must be less than or equal to your current ODO.");
+                        }
+                        else
+                        {
+                            _EngStoredODO = int.Parse(engTextBox.Text);
+                        }
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        engTextBox.Text = _EngStoredODO.ToString();
+                    }
+                    else
+                    {
+                        if (int.TryParse(engTextBox.Text, out int intC))
+                        {
+                            engTextBox.Text = _EngStoredODO.ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Value must be an integer values, 0-9. You inserted: " + engTextBox.Text);
+                        }
+                    }
+                }
+
+                //Date
+                _EngStoredDate = engDateTimePicker.Value.ToString();
+
+                //Engine ODO Diff
+                _EngODODiff = _CurrentODOReading - _EngStoredODO;
 
                 engAirFilter.Text = "Engine Air Filter Settings";
-                EngFilterStatusCondition(_CurrentODOReading);
-                engAirFilter.Image = null;
+                EngFilterStatusCondition(_EngODODiff);
 
                 engAirFilterLB.Text = "Miles Driven: " + "\n" + 
-                        string.Format("{0:n0}", _CurrentODOReading) + "\n" +
+                        string.Format("{0:n0}", _EngODODiff) + "\n" +
                     "Remaining Miles: " + "\n" + 
-                        string.Format("{0:n0}", (_EngineMAX- _CurrentODOReading));
-                    //string.Format("{0:n0}", mls) + "/" + string.Format("{0:n0}", eMX);
+                        string.Format("{0:n0}", (_EngineMAX - _EngODODiff)) + "\n" +
+                    "Last Replacement:\n" +
+                        _EngStoredDate;
+
+                engTextBox.Visible = false;
+                engDateTimePicker.Visible = false;
+                engAirFilter.Image = null;
 
                 //Hide the track bar and label
                 engAirFilterTB.Visible = false;
                 engAirFilterTBarLabel.Visible = false;
                 engMaxMilesLabel.Visible = false;
                 engFilterChangedBTTN.Visible = false;
+
+                //Load the XML file
+                XmlDocument _AirFilterData = new XmlDocument();
+                _AirFilterData.Load(_FilePath + _FileName + _FileExtensionType);
+
+                XmlElement root = _AirFilterData.DocumentElement;
+                XmlNodeList _Nodes = root.SelectNodes("Vehicle_Details");
+
+                foreach (XmlNode _Node in _Nodes)
+                {
+                    if (_Node.Attributes["Vehicle_Number"].Value == _VehicleNumber.ToString())
+                    {
+                        foreach (XmlNode _SubNode in _Node)
+                        {
+                            //Update the field values
+                            if (_SubNode.Name == "Eng_Stored_ODO") { _SubNode.InnerText = _EngStoredODO.ToString(); }
+                        }
+                    }
+                }
+
+                //Save the changes
+                _AirFilterData.Save(_FilePath + _FileName + _FileExtensionType);
+
                 _EgnineCount--;
             }
         }
 
+        //Cabin's Open, Close, for the settings
         private void CabAirFilter_Click(object sender, EventArgs e)
         {
             if (_CabinCount == 0)
             {
-                cabAirFilterGroupBox.Visible = false;
+                cabAirFilterLB.Text = "ODO @ Rep: \n\n\n" +
+                    "Date Stored:";
+                cabTextBox.Visible = true;
+                cabTextBox.Text = _CabStoredODO.ToString();
+                cabDateTimePicker.Visible = true;
+                cabDateTimePicker.Value.ToShortDateString();
 
                 cabAirFilter.Text = "";
                 cabAirFilter.BackColor = _SecondaryColor;
@@ -340,22 +484,85 @@ namespace MaintenanceTracker
             }
             else if (_CabinCount == 1)
             {
-                cabAirFilterGroupBox.Visible = true;
+                //Date
+                _CabStoredDate = cabDateTimePicker.Value.ToString();
 
+                //Engine ODO Diff
+                _CabODODiff = _CurrentODOReading - _CabStoredODO;
+
+                //Validate if the inpute value in the text field is correct.
+                if (cabTextBox.Text != _CabStoredODO.ToString())
+                {
+                    DialogResult dialogResult = MessageBox.Show("Are you wanting to change your historical ODO value?", "Are you sure?", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes && int.TryParse(cabTextBox.Text, out int intCheck))
+                    {
+                        if ((_CurrentODOReading - int.Parse(cabTextBox.Text)) < 0)
+                        {
+                            MessageBox.Show("Your value must be less than or equal to your current ODO.");
+                        }
+                        else
+                        {
+                            _CabStoredODO = int.Parse(cabTextBox.Text);
+                        }
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        cabTextBox.Text = _CabStoredODO.ToString();
+                    }
+                    else
+                    {
+                        if (int.TryParse(cabTextBox.Text, out int intC))
+                        {
+                            cabTextBox.Text = _CabStoredODO.ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Value must be an integer values, 0-9. You inserted: " + cabTextBox.Text);
+                        }
+                    }
+                }
                 cabAirFilter.Text = "Cabin Air Filter Settings";
-                CabFilterStatusCondition(_CurrentODOReading);
-                cabAirFilter.Image = null;
+                CabFilterStatusCondition(_CabODODiff);
 
-                cabAirFilterLB.Text = "Miles Driven: " + "\n" +
-                        string.Format("{0:n0}", _CurrentODOReading) + "\n" +
-                    "Remaining Miles: " + "\n" +
-                        string.Format("{0:n0}", (_CabinMAX - _CurrentODOReading));
+                cabAirFilterLB.Text = "Miles Driven:" + "\n" +
+                        string.Format("{0:n0}", _CabODODiff) + "\n" +
+                    "Remaining Miles:" + "\n" +
+                        string.Format("{0:n0}", (_CabinMAX - _CabODODiff)) + "\n" +
+                    "Last Replacement:\n" +
+                        _CabStoredDate;
+
+                cabTextBox.Visible = false;
+                cabDateTimePicker.Visible = false;
+                cabAirFilter.Image = null;
 
                 //Hide the track bar and label
                 cabAirFilterTB.Visible = false;
                 cabAirFilterTBarLabel.Visible = false;
                 cabMaxMilesLabel.Visible = false;
                 cabFilterChangedBTTN.Visible = false;
+
+                //Load the XML file
+                XmlDocument _AirFilterData = new XmlDocument();
+                _AirFilterData.Load(_FilePath + _FileName + _FileExtensionType);
+
+                XmlElement root = _AirFilterData.DocumentElement;
+                XmlNodeList _Nodes = root.SelectNodes("Vehicle_Details");
+
+                foreach (XmlNode _Node in _Nodes)
+                {
+                    if (_Node.Attributes["Vehicle_Number"].Value == _VehicleNumber.ToString())
+                    {
+                        foreach (XmlNode _SubNode in _Node)
+                        {
+                            //Update the field values
+                            if (_SubNode.Name == "Cab_Stored_ODO") { _SubNode.InnerText = _CabStoredODO.ToString(); }
+                        }
+                    }
+                }
+
+                //Save the changes
+                _AirFilterData.Save(_FilePath + _FileName + _FileExtensionType);
+
                 _CabinCount--;
             }
         }
@@ -420,14 +627,10 @@ namespace MaintenanceTracker
             _AirFilterData.Save(_FilePath + _FileName + _FileExtensionType);
         }
 
+        //Exit Button
         private void ExitBTTN_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void ResetBTTN_Click(object sender, EventArgs e)
-        {
-            
         }
 
         //Create XML
@@ -503,6 +706,40 @@ namespace MaintenanceTracker
                 //Save the changes
                 _AirFilterData.Save(filePath + fileName + fileExtensionType);
             }
+        }
+
+        //Reading the MPG files for the ODO miles
+        private static void ODOReadings(int vehicleNumber, out int odoReadings)
+        {
+            string fln = @"mpg/mpg"+ vehicleNumber + ".txt";
+
+            //array to hold last odo input.
+            string[] holdOdo = new string[4];
+            if (File.Exists(fln))
+            {
+                //read last line from current file to get odometer reading
+                var lastLine = File.ReadLines(fln).Last();
+                //incrementer for array
+                int j = 0;
+                //splitting up the string based on " "<--spaces it finds
+                foreach (var col in lastLine.Trim().Split(' '))
+                {
+                    //storing split up string into an array
+                    holdOdo[j] = col.Trim();
+                    j++; //increment array
+                }
+                odoReadings = int.Parse(holdOdo[2]);
+            }
+            else
+            {
+                odoReadings = 0;
+            }
+        }
+        private void CreateIfFolderMissing()
+        {
+            bool tInfo = Directory.Exists(@"..\..\Resources\AirFilterData");
+            if (!tInfo)
+                Directory.CreateDirectory(@"..\..\Resources\AirFilterData");
         }
     }
 }

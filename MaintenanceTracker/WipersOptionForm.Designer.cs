@@ -180,46 +180,50 @@
             // 
             // exitButton
             // 
+            this.exitButton.BackColor = System.Drawing.SystemColors.Control;
             this.exitButton.Location = new System.Drawing.Point(263, 491);
             this.exitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(73, 28);
-            this.exitButton.TabIndex = 41;
+            this.exitButton.TabIndex = 42;
             this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click_1);
             // 
             // saveButton
             // 
+            this.saveButton.BackColor = System.Drawing.SystemColors.Control;
             this.saveButton.Location = new System.Drawing.Point(188, 439);
             this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(148, 28);
-            this.saveButton.TabIndex = 40;
+            this.saveButton.TabIndex = 39;
             this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click_1);
             // 
             // clearButton
             // 
+            this.clearButton.BackColor = System.Drawing.SystemColors.Control;
             this.clearButton.Location = new System.Drawing.Point(28, 491);
             this.clearButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(73, 28);
-            this.clearButton.TabIndex = 39;
+            this.clearButton.TabIndex = 40;
             this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.UseVisualStyleBackColor = false;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click_1);
             // 
             // tipAndInfoButton
             // 
+            this.tipAndInfoButton.BackColor = System.Drawing.SystemColors.Control;
             this.tipAndInfoButton.Location = new System.Drawing.Point(28, 441);
             this.tipAndInfoButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tipAndInfoButton.Name = "tipAndInfoButton";
             this.tipAndInfoButton.Size = new System.Drawing.Size(152, 28);
             this.tipAndInfoButton.TabIndex = 38;
             this.tipAndInfoButton.Text = "Tips and Information";
-            this.tipAndInfoButton.UseVisualStyleBackColor = true;
+            this.tipAndInfoButton.UseVisualStyleBackColor = false;
             this.tipAndInfoButton.Click += new System.EventHandler(this.tipAndInfoButton_Click_1);
             // 
             // nextReplaceDateDisplayLabel
@@ -255,6 +259,7 @@
             // 
             // displayNotesLabel
             // 
+            this.displayNotesLabel.BackColor = System.Drawing.Color.White;
             this.displayNotesLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.displayNotesLabel.Location = new System.Drawing.Point(31, 379);
             this.displayNotesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -274,6 +279,7 @@
             // 
             // displayBrandLabel
             // 
+            this.displayBrandLabel.BackColor = System.Drawing.Color.White;
             this.displayBrandLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.displayBrandLabel.Location = new System.Drawing.Point(136, 335);
             this.displayBrandLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -283,6 +289,7 @@
             // 
             // displayRearLabel
             // 
+            this.displayRearLabel.BackColor = System.Drawing.Color.White;
             this.displayRearLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.displayRearLabel.Location = new System.Drawing.Point(136, 302);
             this.displayRearLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -292,6 +299,7 @@
             // 
             // displayPassSideLabel
             // 
+            this.displayPassSideLabel.BackColor = System.Drawing.Color.White;
             this.displayPassSideLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.displayPassSideLabel.Location = new System.Drawing.Point(136, 272);
             this.displayPassSideLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -301,6 +309,7 @@
             // 
             // displayDrSideLabel
             // 
+            this.displayDrSideLabel.BackColor = System.Drawing.Color.White;
             this.displayDrSideLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.displayDrSideLabel.Location = new System.Drawing.Point(136, 241);
             this.displayDrSideLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -310,6 +319,7 @@
             // 
             // displayNextDateLabel
             // 
+            this.displayNextDateLabel.BackColor = System.Drawing.Color.White;
             this.displayNextDateLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.displayNextDateLabel.Location = new System.Drawing.Point(31, 191);
             this.displayNextDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -319,6 +329,7 @@
             // 
             // displayInstDateLabel
             // 
+            this.displayInstDateLabel.BackColor = System.Drawing.Color.White;
             this.displayInstDateLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.displayInstDateLabel.Location = new System.Drawing.Point(31, 119);
             this.displayInstDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -328,34 +339,35 @@
             // 
             // editButton
             // 
+            this.editButton.BackColor = System.Drawing.SystemColors.Control;
             this.editButton.Location = new System.Drawing.Point(148, 491);
             this.editButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(73, 28);
-            this.editButton.TabIndex = 86;
+            this.editButton.TabIndex = 41;
             this.editButton.Text = "Edit";
-            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.UseVisualStyleBackColor = false;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // daysLeftLabel
             // 
-            this.daysLeftLabel.AutoSize = true;
-            this.daysLeftLabel.BackColor = System.Drawing.Color.PeachPuff;
+            this.daysLeftLabel.BackColor = System.Drawing.Color.White;
             this.daysLeftLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.daysLeftLabel.Location = new System.Drawing.Point(243, 64);
+            this.daysLeftLabel.Location = new System.Drawing.Point(31, 49);
             this.daysLeftLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.daysLeftLabel.Name = "daysLeftLabel";
-            this.daysLeftLabel.Size = new System.Drawing.Size(63, 19);
+            this.daysLeftLabel.Size = new System.Drawing.Size(304, 33);
             this.daysLeftLabel.TabIndex = 87;
-            this.daysLeftLabel.Text = "days left";
+            this.daysLeftLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // WipersOptionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SkyBlue;
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(368, 534);
+            this.ClientSize = new System.Drawing.Size(363, 534);
+            this.ControlBox = false;
             this.Controls.Add(this.daysLeftLabel);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.displayNotesLabel);
@@ -386,7 +398,9 @@
             this.Controls.Add(this.nextReplaceDateLabel);
             this.Controls.Add(this.installedDateTimePicker);
             this.Controls.Add(this.installedDateLabel);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "WipersOptionForm";
             this.Text = "WipersOptionForm";
             this.ResumeLayout(false);

@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="returnButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 577</value>
+    <value>99, 577</value>
   </data>
   <data name="returnButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 78</value>
@@ -141,10 +141,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;returnButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="commentFormClearButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 421</value>
+    <value>7, 421</value>
   </data>
   <data name="commentFormClearButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 84</value>
@@ -165,10 +165,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;commentFormClearButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="saveCommentButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>207, 421</value>
+    <value>202, 421</value>
   </data>
   <data name="saveCommentButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 84</value>
@@ -189,13 +189,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;saveCommentButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="richTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 18</value>
+    <value>14, 57</value>
   </data>
   <data name="richTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>386, 358</value>
+    <value>374, 313</value>
   </data>
   <data name="richTextBox1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -213,6 +213,40 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;richTextBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="notePadLbl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="notePadLbl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="notePadLbl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="notePadLbl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 14</value>
+  </data>
+  <data name="notePadLbl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 25</value>
+  </data>
+  <data name="notePadLbl.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="notePadLbl.Text" xml:space="preserve">
+    <value>Notepad</value>
+  </data>
+  <data name="&gt;&gt;notePadLbl.Name" xml:space="preserve">
+    <value>notePadLbl</value>
+  </data>
+  <data name="&gt;&gt;notePadLbl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;notePadLbl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;notePadLbl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -227,12 +261,11 @@
   <data name="$this.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>410, 667</value>
+    <value>408, 668</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>TireCommentForm</value>
