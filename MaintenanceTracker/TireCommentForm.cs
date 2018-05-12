@@ -27,10 +27,10 @@ namespace MaintenanceTracker
         }
        
         //Path to miles driven files.
-        string path1b = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\Veh1Com.txt";
-        string path2b = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\Veh2Com.txt";
-        string path3b = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\Veh3Com.txt";
-        string path4b = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\TiresInfo\Veh4Com.txt";
+        string path1b = @"..\..\Resources\TiresInfo\Veh1Com.txt";
+        string path2b = @"..\..\Resources\TiresInfo\Veh2Com.txt";
+        string path3b = @"..\..\Resources\TiresInfo\Veh3Com.txt";
+        string path4b = @"..\..\Resources\TiresInfo\Veh4Com.txt";
 
         private void TireCommentForm_Load(object sender, EventArgs e)
         {
