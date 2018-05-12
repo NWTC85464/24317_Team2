@@ -1351,30 +1351,54 @@ namespace MaintenanceTracker
                     case 1:
                         //Clear Array value.
                         tireOptionsClass.Vehical1Values[4] = "0";
+                        tireOptionsClass.Vehical1Values[3] = "0";
+                        tireOptionsClass.Vehical1Values[2] = "0";
+                        installDateTextBox.Text = "";
                         comboBox1.SelectedIndex = -1;
                         comboBox1.Text = "";
                         resetTireTreadLife.Visible = false;
+                        File.WriteAllText(path1a, "0");
+                        readMilesDriven = 0;
+                        milesDriven = 0;
                         break;
                     case 2:
                         //Clear Array value.
                         tireOptionsClass.Vehical2Values[4] = "0";
+                        tireOptionsClass.Vehical2Values[3] = "0";
+                        tireOptionsClass.Vehical2Values[2] = "0";
+                        installDateTextBox.Text = "";
                         comboBox1.SelectedIndex = -1;
                         comboBox1.Text = "";
                         resetTireTreadLife.Visible = false;
+                        File.WriteAllText(path2a, "0");
+                        readMilesDriven = 0;
+                        milesDriven = 0;
                         break;
                     case 3:
                         //Clear Array value.
                         tireOptionsClass.Vehical3Values[4] = "0";
+                        tireOptionsClass.Vehical3Values[3] = "0";
+                        tireOptionsClass.Vehical3Values[2] = "0";
+                        installDateTextBox.Text = "";
                         comboBox1.SelectedIndex = -1;
                         comboBox1.Text = "";
                         resetTireTreadLife.Visible = false;
+                        File.WriteAllText(path3a, "0");
+                        readMilesDriven = 0;
+                        milesDriven = 0;
                         break;
                     case 4:
                         //Clear Array value.
                         tireOptionsClass.Vehical4Values[4] = "0";
+                        tireOptionsClass.Vehical4Values[3] = "0";
+                        tireOptionsClass.Vehical4Values[2] = "0";
+                        installDateTextBox.Text = "";
                         comboBox1.SelectedIndex = -1;
                         comboBox1.Text = "";
                         resetTireTreadLife.Visible = false;
+                        File.WriteAllText(path4a, "0");
+                        readMilesDriven = 0;
+                        milesDriven = 0;
                         break;
                     default:
                         break;
