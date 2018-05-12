@@ -294,7 +294,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 835);
+            this.ClientSize = new System.Drawing.Size(544, 834);
             this.ControlBox = false;
             this.Controls.Add(this.cabAirFilterPanel);
             this.Controls.Add(this.engAirFilterPanel);
