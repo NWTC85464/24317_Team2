@@ -18,12 +18,12 @@ namespace MaintenanceTracker
         private string ODreading ;
         MainFormClass MainClass = new MainFormClass();
 
-    
+        string[] section;
 
         public OilOptionsForm()
         {
             InitializeComponent();
-
+            Start.Visible = true;
             //this.BackColor = System.Drawing.Color.Orange;
 
             //Center form on the screen.
@@ -46,30 +46,30 @@ namespace MaintenanceTracker
             switch (car)
             {
                 case 1:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car1a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes1a.txt";
-                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car1aBACKUP.txt";
+                    path = @"..\..\Resources\oil\car1a.txt";
+                    notePath = @"..\..\Resources\oil\carNotes1a.txt";
+                    storage = @"..\..\Resources\oil\car1aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 2:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car2a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes2a.txt";
-                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car2aBACKUP.txt";
+                    path = @"..\..\Resources\oil\car2a.txt";
+                    notePath = @"..\..\Resources\oil\carNotes2a.txt";
+                    storage = @"..\..\Resources\oil\car2aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 3:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car3a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes3a.txt";
-                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car3aBACKUP.txt";
+                    path = @"..\..\Resources\oil\car3a.txt";
+                    notePath = @"..\..\Resources\oil\carNotes3a.txt";
+                    storage = @"..\..\Resources\oil\car3aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
                 case 4:
-                    path = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car4a.txt";
-                    notePath = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\carNotes4a.txt";
-                    storage = @".\..\..\..\..\..\..\Source\Repos\24317_Team2\MaintenanceTracker\Resources\oil\car4aBACKUP.txt";
+                    path = @"..\..\Resources\oil\car4a.txt";
+                    notePath = @"..\..\Resources\oil\carNotes4a.txt";
+                    storage = @"..\..\Resources\oil\car4aBACKUP.txt";
                     mpgFile = @"mpg/mpg1.txt";
                     break;
 
@@ -108,9 +108,6 @@ namespace MaintenanceTracker
                     index++;
                 }
 
-
-                ProgressBar();
-
                 info.Close();
 
                 Console.WriteLine("Getting last OD reading");
@@ -121,7 +118,7 @@ namespace MaintenanceTracker
                 {
                     string mpgData = File.ReadLines(mpgFile).Last();
 
-                    string[] section = mpgData.Split(' ');
+                    section = mpgData.Split(' ');
                     foreach (string x in section)
                     {
                         Console.WriteLine(x);
@@ -134,13 +131,14 @@ namespace MaintenanceTracker
                 {
                     MessageBox.Show("!You have not entered anything in the MPG for this car!");
                     Console.WriteLine("There was no OD reading");
+                    //ODreading = information[5];
                 }
-
+                
                 var date = information[3];
+               
+                // 
 
-               // 
-
-              //  mpg.Close();
+                //  mpg.Close();
 
 
                 Console.WriteLine("Completed");
@@ -161,7 +159,7 @@ namespace MaintenanceTracker
                 Start.Enabled = false;
 
                 Lock.Text = "Unlock";
-
+                ProgressBar();
             }
             else
             {
@@ -225,13 +223,13 @@ namespace MaintenanceTracker
 
             if (int.TryParse(ODStart.Text, out int num) == true)
             {
-                information[4] = ODStart.Text;
-                Console.WriteLine(information[4]);
+                information[5] = ODStart.Text;
+                Console.WriteLine(information[5]);
             }
             else
             {
                 MessageBox.Show("this is not a number");
-                information[4] = null;
+                information[5] = null;
             }
 
         }
@@ -417,7 +415,12 @@ namespace MaintenanceTracker
 
         private void exit(object sender, EventArgs e)
         {
-           // information[4] = ChangeDate.ToString();
+            // StartDate = DateTime.Today;
+            StartDate = Start.Value;
+
+            ChangeDate = StartDate.AddMonths(3);
+
+            information[4] = ChangeDate.ToString();
             information[5] = ODStart.Text;
 
             //save information if not null
@@ -440,7 +443,7 @@ namespace MaintenanceTracker
                     if (box == System.Windows.Forms.DialogResult.Yes)
                     {
                         Console.WriteLine("Saving incomplete data");
-                        Save();
+                        CheckIFHaveFiles();
                         this.Close();
                     }
                     else if (box == System.Windows.Forms.DialogResult.No)
@@ -455,10 +458,7 @@ namespace MaintenanceTracker
             {
                 Console.WriteLine("Saving Dates");
 
-                // StartDate = DateTime.Today;
-                StartDate = Start.Value;
-
-                ChangeDate = StartDate.AddMonths(3);
+                
 
                 information[3] = StartDate.ToString();
                 information[4] = ChangeDate.ToString();
@@ -474,27 +474,42 @@ namespace MaintenanceTracker
 
         private void CheckIFHaveFiles()
         {
-            if (!File.Exists(storage) && !File.Exists(path))
+
+            if (Directory.Exists(@"..\..\Resources\oil"))
             {
-                Console.WriteLine("No Oil Files Created Yet for this Car");
-                Console.WriteLine("Now Preparing to create the files");
-                //make back-up
-                Console.WriteLine("Back-up file created");
-                File.Create(storage);
+                if (!File.Exists(storage) && !File.Exists(path))
+                {
+                    Console.WriteLine("No Oil Files Created Yet for this Car");
+                    Console.WriteLine("Now Preparing to create the files");
+                    //make back-up
+                    Console.WriteLine("Back-up file created");
+                    var back=File.Create(storage);
+                    back.Close();
 
-                //make path
-                Console.WriteLine("Main file created");
-                File.Create(path);
+                    //make path
+                    Console.WriteLine("Main file created");
+                    var car=File.Create(path);
+                    car.Close();
 
-                Console.WriteLine("Files completed");
-                Console.WriteLine("Back-up Stored at " + storage);
-                Console.WriteLine("Main Stored at " + path);
+                    Console.WriteLine("Files completed");
+                    Console.WriteLine("Back-up Stored at " + storage);
+                    Console.WriteLine("Main Stored at " + path);
 
-                BackUp();
+                    BackUp();
+                }
+                else
+                {
+                    BackUp();
+                }
             }
             else
             {
-                BackUp();
+                DirectoryInfo folderoil = Directory.CreateDirectory(@"..\..\Resources\oil");
+                //states when path was created for new folder
+                Console.WriteLine("The directory was created successfully at {0}.",
+                Directory.GetCreationTime(@"..\..\Resources\oil"));
+
+                CheckIFHaveFiles();
             }
         }
 
@@ -615,7 +630,7 @@ namespace MaintenanceTracker
         private DateTime Date = DateTime.Today;
         private DateTime StartDate = new DateTime();
         private DateTime ChangeDate = new DateTime();
-        private DateTime compare = new DateTime();
+        private DateTime compare = DateTime.Today;
 
         private Timer Progress = new Timer();
 
@@ -653,9 +668,9 @@ namespace MaintenanceTracker
 
                 Console.WriteLine((int)T);
 
-                int TimeLeft = T - (int)Time ;
+                int TimeLeft =  T - (int)Time ;
 
-                GYR.Value += (int)Time - TimeLeft;
+                GYR.Value = (int)Time + TimeLeft;
 
             }
 

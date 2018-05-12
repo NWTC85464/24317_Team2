@@ -57,6 +57,10 @@ namespace MaintenanceTracker
         {
             InitializeComponent();
 
+            //Create folder if not exsist.
+            CreateIfFolderMissing();
+            
+
             //Create files if not existing.
             filesCreated = createTextFiles(vehicalNum, path1, path2, path3, path4, filesCreated);
 
@@ -471,9 +475,9 @@ namespace MaintenanceTracker
             switch (vehicalNum)
             {
                 case 1:
-                    if ((!File.Exists("v1Info.txt"))) //Checking if v1Info.txt exists or not
+                    if ((!File.Exists(path1))) //Checking if v1Info.txt exists or not
                     {
-                        FileStream fs = File.Create("v1Info.txt"); //Creates v1Info.txt
+                        FileStream fs = File.Create(path1); //Creates v1Info.txt
                         fs.Close(); //Closes file stream
                     }
                     if(milesDriven != 0)
@@ -491,9 +495,9 @@ namespace MaintenanceTracker
                     mainFormClass.MilesDriven = 0;
                     break;
                 case 2:
-                    if ((!File.Exists("v2Info.txt"))) //Checking if v1Info.txt exists or not
+                    if ((!File.Exists(path2))) //Checking if v1Info.txt exists or not
                     {
-                        FileStream fs = File.Create("v2Info.txt"); //Creates v1Info.txt
+                        FileStream fs = File.Create(path2); //Creates v1Info.txt
                         fs.Close(); //Closes file stream
                     }
                     if (milesDriven != 0)
@@ -511,9 +515,9 @@ namespace MaintenanceTracker
                     mainFormClass.MilesDriven = 0;
                     break;
                 case 3:
-                    if ((!File.Exists("v3Info.txt"))) //Checking if v1Info.txt exists or not
+                    if ((!File.Exists(path3))) //Checking if v1Info.txt exists or not
                     {
-                        FileStream fs = File.Create("v3Info.txt"); //Creates v1Info.txt
+                        FileStream fs = File.Create(path3); //Creates v1Info.txt
                         fs.Close(); //Closes file stream
                     }
                     if (milesDriven != 0)
@@ -531,9 +535,9 @@ namespace MaintenanceTracker
                     mainFormClass.MilesDriven = 0;
                     break;
                 case 4:
-                    if ((!File.Exists("v4Info.txt"))) //Checking if v1Info.txt exists or not
+                    if ((!File.Exists(path4))) //Checking if v1Info.txt exists or not
                     {
-                        FileStream fs = File.Create("v4Info.txt"); //Creates v1Info.txt
+                        FileStream fs = File.Create(path4); //Creates v1Info.txt
                         fs.Close(); //Closes file stream
                     }
                     if (milesDriven != 0)
@@ -622,6 +626,13 @@ namespace MaintenanceTracker
             return miles;
         }
 
+        private void CreateIfFolderMissing()
+        {
+            bool tInfo = Directory.Exists(@"..\..\Resources\TiresInfo");
+            if (!tInfo)
+                Directory.CreateDirectory(@"..\..\Resources\TiresInfo");
+        }
+        
         private bool createTextFiles(int vn, string p1, string p2, string p3, string p4, bool cTf)
         {
             switch (vn)
