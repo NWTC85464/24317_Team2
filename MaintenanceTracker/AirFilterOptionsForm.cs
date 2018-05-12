@@ -51,6 +51,9 @@ namespace MaintenanceTracker
         {
             InitializeComponent();
 
+            //Create folder if not exsist.
+            CreateIfFolderMissing();
+
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
 
@@ -756,6 +759,12 @@ namespace MaintenanceTracker
             {
                 odoReadings = 0;
             }
+        }
+        private void CreateIfFolderMissing()
+        {
+            bool tInfo = Directory.Exists(@"..\..\Resources\AirFilterData");
+            if (!tInfo)
+                Directory.CreateDirectory(@"..\..\Resources\AirFilterData");
         }
     }
 }
