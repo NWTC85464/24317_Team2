@@ -99,6 +99,12 @@ namespace MaintenanceTracker
             //Pull the current ODO value
             ODOReadings(_VehicleNumber, out _CurrentODOReading);
 
+            //If the directory doesn't exist, create it.
+            if (!Directory.Exists(_FilePath))
+            {
+                Directory.CreateDirectory(_FilePath);
+            }
+
             //Create XML
             CreateXMLFile(_Vehicle, _FilePath, _FileName, _FileExtensionType, 
                 _VehicleNumber, _VehicleMake, _VehicleModel, _CurrentODOReading,
@@ -145,8 +151,8 @@ namespace MaintenanceTracker
             _CabODODiff = _CurrentODOReading - _CabStoredODO;
 
             //Date
-            _EngStoredDate = engDateTimePicker.Value.ToString();
-            _CabStoredDate = cabDateTimePicker.Value.ToString();
+            _EngStoredDate = engDateTimePicker.Value.ToShortDateString();
+            _CabStoredDate = cabDateTimePicker.Value.ToShortDateString();
 
             //OnLoad Methods
             EngFilterStatusCondition(_EngODODiff);
@@ -238,7 +244,7 @@ namespace MaintenanceTracker
             engTextBox.Text = _EngStoredODO.ToString();
 
             //Update Base Date
-            engDateTimePicker.Value = DateTime.Parse(_EngStoredDate.ToString());
+            engDateTimePicker.Value = DateTime.Today;
         }
 
         //Cabine reset value button
@@ -271,7 +277,7 @@ namespace MaintenanceTracker
             cabTextBox.Text = _CabStoredODO.ToString();
 
             //Update Base Date
-            cabDateTimePicker.Value = DateTime.Parse(_CabStoredDate.ToString());
+            cabDateTimePicker.Value = DateTime.Today;
         }
 
         //Engine's Filter Condition
@@ -371,13 +377,21 @@ namespace MaintenanceTracker
                     DialogResult dialogResult = MessageBox.Show("Are you wanting to change your historical ODO value?", "Are you sure?", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes && int.TryParse(engTextBox.Text, out int intCheck))
                     {
-                        if ((_CurrentODOReading - int.Parse(engTextBox.Text)) < 0)
+                        if (int.Parse(engTextBox.Text) < 0)
                         {
-                            MessageBox.Show("Your value must be less than or equal to your current ODO.");
+                            MessageBox.Show("Your value cannot be a negative value.");
                         }
                         else
                         {
-                            _EngStoredODO = int.Parse(engTextBox.Text);
+                            if ((_CurrentODOReading - int.Parse(engTextBox.Text)) < 0)
+                            {
+                                MessageBox.Show("Your ODO is currently at: " + _CurrentODOReading + "\n" + 
+                                    "Your value must be less than or equal to your current ODO.");
+                            }
+                            else
+                            {
+                                _EngStoredODO = int.Parse(engTextBox.Text);
+                            }
                         }
                     }
                     else if (dialogResult == DialogResult.No)
@@ -398,11 +412,12 @@ namespace MaintenanceTracker
                 }
 
                 //Date
-                _EngStoredDate = engDateTimePicker.Value.ToString();
+                _EngStoredDate = engDateTimePicker.Value.ToShortDateString();
 
                 //Engine ODO Diff
                 _EngODODiff = _CurrentODOReading - _EngStoredODO;
 
+                //Display Comments
                 engAirFilter.Text = "Engine Air Filter Settings";
                 EngFilterStatusCondition(_EngODODiff);
 
@@ -481,25 +496,27 @@ namespace MaintenanceTracker
             }
             else if (_CabinCount == 1)
             {
-                //Date
-                _CabStoredDate = cabDateTimePicker.Value.ToString();
-
-                //Engine ODO Diff
-                _CabODODiff = _CurrentODOReading - _CabStoredODO;
-
                 //Validate if the inpute value in the text field is correct.
                 if (cabTextBox.Text != _CabStoredODO.ToString())
                 {
                     DialogResult dialogResult = MessageBox.Show("Are you wanting to change your historical ODO value?", "Are you sure?", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes && int.TryParse(cabTextBox.Text, out int intCheck))
                     {
-                        if ((_CurrentODOReading - int.Parse(cabTextBox.Text)) < 0)
+                        if (int.Parse(cabTextBox.Text) < 0)
                         {
-                            MessageBox.Show("Your value must be less than or equal to your current ODO.");
+                            MessageBox.Show("The ODO value cannot be a negative value.");
                         }
                         else
                         {
-                            _CabStoredODO = int.Parse(cabTextBox.Text);
+                            if ((_CurrentODOReading - int.Parse(cabTextBox.Text)) < 0)
+                            {
+                                MessageBox.Show("Your ODO is currently at: " + _CurrentODOReading + "\n" +
+                                    "Your value must be less than or equal to your current ODO.");
+                            }
+                            else
+                            {
+                                _CabStoredODO = int.Parse(cabTextBox.Text);
+                            }
                         }
                     }
                     else if (dialogResult == DialogResult.No)
@@ -518,6 +535,14 @@ namespace MaintenanceTracker
                         }
                     }
                 }
+
+                //Date
+                _CabStoredDate = cabDateTimePicker.Value.ToShortDateString();
+
+                //Engine ODO Diff
+                _CabODODiff = _CurrentODOReading - _CabStoredODO;
+                
+                //Display Comments
                 cabAirFilter.Text = "Cabin Air Filter Settings";
                 CabFilterStatusCondition(_CabODODiff);
 
