@@ -25,11 +25,6 @@ namespace MaintenanceTracker
         private static int v3Stored;
         private static int v4Stored;
 
-        //Progress bar difference.
-       // private static int pbDiff;
-
-        //public int PbDiff { get => pbDiff; set => pbDiff = value; }
-
         //Gets and sets.
         public int V1Stored { get => v1Stored; set => v1Stored = value; }
         public int V2Stored { get => v2Stored; set => v2Stored = value; }
