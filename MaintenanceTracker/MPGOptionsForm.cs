@@ -476,6 +476,9 @@ namespace MaintenanceTracker
 
         private void createFile(int vehicalNumber)
         {
+            //Create the folder if missing.
+            CreateIfFolderMissing();
+
             //Create file paths for each vehicle.
             StreamWriter sw;
             switch (vehicalNumber)
@@ -518,8 +521,15 @@ namespace MaintenanceTracker
                     break;
                 default:
                     break;
-
             }
+        }
+
+        private void CreateIfFolderMissing()
+        {
+            //Check if folder exsists, if no then create the folder in the directory.
+            bool tInfo = Directory.Exists(@"..\..\Resources\TiresInfo");
+            if (!tInfo)
+                Directory.CreateDirectory(@"..\..\Resources\TiresInfo");
         }
 
         public void ArrayString(string fileContent)
@@ -570,12 +580,10 @@ namespace MaintenanceTracker
                 //x++;
                 break;
             }
-
         }
 
         private void btnDeleteRow_Click(object sender, EventArgs e)
         {
-
             var confirmResult = MessageBox.Show("Are you REALLY sure you want to delete this item ??",
                                      "Confirm Delete!!",
                                      MessageBoxButtons.YesNo);

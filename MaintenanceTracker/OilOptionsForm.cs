@@ -18,12 +18,12 @@ namespace MaintenanceTracker
         private string ODreading ;
         MainFormClass MainClass = new MainFormClass();
 
-    
+        string[] section;
 
         public OilOptionsForm()
         {
             InitializeComponent();
-
+            Start.Visible = true;
             //this.BackColor = System.Drawing.Color.Orange;
 
             //Center form on the screen.
@@ -108,9 +108,6 @@ namespace MaintenanceTracker
                     index++;
                 }
 
-
-                ProgressBar();
-
                 info.Close();
 
                 Console.WriteLine("Getting last OD reading");
@@ -121,7 +118,7 @@ namespace MaintenanceTracker
                 {
                     string mpgData = File.ReadLines(mpgFile).Last();
 
-                    string[] section = mpgData.Split(' ');
+                    section = mpgData.Split(' ');
                     foreach (string x in section)
                     {
                         Console.WriteLine(x);
@@ -134,13 +131,14 @@ namespace MaintenanceTracker
                 {
                     MessageBox.Show("!You have not entered anything in the MPG for this car!");
                     Console.WriteLine("There was no OD reading");
+                    //ODreading = information[5];
                 }
-
+                
                 var date = information[3];
+               
+                // 
 
-               // 
-
-              //  mpg.Close();
+                //  mpg.Close();
 
 
                 Console.WriteLine("Completed");
@@ -161,7 +159,7 @@ namespace MaintenanceTracker
                 Start.Enabled = false;
 
                 Lock.Text = "Unlock";
-
+                ProgressBar();
             }
             else
             {
@@ -225,13 +223,13 @@ namespace MaintenanceTracker
 
             if (int.TryParse(ODStart.Text, out int num) == true)
             {
-                information[4] = ODStart.Text;
-                Console.WriteLine(information[4]);
+                information[5] = ODStart.Text;
+                Console.WriteLine(information[5]);
             }
             else
             {
                 MessageBox.Show("this is not a number");
-                information[4] = null;
+                information[5] = null;
             }
 
         }
@@ -417,7 +415,12 @@ namespace MaintenanceTracker
 
         private void exit(object sender, EventArgs e)
         {
-           // information[4] = ChangeDate.ToString();
+            // StartDate = DateTime.Today;
+            StartDate = Start.Value;
+
+            ChangeDate = StartDate.AddMonths(3);
+
+            information[4] = ChangeDate.ToString();
             information[5] = ODStart.Text;
 
             //save information if not null
@@ -455,10 +458,7 @@ namespace MaintenanceTracker
             {
                 Console.WriteLine("Saving Dates");
 
-                // StartDate = DateTime.Today;
-                StartDate = Start.Value;
-
-                ChangeDate = StartDate.AddMonths(3);
+                
 
                 information[3] = StartDate.ToString();
                 information[4] = ChangeDate.ToString();
@@ -630,7 +630,7 @@ namespace MaintenanceTracker
         private DateTime Date = DateTime.Today;
         private DateTime StartDate = new DateTime();
         private DateTime ChangeDate = new DateTime();
-        private DateTime compare = new DateTime();
+        private DateTime compare = DateTime.Today;
 
         private Timer Progress = new Timer();
 
@@ -668,9 +668,9 @@ namespace MaintenanceTracker
 
                 Console.WriteLine((int)T);
 
-                int TimeLeft = T - (int)Time ;
+                int TimeLeft =  T - (int)Time ;
 
-                GYR.Value += (int)Time - TimeLeft;
+                GYR.Value = (int)Time + TimeLeft;
 
             }
 
