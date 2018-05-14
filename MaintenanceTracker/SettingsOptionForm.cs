@@ -43,6 +43,9 @@ namespace MaintenanceTracker
         string mpg3 = @"mpg/mpg3.txt";
         string mpg4 = @"mpg/mpg4.txt";
 
+        //Xml path.
+        public string pathXml = @"..\..\Resources\AirFilterData\AirFilterData.xml";
+
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult;
@@ -67,9 +70,9 @@ namespace MaintenanceTracker
                         }
                         if (Directory.Exists(@"..\..\Resources\AirFilterData"))
                         {
-                            
                             //Delete airfilter files.
                             //File.Delete(@"..\..\Resources\AirFilterData\AirFilterData1.xml");
+                           
                         }
                         if (Directory.Exists(@"..\..\Resources\oil"))
                         {

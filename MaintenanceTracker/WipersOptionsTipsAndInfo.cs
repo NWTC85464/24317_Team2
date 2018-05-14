@@ -15,15 +15,18 @@ namespace MaintenanceTracker
         public WipersOptionsTipsAndInfo()
         {
             InitializeComponent();
+
+            //Center form on the screen.
+            this.StartPosition = FormStartPosition.CenterScreen;
+            
         }
 
         private void WipersOptionsTipsAndInfo_Load(object sender, EventArgs e)
         {
             //Form background color.
-            this.BackColor = System.Drawing.Color.Aqua;
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
 
-            //Center form on the screen.
-            this.StartPosition = FormStartPosition.CenterScreen;
+           
         }
 
         private void exitTipsInfoButton_Click(object sender, EventArgs e)
