@@ -19,6 +19,17 @@ namespace MaintenanceTracker
         private string ODreading ;
         MainFormClass MainClass = new MainFormClass();
 
+        private DateTime Date = DateTime.Today;
+        private DateTime StartDate = new DateTime();
+        private DateTime ChangeDate = new DateTime();
+        private DateTime compare = DateTime.Today;
+
+        private Timer Progress = new Timer();
+
+        private int total = 0;
+        private int ODS = 0;
+        private int ODR = 0;
+
         string[] section;
 
         public OilOptionsForm()
@@ -57,21 +68,21 @@ namespace MaintenanceTracker
                     path = @"..\..\Resources\oil\car2a.txt";
                     notePath = @"..\..\Resources\oil\carNotes2a.txt";
                     storage = @"..\..\Resources\oil\car2aBACKUP.txt";
-                    mpgFile = @"mpg/mpg1.txt";
+                    mpgFile = @"mpg/mpg2.txt";
                     break;
 
                 case 3:
                     path = @"..\..\Resources\oil\car3a.txt";
                     notePath = @"..\..\Resources\oil\carNotes3a.txt";
                     storage = @"..\..\Resources\oil\car3aBACKUP.txt";
-                    mpgFile = @"mpg/mpg1.txt";
+                    mpgFile = @"mpg/mpg3.txt";
                     break;
 
                 case 4:
                     path = @"..\..\Resources\oil\car4a.txt";
                     notePath = @"..\..\Resources\oil\carNotes4a.txt";
                     storage = @"..\..\Resources\oil\car4aBACKUP.txt";
-                    mpgFile = @"mpg/mpg1.txt";
+                    mpgFile = @"mpg/mpg4.txt";
                     break;
 
                 default: Console.WriteLine("error404"); break;
@@ -628,16 +639,6 @@ namespace MaintenanceTracker
         // ------------------------------------------------
 
 
-        private DateTime Date = DateTime.Today;
-        private DateTime StartDate = new DateTime();
-        private DateTime ChangeDate = new DateTime();
-        private DateTime compare = DateTime.Today;
-
-        private Timer Progress = new Timer();
-
-        private int total = 0;
-        private int ODS = 0;
-        private int ODR = 0;
     
 
 
