@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace MaintenanceTracker
 {
@@ -41,6 +43,9 @@ namespace MaintenanceTracker
         string mpg3 = @"mpg/mpg3.txt";
         string mpg4 = @"mpg/mpg4.txt";
 
+        //Xml path.
+        public string pathXml = @"..\..\Resources\AirFilterData\AirFilterData.xml";
+
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult;
@@ -67,6 +72,7 @@ namespace MaintenanceTracker
                         {
                             //Delete airfilter files.
                             //File.Delete(@"..\..\Resources\AirFilterData\AirFilterData1.xml");
+                           
                         }
                         if (Directory.Exists(@"..\..\Resources\oil"))
                         {
