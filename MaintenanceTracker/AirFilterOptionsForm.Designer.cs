@@ -68,6 +68,7 @@
             this.engAirFilter.Location = new System.Drawing.Point(9, 466);
             this.engAirFilter.Name = "engAirFilter";
             this.engAirFilter.Size = new System.Drawing.Size(192, 142);
+
             this.engAirFilter.TabIndex = 4;
             this.engAirFilter.Text = "Engine Air Filter Settings";
             this.engAirFilter.UseVisualStyleBackColor = true;
@@ -86,6 +87,7 @@
             // engAirFilterLB
             // 
             this.engAirFilterLB.AutoSize = true;
+
             this.engAirFilterLB.Location = new System.Drawing.Point(4, 4);
             this.engAirFilterLB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.engAirFilterLB.Name = "engAirFilterLB";
