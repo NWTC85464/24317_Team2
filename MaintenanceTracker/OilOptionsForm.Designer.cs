@@ -50,47 +50,69 @@
             ((System.ComponentModel.ISupportInitialize)(this.Amount)).BeginInit();
             this.SuspendLayout();
             // 
-            // notesButton
+            // Notes button
             // 
-            this.notesButton.BackColor = System.Drawing.SystemColors.Control;
-            this.notesButton.Location = new System.Drawing.Point(216, 445);
-            this.notesButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.notesButton.Name = "notesButton";
-            this.notesButton.Size = new System.Drawing.Size(129, 78);
+
+            this.notesButton.Location = new System.Drawing.Point(168, 289);
+            this.notesButton.Name = "notes";
+            this.notesButton.Size = new System.Drawing.Size(100, 57);
+
             this.notesButton.TabIndex = 0;
             this.notesButton.Text = "Notes";
-            this.notesButton.UseVisualStyleBackColor = false;
+            this.notesButton.UseVisualStyleBackColor = true;
             this.notesButton.Click += new System.EventHandler(this.NotesButton);
+
+            //
+            // Notes
+            //
+            this.Notes.Location = new System.Drawing.Point(12, 12);
+            this.Notes.Name = "NOTES";
+            this.Notes.Size = new System.Drawing.Size(300, 230);
+            this.Notes.TabIndex = 4;
+            this.Notes.Text = "";
+            this.Notes.Visible = false;
+            //
+            // Save Notes
+            //
+            this.SaveNotes.Location = new System.Drawing.Point(20, 289);
+            this.SaveNotes.Name = "saveNotes";
+            this.SaveNotes.Size = new System.Drawing.Size(117, 51);
+            this.SaveNotes.TabIndex = 1;
+            this.SaveNotes.Text = "Save";
+            this.SaveNotes.UseVisualStyleBackColor = true;
+            this.SaveNotes.Click += new System.EventHandler(this.SavingNotes);
+            this.SaveNotes.Visible = false;
+
             // 
-            // Exit
+            // Exit button      
             // 
-            this.Exit.BackColor = System.Drawing.SystemColors.Control;
-            this.Exit.Location = new System.Drawing.Point(216, 548);
-            this.Exit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(129, 78);
+
+            this.Exit.Location = new System.Drawing.Point(168, 348);
+            this.Exit.Name = "exit";
+            this.Exit.Size = new System.Drawing.Size(100, 60);
+
             this.Exit.TabIndex = 1;
             this.Exit.Text = "Exit and Save";
-            this.Exit.UseVisualStyleBackColor = false;
+            this.Exit.UseVisualStyleBackColor = true;
             this.Exit.Click += new System.EventHandler(this.exit);
             // 
-            // Amount
+            // trackBar oil 
             // 
-            this.Amount.Location = new System.Drawing.Point(120, 349);
-            this.Amount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+
+            this.Amount.Location = new System.Drawing.Point(65, 240);
+            this.Amount.Name = "amount";
+            this.Amount.Size = new System.Drawing.Size(172, 10);
             this.Amount.Maximum = 60;
-            this.Amount.Name = "Amount";
-            this.Amount.Size = new System.Drawing.Size(393, 69);
-            this.Amount.TabIndex = 9;
+
             this.Amount.Scroll += new System.EventHandler(this.FindNumber);
             // 
             // Lock
             // 
-            this.Lock.BackColor = System.Drawing.SystemColors.Control;
-            this.Lock.Location = new System.Drawing.Point(348, 445);
-            this.Lock.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Lock.Name = "Lock";
-            this.Lock.Size = new System.Drawing.Size(84, 182);
+
+            this.Lock.Location = new System.Drawing.Point(267, 289);
+            this.Lock.Name = "lockButton";
+            this.Lock.Size = new System.Drawing.Size(60, 118);
+
             this.Lock.TabIndex = 3;
             this.Lock.Text = "Lock";
             this.Lock.UseVisualStyleBackColor = true;
@@ -98,78 +120,94 @@
             // 
             // Information
             // 
-            this.Information.Location = new System.Drawing.Point(15, 445);
-            this.Information.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Information.Name = "Information";
-            this.Information.ReadOnly = true;
-            this.Information.Size = new System.Drawing.Size(192, 182);
+
+            this.Information.Location = new System.Drawing.Point(4, 289);
+            this.Information.Name = "information";
+            this.Information.Size = new System.Drawing.Size(158, 120);
+
             this.Information.TabIndex = 4;
             this.Information.Text = "";
             // 
             // brand
             // 
-            this.brand.Location = new System.Drawing.Point(15, 137);
-            this.brand.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.brand.Name = "brand";
-            this.brand.Size = new System.Drawing.Size(167, 31);
-            this.brand.TabIndex = 8;
+
+            this.brand.Location = new System.Drawing.Point(12, 89);
+            this.brand.Name = "brandOfOil";
             this.brand.Text = "Brand of oil using:";
-            // 
-            // type
-            // 
-            this.type.Location = new System.Drawing.Point(15, 197);
-            this.type.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.type.Name = "type";
-            this.type.Size = new System.Drawing.Size(167, 31);
-            this.type.TabIndex = 8;
-            this.type.Text = "Type of oil using:";
-            // 
-            // oilBrand
-            // 
-            this.oilBrand.Location = new System.Drawing.Point(193, 137);
-            this.oilBrand.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.oilBrand.Name = "oilBrand";
-            this.oilBrand.Size = new System.Drawing.Size(166, 26);
+            this.brand.Size = new System.Drawing.Size(130, 20);
+            this.brand.TabIndex = 8;
+            //
+            // brand
+            //
+            this.oilBrand.Location = new System.Drawing.Point(150, 89);
+            this.oilBrand.Name = "brand";
+            this.oilBrand.Text = "";
+            this.oilBrand.Size = new System.Drawing.Size(130, 20);
+
             this.oilBrand.TabIndex = 8;
             this.oilBrand.TextChanged += new System.EventHandler(this.oilBrandChange);
             // 
             // oilUse
             // 
-            this.oilUse.Location = new System.Drawing.Point(193, 197);
-            this.oilUse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.oilUse.Name = "oilUse";
-            this.oilUse.Size = new System.Drawing.Size(166, 26);
+
+            this.type.Location = new System.Drawing.Point(12, 128);
+            this.type.Name = "oilType";
+            this.type.Text = "Type of oil using:";
+            this.type.Size = new System.Drawing.Size(130, 20);
+            this.type.TabIndex = 8;
+            //
+            // oil
+            //
+            this.oilUse.Location = new System.Drawing.Point(150, 128);
+            this.oilUse.Name = "brand";
+            this.oilUse.Text = "";
+            this.oilUse.Size = new System.Drawing.Size(130, 20);
+
+
             this.oilUse.TabIndex = 8;
             this.oilUse.TextChanged += new System.EventHandler(this.oilUseChange);
             // 
             // TotalTxT
             // 
-            this.TotalTxT.Location = new System.Drawing.Point(4, 362);
-            this.TotalTxT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.TotalTxT.Name = "TotalTxT";
-            this.TotalTxT.Size = new System.Drawing.Size(213, 31);
-            this.TotalTxT.TabIndex = 6;
+
+            // 
+            // Oil TxT
+            // 
+            this.TotalTxT.Location = new System.Drawing.Point(3, 250);
+            this.TotalTxT.Name = "OilAmount";
             this.TotalTxT.Text = "Oil Amount:";
+            this.TotalTxT.Size = new System.Drawing.Size(166, 20);
+            this.TotalTxT.TabIndex = 6;
+
             // 
-            // AmountTotal
+            // Oil Quntity
             // 
-            this.AmountTotal.Location = new System.Drawing.Point(321, 362);
-            this.AmountTotal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.AmountTotal.Name = "AmountTotal";
-            this.AmountTotal.Size = new System.Drawing.Size(94, 26);
+
+            this.AmountTotal.Location = new System.Drawing.Point(250, 248);
+            this.AmountTotal.Name = "AmountTxT";
+            this.AmountTotal.Size = new System.Drawing.Size(74, 10)
             this.AmountTotal.TabIndex = 7;
             this.AmountTotal.TextChanged += new System.EventHandler(this.TotalChange);
+            //
+            // Time to change or not
             // 
-            // GYRTXT
+            this.GYR.Location = new System.Drawing.Point(7, 12);
+            this.GYR.Name = "GYR_Bar";
+            this.GYR.Size = new System.Drawing.Size(320, 40);
+            //
+            // Time to change or not TXT
             // 
-            this.GYRTXT.Location = new System.Drawing.Point(9, 77);
-            this.GYRTXT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.GYRTXT.Name = "GYRTXT";
-            this.GYRTXT.ReadOnly = true;
-            this.GYRTXT.Size = new System.Drawing.Size(504, 26);
-            this.GYRTXT.TabIndex = 1;
-            this.GYRTXT.Text = "GOOD";
+
+            this.GYRTXT.Location = new System.Drawing.Point(137, 52);
+            this.GYRTXT.Name = "GYR_Txt";
+            this.GYRTXT.Text = "Unknow %";
             this.GYRTXT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GYRTXT.Size = new System.Drawing.Size(70, 2);
+            this.GYRTXT.ReadOnly = true;
+            //
+            // Form
+
+
             // 
             // GYR
             // 
@@ -240,12 +278,14 @@
             this.ODStart.TextChanged += new System.EventHandler(this.ODFirstReading);
             // 
             // OilOptionsForm
+
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(532, 1028);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(330, 432);
+            this.Controls.Add(this.Start);
+
             this.Controls.Add(this.GYRTXT);
             this.Controls.Add(this.GYR);
             this.Controls.Add(this.StartingDateTxT);
@@ -264,10 +304,9 @@
             this.Controls.Add(this.notesButton);
             this.Controls.Add(this.Notes);
             this.Controls.Add(this.SaveNotes);
-            this.Controls.Add(this.Start);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "OilOptionsForm";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+
+            this.Name = "oil Form";
+
             this.Text = "Oil Options Form";
             this.Load += new System.EventHandler(this.OilTrackerForm);
             ((System.ComponentModel.ISupportInitialize)(this.Amount)).EndInit();
