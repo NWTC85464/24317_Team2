@@ -1,0 +1,57 @@
+<Vehicle>
+  <Vehicle_Details Vehicle_Number="0">
+    <Make />
+    <Model />
+    <Current_ODO>0</Current_ODO>
+    <Eng_Stored_ODO>0</Eng_Stored_ODO>
+    <Max_Eng_ODO>30000</Max_Eng_ODO>
+    <Eng_DateFilterChangedLast />
+    <Cab_Stored_ODO>0</Cab_Stored_ODO>
+    <Max_Cab_ODO>30000</Max_Cab_ODO>
+    <Cab_DateFilterChangedLast />
+  </Vehicle_Details>
+  <Vehicle_Details Vehicle_Number="1">
+    <Make>Ford</Make>
+    <Model>Mustange</Model>
+    <Current_ODO>0</Current_ODO>
+    <Eng_Stored_ODO>0</Eng_Stored_ODO>
+    <Max_Eng_ODO>30000</Max_Eng_ODO>
+    <Eng_DateFilterChangedLast>0</Eng_DateFilterChangedLast>
+    <Cab_Stored_ODO>0</Cab_Stored_ODO>
+    <Max_Cab_ODO>30000</Max_Cab_ODO>
+    <Cab_DateFilterChangedLast>0</Cab_DateFilterChangedLast>
+  </Vehicle_Details>
+  <Vehicle_Details Vehicle_Number="2">
+    <Make />
+    <Model />
+    <Current_ODO>0</Current_ODO>
+    <Eng_Stored_ODO>0</Eng_Stored_ODO>
+    <Max_Eng_ODO>30000</Max_Eng_ODO>
+    <Eng_DateFilterChangedLast />
+    <Cab_Stored_ODO>0</Cab_Stored_ODO>
+    <Max_Cab_ODO>30000</Max_Cab_ODO>
+    <Cab_DateFilterChangedLast />
+  </Vehicle_Details>
+  <Vehicle_Details Vehicle_Number="3">
+    <Make />
+    <Model />
+    <Current_ODO>0</Current_ODO>
+    <Eng_Stored_ODO>0</Eng_Stored_ODO>
+    <Max_Eng_ODO>30000</Max_Eng_ODO>
+    <Eng_DateFilterChangedLast />
+    <Cab_Stored_ODO>0</Cab_Stored_ODO>
+    <Max_Cab_ODO>30000</Max_Cab_ODO>
+    <Cab_DateFilterChangedLast />
+  </Vehicle_Details>
+  <Vehicle_Details Vehicle_Number="4">
+    <Make />
+    <Model />
+    <Current_ODO>0</Current_ODO>
+    <Eng_Stored_ODO>0</Eng_Stored_ODO>
+    <Max_Eng_ODO>30000</Max_Eng_ODO>
+    <Eng_DateFilterChangedLast />
+    <Cab_Stored_ODO>0</Cab_Stored_ODO>
+    <Max_Cab_ODO>30000</Max_Cab_ODO>
+    <Cab_DateFilterChangedLast />
+  </Vehicle_Details>
+</Vehicle>

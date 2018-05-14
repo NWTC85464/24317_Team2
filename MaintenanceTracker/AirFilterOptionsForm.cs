@@ -47,13 +47,11 @@ namespace MaintenanceTracker
             _EngStoredDate = null,
             _CabStoredDate = null;
 
+        //Main
         public AirFilterOptionsForm()
         {
             InitializeComponent();
-
-            //Create folder if not exsist.
-            CreateIfFolderMissing();
-
+            
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
 
@@ -244,7 +242,7 @@ namespace MaintenanceTracker
             _AirFilterData.Save(_FilePath + _FileName + _FileExtensionType);
 
             //Update Base ODO
-            engTextBox.Text = _EngStoredODO.ToString();
+            engTextBox.Text = _CurrentODOReading.ToString();
 
             //Update Base Date
             engDateTimePicker.Value = DateTime.Today;
@@ -277,7 +275,7 @@ namespace MaintenanceTracker
             _AirFilterData.Save(_FilePath + _FileName + _FileExtensionType);
             
             //Update Base ODO
-            cabTextBox.Text = _CabStoredODO.ToString();
+            cabTextBox.Text = _CurrentODOReading.ToString();
 
             //Update Base Date
             cabDateTimePicker.Value = DateTime.Today;
@@ -488,7 +486,7 @@ namespace MaintenanceTracker
                 cabMaxMilesLabel.Visible = true;
                 cabFilterChangedBTTN.Visible = true;
                 cabAirFilterTB.Scroll += new EventHandler(CabAirFilterSB_Scroll);
-                cabAirFilterTB.Minimum = _CurrentODOReading;
+                cabAirFilterTB.Minimum = _CabODODiff;
                 cabAirFilterTB.Maximum = _MAX;
                 cabAirFilterTB.TickFrequency = 5000;
                 cabAirFilterTB.LargeChange = 10000;
@@ -595,10 +593,6 @@ namespace MaintenanceTracker
         //The egnine's Track Bar
         private void EngAirFilterSB_Scroll(object sender, System.EventArgs e)
         {
-            //Display the trackbar value in the text box.
-            engAirFilterTBarLabel.Text = "" + engAirFilterTB.Value;
-            _EngineMAX = engAirFilterTB.Value;
-
             //Load the XML file
             XmlDocument _AirFilterData = new XmlDocument();
             _AirFilterData.Load(_FilePath + _FileName + _FileExtensionType);
@@ -620,15 +614,15 @@ namespace MaintenanceTracker
 
             //Save the changes
             _AirFilterData.Save(_FilePath + _FileName + _FileExtensionType);
+
+            //Display the trackbar value in the text box.
+            engAirFilterTBarLabel.Text = "" + engAirFilterTB.Value;
+            _EngineMAX = engAirFilterTB.Value;
         }
 
         //The cabin's Track Bar
         private void CabAirFilterSB_Scroll(object sender, System.EventArgs e)
         {
-            //Display the trackbar value in the text box.
-            cabAirFilterTBarLabel.Text = "" + cabAirFilterTB.Value;
-            _CabinMAX = cabAirFilterTB.Value;
-
             //Load the XML file
             XmlDocument _AirFilterData = new XmlDocument();
             _AirFilterData.Load(_FilePath + _FileName + _FileExtensionType);
@@ -650,6 +644,10 @@ namespace MaintenanceTracker
 
             //Save the changes
             _AirFilterData.Save(_FilePath + _FileName + _FileExtensionType);
+
+            //Display the trackbar value in the text box.
+            cabAirFilterTBarLabel.Text = "" + cabAirFilterTB.Value;
+            _CabinMAX = cabAirFilterTB.Value;
         }
 
         //Exit Button
@@ -759,12 +757,6 @@ namespace MaintenanceTracker
             {
                 odoReadings = 0;
             }
-        }
-        private void CreateIfFolderMissing()
-        {
-            bool tInfo = Directory.Exists(@"..\..\Resources\AirFilterData");
-            if (!tInfo)
-                Directory.CreateDirectory(@"..\..\Resources\AirFilterData");
         }
     }
 }
