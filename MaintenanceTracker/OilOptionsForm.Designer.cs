@@ -185,7 +185,7 @@
 
             this.AmountTotal.Location = new System.Drawing.Point(250, 248);
             this.AmountTotal.Name = "AmountTxT";
-            this.AmountTotal.Size = new System.Drawing.Size(74, 10)
+            this.AmountTotal.Size = new System.Drawing.Size(74, 10);
             this.AmountTotal.TabIndex = 7;
             this.AmountTotal.TextChanged += new System.EventHandler(this.TotalChange);
             //
