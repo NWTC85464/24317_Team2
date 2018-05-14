@@ -1,4 +1,4 @@
-﻿using MaintenanceTracker.Classes;
+using MaintenanceTracker.Classes;
 using MaintenanceTracker.Properties;
 using System;
 using System.Drawing;
@@ -47,11 +47,13 @@ namespace MaintenanceTracker
             _EngStoredDate = null,
             _CabStoredDate = null;
 
-        //Main
         public AirFilterOptionsForm()
         {
             InitializeComponent();
-            
+
+            //Create folder if not exsist.
+            CreateIfFolderMissing();
+
             //Center form on the screen.
             this.StartPosition = FormStartPosition.CenterScreen;
 
@@ -243,8 +245,6 @@ namespace MaintenanceTracker
 
             //Update Base ODO
             engTextBox.Text = _CurrentODOReading.ToString();
-
-            //Update Base Date
             engDateTimePicker.Value = DateTime.Today;
         }
 
@@ -276,8 +276,6 @@ namespace MaintenanceTracker
             
             //Update Base ODO
             cabTextBox.Text = _CurrentODOReading.ToString();
-
-            //Update Base Date
             cabDateTimePicker.Value = DateTime.Today;
         }
 
@@ -384,9 +382,10 @@ namespace MaintenanceTracker
                         }
                         else
                         {
+                            //_EngStoredODO = int.Parse(engTextBox.Text);
                             if ((_CurrentODOReading - int.Parse(engTextBox.Text)) < 0)
                             {
-                                MessageBox.Show("Your ODO is currently at: " + _CurrentODOReading + "\n" + 
+                                MessageBox.Show("Your ODO is currently at: " + _CurrentODOReading + "\n" +
                                     "Your value must be less than or equal to your current ODO.");
                             }
                             else
@@ -418,7 +417,6 @@ namespace MaintenanceTracker
                 //Engine ODO Diff
                 _EngODODiff = _CurrentODOReading - _EngStoredODO;
 
-                //Display Comments
                 engAirFilter.Text = "Engine Air Filter Settings";
                 EngFilterStatusCondition(_EngODODiff);
 
@@ -486,7 +484,7 @@ namespace MaintenanceTracker
                 cabMaxMilesLabel.Visible = true;
                 cabFilterChangedBTTN.Visible = true;
                 cabAirFilterTB.Scroll += new EventHandler(CabAirFilterSB_Scroll);
-                cabAirFilterTB.Minimum = _CabODODiff;
+                cabAirFilterTB.Minimum = _CurrentODOReading;
                 cabAirFilterTB.Maximum = _MAX;
                 cabAirFilterTB.TickFrequency = 5000;
                 cabAirFilterTB.LargeChange = 10000;
@@ -497,14 +495,24 @@ namespace MaintenanceTracker
             }
             else if (_CabinCount == 1)
             {
+
+                //Date
+                _CabStoredDate = cabDateTimePicker.Value.ToString();
+
+                //Engine ODO Diff
+                _CabODODiff = _CurrentODOReading - _CabStoredODO;
+
                 //Validate if the inpute value in the text field is correct.
                 if (cabTextBox.Text != _CabStoredODO.ToString())
                 {
                     DialogResult dialogResult = MessageBox.Show("Are you wanting to change your historical ODO value?", "Are you sure?", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes && int.TryParse(cabTextBox.Text, out int intCheck))
                     {
+
+                        //if ((_CurrentODOReading - int.Parse(cabTextBox.Text)) < 0)
                         if (int.Parse(cabTextBox.Text) < 0)
                         {
+                            //MessageBox.Show("Your value must be less than or equal to your current ODO.");
                             MessageBox.Show("The ODO value cannot be a negative value.");
                         }
                         else
@@ -536,13 +544,13 @@ namespace MaintenanceTracker
                         }
                     }
                 }
-
+                
                 //Date
                 _CabStoredDate = cabDateTimePicker.Value.ToShortDateString();
 
                 //Engine ODO Diff
                 _CabODODiff = _CurrentODOReading - _CabStoredODO;
-                
+
                 //Display Comments
                 cabAirFilter.Text = "Cabin Air Filter Settings";
                 CabFilterStatusCondition(_CabODODiff);
@@ -593,6 +601,10 @@ namespace MaintenanceTracker
         //The egnine's Track Bar
         private void EngAirFilterSB_Scroll(object sender, System.EventArgs e)
         {
+            //Display the trackbar value in the text box.
+            engAirFilterTBarLabel.Text = "" + engAirFilterTB.Value;
+            _EngineMAX = engAirFilterTB.Value;
+
             //Load the XML file
             XmlDocument _AirFilterData = new XmlDocument();
             _AirFilterData.Load(_FilePath + _FileName + _FileExtensionType);
@@ -623,6 +635,10 @@ namespace MaintenanceTracker
         //The cabin's Track Bar
         private void CabAirFilterSB_Scroll(object sender, System.EventArgs e)
         {
+            //Display the trackbar value in the text box.
+            cabAirFilterTBarLabel.Text = "" + cabAirFilterTB.Value;
+            _CabinMAX = cabAirFilterTB.Value;
+
             //Load the XML file
             XmlDocument _AirFilterData = new XmlDocument();
             _AirFilterData.Load(_FilePath + _FileName + _FileExtensionType);
@@ -758,5 +774,13 @@ namespace MaintenanceTracker
                 odoReadings = 0;
             }
         }
+
+        private void CreateIfFolderMissing()
+        {
+            bool tInfo = Directory.Exists(@"..\..\Resources\AirFilterData");
+            if (!tInfo)
+                Directory.CreateDirectory(@"..\..\Resources\AirFilterData");
+        }
     }
 }
+
